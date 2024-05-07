@@ -13,5 +13,8 @@
   "license": "MIT",
   "scripts": {
     "build": "vite build"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

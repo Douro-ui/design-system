@@ -22,9 +22,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-          registry-url: 'https://npm.pkg.github.com/Metyis-Porto'
-      - name: "Yarn Install"
+          registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the organization that owns the workflow file
+          scope: '@douro-ui'
+      - name: "Install Dependencies"
         run: yarn install
+      - name: "Build"
+        run: yarn lerna:build
       - name: "Version and Publish"
         env: 
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

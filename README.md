@@ -33,7 +33,7 @@ It's mandatory to send only one commit per Pull Request following the best guide
 
 ### Publish
 
-For managing a publish action you will need to create a personal access token in GitHub.
+For managing a publish action you will need to create a personal access token in GitHub with write/read scope for packages.
 To do so, please follow this guide and create your own: [Managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
 This monorepo uses [Lerna](https://lerna.js.org/) to deal with versioning and publishing.
