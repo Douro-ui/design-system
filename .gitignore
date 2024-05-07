@@ -1,0 +1,14 @@
+logs
+*.log
+.DS_Store
+
+.idea/
+.vscode/
+.history/
+.nx
+
+coverage/
+node_modules/
+dist
+
+.eslintcache

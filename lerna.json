@@ -1,0 +1,13 @@
+{
+	"npmClient": "yarn",
+	"command": {
+		"publish": {
+			"conventionalCommits": true,
+			"ignoreChanges": ["*.md", "*.config.js", ".spec.ts", ".stories.ts"],
+            "registry": "https://npm.pkg.github.com",
+			"message": "chore(release): publish"
+		}
+	},
+	"packages": ["packages/**"],
+	"version": "independent"
+}

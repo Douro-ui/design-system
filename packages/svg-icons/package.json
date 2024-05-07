@@ -1,0 +1,17 @@
+{
+  "name": "@douro-ui/svg-icons",
+  "version": "0.0.0",
+  "description": "Douro UI - Metyis Design System Icons",
+  "main": "src/index.ts",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Douro-ui/design-system"
+  },
+  "author": "Metyis Porto",
+  "bugs": "https://github.com/Douro-ui/design-system/issues",
+  "license": "MIT",
+  "scripts": {
+    "build": "vite build"
+  }
+}

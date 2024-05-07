@@ -1,0 +1,33 @@
+name: Pull Request to create release
+run-name: ${{ github.actor }} is creating a Pull Request
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Actions checkout"
+        uses: actions/checkout@v4
+
+      - name: "Select Node version"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install
+        run: yarn install
+        
+      - name: Build
+        run: yarn lerna:build
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Unit Tests
+        run: yarn test      
