@@ -3,7 +3,7 @@ run-name: Publish by @${{ github.actor }}
 on:
   push:
     branches:
-      - master
+      - main
     paths-ignore:
       - '**.md'
   pull_request:
