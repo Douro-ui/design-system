@@ -18,6 +18,7 @@ jobs:
         with:
           # Force actions/checkout to get all commits and tags
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:
@@ -27,8 +28,6 @@ jobs:
           scope: '@douro-ui'
       - name: "Install Dependencies"
         run: yarn install
-      - name: "Build"
-        run: yarn lerna:build
       - name: "Version and Publish"
         env: 
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -36,5 +35,9 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
 
+          git stash
+          git checkout ${{ github.ref }}
+
           yarn lerna:version
+          yarn lerna:build
           yarn lerna:publish
