@@ -21,6 +21,10 @@ jobs:
           scope: '@douro-ui'
       - run: yarn install
       - run: |
+          git remote set-url origin "https://${GITHUB_TOKEN}@github.com/Douro-ui/design-system.git"
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor}}@users.noreply.github.com"
+          
           yarn lerna:version
           yarn lerna:publish
         env:
