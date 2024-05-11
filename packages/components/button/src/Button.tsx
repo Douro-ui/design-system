@@ -6,7 +6,7 @@ import { ButtonStyled } from './button.styles';
  */
 const Button = ({
   primary = false,
-  size = 'medium',
+  size = 'small',
   backgroundColor,
   label,
   ...props
