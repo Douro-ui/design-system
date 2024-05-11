@@ -14,7 +14,8 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      pull-requests: write
+      contents: write
       packages: write # allow GITHUB_TOKEN to publish packages
     steps:
       - uses: actions/checkout@v4
