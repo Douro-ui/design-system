@@ -9,7 +9,7 @@ export const theme = {
         text: '#343a40',
     },
     spacing: {
-        xs: '8px',
+        xs: '6px',
         sm: '12px',
         md: '24px',
         lg: '36px',
