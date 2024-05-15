@@ -1,6 +1,6 @@
-import { Global, css } from '@emotion/react';
+import { Global, SerializedStyles, css } from '@emotion/react';
 
-const globalStyles = css`
+const defaultGlobalStyles = css`
   @font-face {
     font-family: "neue-haas-grotesk-display";
     src: url("https://use.typekit.net/af/2807c7/00000000000000007735bb48/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/2807c7/00000000000000007735bb48/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/2807c7/00000000000000007735bb48/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
@@ -209,8 +209,6 @@ const globalStyles = css`
   }
 `;
 
-export const GlobalStyles = () => (
-  <Global
-    styles={globalStyles}
-  />
-);
+export const GlobalStyles = ({ styles }: { styles?: SerializedStyles }) => {
+  return <Global styles={css([defaultGlobalStyles, styles])} />;
+};
