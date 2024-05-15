@@ -1,4 +1,5 @@
-import { Global, SerializedStyles, css } from '@emotion/react';
+import { Global, SerializedStyles } from '@emotion/react';
+import { css, cx } from '@emotion/css';
 
 const defaultGlobalStyles = css`
   @font-face {
@@ -210,5 +211,5 @@ const defaultGlobalStyles = css`
 `;
 
 export const GlobalStyles = ({ styles }: { styles?: SerializedStyles }) => {
-  return <Global styles={css([defaultGlobalStyles, styles])} />;
+  return <Global styles={cx([defaultGlobalStyles, styles])} />;
 };
