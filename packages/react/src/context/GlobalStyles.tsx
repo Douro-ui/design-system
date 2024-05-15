@@ -210,6 +210,6 @@ const defaultGlobalStyles = css`
   }
 `;
 
-export const GlobalStyles = ({ styles }: { styles?: SerializedStyles }) => {
+export const GlobalStyles = ({ styles }: { styles?: string }) => {
   return <Global styles={cx([defaultGlobalStyles, styles])} />;
 };
