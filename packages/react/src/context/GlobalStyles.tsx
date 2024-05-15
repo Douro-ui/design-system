@@ -1,4 +1,4 @@
-import { Global, SerializedStyles } from '@emotion/react';
+import { Global } from '@emotion/react';
 import { css, cx } from '@emotion/css';
 
 const defaultGlobalStyles = css`
