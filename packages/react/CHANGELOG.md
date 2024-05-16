@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.1.0...@douro-ui/react@0.2.0) (2024-05-16)
+
+### Features
+
+- create a global style with resets ([84407cf](https://github.com/Douro-ui/design-system/commit/84407cfd20f0ec160785cfaa41fc23f3a61f186b))
+
 # 0.1.0 (2024-05-16)
 
 ### Bug Fixes
