@@ -94,8 +94,5 @@
       "plugin:storybook/recommended"
     ]
   },
-  "version": "0.0.0",
-  "dependencies": {
-    "@emotion/css": "^11.11.2"
-  }
+  "version": "0.0.0"
 }
