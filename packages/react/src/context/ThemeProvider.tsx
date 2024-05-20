@@ -1,22 +1,18 @@
 import { ThemeProvider as ThemeProviderEmotion } from '@emotion/react';
 import React from 'react';
- 
-export const theme = {
-    colors: {
-        primary: '#007bff',
-        secondary: '#6c757d',
-        background: '#f8f9fa',
-        text: '#343a40',
-    },
-    spacing: {
-        xs: '6px',
-        sm: '12px',
-        md: '24px',
-        lg: '36px',
-        xl: '48px',
-    },
-}
- 
-export const ThemeProvider = ({theme, children}: {theme: any, children: React.ReactNode}) => {
-    return <ThemeProviderEmotion theme={theme}>{children}</ThemeProviderEmotion>
-}
+import {  defaultTheme } from '../tokens';
+import type { Theme } from '../tokens/themes/theme.types';
+
+
+
+ const mergeThemes = (newTheme?: Partial<Theme>): Theme => {
+    return {
+        ...defaultTheme,
+        ...newTheme,
+    };
+};
+
+export const ThemeProvider = ({ theme, children }: { theme?: Theme, children: React.ReactNode }) => {
+    const mergedTheme = mergeThemes(theme);
+    return <ThemeProviderEmotion theme={mergedTheme}>{children}</ThemeProviderEmotion>;
+};
