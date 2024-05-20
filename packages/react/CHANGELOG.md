@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.2.0...@douro-ui/react@0.3.0) (2024-05-20)
+
+### Features
+
+- create a default theme ([5113227](https://github.com/Douro-ui/design-system/commit/511322797bcbe9c69e321b269f409802769f4a62))
+
 # [0.2.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.1.0...@douro-ui/react@0.2.0) (2024-05-16)
 
 ### Features
