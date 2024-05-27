@@ -1,2 +1,2 @@
 export * from './DarkMode';
-export * from './useTheme'
+export * from './useTheme';

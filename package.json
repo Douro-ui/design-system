@@ -26,7 +26,8 @@
     "storybook": "storybook dev -p 6006",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prettier:fix": "prettier --write --ignore-path .gitignore ."
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.3.3",
@@ -79,7 +80,7 @@
       "yarn run lint:fix"
     ],
     "*.{ts,tsx,json,md,scss,yaml,yml}": [
-      "yarn run prettier"
+      "yarn run prettier:fix"
     ]
   },
   "engines": {
