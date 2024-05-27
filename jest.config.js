@@ -1,8 +1,8 @@
 module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ['**/src/**/*.{js,jsx,ts,tsx}'],
-  coveragePathIgnorePatterns: ["^.*\\.stories\\.[jt]sx?$", "index.ts"],
-  coverageReporters: ["json", "html", "text"],
+  coveragePathIgnorePatterns: ['^.*\\.stories\\.[jt]sx?$', 'index.ts'],
+  coverageReporters: ['json', 'html', 'text'],
   // coverageThreshold: {
   //   global: {
   //     branches: 80,
@@ -12,12 +12,12 @@ module.exports = {
   //   },
   // },
   moduleNameMapper: {
-    "^.+\\.svg$": "jest-transformer-svg",
+    '^.+\\.svg$': 'jest-transformer-svg',
   },
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
   testRegex: ['.+\\.spec.[jt]s(x?)$', '!dist'],
   transform: {
-    "^.+\\.tsx?$": "ts-jest",
+    '^.+\\.tsx?$': 'ts-jest',
   },
-  setupFilesAfterEnv: ["<rootDir>/tests/jest.setup.ts"],
+  setupFilesAfterEnv: ['<rootDir>/tests/jest.setup.ts'],
 };

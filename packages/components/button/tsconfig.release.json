@@ -1,9 +1,9 @@
 {
-    "extends": "../../../tsconfig.release.base.json",
-    "compilerOptions": {
-      "rootDir": "src",
-      "outDir": "dist"
-    },
-    "include": ["src/**/*.*ts*"],
-    "exclude": ["src/**/*.spec.*ts*"]
-  }
+  "extends": "../../../tsconfig.release.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*.*ts*"],
+  "exclude": ["src/**/*.spec.*ts*"]
+}

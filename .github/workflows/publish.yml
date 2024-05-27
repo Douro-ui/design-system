@@ -2,7 +2,7 @@ name: Publish
 run-name: Publish by @${{ github.actor }}
 on:
   pull_request:
-    types: 
+    types:
       - closed
 jobs:
   publish:
@@ -25,11 +25,11 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           scope: '@douro-ui'
-      - name: "Install Dependencies"
+      - name: 'Install Dependencies'
         run: yarn install
-      - name: "Run Lerna Version and Publish"
+      - name: 'Run Lerna Version and Publish'
         # To enable authentication with lerna we must set the origin url for git with the token
-        run: | 
+        run: |
           git remote set-url origin "https://${{secrets.GITHUB_TOKEN}}@github.com/Douro-ui/design-system.git"
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"

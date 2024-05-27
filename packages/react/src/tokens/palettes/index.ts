@@ -1,1 +1,1 @@
-export { default as defaultPalette } from "./palette";
+export { default as defaultPalette } from './palette';
