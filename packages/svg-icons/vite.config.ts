@@ -8,12 +8,18 @@ export default defineConfig({
   ...viteBuildBaseConfig<BuildOptions>(
     resolve(__dirname, mainEntry),
     packageName,
-    { 
+    {
       outDir: '../../dist',
       rollupOptions: {
         // make sure to externalize deps that shouldn't be bundled
         // into your library
-        external: ['react', 'react/jsx-runtime', 'react-is', /emotion\/styled/, /emotion\/react/],
+        external: [
+          'react',
+          'react/jsx-runtime',
+          'react-is',
+          /emotion\/styled/,
+          /emotion\/react/,
+        ],
         output: {
           // Provide global variables to use in the UMD build
           // for externalized deps
@@ -22,5 +28,6 @@ export default defineConfig({
           },
         },
       },
-    }),  
+    },
+  ),
 });

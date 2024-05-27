@@ -8,7 +8,7 @@ export default defineConfig({
   ...viteBuildBaseConfig<BuildOptions>(
     resolve(__dirname, mainEntry),
     packageName,
-    { 
+    {
       outDir: '../../dist',
       minify: false,
       rollupOptions: {
@@ -23,5 +23,6 @@ export default defineConfig({
           },
         },
       },
-    }),  
+    },
+  ),
 });

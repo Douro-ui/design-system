@@ -18,7 +18,6 @@ export interface Colors {
   };
 }
 
-
 export default {
   brand: {
     primary: '#0B1F2F',
@@ -27,12 +26,12 @@ export default {
     quaternary: '#EAD9C5',
     quinary: '#EB5B41',
     senary: '#FFBA22',
-    septenary: 'B8B9B5'
+    septenary: 'B8B9B5',
   },
   neutral: {
     achromatic: {
       black: '#000000',
-      white: '#FFFFFF'
+      white: '#FFFFFF',
     },
     silver: {
       '10': '#1A1A1A',
@@ -44,7 +43,7 @@ export default {
       '70': '#B3B3B3',
       '80': '#CCCCCC',
       '90': '#E6E6E6',
-      '95': '#F2F2F2'
+      '95': '#F2F2F2',
     },
     cold: {
       '10': '#141B1F',
@@ -56,7 +55,7 @@ export default {
       '70': '#A2B7C3',
       '80': '#C1CFD7',
       '90': '#E0E7EB',
-      '95': '#EFF3F5'
+      '95': '#EFF3F5',
     },
     warm: {
       '10': '#1E1A15',
@@ -68,7 +67,7 @@ export default {
       '70': '#C0B3A5',
       '80': '#D5CDC3',
       '90': '#EAE6E1',
-      '95': '#F5F2F0'
+      '95': '#F5F2F0',
     },
   },
   extended: {
@@ -82,7 +81,7 @@ export default {
       '70': '#7EA0E7',
       '80': '#A9C0EF',
       '90': '#D4DFF7',
-      '95': '#EAEFFB'
+      '95': '#EAEFFB',
     },
     red: {
       '10': '#2F0404',
@@ -94,7 +93,7 @@ export default {
       '70': '#F27373',
       '80': '#F6A2A2',
       '90': '#FBD0D0',
-      '95': '#FDE7E7'
+      '95': '#FDE7E7',
     },
     beige: {
       '10': '#251A0E',
@@ -106,7 +105,7 @@ export default {
       '70': '#D6B58F',
       '80': '#E4CEB4',
       '90': '#F1E6DA',
-      '95': '#F8F2EC'
+      '95': '#F8F2EC',
     },
     yellow: {
       '10': '#332300',
@@ -118,7 +117,7 @@ export default {
       '70': '#FFCF66',
       '80': '#FFDF99',
       '90': '#FFEFCC',
-      '95': '#FFF7E5'
+      '95': '#FFF7E5',
     },
     purple: {
       '10': '#140D26',
@@ -130,7 +129,7 @@ export default {
       '70': '#936DFA',
       '80': '#B499FF',
       '90': '#DACEFD',
-      '95': '#ECE6FE'
+      '95': '#ECE6FE',
     },
     pink: {
       '10': '#2A0921',
@@ -142,7 +141,7 @@ export default {
       '70': '#E481C8',
       '80': '#EDABDB',
       '90': '#F6D5ED',
-      '95': '#FAEAF6'
+      '95': '#FAEAF6',
     },
     green: {
       '10': '#0C271E',
@@ -154,7 +153,7 @@ export default {
       '70': '#89DCBF',
       '80': '#B0E8D5',
       '90': '#D8F3EA',
-      '95': '#EBF9F4'
+      '95': '#EBF9F4',
     },
     orange: {
       '10': '#301603',
@@ -166,7 +165,7 @@ export default {
       '70': '#F5A870',
       '80': '#F8C5A0',
       '90': '#FCE2CF',
-      '95': '#FDF0E7'
+      '95': '#FDF0E7',
     },
-  }
-}
+  },
+};

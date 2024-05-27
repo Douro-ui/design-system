@@ -12,17 +12,17 @@ jobs:
   CI:
     runs-on: ubuntu-latest
     steps:
-      - name: "Actions checkout"
+      - name: 'Actions checkout'
         uses: actions/checkout@v4
 
-      - name: "Select Node version"
+      - name: 'Select Node version'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Install
         run: yarn install
-        
+
       - name: Build
         run: yarn lerna:build
 
@@ -30,4 +30,4 @@ jobs:
         run: yarn lint
 
       - name: Unit Tests
-        run: yarn test      
+        run: yarn test

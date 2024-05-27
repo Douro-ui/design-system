@@ -1,13 +1,13 @@
 export type BreakpointsType = {
   [key in Breakpoints]: number;
-}
+};
 
 export enum FontWeight {
   REGULAR = 400,
   ROMAN = 500,
   MEDIUM = 600,
   BOLD = 700,
-  BOLDER = 900
+  BOLDER = 900,
 }
 
 interface TypographyStyle {
@@ -80,7 +80,7 @@ export type Typography = {
   ios_md?: TypographyGroup;
   android_xs?: TypographyGroup;
   ios_xs?: TypographyGroup;
-}
+};
 export enum Breakpoints {
   ANDROID_XS = 'android-xs',
   IOS_XS = 'ios-xs',

@@ -11,6 +11,6 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "types": ["vite/client", "@emotion/react/types/css-prop"],
-    "typeRoots": ["./node_modules/@types/", "./node_modules"],
+    "typeRoots": ["./node_modules/@types/", "./node_modules"]
   }
 }
