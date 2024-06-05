@@ -12,11 +12,6 @@ const Title = styled.h1`
   margin-bottom: 20px;
 `;
 
-const Description = styled.div`
-  font-size: 16px;
-  margin-bottom: 30px;
-`;
-
 const SectionTitle = styled.h2`
   font-size: 20px;
   margin-top: 20px;
@@ -65,11 +60,6 @@ const renderColors = colorGroup =>
 const PaletteStory = () => (
   <Container>
     <Title>Storybook Design Tokens</Title>
-    <Description>
-      Display design token documentation generated from your stylesheets and
-      icon files. Preview design token changes in the browser. Add your design
-      tokens to your Storybook Docs pages using the custom Doc Blocks.
-    </Description>
     <SectionTitle>Colors (Table)</SectionTitle>
     <SubSectionTitle>Brand</SubSectionTitle>
     {renderColors(colors.brand)}
