@@ -257,7 +257,7 @@ export default {
         },
       },
     },
-    [`${Breakpoints.XXL}, ${Breakpoints.XL}, ${Breakpoints.LG} `]: {
+    [`${Breakpoints.XXL || Breakpoints.XL || Breakpoints.LG}`]: {
       header: {
         h1: {
           fontSize: '1.5rem',
