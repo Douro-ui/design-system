@@ -18,7 +18,7 @@ export interface Colors {
   };
 }
 
-export default {
+const colors: Colors = {
   brand: {
     primary: '#0B1F2F',
     secondary: '#14306B',
@@ -169,3 +169,5 @@ export default {
     },
   },
 };
+
+export default colors;
