@@ -95,5 +95,8 @@
       "plugin:storybook/recommended"
     ]
   },
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "dependencies": {
+    "styled-components": "^6.1.11"
+  }
 }
