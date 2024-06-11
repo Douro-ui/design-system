@@ -1,6 +1,5 @@
-export type BreakpointsType = {
-  [key in Breakpoints]: number;
-};
+export const fontFamilyDisplay = 'neue-haas-grotesk-display';
+export const fontFamilyText = 'neue-haas-grotesk-text';
 
 export enum FontWeight {
   REGULAR = 400,
@@ -10,84 +9,36 @@ export enum FontWeight {
   BOLDER = 900,
 }
 
-interface TypographyStyle {
-  fontSize?: string;
-  fontWeight?: FontWeight;
-  lineHeight?: string;
-  fontFamily?: string;
-}
-interface TypographyHeader {
-  h1?: TypographyStyle;
-  h2?: TypographyStyle;
-  h3?: TypographyStyle;
-  h4?: TypographyStyle;
-  h5?: TypographyStyle;
-  h6?: TypographyStyle;
-  h7?: TypographyStyle;
-  h8?: TypographyStyle;
-}
-
-interface TypographyTitle {
-  title1?: TypographyStyle;
-  title2?: TypographyStyle;
-  title3?: TypographyStyle;
-  title4?: TypographyStyle;
-  title5?: TypographyStyle;
-  title6?: TypographyStyle;
-  title7?: TypographyStyle;
-  title8?: TypographyStyle;
-}
-
-interface TypographyBody {
-  body1?: TypographyStyle;
-  body2?: TypographyStyle;
-  body3?: TypographyStyle;
-  body4?: TypographyStyle;
-  body5?: TypographyStyle;
-  body6?: TypographyStyle;
-  body7?: TypographyStyle;
-  body8?: TypographyStyle;
-}
-
-interface TypographyButton {
-  buttonL?: TypographyStyle & { '&:hover'?: { textDecoration?: string } };
-  buttonM?: TypographyStyle & { '&:hover'?: { textDecoration?: string } };
-  buttonS?: TypographyStyle & { '&:hover'?: { textDecoration?: string } };
-}
-
-interface TypographyLink {
-  link2XL?: TypographyStyle & { '&:active'?: { fontWeight?: FontWeight } };
-  linkXL?: TypographyStyle & { '&:active'?: { fontWeight?: FontWeight } };
-  linkL?: TypographyStyle & { '&:active'?: { fontWeight?: FontWeight } };
-  linkM?: TypographyStyle & { '&:active'?: { fontWeight?: FontWeight } };
-  linkS?: TypographyStyle & { '&:active'?: { fontWeight?: FontWeight } };
-}
-
-interface TypographyGroup {
-  header?: TypographyHeader;
-  title?: TypographyTitle;
-  body?: TypographyBody;
-  button?: TypographyButton;
-  links?: TypographyLink;
-}
-
-export type Typography = {
-  xxxl?: TypographyGroup;
-  xxl?: TypographyGroup;
-  xl?: TypographyGroup;
-  l?: TypographyGroup;
-  md?: TypographyGroup;
-  ios_md?: TypographyGroup;
-  android_xs?: TypographyGroup;
-  ios_xs?: TypographyGroup;
-};
 export enum Breakpoints {
-  ANDROID_XS = 'android-xs',
-  IOS_XS = 'ios-xs',
-  IOS_MD = 'ios-md',
-  XXXL = 'xxxl',
-  XXL = 'xxl',
-  XL = 'xl',
-  LG = 'lg',
-  MD = 'md',
+  MOBILE = 'mobile',
+  TABLET = 'tablet',
+  DESKTOP = 'desktop',
+  DESKTOP_LARGE = 'desktopLarge',
+}
+
+export enum Heading {
+  H1 = 'h1',
+  H2 = 'h2',
+  H3 = 'h3',
+  H4 = 'h4',
+  H5 = 'h5',
+  H6 = 'h6',
+}
+
+export enum Body {
+  Body1 = 'body1',
+  Body2 = 'body2',
+  Body3 = 'body3',
+  Body4 = 'body4',
+  Body5 = 'body5',
+  Body6 = 'body6',
+}
+
+export enum Display {
+  Display1 = 'display1',
+  Display2 = 'display2',
+  Display3 = 'display3',
+  Display4 = 'display4',
+  Display5 = 'display5',
+  Display6 = 'display6',
 }
