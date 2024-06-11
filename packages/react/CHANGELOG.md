@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.3.0...@douro-ui/react@0.3.1) (2024-06-11)
+
+**Note:** Version bump only for package @douro-ui/react
+
 # [0.3.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.2.0...@douro-ui/react@0.3.0) (2024-05-20)
 
 ### Features
