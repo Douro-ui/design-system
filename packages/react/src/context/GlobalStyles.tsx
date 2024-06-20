@@ -1,9 +1,13 @@
 import { Global } from '@emotion/react';
 import { css, cx } from '@emotion/css';
+import {
+  fontFamilyDisplay,
+  fontFamilyText,
+} from '../tokens/themes/theme.constants';
 
 const defaultGlobalStyles = css`
   @font-face {
-    font-family: 'neue-haas-grotesk-display';
+    font-family: ${fontFamilyDisplay};
     src:
       url('https://use.typekit.net/af/2807c7/00000000000000007735bb48/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
         format('woff2'),
@@ -18,7 +22,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-display';
+    font-family: ${fontFamilyDisplay};
     src:
       url('https://use.typekit.net/af/2b59e1/00000000000000007735bb53/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
         format('woff2'),
@@ -33,7 +37,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-text';
+    font-family: ${fontFamilyText};
     src:
       url('https://use.typekit.net/af/0230dd/00000000000000007735bb33/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3')
         format('woff2'),
@@ -48,7 +52,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-text';
+    font-family: ${fontFamilyText};
     src:
       url('https://use.typekit.net/af/aed66e/00000000000000007735bb35/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3')
         format('woff2'),
@@ -63,7 +67,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-display';
+    font-family: ${fontFamilyDisplay};
     src:
       url('https://use.typekit.net/af/1ba16c/00000000000000007735bb5a/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3')
         format('woff2'),
@@ -78,7 +82,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-display';
+    font-family: ${fontFamilyDisplay};
     src:
       url('https://use.typekit.net/af/6c4da4/00000000000000007735bb5e/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3')
         format('woff2'),
@@ -93,7 +97,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-text';
+    font-family: ${fontFamilyText};
     src:
       url('https://use.typekit.net/af/160664/00000000000000007735bb32/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3')
         format('woff2'),
@@ -108,7 +112,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-text';
+    font-family: ${fontFamilyText};
     src:
       url('https://use.typekit.net/af/fe63ce/00000000000000007735bb4b/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i5&v=3')
         format('woff2'),
@@ -123,7 +127,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-display';
+    font-family: ${fontFamilyDisplay};
     src:
       url('https://use.typekit.net/af/153042/00000000000000007735bb62/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3')
         format('woff2'),
@@ -138,7 +142,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-display';
+    font-family: ${fontFamilyDisplay};
     src:
       url('https://use.typekit.net/af/153042/00000000000000007735bb62/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3')
         format('woff2'),
@@ -153,7 +157,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-display';
+    font-family: ${fontFamilyDisplay};
     src:
       url('https://use.typekit.net/af/8a7571/00000000000000007735bb67/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3')
         format('woff2'),
@@ -168,7 +172,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-display';
+    font-family: ${fontFamilyDisplay};
     src:
       url('https://use.typekit.net/af/8a7571/00000000000000007735bb67/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3')
         format('woff2'),
@@ -183,7 +187,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-text';
+    font-family: ${fontFamilyText};
     src:
       url('https://use.typekit.net/af/305037/00000000000000007735bb39/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
         format('woff2'),
@@ -198,7 +202,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-text';
+    font-family: ${fontFamilyText};
     src:
       url('https://use.typekit.net/af/68a7c6/00000000000000007735bb3d/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3')
         format('woff2'),
@@ -213,7 +217,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-display';
+    font-family: ${fontFamilyDisplay};
     src:
       url('https://use.typekit.net/af/384d9b/00000000000000007735bb6a/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3')
         format('woff2'),
@@ -228,7 +232,7 @@ const defaultGlobalStyles = css`
   }
 
   @font-face {
-    font-family: 'neue-haas-grotesk-display';
+    font-family: ${fontFamilyDisplay};
     src:
       url('https://use.typekit.net/af/fcc1c9/00000000000000007735bb6c/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3')
         format('woff2'),
@@ -255,7 +259,7 @@ const defaultGlobalStyles = css`
 
   body,
   html {
-    font-family: 'neue-haas-grotesk-display';
+    font-family: ${fontFamilyDisplay};
     height: 100%;
   }
 
