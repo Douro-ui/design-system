@@ -1,11 +1,30 @@
-import { Colors } from '../palettes/palette';
 import {
   FontWeight,
   Heading,
   Body,
   Breakpoints,
   Display,
+  BrandShadeColors,
+  NeutralGroupColors,
+  ShadeColors,
+  ExtendedGroupColors,
 } from './theme.constants';
+
+export type BrandColors = {
+  [key in BrandShadeColors]?: string;
+};
+
+export type NeutralColors = {
+  [key in NeutralGroupColors]?: {
+    [key in ShadeColors]?: string;
+  };
+};
+
+export type ExtendedColors = {
+  [key in ExtendedGroupColors]?: {
+    [key in ShadeColors]?: string;
+  };
+};
 
 export type BreakpointsType = {
   [key in Breakpoints]: number;
@@ -25,6 +44,12 @@ export interface Theme {
   typography: Typography;
   breakpoints: BreakpointsType;
 }
+
+export type Colors = {
+  brand?: BrandColors;
+  neutral?: NeutralColors;
+  extended?: ExtendedColors;
+};
 
 interface TypographyStyle {
   fontSize?: string;

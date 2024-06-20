@@ -1,4 +1,5 @@
-export const deepMerge = <T>(target: T, source: Partial<T>): T => { //TODO: try to type later
+export const deepMerge = <T>(target: T, source: Partial<T>): T => {
+  //TODO: try to type later
   const isObject = (obj: any) => obj && typeof obj === 'object';
 
   for (const key of Object.keys(source) as Array<keyof T>) {

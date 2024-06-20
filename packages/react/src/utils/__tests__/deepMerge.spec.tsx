@@ -12,6 +12,7 @@ const MergeTest = () => {
       data-testid="component"
       style={{
         fontSize: theme.typography.heading.h1.desktop.fontSize,
+        color: theme.colors.brand.primary,
       }}
     >
       Hey I'm a test
@@ -26,9 +27,9 @@ describe('Test to check the defaultTheme values', () => {
         <MergeTest />
       </ThemeProvider>,
     );
-
     const component = getByTestId('component');
     expect(component).toHaveStyle('font-size: 1.5rem');
+    expect(component).toHaveStyle('color: #0B1F2F');
   });
 
   it('should render my newTheme value and check if it no replaced all object', () => {
@@ -83,9 +84,7 @@ describe('Test to check the defaultTheme values', () => {
       },
       colors: {
         brand: {
-          primary: 'pink',
-          secondary: 'red',
-          tertiary: 'blue',
+          primary: 'gold',
         },
       },
       breakpoints: {
@@ -104,5 +103,6 @@ describe('Test to check the defaultTheme values', () => {
 
     const childElement = getByTestId('component');
     expect(childElement).toHaveStyle('font-size: 3.5rem');
+    expect(childElement).toHaveStyle('color: gold');
   });
 });

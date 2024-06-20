@@ -8,6 +8,44 @@ export enum FontWeight {
   BOLD = 700,
   BOLDER = 900,
 }
+export enum BrandShadeColors {
+  PRIMARY = 'primary',
+  SECONDARY = 'secondary',
+  TERTIARY = 'tertiary',
+  QUATERNARY = 'quaternary',
+  QUINARY = 'quinary',
+  SENARY = 'senary',
+  SEPTENARY = 'septenary',
+  BLACK = 'black',
+  WHITE = 'white',
+}
+export enum NeutralGroupColors {
+  SILVER = 'silver',
+  COLD = 'cold',
+  WARM = 'warm',
+}
+export enum ShadeColors {
+  SHADE10 = 'shade10',
+  SHADE20 = 'shade20',
+  SHADE30 = 'shade30',
+  SHADE40 = 'shade40',
+  SHADE50 = 'shade50',
+  SHADE60 = 'shade60',
+  SHADE70 = 'shade70',
+  SHADE80 = 'shade80',
+  SHADE90 = 'shade90',
+  SHADE95 = 'shade95',
+}
+export enum ExtendedGroupColors {
+  BLUE = 'blue',
+  RED = 'red',
+  BEIGE = 'beige',
+  YELLOW = 'yellow',
+  PURPLE = 'purple',
+  PINK = 'pink',
+  GREEN = 'green',
+  ORANGE = 'orange',
+}
 
 export enum Breakpoints {
   MOBILE = 'mobile',
