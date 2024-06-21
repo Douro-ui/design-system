@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { ButtonProps } from './button.types';
+import theme from '../../../react/src/tokens/themes/theme';
 
 const handleSize = (size: ButtonProps['size']) => {
   switch (size) {
@@ -27,7 +28,7 @@ export const ButtonStyled = styled.button<Omit<ButtonProps, 'label'>>`
     primary
       ? `
         color: white;
-        background-color: ${backgroundColor};
+        background-color: ${backgroundColor || theme.colors.extended.pink.shade30};
         box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 0px 1px inset;
       `
       : `

@@ -1,4 +1,4 @@
-import { defaultPalette } from '../palettes';
+import { brand, neutral, extended } from '../palettes';
 import { body, display, heading } from '../typography';
 import {
   Breakpoints,
@@ -13,7 +13,11 @@ const fontSize = 1;
 
 const theme: Theme = {
   name: 'default_theme',
-  colors: defaultPalette,
+  colors: {
+    brand,
+    neutral,
+    extended,
+  },
   fontFamily: {
     display: fontFamilyDisplay,
     text: fontFamilyText,
