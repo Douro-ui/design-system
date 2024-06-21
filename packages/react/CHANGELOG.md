@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.3.2...@douro-ui/react@0.3.3) (2024-06-21)
+
+### Bug Fixes
+
+- colors type ([e17b6f5](https://github.com/Douro-ui/design-system/commit/e17b6f52ed9e7720bedf6bae9ef07f8a52835482))
+
 ## [0.3.2](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.3.1...@douro-ui/react@0.3.2) (2024-06-20)
 
 ### Bug Fixes
