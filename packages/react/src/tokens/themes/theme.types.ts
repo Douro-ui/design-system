@@ -51,7 +51,7 @@ export type Colors = {
   extended?: ExtendedColors;
 };
 
-interface TypographyStyle {
+export interface TypographyStyle {
   fontSize?: string;
   fontWeight?: FontWeight;
   lineHeight?: string;
