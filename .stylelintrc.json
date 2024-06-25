@@ -1,0 +1,18 @@
+{
+  "customSyntax": "postcss-styled-syntax",
+  "rules": {
+    "unit-allowed-list": ["ms", "rem", "%"],
+    "declaration-block-no-duplicate-properties": [
+      true,
+      {
+        "severity": "error"
+      }
+    ],
+    "no-duplicate-selectors": [
+      true,
+      {
+        "severity": "error"
+      }
+    ]
+  }
+}

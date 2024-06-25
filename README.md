@@ -46,7 +46,7 @@ If you need to update something and don't want to publish a new version just add
 
 ### Maintainers
 
-- [Artur Marques](https://github.com/Arthurmqz)
+- [Arthur Marques](https://github.com/Arthurmqz)
 - [Diogo Soares](https://github.com/vzdiogo)
 - [Gabriel Santos](https://github.com/GabrielSt)
 - [Hugo Freitas](https://github.com/HugoFreitasGIT)
