@@ -1,4 +1,4 @@
-import { TabsProps, TabsStyledProps } from './tabs.types';
+import { TabsProps } from './tabs.types';
 import { TabStyled } from './tabs.styles';
 
 const Tab = ({ 
@@ -6,9 +6,8 @@ const Tab = ({
     value, 
     selected, 
     disabled, 
-    onClick 
+    onClick
 }: TabsProps & 
-TabsStyledProps & 
 { onClick: (value: string) => void }) => {
   const handleClick = () => {
     if (!disabled) {
@@ -17,8 +16,8 @@ TabsStyledProps &
   };
 
   return (
-    <TabStyled 
-        className={selected ? 'active' : ''} 
+    <TabStyled
+        selected={selected} 
         disabled={disabled} 
         onClick={handleClick}
     >

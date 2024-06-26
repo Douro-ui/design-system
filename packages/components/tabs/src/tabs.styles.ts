@@ -33,15 +33,16 @@ export const TabStyled = styled.div<TabsStyledProps>`
     fill: #767676;
   }
 
-  &.active {
-    color: #298DCC;
-    border-bottom: 2px solid #298DCC;
-    font-weight: 600;
+  ${props => props.selected &&
+    `
+      color: #298DCC;
+      border-bottom: 2px solid #298DCC;
+      font-weight: 600;
 
-    svg {
+      svg {
         fill: #298DCC;
-    }
-  }
+      }
+    `}
 
   &[disabled] {
     opacity: 0.5;

@@ -1,4 +1,4 @@
-export interface TabsProps {
+export interface TabsProps extends Partial<HTMLDivElement> {
     label: string;
     value: string;
     selected?: boolean;
