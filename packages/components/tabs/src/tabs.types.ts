@@ -5,7 +5,7 @@ export interface TabsProps extends Partial<HTMLDivElement> {
     disabled?: boolean;    
   }
     
-  export interface TabsGroupProps {
+  export interface TabsGroupProps extends Partial<HTMLDivElement> {
     options: TabsProps[];
     selectedValue?: string;
     onChange?: (values: string) => void;

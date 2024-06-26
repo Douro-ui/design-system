@@ -1,7 +1,7 @@
 import { TabsProps } from './tabs.types';
 import { TabStyled } from './tabs.styles';
 
-const Tab = ({ 
+const Tabs = ({ 
     label, 
     value, 
     selected, 
@@ -26,4 +26,4 @@ const Tab = ({
   );
 };
 
-export default Tab;
+export default Tabs;
