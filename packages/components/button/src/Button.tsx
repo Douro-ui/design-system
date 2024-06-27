@@ -2,21 +2,21 @@ import type { ButtonProps } from './button.types';
 import { ButtonStyled } from './button.styles';
 import theme from '../../../react/src/tokens/themes/theme';
 
-/**
- * Primary UI component for user interaction
- */
 const Button = ({
-  primary = false,
-  size = 'small',
+  typeBtn,
+  size,
   backgroundColor,
   label,
+  onClick,
   ...props
 }: ButtonProps) => (
   <ButtonStyled
-    primary={primary}
-    size={size}
     {...props}
+    typeBtn={typeBtn}
+    size={size}    
     backgroundColor={backgroundColor || theme.colors.brand.secondary}
+    label={label}
+    onClick={onClick}
   >
     {label}
   </ButtonStyled>
