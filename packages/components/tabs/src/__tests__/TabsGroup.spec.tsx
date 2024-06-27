@@ -45,9 +45,9 @@ describe('<TabsGroup />', () => {
     expect(tabElement).toHaveStyle('border-bottom: 2px solid #298DCC');
   });
 
-  // it('sets the tabIndex correctly', () => {
-  //   render(<TabsGroup options={options} />);
+  it('sets the tabIndex correctly', () => {
+    render(<TabsGroup options={options} />);
 
-  //   expect(screen.getByText('Tab 1')).toHaveAttribute('tabIndex', '0');
-  // });
+    expect(screen.getByText('Tab 1')).toHaveAttribute('tabIndex', '0');
+  });
 });

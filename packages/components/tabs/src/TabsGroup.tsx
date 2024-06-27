@@ -8,6 +8,7 @@ const TabsGroup = ({ options, selectedValue, onChange }: TabsGroupProps) => {
       <TabsContainerStyled>
         {options.map(option => (
           <Tabs
+            {...option}
             key={option.value}
             label={option.label}
             value={option.value}
