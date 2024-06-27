@@ -44,6 +44,16 @@ All the versions are stored in GitHub Packages, so to install in some project yo
 
 If you need to update something and don't want to publish a new version just add the following to the commit `[skip ci]`.
 
+### Installation
+
+To install any package from this repository you need to config the `.npmrc` file in your project with the access to Github packages registry.
+Also, you need to create a Personal Access Token in your Github account to reach the registry.
+
+```
+@douro-ui:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken={TOKEN}
+```
+
 ### Maintainers
 
 - [Arthur Marques](https://github.com/Arthurmqz)
