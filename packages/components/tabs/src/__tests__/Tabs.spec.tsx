@@ -28,7 +28,14 @@ describe('<Tabs />', () => {
   it('does not call onChange handler when tab is disabled', () => {
     const handleChange = jest.fn();
 
-    render(<Tabs label="Tab 1" value="tab1" onClick={handleChange} disabled={true} />);
+    render(
+      <Tabs
+        label="Tab 1"
+        value="tab1"
+        onClick={handleChange}
+        disabled={true}
+      />,
+    );
 
     fireEvent.click(screen.getByText('Tab 1'));
 
@@ -38,7 +45,14 @@ describe('<Tabs />', () => {
   it('is selected when selected prop is true', () => {
     const handleChange = jest.fn();
 
-    render(<Tabs label="Tab 1" value="tab1" onClick={handleChange} selected={true} />);
+    render(
+      <Tabs
+        label="Tab 1"
+        value="tab1"
+        onClick={handleChange}
+        selected={true}
+      />,
+    );
 
     const tabElement = screen.getByText('Tab 1');
 
@@ -49,7 +63,9 @@ describe('<Tabs />', () => {
   it('sets the tabIndex correctly', () => {
     const handleChange = jest.fn();
 
-    render(<Tabs label="Tab 1" value="tab1" onClick={handleChange} tabIndex={0} />);
+    render(
+      <Tabs label="Tab 1" value="tab1" onClick={handleChange} tabIndex={0} />,
+    );
 
     expect(screen.getByText('Tab 1')).toHaveAttribute('tabIndex', '0');
   });

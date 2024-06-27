@@ -8,9 +8,9 @@ export const TabsContainerStyled = styled.div`
   justify-content: space-between;
   padding: 0 16px;
   height: 48px;
-  border-bottom: 1px #E4E4E4 solid;
+  border-bottom: 1px #e4e4e4 solid;
   position: relative;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 `;
 
 export const TabStyled = styled.div<TabsStyledProps>`
@@ -33,7 +33,8 @@ export const TabStyled = styled.div<TabsStyledProps>`
     fill: #767676;
   }
 
-  ${props => props.selected &&
+  ${props =>
+    props.selected &&
     `
       color: #298DCC;
       border-bottom: 2px solid #298DCC;
