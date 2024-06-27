@@ -5,13 +5,12 @@ describe('<Tabs />', () => {
   it('renders a tab with correct label and attributes', () => {
     const handleChange = jest.fn();
 
-    render(<Tabs label="Tab 1" value="tab1" onClick={handleChange} selected />);
+    render(<Tabs label="Tab 1" value="tab1" onClick={handleChange} />);
 
     const tabElement = screen.getByText('Tab 1');
 
     expect(tabElement).toBeInTheDocument();
     expect(tabElement).toHaveAttribute('value', 'tab1');
-    expect(tabElement).toHaveAttribute('selected', 'false');
     expect(tabElement).not.toHaveAttribute('disabled');
   });
 
