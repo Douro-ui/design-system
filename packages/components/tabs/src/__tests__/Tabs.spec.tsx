@@ -5,13 +5,13 @@ describe('<Tabs />', () => {
   it('renders a tab with correct label and attributes', () => {
     const handleChange = jest.fn();
 
-    render(<Tabs label="Tab 1" value="tab1" onClick={handleChange} />);
+    render(<Tabs label="Tab 1" value="tab1" onClick={handleChange} selected />);
 
     const tabElement = screen.getByText('Tab 1');
 
     expect(tabElement).toBeInTheDocument();
-    // expect(tabElement).toHaveAttribute('value', 'tab1'); not working
-    // expect(tabElement).toHaveAttribute('selected', 'false'); not working
+    expect(tabElement).toHaveAttribute('value', 'tab1');
+    expect(tabElement).toHaveAttribute('selected', 'false');
     expect(tabElement).not.toHaveAttribute('disabled');
   });
 
@@ -46,11 +46,11 @@ describe('<Tabs />', () => {
     expect(tabElement).toHaveStyle('border-bottom: 2px solid #298DCC');
   });
 
-//   it('sets the tabIndex correctly', () => {
-//     const handleChange = jest.fn();
+  it('sets the tabIndex correctly', () => {
+    const handleChange = jest.fn();
 
-//     render(<Tabs label="Tab 1" value="tab1" onClick={handleChange} tabIndex={0} />);
+    render(<Tabs label="Tab 1" value="tab1" onClick={handleChange} tabIndex={0} />);
 
-//     expect(screen.getByText('Tab 1')).toHaveAttribute('tabIndex', '0');
-//   });
+    expect(screen.getByText('Tab 1')).toHaveAttribute('tabIndex', '0');
+  });
 });

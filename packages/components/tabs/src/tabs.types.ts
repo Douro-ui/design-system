@@ -1,4 +1,4 @@
-export interface TabsProps extends Partial<HTMLDivElement> {
+export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
     label: string;
     value: string;
     selected?: boolean;
@@ -14,4 +14,5 @@ export interface TabsProps extends Partial<HTMLDivElement> {
   export interface TabsStyledProps {
     selected?: boolean;
     disabled?: boolean;
+    value: string;
   }

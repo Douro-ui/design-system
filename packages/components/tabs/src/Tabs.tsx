@@ -6,7 +6,8 @@ const Tabs = ({
     value, 
     selected, 
     disabled, 
-    onClick
+    onClick,
+    ...props
 }: TabsProps & 
 { onClick: (value: string) => void }) => {
   const handleClick = () => {
@@ -14,12 +15,14 @@ const Tabs = ({
       onClick(value);
     }
   };
-
+  
   return (
     <TabStyled
-        selected={selected} 
+        {...props}
+        selected={!!selected} 
         disabled={disabled} 
         onClick={handleClick}
+        value={value}
     >
         {label}
     </TabStyled>

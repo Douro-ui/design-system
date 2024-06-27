@@ -16,7 +16,8 @@ const TabsGroup = ({
             value={option.value}
             selected={selectedValue === option.value}
             disabled={option.disabled}
-            onClick={onChange}
+            onClick={ev => {
+              onChange(ev.toString())}}
           />
         ))}
       </TabsContainerStyled>
