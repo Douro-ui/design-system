@@ -50,7 +50,7 @@ export const ButtonStyled = styled.button<ButtonProps>`
   ${(props) =>
     props.typeBtn === 'primary' &&
     css`
-      background-color: #298DCC;
+      background-color: ${props.backgroundColor ?? '#298DCC'};
       color: #FFFFFF;
 
       &:hover {
@@ -76,7 +76,7 @@ export const ButtonStyled = styled.button<ButtonProps>`
   ${(props) =>
     props.typeBtn === 'secondary' &&
     css`
-      background-color: #FFFFFF;
+      background-color: ${props.backgroundColor ?? '#FFFFFF'};
       color: #484848;
       border: 1px solid #BCBCBC;
 
@@ -108,7 +108,7 @@ export const ButtonStyled = styled.button<ButtonProps>`
   ${(props) =>
     props.typeBtn === 'tertiary' &&
     css`
-      background-color: #FFFFFF;
+      background-color: ${props.backgroundColor ?? '#FFFFFF'};
       color: #484848;
       border: 1px solid #FFFFFF;
 
@@ -123,12 +123,16 @@ export const ButtonStyled = styled.button<ButtonProps>`
         margin-left: 26px;
         padding: 0;
       }
+
+      &:disabled {
+        color: #BCBCBC;
+      }
     `}
 
     ${(props) =>
       props.typeBtn === 'error' &&
       css`
-        background-color: #B24747;
+        background-color: ${props.backgroundColor ?? '#B24747'};
         color: #FFFFFF;
 
         &:hover {
