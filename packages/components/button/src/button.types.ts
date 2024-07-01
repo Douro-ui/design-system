@@ -1,22 +1,8 @@
-export interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
+export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+  typeBtn: 'primary' | 'secondary' | 'tertiary' | 'error';
   backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
+  size?: 'extra-small' | 'small' | 'medium' | 'large';
   label: string;
-  /**
-   * Optional click handler
-   */
   onClick?: () => void;
+  disabled?: boolean;
 }
