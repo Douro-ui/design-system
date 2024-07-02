@@ -13,8 +13,10 @@ export const InputStyled = styled.input<{ backgroundColor?: string }>`
   display: grid;
   place-content: center;
   border-radius: 50%;
+  /* stylelint-disable */
   border: 1px solid #767676;
   transition: background-color 0.3s ease-in-out;
+  /* stylelint-enable */
 
   &::before {
     content: '';
