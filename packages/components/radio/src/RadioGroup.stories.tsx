@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import RadioGroup from './RadioGroup';
 import { useState } from 'react';
+import { expect, userEvent, within } from '@storybook/test';
 
 const meta: Meta<typeof RadioGroup> = {
   title: 'Example/RadioGroup',
@@ -40,4 +41,41 @@ const RadioGroupWithHooks = () => {
 
 export const CircleGroup: Story = {
   render: () => <RadioGroupWithHooks />,
+};
+CircleGroup.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  const radios = canvas.getAllByRole('radio');
+
+  expect(radios[0]).not.toBeChecked();
+  expect(radios[1]).not.toBeChecked();
+  expect(radios[2]).not.toBeChecked();
+
+  expect(radios[0]).toHaveAccessibleName('Circle Radio 1');
+  expect(radios[1]).toHaveAccessibleName('Circle Radio 2');
+  expect(radios[2]).toHaveAccessibleName('Circle Radio 3');
+
+  expect(radios[2]).toBeDisabled();
+
+  await userEvent.click(radios[0]);
+  expect(radios[0]).toBeChecked();
+  expect(radios[1]).not.toBeChecked();
+  expect(radios[2]).not.toBeChecked();
+
+  await userEvent.click(radios[1]);
+  expect(radios[0]).not.toBeChecked();
+  expect(radios[1]).toBeChecked();
+  expect(radios[2]).not.toBeChecked();
+
+  await userEvent.click(radios[2]);
+  expect(radios[2]).not.toBeChecked();
+
+  radios[0].focus();
+  expect(radios[0]).toHaveFocus();
+
+  await userEvent.keyboard('[ArrowDown]');
+  expect(radios[1]).toHaveFocus();
+
+  await userEvent.keyboard('[ArrowUp]');
+  expect(radios[0]).toHaveFocus();
 };
