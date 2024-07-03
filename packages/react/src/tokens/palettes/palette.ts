@@ -14,6 +14,7 @@ export const brand: BrandColors = {
   septenary: '#B8B9B5',
   black: '#000000',
   white: '#FFFFFF',
+  error: '#B24747',
 };
 
 export const neutral: NeutralColors = {

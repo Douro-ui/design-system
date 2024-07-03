@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import { ButtonProps } from './button.types';
-// import theme from '../../../react/src/tokens/themes/theme';
 import { css } from '@emotion/react';
+
+/* stylelint-disable */
 
 const handleSize = (size: ButtonProps['size']) => {
   switch (size) {
@@ -30,7 +31,7 @@ export const ButtonStyled = styled.button<ButtonProps>`
   padding: 7px 16px;
   line-height: 140%;
   position: relative;
-  transition: .2s ease;
+  transition: 0.2s ease;
 
   svg {
     margin-right: 8px;
@@ -38,47 +39,19 @@ export const ButtonStyled = styled.button<ButtonProps>`
     max-width: 32px;
     max-height: 32px;
   }
-  
-  &:disabled{
+
+  &:disabled {
     pointer-events: none;
   }
 
-  ${(props) => props.backgroundColor && `background-color: ${props.backgroundColor};`}
-
   ${({ size }) => handleSize(size)};
 
-  ${(props) =>
-    props.typeBtn === 'primary' &&
-    css`
-      background-color: ${props.backgroundColor ?? '#298DCC'};
-      color: #FFFFFF;
-
-      &:hover {
-        background-color: #005E99;
-        color: #FFFFFF;
-      }
-
-      &:active,
-      &:focus {
-        background-color: #003A5E;
-        color: #FFFFFF;
-      }
-
-      &:disabled {
-        background-color: #E4E4E4;
-      }
-
-      svg {
-        fill: #FFFFFF;
-      }
-    `}
-
-  ${(props) =>
+  ${props =>
     props.typeBtn === 'secondary' &&
     css`
-      background-color: ${props.backgroundColor ?? '#FFFFFF'};
+      background-color: #ffffff;
       color: #484848;
-      border: 1px solid #BCBCBC;
+      border: 1px solid #bcbcbc;
 
       &:hover {
         border-color: #767676;
@@ -86,35 +59,35 @@ export const ButtonStyled = styled.button<ButtonProps>`
 
       &:active,
       &:focus {
-        border-color: #2D2D2D;
-        color: #2D2D2D;
+        border-color: #2d2d2d;
+        color: #2d2d2d;
       }
 
       &:disabled {
-        border-color: #BCBCBC;
-        color: #BCBCBC;
+        border-color: #bcbcbc;
+        color: #bcbcbc;
       }
 
       svg {
-        fill: #2D2D2D;
+        fill: #2d2d2d;
       }
 
       &.blue {
-        border-color: #298DCC;
-        color: #298DCC;
+        border-color: #298dcc;
+        color: #298dcc;
       }
     `}
 
-  ${(props) =>
+  ${props =>
     props.typeBtn === 'tertiary' &&
     css`
-      background-color: ${props.backgroundColor ?? '#FFFFFF'};
+      background-color: #ffffff;
       color: #484848;
-      border: 1px solid #FFFFFF;
+      border: 1px solid #ffffff;
 
       &.active {
         font-weight: 600;
-        border-color: #2D2D2D;
+        border-color: #2d2d2d;
       }
 
       &.icon {
@@ -125,27 +98,27 @@ export const ButtonStyled = styled.button<ButtonProps>`
       }
 
       &:disabled {
-        color: #BCBCBC;
+        color: #bcbcbc;
       }
     `}
 
-    ${(props) =>
-      props.typeBtn === 'error' &&
-      css`
-        background-color: ${props.backgroundColor ?? '#B24747'};
-        color: #FFFFFF;
+    ${props =>
+    props.typeBtn === 'error' &&
+    css`
+      background-color: #b24747;
+      color: #ffffff;
 
-        &:hover {
-          background-color: #802626;
-        }
+      &:hover {
+        background-color: #802626;
+      }
 
-        &:active,
-        &:focus {
-          background-color: #661414;
-        }
+      &:active,
+      &:focus {
+        background-color: #661414;
+      }
 
-        &:disabled {
-          background-color: #E4E4E4;
-        }
-      `}
+      &:disabled {
+        background-color: #e4e4e4;
+      }
+    `}
 `;

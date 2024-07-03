@@ -8,6 +8,7 @@ export enum FontWeight {
   BOLD = 700,
   BOLDER = 900,
 }
+
 export enum BrandShadeColors {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
@@ -18,6 +19,7 @@ export enum BrandShadeColors {
   SEPTENARY = 'septenary',
   BLACK = 'black',
   WHITE = 'white',
+  ERROR = 'error',
 }
 export enum NeutralGroupColors {
   SILVER = 'silver',
