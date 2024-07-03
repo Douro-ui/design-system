@@ -21,11 +21,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "typeRoots": ["./node_modules/@types/", "./node_modules"],
-    "baseUrl": ".",
-    "paths": {
-      "@base/*": ["./*"]
-    }
+    "typeRoots": ["./node_modules/@types/", "./node_modules"]
   },
   "include": [".storybook/main.ts", "packages/**/*.tsx", "packages/**/*.ts"]
 }
