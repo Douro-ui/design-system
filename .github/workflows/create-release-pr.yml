@@ -31,3 +31,6 @@ jobs:
 
       - name: Unit Tests
         run: yarn test
+
+  UITESTS:
+    uses: ./.github/workflows/ui-tests.yml
