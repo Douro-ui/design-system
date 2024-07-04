@@ -16,7 +16,6 @@
   "license": "MIT",
   "scripts": {
     "build:storybook": "storybook build",
-    "format": "prettier --write '**/*.{js,ts,jsx,tsx,mts,mjs,cjs,json,md}'",
     "lerna:build": "lerna run build",
     "lerna:version": "npx lerna version --conventional-commits --yes",
     "lerna:publish": "npx lerna publish from-git --yes --loglevel=silly",

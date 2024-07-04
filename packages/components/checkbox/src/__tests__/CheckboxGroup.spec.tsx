@@ -19,15 +19,27 @@ describe('<CheckboxGroup />', () => {
   it('calls onChange handler with correct value when a checkbox is selected', () => {
     const handleChange = jest.fn();
 
-    render(<CheckboxGroup name="checkboxGroup" options={options} onChange={handleChange} />);
+    render(
+      <CheckboxGroup
+        name="checkboxGroup"
+        options={options}
+        onChange={handleChange}
+      />,
+    );
 
     fireEvent.click(screen.getByLabelText('Checkbox 1'));
 
-    expect(handleChange).toHaveBeenCalledWith(["checkbox1"]);
+    expect(handleChange).toHaveBeenCalledWith(['checkbox1']);
   });
 
   it('checks the correct checkbox button', () => {
-    render(<CheckboxGroup name="checkboxGroup" options={options} selectedValues={['checkbox1', 'checkbox2']} />);
+    render(
+      <CheckboxGroup
+        name="checkboxGroup"
+        options={options}
+        selectedValues={['checkbox1', 'checkbox2']}
+      />,
+    );
 
     expect(screen.getByLabelText('Checkbox 1')).toBeChecked();
     expect(screen.getByLabelText('Checkbox 2')).toBeChecked();
@@ -45,6 +57,9 @@ describe('<CheckboxGroup />', () => {
   it('sets the role correctly', () => {
     render(<CheckboxGroup name="checkboxGroup" options={options} />);
 
-    expect(screen.getByLabelText('Checkbox 1')).toHaveAttribute('role', 'checkbox');
+    expect(screen.getByLabelText('Checkbox 1')).toHaveAttribute(
+      'role',
+      'checkbox',
+    );
   });
 });
