@@ -11,10 +11,17 @@ describe('<Radio />', () => {
   it('calls onChange handler when clicked', () => {
     const handleChange = jest.fn();
 
-    render(<Radio label="Test Radio" value="test" name="radioGroup" onChange={handleChange} />);
+    render(
+      <Radio
+        label="Test Radio"
+        value="test"
+        name="radioGroup"
+        onChange={handleChange}
+      />,
+    );
 
     fireEvent.click(screen.getByLabelText('Test Radio'));
-    
+
     expect(handleChange).toHaveBeenCalled();
   });
 
@@ -31,14 +38,28 @@ describe('<Radio />', () => {
   });
 
   it('applies background color when provided', () => {
-    render(<Radio label="Test Radio" value="test" name="radioName" backgroundColor="pink" />);
-    
-    expect(screen.getByLabelText('Test Radio').closest('div')).toHaveStyle('background-color: pink');
+    render(
+      <Radio
+        label="Test Radio"
+        value="test"
+        name="radioName"
+        backgroundColor="pink"
+      />,
+    );
+
+    expect(screen.getByLabelText('Test Radio').closest('div')).toHaveStyle(
+      'background-color: pink',
+    );
   });
 
   it('sets the tabIndex correctly', () => {
-    render(<Radio label="Test Radio" value="test" name="radioName" tabIndex={0} />);
-    
-    expect(screen.getByLabelText('Test Radio')).toHaveAttribute('tabIndex', '0');
+    render(
+      <Radio label="Test Radio" value="test" name="radioName" tabIndex={0} />,
+    );
+
+    expect(screen.getByLabelText('Test Radio')).toHaveAttribute(
+      'tabIndex',
+      '0',
+    );
   });
 });

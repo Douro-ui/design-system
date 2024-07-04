@@ -1,5 +1,9 @@
 import type { CheckboxProps } from './checkbox.types';
-import { InputStyled, LabelStyled, CheckboxContainerStyled } from './checkbox.styles';
+import {
+  InputStyled,
+  LabelStyled,
+  CheckboxContainerStyled,
+} from './checkbox.styles';
 import { useCallback } from 'react';
 
 const Checkbox = ({
@@ -19,13 +23,11 @@ const Checkbox = ({
         onChange?.(event);
       }
     },
-    [disabled, onChange]
+    [disabled, onChange],
   );
 
   return (
-    <CheckboxContainerStyled
-      backgroundColor={backgroundColor}
-    >
+    <CheckboxContainerStyled backgroundColor={backgroundColor}>
       <label>
         <InputStyled
           {...props}
@@ -38,9 +40,7 @@ const Checkbox = ({
           disabled={disabled}
           isCircle={isCircle}
         />
-        <LabelStyled>
-          {label}
-        </LabelStyled>
+        <LabelStyled>{label}</LabelStyled>
       </label>
     </CheckboxContainerStyled>
   );

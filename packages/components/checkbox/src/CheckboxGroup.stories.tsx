@@ -52,7 +52,12 @@ const CircleCheckboxGroupWithHooks = () => {
       options={[
         { label: 'Checkbox 1', value: 'checkbox1', isCircle: true },
         { label: 'Checkbox 2', value: 'checkbox2', isCircle: true },
-        { label: 'Checkbox 3', value: 'checkbox3', isCircle: true, disabled: true },
+        {
+          label: 'Checkbox 3',
+          value: 'checkbox3',
+          isCircle: true,
+          disabled: true,
+        },
       ]}
       selectedValues={selected}
       onChange={handleChange}

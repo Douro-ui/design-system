@@ -19,7 +19,13 @@ describe('<RadioGroup />', () => {
   it('calls onChange handler with correct value when a radio is selected', () => {
     const handleChange = jest.fn();
 
-    render(<RadioGroup name="radioGroup" options={options} onChange={handleChange} />);
+    render(
+      <RadioGroup
+        name="radioGroup"
+        options={options}
+        onChange={handleChange}
+      />,
+    );
 
     fireEvent.click(screen.getByLabelText('Radio 1'));
 
@@ -27,7 +33,9 @@ describe('<RadioGroup />', () => {
   });
 
   it('checks the correct radio button', () => {
-    render(<RadioGroup name="radioGroup" options={options} selectedValue="radio2" />);
+    render(
+      <RadioGroup name="radioGroup" options={options} selectedValue="radio2" />,
+    );
 
     expect(screen.getByLabelText('Radio 2')).toBeChecked();
   });
@@ -40,7 +48,7 @@ describe('<RadioGroup />', () => {
 
   it('sets the tabIndex correctly', () => {
     render(<RadioGroup name="radioGroup" options={options} />);
-    
+
     expect(screen.getByLabelText('Radio 1')).toHaveAttribute('tabIndex', '0');
   });
 });
