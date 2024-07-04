@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/checkbox@0.1.0...@douro-ui/checkbox@0.1.1) (2024-07-04)
+
+### Bug Fixes
+
+- format and deepMerge ([c25dfe4](https://github.com/Douro-ui/design-system/commit/c25dfe4162e4288b82b26c22e4a5c726f0775a0c))
+
 # 0.1.0 (2024-07-03)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.3.3...@douro-ui/react@0.3.4) (2024-07-04)
+
+### Bug Fixes
+
+- format and deepMerge ([c25dfe4](https://github.com/Douro-ui/design-system/commit/c25dfe4162e4288b82b26c22e4a5c726f0775a0c))
+
 ## [0.3.3](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.3.2...@douro-ui/react@0.3.3) (2024-06-21)
 
 ### Bug Fixes
