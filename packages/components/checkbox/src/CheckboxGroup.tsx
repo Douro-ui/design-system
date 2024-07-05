@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { CheckboxGroupProps, CheckboxOption } from './checkbox.types';
 import {
   CheckboxGroupStyled,
@@ -6,12 +6,12 @@ import {
 } from './checkbox.styles';
 import Checkbox from './Checkbox';
 
-const CheckboxGroup = ({
+const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
   options,
   name,
   selectedValues = [],
   onChange,
-}: CheckboxGroupProps) => {
+}) => {
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
