@@ -47,9 +47,9 @@ CircleGroup.play = async ({ canvasElement }) => {
 
   const radios = canvas.getAllByRole('radio');
 
-  expect(radios[0]).not.toBeChecked();
-  expect(radios[1]).not.toBeChecked();
-  expect(radios[2]).not.toBeChecked();
+  radios.forEach(radio => {
+    expect(radio).not.toBeChecked();
+  });
 
   expect(radios[0]).toHaveAccessibleName('Circle Radio 1');
   expect(radios[1]).toHaveAccessibleName('Circle Radio 2');
