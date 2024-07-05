@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/radio",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Douro UI - Metyis Design System Radio Component",
   "main": "src/index.ts",
   "type": "module",
