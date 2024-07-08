@@ -22,7 +22,7 @@ export const InputStyled = styled.input<CheckboxStyledProps>`
     height: 0.625rem;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    background-color: #ffffff;
+    background-color: #fff;
     clip-path: polygon(
       22.45% 43.52%,
       40% 63.71%,
@@ -31,6 +31,20 @@ export const InputStyled = styled.input<CheckboxStyledProps>`
       40% 78%,
       15% 50%
     );
+  }
+
+  &:disabled {
+    border-color: #bcbcbc;
+    cursor: not-allowed;
+
+    + span {
+      color: #bcbcbc;
+      pointer-events: none;
+    }
+  }
+
+  &:hover {
+    border-color: #2d2d2d;
   }
 
   &:checked {
@@ -51,20 +65,6 @@ export const InputStyled = styled.input<CheckboxStyledProps>`
 
     &:disabled {
       background-color: #bcbcbc;
-    }
-  }
-
-  &:hover {
-    border-color: #2d2d2d;
-  }
-
-  &:disabled {
-    border-color: #bcbcbc;
-    cursor: not-allowed;
-
-    + span {
-      color: #bcbcbc;
-      pointer-events: none;
     }
   }
 `;

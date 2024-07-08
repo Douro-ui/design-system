@@ -1,11 +1,22 @@
 import { TabsGroupProps } from './tabs.types';
 import { TabsContainerStyled } from './tabs.styles';
 import Tabs from './Tabs';
+import { useTheme } from '@douro-ui/react';
+import { FC } from 'react';
 
-const TabsGroup = ({ options, selectedValue, onChange }: TabsGroupProps) => {
+const TabsGroup: FC<TabsGroupProps> = ({
+  options,
+  selectedValue,
+  onChange,
+}: TabsGroupProps) => {
+  const theme = useTheme();
+
   return (
     <>
-      <TabsContainerStyled>
+      <TabsContainerStyled
+        styledBorder={theme.colors.neutral.silver.shade30}
+        styledBackgroundColor={theme.colors.brand.white}
+      >
         {options.map(option => (
           <Tabs
             {...option}

@@ -1,24 +1,29 @@
 import styled from '@emotion/styled';
-import { TabsStyledProps } from './tabs.types';
+import { TabsContainerStyledProps, TabsStyledProps } from './tabs.types';
+import { css } from '@emotion/react';
 
-export const TabsContainerStyled = styled.div`
+export const TabsContainerStyled = styled.div<TabsContainerStyledProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
   height: 3rem;
-  /* stylelint-disable */
-  border-bottom: 1px #e4e4e4 solid;
-  /* stylelint-enable */
+  border-bottom: 1px ${({ styledBorder }) => styledBorder} solid;
   position: relative;
-  background-color: #ffffff;
+  background-color: ${({ styledBackgroundColor }) => styledBackgroundColor};
+`;
+
+const tabSelectedStyles = ({ styledSelectedColor }: TabsStyledProps) => css`
+  color: ${styledSelectedColor};
+  border-bottom: 2px solid ${styledSelectedColor};
+  font-weight: 600;
 `;
 
 export const TabStyled = styled.div<TabsStyledProps>`
   height: 3rem;
   line-height: 1.5rem;
-  color: #767676;
+  color: ${({ styledColor }) => styledColor};
   text-decoration: none;
   background: none;
   border: none;
@@ -32,23 +37,13 @@ export const TabStyled = styled.div<TabsStyledProps>`
   svg {
     margin-right: 0.5rem;
     max-width: 0.875rem;
-    fill: #767676;
+    fill: ${({ styledColor }) => styledColor};
   }
 
-  ${props =>
-    props.selected &&
-    `
-      color: #2860D7;
-      border-bottom: 2px solid #2860D7;
-      font-weight: 600;
-
-      svg {
-        fill: #2860D7;
-      }
-    `}
+  ${props => props.selected && tabSelectedStyles(props)}
 
   &[disabled] {
-    opacity: 0.5;
+    opacity: 0.6;
     cursor: not-allowed;
   }
 `;

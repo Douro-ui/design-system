@@ -12,8 +12,8 @@ export const brand: BrandColors = {
   quinary: '#EB5B41',
   senary: '#FFBA22',
   septenary: '#B8B9B5',
-  black: '#000000',
-  white: '#FFFFFF',
+  black: '#000',
+  white: '#FFF',
 };
 
 export const neutral: NeutralColors = {

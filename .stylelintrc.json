@@ -1,17 +1,26 @@
 {
   "customSyntax": "postcss-styled-syntax",
+  "extends": ["stylelint-config-standard"],
+  "plugins": ["stylelint-declaration-use-variable"],
   "rules": {
-    "unit-allowed-list": ["ms", "rem", "%"],
-    "declaration-block-no-duplicate-properties": [
-      true,
+    "unit-disallowed-list": [
+      ["px", "em", "in", "cm", "mm", "pt", "pc", "ex", "ch", "vmin", "vmax"],
       {
-        "severity": "error"
-      }
-    ],
-    "no-duplicate-selectors": [
-      true,
-      {
-        "severity": "error"
+        "ignoreProperties": {
+          "px": [
+            "border",
+            "border-bottom",
+            "border-right",
+            "border-top",
+            "border-left",
+            "border-width",
+            "border-top-width",
+            "border-right-width",
+            "border-bottom-width",
+            "border-left-width",
+            "border-radius"
+          ]
+        }
       }
     ]
   }

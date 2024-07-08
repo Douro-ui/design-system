@@ -303,14 +303,14 @@ const defaultGlobalStyles = css`
   h4,
   h5,
   p {
-    margin-block-start: 0;
-    margin-block-end: 0;
+    margin-block: 0 0;
   }
 
   @media (prefers-reduced-motion: reduce) {
     html:focus-within {
       scroll-behavior: auto;
     }
+
     *,
     *::before,
     *::after {
@@ -318,7 +318,6 @@ const defaultGlobalStyles = css`
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
-      transition: none;
     }
   }
 `;

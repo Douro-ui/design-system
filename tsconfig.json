@@ -10,7 +10,12 @@
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "types": ["vite/client", "@emotion/react/types/css-prop"],
+    "types": [
+      "vite/client",
+      "@emotion/react/types/css-prop",
+      "jest",
+      "@testing-library/jest-dom"
+    ],
     "typeRoots": ["./node_modules/@types/", "./node_modules"]
   }
 }
