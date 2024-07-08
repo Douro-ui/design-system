@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import TabsGroup from '../TabsGroup';
+import { ThemeProvider } from '@douro-ui/react';
 
 describe('<TabsGroup />', () => {
   const options = [
@@ -9,7 +10,11 @@ describe('<TabsGroup />', () => {
   ];
 
   it('renders correctly with all options', () => {
-    render(<TabsGroup options={options} />);
+    render(
+      <ThemeProvider>
+        <TabsGroup options={options} />
+      </ThemeProvider>,
+    );
 
     options.forEach(option => {
       expect(screen.getByText(option.label)).toBeInTheDocument();
@@ -19,7 +24,11 @@ describe('<TabsGroup />', () => {
   it('calls onChange handler with correct value when tab is clicked', () => {
     const handleChange = jest.fn();
 
-    render(<TabsGroup options={options} onChange={handleChange} />);
+    render(
+      <ThemeProvider>
+        <TabsGroup options={options} onChange={handleChange} />
+      </ThemeProvider>,
+    );
 
     fireEvent.click(screen.getByText('Tab 1'));
 
@@ -29,7 +38,11 @@ describe('<TabsGroup />', () => {
   it('does not call onChange handler when disabled tab is clicked', () => {
     const handleChange = jest.fn();
 
-    render(<TabsGroup options={options} onChange={handleChange} />);
+    render(
+      <ThemeProvider>
+        <TabsGroup options={options} onChange={handleChange} />
+      </ThemeProvider>,
+    );
 
     fireEvent.click(screen.getByText('Tab 3'));
 
@@ -37,16 +50,24 @@ describe('<TabsGroup />', () => {
   });
 
   it('it renders a tab selected', () => {
-    render(<TabsGroup options={options} selectedValue='tab1' />);
+    render(
+      <ThemeProvider>
+        <TabsGroup options={options} selectedValue="tab1" />
+      </ThemeProvider>,
+    );
 
     const tabElement = screen.getByText('Tab 1');
 
-    expect(tabElement).toHaveStyle('color: #298DCC');
-    expect(tabElement).toHaveStyle('border-bottom: 2px solid #298DCC');
+    expect(tabElement).toHaveStyle('color: #2860D7');
+    expect(tabElement).toHaveStyle('border-bottom: 2px solid #2860D7');
   });
 
   it('sets the tabIndex correctly', () => {
-    render(<TabsGroup options={options} />);
+    render(
+      <ThemeProvider>
+        <TabsGroup options={options} />
+      </ThemeProvider>,
+    );
 
     expect(screen.getByText('Tab 1')).toHaveAttribute('tabIndex', '0');
   });

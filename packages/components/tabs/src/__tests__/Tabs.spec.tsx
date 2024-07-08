@@ -1,11 +1,16 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import Tabs from '../Tabs';
+import { ThemeProvider } from '@douro-ui/react';
 
 describe('<Tabs />', () => {
   it('renders a tab with correct label and attributes', () => {
     const handleChange = jest.fn();
 
-    render(<Tabs label="Tab 1" value="tab1" onClick={handleChange} />);
+    render(
+      <ThemeProvider>
+        <Tabs label="Tab 1" value="tab1" onClick={handleChange} />
+      </ThemeProvider>,
+    );
 
     const tabElement = screen.getByText('Tab 1');
 
@@ -17,7 +22,11 @@ describe('<Tabs />', () => {
   it('calls onChange handler when clicked', () => {
     const handleChange = jest.fn();
 
-    render(<Tabs label="Tab 1" value="tab1" onClick={handleChange} />);
+    render(
+      <ThemeProvider>
+        <Tabs label="Tab 1" value="tab1" onClick={handleChange} />
+      </ThemeProvider>,
+    );
 
     fireEvent.click(screen.getByText('Tab 1'));
 
@@ -28,12 +37,9 @@ describe('<Tabs />', () => {
     const handleChange = jest.fn();
 
     render(
-      <Tabs
-        label="Tab 1"
-        value="tab1"
-        onClick={handleChange}
-        disabled={true}
-      />,
+      <ThemeProvider>
+        <Tabs label="Tab 1" value="tab1" onClick={handleChange} disabled />
+      </ThemeProvider>,
     );
 
     fireEvent.click(screen.getByText('Tab 1'));
@@ -45,25 +51,24 @@ describe('<Tabs />', () => {
     const handleChange = jest.fn();
 
     render(
-      <Tabs
-        label="Tab 1"
-        value="tab1"
-        onClick={handleChange}
-        selected={true}
-      />,
+      <ThemeProvider>
+        <Tabs label="Tab 1" value="tab1" onClick={handleChange} selected />,
+      </ThemeProvider>,
     );
 
     const tabElement = screen.getByText('Tab 1');
 
-    expect(tabElement).toHaveStyle('color: #298DCC');
-    expect(tabElement).toHaveStyle('border-bottom: 2px solid #298DCC');
+    expect(tabElement).toHaveStyle('color: #2860D7');
+    expect(tabElement).toHaveStyle('border-bottom: 2px solid #2860D7');
   });
 
   it('sets the tabIndex correctly', () => {
     const handleChange = jest.fn();
 
     render(
-      <Tabs label="Tab 1" value="tab1" onClick={handleChange} tabIndex={0} />,
+      <ThemeProvider>
+        <Tabs label="Tab 1" value="tab1" onClick={handleChange} tabIndex={0} />
+      </ThemeProvider>,
     );
 
     expect(screen.getByText('Tab 1')).toHaveAttribute('tabIndex', '0');
