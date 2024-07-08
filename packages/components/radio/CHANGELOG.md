@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/radio@0.1.0...@douro-ui/radio@0.1.1) (2024-07-08)
+
+### Bug Fixes
+
+- storybook versioning & doc ([a30db98](https://github.com/Douro-ui/design-system/commit/a30db982186531819909cc9fbcb0a91e66608c0f))
+
 # 0.1.0 (2024-07-05)
 
 ### Bug Fixes
