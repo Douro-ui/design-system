@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.5](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.3.4...@douro-ui/react@0.3.5) (2024-07-08)
+
+### Bug Fixes
+
+- tabs component ([1d184ae](https://github.com/Douro-ui/design-system/commit/1d184aeb69150d1f6c75b31aa42c0ac50089c299))
+
 ## [0.3.4](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.3.3...@douro-ui/react@0.3.4) (2024-07-04)
 
 ### Bug Fixes
