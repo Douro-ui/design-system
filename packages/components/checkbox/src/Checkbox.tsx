@@ -4,9 +4,9 @@ import {
   LabelStyled,
   CheckboxContainerStyled,
 } from './checkbox.styles';
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 
-const Checkbox = ({
+const Checkbox: React.FC<CheckboxProps> = ({
   backgroundColor,
   label,
   onChange,
@@ -16,7 +16,7 @@ const Checkbox = ({
   disabled,
   isCircle,
   ...props
-}: CheckboxProps) => {
+}) => {
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       if (!disabled) {

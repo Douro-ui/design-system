@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react';
 import { useTheme } from '../../hooks';
-import { defaultTheme } from '../../tokens';
-import { ThemeProvider } from '../../context/ThemeProvider';
+import { ThemeProvider } from '../../context';
 import { Theme } from '../../tokens/themes/theme.types';
 import { FontWeight } from '../../tokens/themes/theme.constants';
 
@@ -23,7 +22,7 @@ const MergeTest = () => {
 describe('Test to check the defaultTheme values', () => {
   it('should render my defaultTheme value', () => {
     const { getByTestId } = render(
-      <ThemeProvider theme={defaultTheme}>
+      <ThemeProvider>
         <MergeTest />
       </ThemeProvider>,
     );

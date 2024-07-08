@@ -1,16 +1,16 @@
-import { useCallback } from 'react';
+import { ChangeEvent, FC, useCallback } from 'react';
 import { RadioGroupProps } from './radio.types';
 import { RadioGroupStyled } from './radio.styles';
 import Radio from './Radio';
 
-const RadioGroup: React.FC<RadioGroupProps> = ({
+const RadioGroup: FC<RadioGroupProps> = ({
   options,
   name,
   selectedValue,
   onChange,
 }) => {
   const handleChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
       onChange?.(value);
     },

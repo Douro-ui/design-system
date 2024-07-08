@@ -1,8 +1,8 @@
 import type { RadioProps } from './radio.types';
 import { InputStyled, LabelStyled, RadioStyled } from './radio.styles';
-import { useCallback } from 'react';
+import { ChangeEvent, FC, useCallback } from 'react';
 
-const Radio = ({
+const Radio: FC<RadioProps> = ({
   backgroundColor,
   label,
   onChange,
@@ -11,9 +11,9 @@ const Radio = ({
   value,
   disabled,
   ...props
-}: RadioProps) => {
+}) => {
   const handleChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
       if (!disabled) {
         onChange?.(event);
       }
