@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import TabsGroup from './TabsGroup';
 import { useState } from 'react';
+import { ThemeProvider } from '@douro-ui/react';
 
 const meta: Meta<typeof TabsGroup> = {
   title: 'Example/TabsGroup',
@@ -25,15 +26,17 @@ const TabsGroupWithHooks = () => {
   };
 
   return (
-    <TabsGroup
-      options={[
-        { label: 'Tab 1', value: 'tab1' },
-        { label: 'Tab 2', value: 'tab2' },
-        { label: 'Tab 3', value: 'tab3', disabled: true },
-      ]}
-      selectedValue={selected}
-      onChange={handleChange}
-    />
+    <ThemeProvider>
+      <TabsGroup
+        options={[
+          { label: 'Tab 1', value: 'tab1' },
+          { label: 'Tab 2', value: 'tab2' },
+          { label: 'Tab 3', value: 'tab3', disabled: true },
+        ]}
+        selectedValue={selected}
+        onChange={handleChange}
+      />
+    </ThemeProvider>
   );
 };
 
