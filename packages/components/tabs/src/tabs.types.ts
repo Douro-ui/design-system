@@ -1,8 +1,15 @@
-export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
+import { HTMLAttributes } from 'react';
+
+export interface TabsProps extends HTMLAttributes<HTMLDivElement> {
   label: string;
   value: string;
   selected?: boolean;
   disabled?: boolean;
+}
+
+export interface TabsContainerStyledProps {
+  styledBorder: string;
+  styledBackgroundColor: string;
 }
 
 export interface TabsGroupProps extends Partial<HTMLDivElement> {
@@ -15,4 +22,6 @@ export interface TabsStyledProps {
   selected?: boolean;
   disabled?: boolean;
   value: string;
+  styledColor: string;
+  styledSelectedColor: string;
 }

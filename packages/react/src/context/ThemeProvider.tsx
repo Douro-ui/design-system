@@ -4,10 +4,6 @@ import type { Theme } from '../tokens/themes/theme.types';
 import { deepMerge } from '../utils/deepMerge';
 import { defaultTheme } from '../tokens';
 
-export const themes = (newTheme: Partial<Theme>): Theme => {
-  return deepMerge({ ...defaultTheme }, newTheme);
-};
-
 export const ThemeProvider = ({
   theme,
   children,
@@ -15,7 +11,7 @@ export const ThemeProvider = ({
   theme?: Partial<Theme>;
   children: React.ReactNode;
 }) => {
-  const mergedTheme = themes(theme);
+  const mergedTheme = deepMerge({ ...defaultTheme }, theme);
   return (
     <ThemeProviderEmotion theme={mergedTheme}>{children}</ThemeProviderEmotion>
   );

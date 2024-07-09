@@ -25,7 +25,7 @@ const theme: Theme = {
   fontWeight: FontWeight,
   fontSize,
   spaceUnit: {
-    'spacing-0': `${spaceUnit * 0}rem`,
+    'spacing-0': '0rem',
     'spacing-04': `${spaceUnit * 0.25}rem`,
     'spacing-06': `${spaceUnit * 0.375}rem`,
     'spacing-08': `${spaceUnit * 0.5}rem`,

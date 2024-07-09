@@ -27,7 +27,7 @@
     "storybook": "storybook dev -p 6006",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --watch --no-coverage",
     "prettier:fix": "prettier --write --ignore-path .gitignore .",
     "test:storybook": "test-storybook"
   },
@@ -71,6 +71,8 @@
     "react-dom": "^18.2.0",
     "storybook": "^8.1.11",
     "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-declaration-use-variable": "^1.7.3",
     "ts-jest": "^29.1.2",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",

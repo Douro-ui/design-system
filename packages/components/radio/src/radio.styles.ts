@@ -13,10 +13,8 @@ export const InputStyled = styled.input<{ backgroundColor?: string }>`
   display: grid;
   place-content: center;
   border-radius: 50%;
-  /* stylelint-disable */
   border: 1px solid #767676;
   transition: background-color 0.3s ease-in-out;
-  /* stylelint-enable */
 
   &::before {
     content: '';
@@ -28,8 +26,22 @@ export const InputStyled = styled.input<{ backgroundColor?: string }>`
     background-color: #298dcc;
   }
 
+  &:hover {
+    border-color: #2d2d2d;
+  }
+
+  &:disabled {
+    border-color: #bcbcbc;
+    cursor: not-allowed;
+
+    + span {
+      color: #bcbcbc;
+      pointer-events: none;
+    }
+  }
+
   &:checked {
-    background-color: #ffffff;
+    background-color: #fff;
     border-color: #298dcc;
 
     &::before {
@@ -58,20 +70,6 @@ export const InputStyled = styled.input<{ backgroundColor?: string }>`
       &::before {
         background-color: #bcbcbc;
       }
-    }
-  }
-
-  &:hover {
-    border-color: #2d2d2d;
-  }
-
-  &:disabled {
-    border-color: #bcbcbc;
-    cursor: not-allowed;
-
-    + span {
-      color: #bcbcbc;
-      pointer-events: none;
     }
   }
 `;
