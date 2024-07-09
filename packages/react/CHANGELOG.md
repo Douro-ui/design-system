@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.3.6...@douro-ui/react@0.4.0) (2024-07-09)
+
+### Features
+
+- tokens preview [SKIP CI] ([daac68a](https://github.com/Douro-ui/design-system/commit/daac68ab50b3d6de75e48cb2d8dabd29a2b6f9f8))
+
 ## [0.3.6](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.3.5...@douro-ui/react@0.3.6) (2024-07-08)
 
 ### Bug Fixes
