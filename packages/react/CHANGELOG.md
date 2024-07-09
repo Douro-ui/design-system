@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.0...@douro-ui/react@0.4.1) (2024-07-09)
+
+### Bug Fixes
+
+- stylelint & tabs ([747301a](https://github.com/Douro-ui/design-system/commit/747301a42d6f1ba68b7e475fed5a05a610dc160e))
+
 # [0.4.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.3.6...@douro-ui/react@0.4.0) (2024-07-09)
 
 ### Features

@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/tabs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Douro UI - Metyis Design System Tabs Component",
   "main": "src/index.ts",
   "type": "module",
