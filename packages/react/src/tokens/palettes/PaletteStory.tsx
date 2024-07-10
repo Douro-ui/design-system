@@ -1,53 +1,60 @@
+import React from 'react';
 import styled from '@emotion/styled';
 import { brand, neutral, extended } from './palette';
+import theme from '../themes/theme';
 
 const Container = styled.div`
   font-family: Arial, sans-serif;
-  padding: 20px;
+  padding: ${theme.spaceUnit['spacing-32']};
 `;
 
 const Title = styled.h1`
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: ${theme.fontSize * 1.5}rem;
+  margin-bottom: ${theme.spaceUnit['spacing-20']};
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  font-size: ${theme.fontSize * 1.25}rem;
+  margin-top: ${theme.spaceUnit['spacing-20']};
+  margin-bottom: ${theme.spaceUnit['spacing-08']};
 `;
 
 const SubSectionTitle = styled.h3`
-  font-size: 18px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  font-size: ${theme.fontSize * 1.125}rem;
+  margin-top: ${theme.spaceUnit['spacing-08']};
+  margin-bottom: ${theme.spaceUnit['spacing-08']};
 `;
 
 const ColorBlock = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: ${theme.spaceUnit['spacing-08']};
 `;
 
 const ColorName = styled.div`
-  width: 150px;
+  width: ${theme.spaceUnit['spacing-40']};
   font-weight: bold;
 `;
 
 const ColorValue = styled.div`
-  width: 100px;
+  width: ${theme.spaceUnit['spacing-32']};
+  margin-left: ${theme.spaceUnit['spacing-64']};
   text-align: center;
 `;
 
 const ColorPreview = styled.div`
-  width: 100px;
-  height: 100px;
-  margin-left: 10px;
-  border-radius: 8px;
+  width: ${theme.spaceUnit['spacing-32']};
+  height: ${theme.spaceUnit['spacing-32']};
+  margin-left: ${theme.spaceUnit['spacing-64']};
+  border-radius: ${theme.spaceUnit['spacing-06']};
   border: 1px solid #ddd;
 `;
 
-const renderColors = colorGroup =>
+interface ColorGroup {
+  [key: string]: string;
+}
+
+const renderColors = (colorGroup: ColorGroup) =>
   Object.entries(colorGroup).map(([name, value]) => (
     <ColorBlock key={name}>
       <ColorName>{name}</ColorName>
@@ -56,7 +63,7 @@ const renderColors = colorGroup =>
     </ColorBlock>
   ));
 
-const PaletteStory = () => (
+const PaletteStory: React.FC = () => (
   <Container>
     <Title>Storybook Design Tokens</Title>
     <SectionTitle>Colors (Table)</SectionTitle>
