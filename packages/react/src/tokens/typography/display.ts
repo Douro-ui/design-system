@@ -1,5 +1,5 @@
-import { FontWeight } from '../themes/theme.constants';
-import { TypographyDisplay } from '../themes/theme.types';
+import { FontWeight } from '../../theme/theme.constants';
+import { TypographyDisplay } from '../../theme/theme.types';
 
 export const display: TypographyDisplay = {
   display1: {

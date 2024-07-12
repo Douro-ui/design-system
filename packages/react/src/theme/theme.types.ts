@@ -11,18 +11,18 @@ import {
 } from './theme.constants';
 
 export type BrandColors = {
-  [key in BrandShadeColors]?: string;
+  [key in BrandShadeColors]: string;
 };
 
 export type NeutralColors = {
-  [key in NeutralGroupColors]?: {
-    [key in ShadeColors]?: string;
+  [key in NeutralGroupColors]: {
+    [key in ShadeColors]: string;
   };
 };
 
 export type ExtendedColors = {
-  [key in ExtendedGroupColors]?: {
-    [key in ShadeColors]?: string;
+  [key in ExtendedGroupColors]: {
+    [key in ShadeColors]: string;
   };
 };
 
@@ -46,38 +46,38 @@ export interface Theme {
 }
 
 export type Colors = {
-  brand?: BrandColors;
-  neutral?: NeutralColors;
-  extended?: ExtendedColors;
+  brand: BrandColors;
+  neutral: NeutralColors;
+  extended: ExtendedColors;
 };
 
 export interface TypographyStyle {
-  fontSize?: string;
-  fontWeight?: FontWeight;
-  lineHeight?: string;
+  fontSize: string;
+  fontWeight: FontWeight;
+  lineHeight: string;
 }
 
 export interface TypographyBreakpoints {
-  mobile?: TypographyStyle;
-  tablet?: TypographyStyle;
-  desktop?: TypographyStyle;
-  desktopLarge?: TypographyStyle;
+  mobile: TypographyStyle;
+  tablet: TypographyStyle;
+  desktop: TypographyStyle;
+  desktopLarge: TypographyStyle;
 }
 
 export type TypographyHeader = {
-  [heading in Heading]?: { [breakpoint in Breakpoints]?: TypographyStyle };
+  [heading in Heading]: { [breakpoint in Breakpoints]: TypographyStyle };
 };
 
 export type TypographyDisplay = {
-  [display in Display]?: { [breakpoint in Breakpoints]?: TypographyStyle };
+  [display in Display]: { [breakpoint in Breakpoints]: TypographyStyle };
 };
 
 export type TypographyBody = {
-  [body in Body]?: { [breakpoint in Breakpoints]?: TypographyStyle };
+  [body in Body]: { [breakpoint in Breakpoints]: TypographyStyle };
 };
 
 export type Typography = {
-  heading?: TypographyHeader;
-  display?: TypographyDisplay;
-  body?: TypographyBody;
+  heading: TypographyHeader;
+  display: TypographyDisplay;
+  body: TypographyBody;
 };

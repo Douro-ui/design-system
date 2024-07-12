@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 import { useTheme } from '../../hooks';
 import { ThemeProvider } from '../../context';
-import { Theme } from '../../tokens/themes/theme.types';
-import { FontWeight } from '../../tokens/themes/theme.constants';
+import { Colors, Theme, Typography } from '../../theme/theme.types';
+import { FontWeight } from '../../theme/theme.constants';
 
 const MergeTest = () => {
   const theme = useTheme();
@@ -80,12 +80,12 @@ describe('Test to check the defaultTheme values', () => {
             },
           },
         },
-      },
+      } as Typography,
       colors: {
         brand: {
           primary: 'gold',
         },
-      },
+      } as Colors,
       breakpoints: {
         mobile: 480,
         tablet: 768,

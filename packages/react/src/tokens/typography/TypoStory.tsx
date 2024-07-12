@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import theme from '../themes/theme';
-import { Theme, TypographyStyle } from '../themes/theme.types';
-import { Breakpoints } from '../themes/theme.constants';
+import theme from '../../theme/theme';
+import { Theme, TypographyStyle } from '../../theme/theme.types';
+import { Breakpoints } from '../../theme/theme.constants';
 
 const getTypographyStyle = (
   typography:
@@ -69,7 +69,7 @@ const TypographyItem = styled.div<TypographyStyle>`
   font-size: ${props => props.fontSize || 'inherit'};
   font-weight: ${props => props.fontWeight || 'inherit'};
   line-height: ${props => props.lineHeight || 'inherit'};
-  margin-bottom: ${props => props.theme.spaceUnit['spacing-08']};
+  margin-bottom: ${props => (props.theme as Theme).spaceUnit['spacing-08']};
 `;
 
 const renderTypographyPreview = (
