@@ -97,7 +97,7 @@ const renderTypographyPreview = (
   );
 };
 
-const TypoStory: React.FC = () => {
+const TypoStoryStyles: React.FC = () => {
   return (
     <Container theme={theme}>
       <Title theme={theme}>This is the Title</Title>
@@ -115,4 +115,4 @@ const TypoStory: React.FC = () => {
   );
 };
 
-export default TypoStory;
+export default TypoStoryStyles;

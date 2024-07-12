@@ -44,7 +44,11 @@ const TabsGroupWithHooks = () => {
 export const DefaultTabs: Story = {
   render: () => <TabsGroupWithHooks />,
 };
-DefaultTabs.play = async ({ canvasElement }) => {
+DefaultTabs.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
   const canvas = within(canvasElement);
 
   const tabs = await (canvas.findAllByText(/Tab/) as Promise<HTMLElement[]>);

@@ -1,8 +1,8 @@
 import type { RadioProps } from './radio.types';
 import { InputStyled, LabelStyled, RadioStyled } from './radio.styles';
-import { ChangeEvent, FC, useCallback } from 'react';
+import React, { ChangeEvent, useCallback } from 'react';
 
-const Radio: FC<RadioProps> = ({
+const Radio = ({
   backgroundColor,
   label,
   onChange,
@@ -11,7 +11,7 @@ const Radio: FC<RadioProps> = ({
   value,
   disabled,
   ...props
-}) => {
+}: RadioProps): React.ReactNode => {
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       if (!disabled) {
@@ -25,7 +25,6 @@ const Radio: FC<RadioProps> = ({
     <RadioStyled backgroundColor={backgroundColor}>
       <label>
         <InputStyled
-          {...props}
           type="radio"
           id={value}
           name={name}
@@ -33,6 +32,7 @@ const Radio: FC<RadioProps> = ({
           checked={checked}
           onChange={handleChange}
           disabled={disabled}
+          {...props}
         />
         <LabelStyled>{label}</LabelStyled>
       </label>

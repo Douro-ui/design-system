@@ -11,7 +11,7 @@ describe('<CheckboxGroup />', () => {
   it('renders correctly with all options', () => {
     render(<CheckboxGroup name="checkboxGroup" options={options} />);
 
-    options.forEach(option => {
+    options.forEach((option: { label: string }) => {
       expect(screen.getByLabelText(option.label)).toBeInTheDocument();
     });
   });

@@ -11,7 +11,7 @@ describe('<RadioGroup />', () => {
   it('renders correctly with all options', () => {
     render(<RadioGroup name="radioGroup" options={options} />);
 
-    options.forEach(option => {
+    options.forEach((option: { label: string }) => {
       expect(screen.getByLabelText(option.label)).toBeInTheDocument();
     });
   });

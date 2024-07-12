@@ -79,7 +79,7 @@ async function testCheckboxGroup(canvasElement: HTMLElement) {
 
   const checkbox = canvas.getAllByRole('checkbox');
 
-  checkbox.forEach(checkbox => {
+  checkbox.forEach((checkbox: HTMLElement) => {
     expect(checkbox).not.toBeChecked();
   });
 
@@ -121,10 +121,18 @@ async function testCheckboxGroup(canvasElement: HTMLElement) {
   await expect(checkbox[0]).not.toBeChecked();
 }
 
-DefaultCheckboxGroup.play = async ({ canvasElement }) => {
+DefaultCheckboxGroup.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
   testCheckboxGroup(canvasElement);
 };
 
-CircleCheckboxGroup.play = async ({ canvasElement }) => {
+CircleCheckboxGroup.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
   testCheckboxGroup(canvasElement);
 };
