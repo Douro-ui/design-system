@@ -1,5 +1,5 @@
-import { FontWeight } from '../themes/theme.constants';
-import { TypographyBody } from '../themes/theme.types';
+import { FontWeight } from '../../theme/theme.constants';
+import { TypographyBody } from '../../theme/theme.types';
 
 export const body: TypographyBody = {
   body1: {

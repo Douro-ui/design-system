@@ -1,5 +1,5 @@
-import { FontWeight } from '../themes/theme.constants';
-import { TypographyHeader } from '../themes/theme.types';
+import { FontWeight } from '../../theme/theme.constants';
+import { TypographyHeader } from '../../theme/theme.types';
 
 export const heading: TypographyHeader = {
   h1: {

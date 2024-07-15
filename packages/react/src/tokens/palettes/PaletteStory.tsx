@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { brand, neutral, extended } from './palette';
-import theme from '../themes/theme';
+import theme from '../../theme/theme';
 
 const Container = styled.div`
   font-family: Arial, sans-serif;

@@ -1,5 +1,5 @@
-import { brand, neutral, extended } from '../palettes';
-import { body, display, heading } from '../typography';
+import { brand, neutral, extended } from '../tokens/palettes';
+import { body, display, heading } from '../tokens/typography';
 import {
   Breakpoints,
   FontWeight,

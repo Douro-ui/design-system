@@ -1,8 +1,8 @@
 import { ThemeProvider as ThemeProviderEmotion } from '@emotion/react';
 import React from 'react';
-import type { Theme } from '../tokens/themes/theme.types';
+import type { Theme } from '../theme/theme.types';
 import { deepMerge } from '../utils/deepMerge';
-import { defaultTheme } from '../tokens';
+import { defaultTheme } from '../theme';
 
 export const ThemeProvider = ({
   theme,

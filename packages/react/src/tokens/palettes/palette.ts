@@ -2,7 +2,7 @@ import {
   BrandColors,
   NeutralColors,
   ExtendedColors,
-} from '../themes/theme.types';
+} from '../../theme/theme.types';
 
 export const brand: BrandColors = {
   primary: '#0B1F2F',
