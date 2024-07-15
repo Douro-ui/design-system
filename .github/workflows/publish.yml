@@ -26,7 +26,7 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: '@douro-ui'
       - name: 'Install Dependencies'
-        run: yarn install
+        run: yarn install --frozen-lockfile
       - name: 'Run Lerna Version and Publish'
         # To enable authentication with lerna we must set the origin url for git with the token
         run: |
