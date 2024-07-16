@@ -9,7 +9,7 @@ export const ThemeProvider = ({
   theme,
   children,
 }: {
-  theme?: Partial<Theme>;
+  theme?: Theme;
   children: React.ReactNode;
 }): EmotionJSX.Element => {
   const mergedTheme = deepMerge({ ...defaultTheme }, theme);
