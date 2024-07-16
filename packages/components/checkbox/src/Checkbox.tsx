@@ -6,7 +6,7 @@ import {
 } from './checkbox.styles';
 import React, { useCallback } from 'react';
 
-const Checkbox: React.FC<CheckboxProps> = ({
+const Checkbox = ({
   backgroundColor,
   label,
   onChange,
@@ -16,7 +16,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   disabled,
   isCircle,
   ...props
-}) => {
+}: CheckboxProps): React.ReactNode => {
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       if (!disabled) {

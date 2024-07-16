@@ -1,21 +1,23 @@
 import { TabsProps } from './tabs.types';
 import { TabStyled } from './tabs.styles';
 import { useTheme } from '@douro-ui/react';
-import { FC } from 'react';
+import React from 'react';
 
-const Tabs: FC<TabsProps & { onClick: (value: string) => void }> = ({
+const Tabs = ({
   label,
   value,
   selected,
   disabled,
-  onClick,
+  onTabChange,
   ...props
-}) => {
+}: TabsProps & {
+  onTabChange: (value: string) => void;
+}): React.ReactNode => {
   const theme = useTheme();
 
   const handleClick = () => {
     if (!disabled) {
-      onClick(value);
+      onTabChange(value);
     }
   };
 

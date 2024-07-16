@@ -16,7 +16,7 @@ describe('<TabsGroup />', () => {
       </ThemeProvider>,
     );
 
-    options.forEach(option => {
+    options.forEach((option: { label: string }) => {
       expect(screen.getByText(option.label)).toBeInTheDocument();
     });
   });

@@ -55,7 +55,7 @@ interface ColorGroup {
 }
 
 const renderColors = (colorGroup: ColorGroup) =>
-  Object.entries(colorGroup).map(([name, value]) => (
+  Object.entries(colorGroup).map(([name, value]: [string, string]) => (
     <ColorBlock key={name}>
       <ColorName>{name}</ColorName>
       <ColorValue>{value}</ColorValue>
@@ -70,23 +70,28 @@ const PaletteStory: React.FC = () => (
     <SubSectionTitle>Brand</SubSectionTitle>
     {renderColors(brand)}
     <SubSectionTitle>Neutral</SubSectionTitle>
-    {Object.entries(neutral).map(([neutralCategory, neutralColors]) => (
-      <div key={neutralCategory}>
-        <SectionTitle>
-          {neutralCategory.charAt(0).toUpperCase() + neutralCategory.slice(1)}
-        </SectionTitle>
-        {renderColors(neutralColors)}
-      </div>
-    ))}
+    {Object.entries(neutral).map(
+      ([neutralCategory, neutralColors]: [string, ColorGroup]) => (
+        <div key={neutralCategory}>
+          <SectionTitle>
+            {neutralCategory.charAt(0).toUpperCase() + neutralCategory.slice(1)}
+          </SectionTitle>
+          {renderColors(neutralColors)}
+        </div>
+      ),
+    )}
     <SubSectionTitle>Extended</SubSectionTitle>
-    {Object.entries(extended).map(([extendedCategory, extendedColors]) => (
-      <div key={extendedCategory}>
-        <SectionTitle>
-          {extendedCategory.charAt(0).toUpperCase() + extendedCategory.slice(1)}
-        </SectionTitle>
-        {renderColors(extendedColors)}
-      </div>
-    ))}
+    {Object.entries(extended).map(
+      ([extendedCategory, extendedColors]: [string, ColorGroup]) => (
+        <div key={extendedCategory}>
+          <SectionTitle>
+            {extendedCategory.charAt(0).toUpperCase() +
+              extendedCategory.slice(1)}
+          </SectionTitle>
+          {renderColors(extendedColors)}
+        </div>
+      ),
+    )}
   </Container>
 );
 

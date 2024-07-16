@@ -6,12 +6,12 @@ import {
 } from './checkbox.styles';
 import Checkbox from './Checkbox';
 
-const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
+const CheckboxGroup = ({
   options,
   name,
   selectedValues = [],
   onChange,
-}) => {
+}: CheckboxGroupProps): React.ReactNode => {
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.target.value;
@@ -21,7 +21,7 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
         newSelectedValues = [...selectedValues, value];
       } else {
         newSelectedValues = selectedValues.filter(
-          selectedValue => selectedValue !== value,
+          (selectedValue: string) => selectedValue !== value,
         );
       }
 

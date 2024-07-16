@@ -8,7 +8,7 @@ describe('<Tabs />', () => {
 
     render(
       <ThemeProvider>
-        <Tabs label="Tab 1" value="tab1" onClick={handleChange} />
+        <Tabs label="Tab 1" value="tab1" onTabChange={handleChange} />
       </ThemeProvider>,
     );
 
@@ -24,7 +24,7 @@ describe('<Tabs />', () => {
 
     render(
       <ThemeProvider>
-        <Tabs label="Tab 1" value="tab1" onClick={handleChange} />
+        <Tabs label="Tab 1" value="tab1" onTabChange={handleChange} />
       </ThemeProvider>,
     );
 
@@ -38,7 +38,7 @@ describe('<Tabs />', () => {
 
     render(
       <ThemeProvider>
-        <Tabs label="Tab 1" value="tab1" onClick={handleChange} disabled />
+        <Tabs label="Tab 1" value="tab1" onTabChange={handleChange} disabled />
       </ThemeProvider>,
     );
 
@@ -52,7 +52,7 @@ describe('<Tabs />', () => {
 
     render(
       <ThemeProvider>
-        <Tabs label="Tab 1" value="tab1" onClick={handleChange} selected />,
+        <Tabs label="Tab 1" value="tab1" onTabChange={handleChange} selected />,
       </ThemeProvider>,
     );
 
@@ -67,7 +67,12 @@ describe('<Tabs />', () => {
 
     render(
       <ThemeProvider>
-        <Tabs label="Tab 1" value="tab1" onClick={handleChange} tabIndex={0} />
+        <Tabs
+          label="Tab 1"
+          value="tab1"
+          onTabChange={handleChange}
+          tabIndex={0}
+        />
       </ThemeProvider>,
     );
 

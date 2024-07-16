@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
-import TypographyStory from './TypoStory';
+import TypographyStory from './TypoStory.styles';
 
 const meta: Meta = {
   title: 'Tokens/Typography',

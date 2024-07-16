@@ -1,11 +1,12 @@
-export interface RadioProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+import { HTMLAttributes, InputHTMLAttributes } from 'react';
+
+export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
   backgroundColor?: string;
   label: string;
   value: string;
 }
 
-export interface RadioOption extends React.HTMLAttributes<HTMLInputElement> {
+export interface RadioOption extends HTMLAttributes<HTMLInputElement> {
   label: string;
   value: string;
   backgroundColor?: string;

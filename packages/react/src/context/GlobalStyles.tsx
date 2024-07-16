@@ -1,6 +1,7 @@
 import { Global } from '@emotion/react';
 import { css, cx } from '@emotion/css';
-import { fontFamilyDisplay, fontFamilyText } from '../theme/theme.constants';
+import { fontFamilyDisplay, fontFamilyText } from '../theme';
+import { FC } from 'react';
 
 const defaultGlobalStyles = css`
   @font-face {
@@ -319,6 +320,6 @@ const defaultGlobalStyles = css`
   }
 `;
 
-export const GlobalStyles = ({ styles }: { styles?: string }) => {
+export const GlobalStyles: FC = ({ styles }: { styles?: string }) => {
   return <Global styles={cx([defaultGlobalStyles, styles])} />;
 };

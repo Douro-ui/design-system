@@ -9,9 +9,11 @@ export const TabsContainerStyled = styled.div<TabsContainerStyledProps>`
   justify-content: space-between;
   padding: 0 1rem;
   height: 3rem;
-  border-bottom: 1px ${({ styledBorder }) => styledBorder} solid;
+  border-bottom: 1px
+    ${({ styledBorder }: TabsContainerStyledProps) => styledBorder} solid;
   position: relative;
-  background-color: ${({ styledBackgroundColor }) => styledBackgroundColor};
+  background-color: ${({ styledBackgroundColor }: TabsContainerStyledProps) =>
+    styledBackgroundColor};
 `;
 
 const tabSelectedStyles = ({ styledSelectedColor }: TabsStyledProps) => css`
@@ -23,7 +25,7 @@ const tabSelectedStyles = ({ styledSelectedColor }: TabsStyledProps) => css`
 export const TabStyled = styled.div<TabsStyledProps>`
   height: 3rem;
   line-height: 1.5rem;
-  color: ${({ styledColor }) => styledColor};
+  color: ${({ styledColor }: TabsStyledProps) => styledColor};
   text-decoration: none;
   background: none;
   border: none;
@@ -37,10 +39,10 @@ export const TabStyled = styled.div<TabsStyledProps>`
   svg {
     margin-right: 0.5rem;
     max-width: 0.875rem;
-    fill: ${({ styledColor }) => styledColor};
+    fill: ${({ styledColor }: TabsStyledProps) => styledColor};
   }
 
-  ${props => props.selected && tabSelectedStyles(props)}
+  ${(props: TabsStyledProps) => props.selected && tabSelectedStyles(props)}
 
   &[disabled] {
     opacity: 0.6;

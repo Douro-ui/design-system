@@ -1,5 +1,6 @@
-export interface CheckboxProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+import { HTMLAttributes, InputHTMLAttributes } from 'react';
+
+export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   backgroundColor?: string;
   label: string;
   value: string;
@@ -7,7 +8,7 @@ export interface CheckboxProps
   isCircle?: boolean;
 }
 
-export interface CheckboxOption extends React.HTMLAttributes<HTMLInputElement> {
+export interface CheckboxOption extends HTMLAttributes<HTMLInputElement> {
   backgroundColor?: string;
   label: string;
   value: string;

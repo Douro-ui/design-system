@@ -42,12 +42,16 @@ const RadioGroupWithHooks = () => {
 export const CircleGroup: Story = {
   render: () => <RadioGroupWithHooks />,
 };
-CircleGroup.play = async ({ canvasElement }) => {
+CircleGroup.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
   const canvas = within(canvasElement);
 
   const radios = canvas.getAllByRole('radio');
 
-  radios.forEach(radio => {
+  radios.forEach((radio: HTMLElement) => {
     expect(radio).not.toBeChecked();
   });
 
