@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/radio",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Douro UI - Metyis Design System Radio Component",
   "main": "src/index.ts",
   "type": "module",
@@ -15,13 +15,13 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@douro-ui/react": "^0.4.3"
+    "@douro-ui/react": "^0.4.4"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5"
+    "@emotion/styled": "^11.11.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "react": "^18.2.0",

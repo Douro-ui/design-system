@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/Douro-ui/design-system/compare/@douro-ui/button@0.1.4...@douro-ui/button@0.1.5) (2024-07-16)
+
+### Bug Fixes
+
+- eslint rules, storybook and package.json changes ([29cb4ed](https://github.com/Douro-ui/design-system/commit/29cb4edd31124c4ca11f2c6f021c3381d33b8889))
+
 ## [0.1.4](https://github.com/Douro-ui/design-system/compare/@douro-ui/button@0.1.3...@douro-ui/button@0.1.4) (2024-07-15)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.3...@douro-ui/react@0.4.4) (2024-07-16)
+
+### Bug Fixes
+
+- eslint rules, storybook and package.json changes ([29cb4ed](https://github.com/Douro-ui/design-system/commit/29cb4edd31124c4ca11f2c6f021c3381d33b8889))
+
 ## [0.4.3](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.2...@douro-ui/react@0.4.3) (2024-07-15)
 
 ### Bug Fixes
