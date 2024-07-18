@@ -1,6 +1,6 @@
 import { Global } from '@emotion/react';
 import { css, cx } from '@emotion/css';
-import { fontFamilyDisplay, fontFamilyText } from '../theme';
+import { fontFamilyDisplay, fontFamilyText } from '../theme/theme.constants';
 import { FC } from 'react';
 
 const defaultGlobalStyles = css`
