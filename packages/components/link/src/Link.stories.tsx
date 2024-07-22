@@ -18,7 +18,11 @@ type Story = StoryObj<typeof meta>;
 export const DefaultLink: Story = {
   render: () => (
     <ThemeProvider>
-      <Link href="https://www.google.com" aria-label="Link to Google">
+      <Link
+        href="https://www.google.com"
+        aria-label="Link to Google"
+        target={'_blank'}
+      >
         Google
       </Link>
     </ThemeProvider>

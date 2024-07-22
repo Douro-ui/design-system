@@ -22,7 +22,13 @@ const theme: Theme = {
     display: fontFamilyDisplay,
     text: fontFamilyText,
   },
-  fontWeight: FontWeight,
+  fontWeight: {
+    REGULAR: FontWeight.REGULAR,
+    ROMAN: FontWeight.ROMAN,
+    MEDIUM: FontWeight.MEDIUM,
+    BOLD: FontWeight.BOLD,
+    BOLDER: FontWeight.BOLDER,
+  },
   fontSize,
   spaceUnit: {
     'spacing-0': '0rem',

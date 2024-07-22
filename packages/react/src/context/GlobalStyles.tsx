@@ -301,7 +301,7 @@ const defaultGlobalStyles = css`
   h4,
   h5,
   p {
-    margin-block: 0 0;
+    margin-block: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {

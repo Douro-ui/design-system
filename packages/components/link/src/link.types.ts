@@ -1,15 +1,16 @@
-import { HTMLAttributes } from 'react';
+import { AnchorHTMLAttributes } from 'react';
 
-export interface LinkProps extends HTMLAttributes<HTMLAnchorElement> {
-  underline?: boolean;
-  href?: string;
-  disabled?: boolean;
+export interface LinkStyledProps {
+  color?: string;
+  colorHover?: string;
+  colorFocus?: string;
+  colorActive?: string;
+  fontSize?: number;
+  fontWeight?: number;
 }
 
-export interface LinkStyledProps extends HTMLAttributes<HTMLAnchorElement> {
-  styledColor: string;
-  styledColorHover: string;
-  styledColorFocus: string;
-  styledColorActive: string;
-  fontSize: number;
+export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  underline?: boolean;
+  disabled?: boolean;
+  styled?: LinkStyledProps;
 }

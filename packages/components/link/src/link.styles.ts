@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { LinkProps, LinkStyledProps } from './link.types';
+import { LinkProps } from './link.types';
 
 export const SpanHiddenStyled = styled.span`
   position: absolute;
@@ -12,41 +12,41 @@ export const SpanHiddenStyled = styled.span`
   border: 0;
 `;
 
-export const LinkStyled = styled.a<LinkStyledProps & LinkProps>`
-  font-size: ${({ fontSize }) => fontSize};
-  color: ${({ styledColor }) => styledColor};
+export const LinkStyled = styled.a<LinkProps>`
+  font-size: ${({ styled }) => styled.fontSize}rem;
+  color: ${({ styled }) => styled.color};
   text-decoration: ${props => (props.underline ? 'underline' : 'none')};
   background: none;
   border: none;
-  font-weight: 400;
+  font-weight: ${({ styled }) => styled.fontWeight};
   cursor: pointer;
 
   svg {
-    fill: ${({ styledColor }) => styledColor};
+    fill: ${({ styled }) => styled.color};
   }
 
   &:hover {
-    color: ${({ styledColorHover }) => styledColorHover};
+    color: ${({ styled }) => styled.colorHover};
 
     svg {
-      fill: ${({ styledColorHover }) => styledColorHover};
+      fill: ${({ styled }) => styled.colorHover};
     }
   }
 
   &:focus {
-    color: ${({ styledColorFocus }) => styledColorFocus};
+    color: ${({ styled }) => styled.colorFocus};
 
     svg {
-      fill: ${({ styledColorFocus }) => styledColorFocus};
+      fill: ${({ styled }) => styled.colorFocus};
     }
   }
 
   &:active {
     font-weight: 500;
-    color: ${({ styledColorActive }) => styledColorActive};
+    color: ${({ styled }) => styled.colorActive};
 
     svg {
-      fill: ${({ styledColorActive }) => styledColorActive};
+      fill: ${({ styled }) => styled.colorActive};
     }
   }
 
