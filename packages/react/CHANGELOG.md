@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.5...@douro-ui/react@0.4.6) (2024-07-23)
+
+### Bug Fixes
+
+- link component theme handler ([185bdb0](https://github.com/Douro-ui/design-system/commit/185bdb0e0ba2aec88990fa7b9ebc6bec3b3ddd31))
+
 ## [0.4.5](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.4...@douro-ui/react@0.4.5) (2024-07-18)
 
 ### Bug Fixes
