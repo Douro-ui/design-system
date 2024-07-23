@@ -8,7 +8,7 @@ export default [
   pluginJs.configs.recommended,
   {
     files: ['**/*.ts', '**/*.tsx'],
-    ignores: ['**/vite.config.ts'],
+    ignores: ['**/vite.config.ts', '**/.storybook/*.ts'],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -29,7 +29,30 @@ export default [
     rules: {
       ...typescriptPlugin.configs.recommended.rules,
       ...pluginReactConfig.configs.recommended.rules,
+      ...typescriptPlugin.configs.recommended.rules,
+      ...pluginReactConfig.configs.recommended.rules,
       'react/display-name': 'off',
+      'react/react-in-jsx-scope': 'off',
+      'react/no-unescaped-entities': 'off',
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/explicit-module-boundary-types': [
+        'error',
+        { allowTypedFunctionExpressions: true },
+      ],
+      '@typescript-eslint/typedef': [
+        'error',
+        {
+          parameter: true,
+          arrowParameter: true,
+          propertyDeclaration: true,
+          memberVariableDeclaration: true,
+        },
+      ],
+    },
+  },
+  {
+    files: ['**/*.styles.ts', '**/*.styles.tsx'],
+    rules: {
       'react/react-in-jsx-scope': 'off',
       'react/no-unescaped-entities': 'off',
       '@typescript-eslint/no-explicit-any': 'error',
