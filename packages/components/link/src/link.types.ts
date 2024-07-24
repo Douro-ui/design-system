@@ -5,7 +5,7 @@ export interface LinkStyledProps {
   colorHover?: string;
   colorFocus?: string;
   colorActive?: string;
-  fontSize?: number;
+  fontSize?: string;
   fontWeight?: number;
 }
 

@@ -13,7 +13,7 @@ export const SpanHiddenStyled = styled.span`
 `;
 
 export const LinkStyled = styled.a<LinkProps>`
-  font-size: ${({ styled }) => styled.fontSize}rem;
+  font-size: ${({ styled }) => styled.fontSize};
   color: ${({ styled }) => styled.color};
   text-decoration: ${props => (props.underline ? 'underline' : 'none')};
   background: none;

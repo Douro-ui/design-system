@@ -11,8 +11,10 @@ module.exports = {
   //     statements: 80,
   //   },
   // },
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
   moduleNameMapper: {
     '^.+\\.svg$': 'jest-transformer-svg',
+    '^@douro-ui/react(.*)$': '<rootDir>/packages/react/src$1',
   },
   testEnvironment: 'jsdom',
   testRegex: ['.+\\.spec.[jt]s(x?)$', '!dist'],
