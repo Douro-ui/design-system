@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/Douro-ui/design-system/compare/@douro-ui/link@0.1.1...@douro-ui/link@0.1.2) (2024-07-24)
+
+### Bug Fixes
+
+- returns and theme fontSize ([01a3644](https://github.com/Douro-ui/design-system/commit/01a364462c863f11ab529f1b75cb8878ae69ac25))
+
 ## [0.1.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/link@0.1.0...@douro-ui/link@0.1.1) (2024-07-23)
 
 ### Bug Fixes
