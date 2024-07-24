@@ -36,7 +36,7 @@ export type FontFamilyType<FontFamily extends string> = {
 
 export interface Theme {
   name: string;
-  fontSize: number;
+  fontSize: string;
   fontFamily: FontFamilyType<'display' | 'text'>;
   spaceUnit: Record<string, string>;
   fontWeight: { [K in keyof typeof FontWeight]: FontWeight };

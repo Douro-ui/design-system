@@ -9,7 +9,7 @@ import {
 import { Theme } from './theme.types';
 
 const spaceUnit = 1;
-const fontSize = 1;
+const fontSize = '1rem';
 
 const theme: Theme = {
   name: 'default_theme',

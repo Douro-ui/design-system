@@ -9,18 +9,18 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: ${theme.fontSize * 1.5}rem;
+  font-size: '${theme.typography.heading.h1.desktop.fontSize}rem';
   margin-bottom: ${theme.spaceUnit['spacing-20']};
 `;
 
 const SectionTitle = styled.h2`
-  font-size: ${theme.fontSize * 1.25}rem;
+  font-size: ${theme.typography.heading.h2.desktop.fontSize}rem;
   margin-top: ${theme.spaceUnit['spacing-20']};
   margin-bottom: ${theme.spaceUnit['spacing-08']};
 `;
 
 const SubSectionTitle = styled.h3`
-  font-size: ${theme.fontSize * 1.125}rem;
+  font-size: ${theme.typography.heading.h3.desktop.fontSize}rem;
   margin-top: ${theme.spaceUnit['spacing-08']};
   margin-bottom: ${theme.spaceUnit['spacing-08']};
 `;
