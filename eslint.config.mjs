@@ -4,6 +4,7 @@ import pluginReactConfig from 'eslint-plugin-react';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 
+
 export default [
   pluginJs.configs.recommended,
   {
@@ -13,11 +14,13 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.jest,
+        ...globals.node
       },
       parser: typescriptParser,
       parserOptions: {
         project: './tsconfig.json',
       },
+      ecmaVersion: 8,
     },
     plugins: {
       '@typescript-eslint': typescriptPlugin,

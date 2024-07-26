@@ -1,0 +1,55 @@
+import type { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import {{Name}} from './{{Name}}';
+import { {{Name}}Props } from './{{name}}.types';
+import { ThemeProvider } from '@douro-ui/react';
+import { PartialStoryFn } from 'storybook/internal/types';
+
+const meta: Meta<{{Name}}Props> = {
+  title: 'Example/{{Name}}',
+  component: {{Name}},
+  decorators: [
+    (Story: PartialStoryFn<ReactRenderer, {{Name}}Props>) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  // Example of a defined "args" and "argTypes", delete if you won't use it
+  //
+  // args: {
+  //   size: 'lg',
+  //   disabled: false,
+  //   typeBtn: 'primary',
+  //   children: 'Button',
+  // },
+  // argTypes: {
+  //   typeBtn: {
+  //     control: {
+  //       type: 'select',
+  //       options: ['primary', 'secondary', 'tertiary', 'error'],
+  //     },
+  //   },
+  //   size: {
+  //     control: { options: ['sm', 'md', 'lg', 'xl'] },
+  //   },
+  //   disabled: {
+  //     control: 'boolean',
+  //   },
+  // },
+} satisfies Meta<{{Name}}Props>;
+
+export default meta;
+
+// Example of a story with args
+type Story = StoryObj<ToggleProps>;
+
+export const Primary: Story = {
+  args: {
+    disabled: true,
+  },
+};
+

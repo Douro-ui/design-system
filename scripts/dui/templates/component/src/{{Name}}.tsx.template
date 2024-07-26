@@ -1,0 +1,28 @@
+import { {{Name}}Props, {{Name}}StyledProps } from './{{name}}.types';
+import { {{Name}}Styled } from './{{name}}.styles';
+import { deepMerge, useTheme } from '@douro-ui/react';
+import { ReactNode } from 'react';
+
+const {{Name}} = ({ styled, ...props }: {{Name}}Props): ReactNode => {
+   const theme = useTheme();
+
+   const defaultThemeValues: {{Name}}StyledProps = {
+     color: theme.colors.extended.blue.shade50,
+   };
+
+   const mergedThemeValues = deepMerge<{{Name}}StyledProps>(
+     defaultThemeValues,
+     styled,
+   );
+
+  return (
+    <{{Name}}Styled
+      styled={mergedThemeValues}
+      {...props}
+    >
+      {props.children}
+    </{{Name}}Styled>
+  );
+};
+
+export default {{Name}};

@@ -1,0 +1,15 @@
+import { AnchorHTMLAttributes } from 'react';
+
+export interface {{Name}}StyledProps {
+  color?: string;
+  colorHover?: string;
+  colorFocus?: string;
+  colorActive?: string;
+  fontSize?: string;
+  fontWeight?: number;
+}
+
+export interface {{Name}}Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  disabled?: boolean;
+  styled?: {{Name}}StyledProps;
+}

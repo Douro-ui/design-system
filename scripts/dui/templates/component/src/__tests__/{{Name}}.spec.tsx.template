@@ -1,0 +1,15 @@
+import { render, screen } from '@testing-library/react';
+import {{Name}} from '../{{Name}}';
+import { ThemeProvider } from '@douro-ui/react';
+
+describe('<{{Name}} />', () => {
+  it('renders correctly', () => {
+    render(
+      <ThemeProvider>
+        <{{Name}}>My component</{{Name}}>
+      </ThemeProvider>,
+    );
+
+    expect(screen.getByText('My component')).toBeInTheDocument();
+  });
+});
