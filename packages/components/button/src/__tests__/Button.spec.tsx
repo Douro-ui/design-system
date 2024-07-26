@@ -2,6 +2,12 @@ import { screen, fireEvent, render } from '../../../../../tests/test-utils';
 import Button from '../Button';
 
 describe('<Button>', () => {
+  it('should render a primary button if no props passed', () => {
+    render(<Button>Test</Button>);
+
+    expect(screen.getByTestId('button-primary')).toBeInTheDocument();
+  });
+
   it('should render a clickable primary button', () => {
     const handleClick = jest.fn();
     render(

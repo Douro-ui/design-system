@@ -20,7 +20,7 @@ export const ButtonStyled = styled.button<ButtonProps>`
   color: ${({ styled }) => styled.color};
   background-color: ${({ styled }) => styled.backgroundColor};
   border: 1px ${({ styled }) => styled.borderColor} solid;
-  border-radius: 100px;
+  border-radius: ${({ styled }) => styled.borderRadius};
   display: flex;
   align-items: center;
   justify-content: center;

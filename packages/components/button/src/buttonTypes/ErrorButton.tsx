@@ -21,6 +21,7 @@ export const ErrorButton = ({
     borderColor: theme.colors.extended.red.shade50,
     backgroundColorDisabled: theme.colors.neutral.cold.shade95,
     colorDisabled: theme.colors.neutral.cold.shade70,
+    borderRadius: '100px',
   };
 
   const mergedThemeValues = deepMerge<ButtonStyledProps>(

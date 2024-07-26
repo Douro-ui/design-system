@@ -24,6 +24,7 @@ export const TertiaryButton = ({
     backgroundColorDisabled: theme.colors.neutral.cold.shade95,
     borderColorActive: 'transparent',
     colorDisabled: theme.colors.neutral.cold.shade70,
+    borderRadius: '100px',
   };
 
   const mergedThemeValues = deepMerge<ButtonStyledProps>(
