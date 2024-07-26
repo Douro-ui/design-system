@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/button@0.2.0...@douro-ui/button@0.2.1) (2024-07-26)
+
+### Bug Fixes
+
+- button without props ([3d39b88](https://github.com/Douro-ui/design-system/commit/3d39b88e503031ec760da980bd5197a7d5b24417))
+
 # [0.2.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/button@0.1.8...@douro-ui/button@0.2.0) (2024-07-25)
 
 ### Features

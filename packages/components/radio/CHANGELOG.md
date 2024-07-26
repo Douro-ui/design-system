@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/Douro-ui/design-system/compare/@douro-ui/radio@0.1.6...@douro-ui/radio@0.1.7) (2024-07-26)
+
+### Bug Fixes
+
+- button without props ([3d39b88](https://github.com/Douro-ui/design-system/commit/3d39b88e503031ec760da980bd5197a7d5b24417))
+
 ## [0.1.6](https://github.com/Douro-ui/design-system/compare/@douro-ui/radio@0.1.5...@douro-ui/radio@0.1.6) (2024-07-24)
 
 **Note:** Version bump only for package @douro-ui/radio
