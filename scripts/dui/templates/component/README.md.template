@@ -1,0 +1,35 @@
+# @douro-ui/{{name}}
+
+Douro UI is a Metyis Design System with React components to be used in projects.
+
+## Installation
+
+This packages has the following peer dependencies, so please don't forget to install them:
+
+- react: 18.2.0
+- react-dom: 18.2.0
+
+**yarn**
+
+```sh
+yarn add -W @douro-ui/{{name}} react@18.2.0 react-dom@18.2.0
+```
+
+**npm**
+
+```sh
+npm i @douro-ui/{{name}} react@18.2.0 react-dom@18.2.0
+```
+
+## Usage
+
+```js
+import {{Name}} from '@douro-ui/{{name}}';
+import type { {{Name}}Props } from '@douro-ui/{{name}}';
+```
+
+or
+
+```js
+import {{Name}} { {{Name}}Props } from '@douro-ui/{{name}}';
+```
