@@ -95,7 +95,7 @@ describe('Test to check the defaultTheme values', () => {
     };
 
     const { getByTestId } = render(
-      <ThemeProvider theme={newTheme}>
+      <ThemeProvider theme={newTheme as Theme}>
         <MergeTest />
       </ThemeProvider>,
     );

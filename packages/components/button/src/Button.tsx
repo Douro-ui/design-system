@@ -1,29 +1,41 @@
 import type { ButtonProps } from './button.types';
-import { ButtonStyled } from './button.styles';
+import {
+  PrimaryButton,
+  SecondaryButton,
+  TertiaryButton,
+  ErrorButton,
+} from './buttonTypes';
 import React from 'react';
-import { useTheme } from '@douro-ui/react';
 
-/**
- * Primary UI component for user interaction
- */
-const Button = ({
-  primary = false,
-  size = 'small',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps): React.ReactNode => {
-  const theme = useTheme();
-  return (
-    <ButtonStyled
-      primary={primary}
-      size={size}
-      {...props}
-      backgroundColor={backgroundColor || theme.colors.neutral.cold.shade10}
-    >
-      {label}
-    </ButtonStyled>
-  );
+const buttonTypes = {
+  primary: PrimaryButton,
+  secondary: SecondaryButton,
+  tertiary: TertiaryButton,
+  error: ErrorButton,
 };
 
+const Button = ({
+  typeBtn,
+  size,
+  children,
+  styled,
+  onClick,
+  disabled,
+  ...props
+}: ButtonProps): React.ReactNode => {
+  const ButtonComponent = buttonTypes[typeBtn ?? 'primary'];
+
+  return (
+    <ButtonComponent
+      size={size}
+      styled={styled}
+      onClick={onClick}
+      disabled={disabled}
+      data-testid={`button-${typeBtn ?? 'primary'}`}
+      {...props}
+    >
+      {children}
+    </ButtonComponent>
+  );
+};
 export default Button;

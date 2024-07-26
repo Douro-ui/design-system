@@ -1,4 +1,4 @@
-export const deepMerge = <T>(target: T, source: Partial<T>): T => {
+export const deepMerge = <T>(target: T, source?: T): T => {
   if (!source) return target;
 
   const isObject = (obj: unknown) => obj && typeof obj === 'object';

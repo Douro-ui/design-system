@@ -1,11 +1,15 @@
-import type { ToggleProps } from './toggle.types';
+import type {
+  InputStyledProps,
+  SpanStyledProps,
+  ToggleProps,
+} from './toggle.types';
 import {
   ToggleStyled,
   ToggleContainerStyled,
   SpanStyled,
   InputStyled,
 } from './toggle.styles';
-import { useTheme } from '@douro-ui/react';
+import { deepMerge, useTheme } from '@douro-ui/react';
 import React, { ChangeEvent } from 'react';
 
 const Toggle = ({
@@ -13,11 +17,25 @@ const Toggle = ({
   checked,
   onChange,
   onToggleChange,
+  styled,
   ...props
 }: ToggleProps & {
   onToggleChange?: (checked: boolean) => void;
 }): React.ReactNode => {
   const theme = useTheme();
+
+  const defaultThemeValues: InputStyledProps & SpanStyledProps = {
+    styledColorBackground: theme.colors.neutral.silver.shade50,
+    styledColorBackgroundHover: theme.colors.neutral.silver.shade40,
+    styledColor: theme.colors.extended.blue.shade50,
+    styledColorHover: theme.colors.extended.blue.shade40,
+    styledColorActive: theme.colors.extended.blue.shade30,
+  };
+
+  const mergedThemeValues = deepMerge<InputStyledProps & SpanStyledProps>(
+    defaultThemeValues,
+    styled,
+  );
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!disabled) {
@@ -30,17 +48,12 @@ const Toggle = ({
     <ToggleContainerStyled disabled={disabled}>
       <ToggleStyled {...props}>
         <InputStyled
-          styledColor={theme.colors.extended.blue.shade50}
-          styledColorHover={theme.colors.extended.blue.shade40}
-          styledColorActive={theme.colors.extended.blue.shade30}
+          {...mergedThemeValues}
           type="checkbox"
           checked={checked}
           onChange={handleChange}
         />
-        <SpanStyled
-          styledColorBackground={theme.colors.neutral.silver.shade50}
-          styledColorBackgroundHover={theme.colors.neutral.silver.shade40}
-        />
+        <SpanStyled {...mergedThemeValues} />
       </ToggleStyled>
       <span>{props.children}</span>
     </ToggleContainerStyled>

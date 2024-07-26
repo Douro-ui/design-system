@@ -35,9 +35,8 @@ describe('<Toggle />', () => {
     );
 
     const toggleElement = screen.getByText('This is a toggle');
-    const toggleContainer = toggleElement.closest('.disabled');
+    const toggleContainer = toggleElement.closest('label');
 
-    expect(toggleContainer).toHaveClass('disabled');
     expect(toggleContainer).toHaveStyle('opacity: 0.5');
     expect(toggleContainer).toHaveStyle('cursor: not-allowed');
     expect(toggleContainer).toHaveStyle('pointer-events: none');

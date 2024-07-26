@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.7](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.6...@douro-ui/react@0.4.7) (2024-07-24)
+
+### Bug Fixes
+
+- returns and theme fontSize ([01a3644](https://github.com/Douro-ui/design-system/commit/01a364462c863f11ab529f1b75cb8878ae69ac25))
+
+## [0.4.6](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.5...@douro-ui/react@0.4.6) (2024-07-23)
+
+### Bug Fixes
+
+- link component theme handler ([185bdb0](https://github.com/Douro-ui/design-system/commit/185bdb0e0ba2aec88990fa7b9ebc6bec3b3ddd31))
+
+## [0.4.5](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.4...@douro-ui/react@0.4.5) (2024-07-18)
+
+### Bug Fixes
+
+- theme typings and tsc errors ([aa708f0](https://github.com/Douro-ui/design-system/commit/aa708f08dafba771144322ed36776fc712cd3156))
+
 ## [0.4.4](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.3...@douro-ui/react@0.4.4) (2024-07-16)
 
 ### Bug Fixes

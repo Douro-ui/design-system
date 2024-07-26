@@ -9,7 +9,7 @@ import {
 import { Theme } from './theme.types';
 
 const spaceUnit = 1;
-const fontSize = 1;
+const fontSize = '1rem';
 
 const theme: Theme = {
   name: 'default_theme',
@@ -22,7 +22,13 @@ const theme: Theme = {
     display: fontFamilyDisplay,
     text: fontFamilyText,
   },
-  fontWeight: FontWeight,
+  fontWeight: {
+    REGULAR: FontWeight.REGULAR,
+    ROMAN: FontWeight.ROMAN,
+    MEDIUM: FontWeight.MEDIUM,
+    BOLD: FontWeight.BOLD,
+    BOLDER: FontWeight.BOLDER,
+  },
   fontSize,
   spaceUnit: {
     'spacing-0': '0rem',

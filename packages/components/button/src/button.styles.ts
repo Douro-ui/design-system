@@ -3,38 +3,57 @@ import { ButtonProps } from './button.types';
 
 const handleSize = (size: ButtonProps['size']) => {
   switch (size) {
-    case 'small':
-      return 'font-size: 12px; padding: 10px 16px;';
-    case 'medium':
-      return 'font-size: 14px; padding: 11px 20px;';
-    case 'large':
-      return 'font-size: 16px; padding: 12px 24px;';
+    case 'sm':
+      return 'font-size: 0.75rem; padding: 0.375rem 0.75rem;';
+    case 'md':
+      return 'font-size: 0.875rem; padding: 0.5rem 0.875rem;';
+    case 'lg':
+      return 'font-size: 1rem; padding: 0.5rem 1rem;';
+    case 'xl':
+      return 'font-size: 1rem; padding: 0.75rem 1.5rem;';
     default:
-      return 'font-size: 14px; padding: 11px 20px;';
+      return 'font-size: 1rem; padding: 0.5rem 1rem;';
   }
 };
 
-export const ButtonStyled = styled.button<Omit<ButtonProps, 'label'>>`
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  border: 0;
-  border-radius: 3rem;
+export const ButtonStyled = styled.button<ButtonProps>`
+  color: ${({ styled }) => styled.color};
+  background-color: ${({ styled }) => styled.backgroundColor};
+  border: 1px ${({ styled }) => styled.borderColor} solid;
+  border-radius: ${({ styled }) => styled.borderRadius};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: 0.2s ease;
   cursor: pointer;
-  display: inline-block;
-  line-height: 1;
 
-  ${({ backgroundColor, primary }) =>
-    primary
-      ? `
-        color: white;
-        background-color: ${backgroundColor};
-        box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 0px 1px inset;
-      `
-      : `
-        color: #333;
-        background-color: transparent;
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
-      `};
+  svg {
+    margin-right: 0.5rem;
+    width: 1rem;
+    max-width: 2rem;
+    max-height: 2rem;
+    fill: ${({ styled }) => styled.color};
+  }
 
+  &:hover {
+    background: ${({ styled }) => styled.backgroundColorHover};
+    color: ${({ styled }) => styled.colorHover};
+    border-color: ${({ styled }) => styled.borderColorHover};
+  }
+
+  &:active {
+    color: ${({ styled }) => styled.colorActive};
+    border-color: ${({ styled }) => styled.borderColorActive};
+    background: ${({ styled }) => styled.backgroundColorActive};
+  }
+
+  &:disabled {
+    color: ${({ styled }) => styled.colorDisabled};
+    background: ${({ styled }) => styled.backgroundColorDisabled};
+    border-color: ${({ styled }) => styled.borderColorDisabled};
+    pointer-events: none;
+    cursor: not-allowed;
+  }
   ${({ size }) => handleSize(size)};
 `;

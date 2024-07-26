@@ -25,7 +25,7 @@ const ToggleWithHooks = () => {
 
   return (
     <ThemeProvider>
-      <Toggle checked={checked} onToggleChange={handleToggleChange}>
+      <Toggle checked={checked} onToggleChange={handleToggleChange} disabled>
         This is a toggle
       </Toggle>
     </ThemeProvider>

@@ -9,6 +9,7 @@ export interface ToggleProps extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
   checked?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  styled?: InputStyledProps & SpanStyledProps;
 }
 
 export interface ToggleContainerStyledProps

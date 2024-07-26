@@ -1,7 +1,6 @@
-import { Global } from '@emotion/react';
-import { css, cx } from '@emotion/css';
-import { fontFamilyDisplay, fontFamilyText } from '../theme';
-import { FC } from 'react';
+import { Global, css } from '@emotion/react';
+import { fontFamilyDisplay, fontFamilyText } from '../theme/theme.constants';
+import { ReactElement } from 'react';
 
 const defaultGlobalStyles = css`
   @font-face {
@@ -301,7 +300,7 @@ const defaultGlobalStyles = css`
   h4,
   h5,
   p {
-    margin-block: 0 0;
+    margin-block: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -320,6 +319,6 @@ const defaultGlobalStyles = css`
   }
 `;
 
-export const GlobalStyles: FC = ({ styles }: { styles?: string }) => {
-  return <Global styles={cx([defaultGlobalStyles, styles])} />;
+export const GlobalStyles = (): ReactElement => {
+  return <Global styles={defaultGlobalStyles} />;
 };
