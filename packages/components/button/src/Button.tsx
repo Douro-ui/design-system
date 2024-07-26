@@ -23,7 +23,7 @@ const Button = ({
   disabled,
   ...props
 }: ButtonProps): React.ReactNode => {
-  const ButtonComponent = buttonTypes[typeBtn];
+  const ButtonComponent = buttonTypes[typeBtn ?? 'primary'];
 
   return (
     <ButtonComponent
@@ -31,7 +31,7 @@ const Button = ({
       styled={styled}
       onClick={onClick}
       disabled={disabled}
-      data-testid={`button-${typeBtn}`}
+      data-testid={`button-${typeBtn ?? 'primary'}`}
       {...props}
     >
       {children}

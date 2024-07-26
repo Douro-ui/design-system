@@ -26,6 +26,7 @@ export const PrimaryButton = ({
     colorDisabled: theme.colors.neutral.cold.shade70,
     backgroundColorDisabled: theme.colors.neutral.cold.shade95,
     borderColorDisabled: theme.colors.neutral.cold.shade70,
+    borderRadius: '100px',
   };
 
   const mergedThemeValues = deepMerge<ButtonStyledProps>(

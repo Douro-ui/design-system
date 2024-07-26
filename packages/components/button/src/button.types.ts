@@ -22,4 +22,5 @@ export interface ButtonStyledProps {
   borderColorHover?: string;
   borderColorActive?: string;
   borderColorDisabled?: string;
+  borderRadius?: string;
 }

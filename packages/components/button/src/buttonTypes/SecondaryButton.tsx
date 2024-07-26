@@ -27,6 +27,7 @@ export const SecondaryButton = ({
     colorDisabled: theme.colors.neutral.cold.shade70,
     borderColorActive: 'transparent',
     borderColorDisabled: theme.colors.neutral.cold.shade70,
+    borderRadius: '100px',
   };
 
   const mergedThemeValues = deepMerge<ButtonStyledProps>(
