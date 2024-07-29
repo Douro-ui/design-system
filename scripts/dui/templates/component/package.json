@@ -1,7 +1,7 @@
 {
   "name": "@douro-ui/{{name}}",
   "version": "0.0.0",
-  "description": "Douro UI - Metyis Design System Link Component",
+  "description": "Douro UI - Metyis Design System {{Name}} Component",
   "main": "src/index.ts",
   "type": "module",
   "repository": {
