@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/toggle",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Douro UI - Metyis Design System Toggle Component",
   "main": "src/index.ts",
   "type": "module",
@@ -15,10 +15,10 @@
     "build": "vite build"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5"
+    "@emotion/styled": "^11.11.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "react": "^18.2.0",

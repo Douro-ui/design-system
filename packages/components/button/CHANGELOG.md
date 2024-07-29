@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/Douro-ui/design-system/compare/@douro-ui/button@0.2.1...@douro-ui/button@0.2.2) (2024-07-29)
+
+### Bug Fixes
+
+- re-added onClick to button storybook [skip ci] ([211eac7](https://github.com/Douro-ui/design-system/commit/211eac78e8dac8cf754ebdae2617777212b015d2))
+
 ## [0.2.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/button@0.2.0...@douro-ui/button@0.2.1) (2024-07-26)
 
 ### Bug Fixes
