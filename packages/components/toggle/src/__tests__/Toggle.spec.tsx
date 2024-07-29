@@ -10,7 +10,7 @@ describe('<Toggle />', () => {
       </ThemeProvider>,
     );
 
-    const toggleElement = screen.getByRole('checkbox', { checked: false });
+    const toggleElement = screen.getByRole('checkbox', { checked: true });
 
     expect(toggleElement).toBeInTheDocument();
   });
