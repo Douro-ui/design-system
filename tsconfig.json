@@ -21,5 +21,6 @@
     "paths": {
       "@base/*": ["./*"]
     }
-  }
+  },
+  "include": [".storybook/main.ts", "packages/**/*.tsx", "packages/**/*.ts"]
 }
