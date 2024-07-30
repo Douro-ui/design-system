@@ -26,6 +26,9 @@ jobs:
       - name: Build
         run: yarn lerna:build
 
+      - name: Typecheck
+        run: yarn typecheck
+
       - name: Lint
         run: yarn lint
 

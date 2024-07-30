@@ -31,9 +31,9 @@ export const ErrorButton = ({
 
   return (
     <ButtonStyled
-      typeBtn={'error'}
+      typeBtn="error"
       size={size}
-      styled={mergedThemeValues}
+      styled={mergedThemeValues as Required<ButtonStyledProps>}
       onClick={onClick}
       disabled={disabled}
       data-testid={`button-${typeBtn}`}

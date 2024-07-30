@@ -24,7 +24,7 @@ const Link = ({ underline, href, styled, ...props }: LinkProps): ReactNode => {
     <LinkStyled
       underline={underline}
       href={href}
-      styled={mergedThemeValues}
+      styled={mergedThemeValues as Required<LinkStyledProps>}
       {...props}
     >
       <SpanHiddenStyled />

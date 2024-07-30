@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { LinkProps } from './link.types';
+import type { LinkProps, LinkStyledProps } from './link.types';
 
 export const SpanHiddenStyled = styled.span`
   position: absolute;
@@ -12,10 +12,12 @@ export const SpanHiddenStyled = styled.span`
   border: 0;
 `;
 
-export const LinkStyled = styled.a<LinkProps>`
+export const LinkStyled = styled.a<
+  LinkProps & { styled: Required<LinkStyledProps> }
+>`
   font-size: ${({ styled }) => styled.fontSize};
   color: ${({ styled }) => styled.color};
-  text-decoration: ${props => (props.underline ? 'underline' : 'none')};
+  text-decoration: ${({ underline }) => (underline ? 'underline' : 'none')};
   background: none;
   border: none;
   font-weight: ${({ styled }) => styled.fontWeight};

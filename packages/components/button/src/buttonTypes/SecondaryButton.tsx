@@ -37,9 +37,9 @@ export const SecondaryButton = ({
 
   return (
     <ButtonStyled
-      typeBtn={'secondary'}
+      typeBtn="secondary"
       size={size}
-      styled={mergedThemeValues}
+      styled={mergedThemeValues as Required<ButtonStyledProps>}
       onClick={onClick}
       disabled={disabled}
       data-testid={`button-${typeBtn}`}
