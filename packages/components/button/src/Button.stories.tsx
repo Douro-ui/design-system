@@ -3,7 +3,7 @@ import Button from './Button';
 import { ButtonProps } from './button.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
-import { fn } from '@storybook/test';
+import { expect, userEvent, within, fn } from '@storybook/test';
 
 const meta: Meta<ButtonProps> = {
   title: 'Example/Button',
@@ -80,4 +80,164 @@ export const Disabled: Story = {
     disabled: true,
     onClick: fn(),
   },
+};
+
+const checkButtonStyles = (
+  button: HTMLElement,
+  styles: { [key: string]: string },
+): void => {
+  Object.entries(styles).forEach(([property, value]: [string, string]) => {
+    expect(button).toHaveStyle(`${property}: ${value}`);
+  });
+};
+
+const testButton = async (
+  canvasElement: HTMLElement,
+  styles: { [key: string]: string },
+): Promise<void> => {
+  const canvas = within(canvasElement);
+  const button = await canvas.findByRole('button');
+  await expect(button).toHaveTextContent('Button');
+
+  checkButtonStyles(button, styles);
+
+  expect(button).toBeEnabled();
+
+  userEvent.click(button);
+  userEvent.hover(button);
+  userEvent.tab();
+
+  button.focus();
+  expect(button).toHaveFocus();
+};
+
+Primary.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}): Promise<void> => {
+  const canvas = within(canvasElement);
+
+  const button = await canvas.findByRole('button');
+  await expect(button).toHaveTextContent('Button');
+
+  testButton(canvasElement, {
+    color: '#FFF',
+    'background-color': 'rgb(11, 31, 47)',
+    'border-bottom-color': 'rgba(0, 0, 0, 0)',
+    'box-sizing': 'border-box',
+    display: 'flex',
+    'align-items': 'center',
+    'justify-content': 'center',
+    position: 'relative',
+    transition: '0.2s ease',
+    cursor: 'pointer',
+    'margin-right': '0px',
+    width: '80.2656px',
+    'max-width': 'none',
+    'max-height': 'none',
+    'pointer-events': 'auto',
+  });
+};
+
+Secondary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+
+  const button = await canvas.findByRole('button');
+  await expect(button).toHaveTextContent('Button');
+
+  testButton(canvasElement, {
+    color: '#0B1F2F',
+    'background-color': 'rgba(0, 0, 0, 0)',
+    'border-bottom-color': 'rgb(11, 31, 47)',
+    'box-sizing': 'border-box',
+    display: 'flex',
+    'align-items': 'center',
+    'justify-content': 'center',
+    position: 'relative',
+    transition: '0.2s ease',
+    cursor: 'pointer',
+    'margin-right': '0px',
+    width: '80.2656px',
+    'max-width': 'none',
+    'max-height': 'none',
+    'pointer-events': 'auto',
+  });
+};
+
+Tertiary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+
+  const button = await canvas.findByRole('button');
+  await expect(button).toHaveTextContent('Button');
+
+  testButton(canvasElement, {
+    color: '#0B1F2F',
+    'background-color': 'rgba(0, 0, 0, 0)',
+    'border-bottom-color': 'rgba(0, 0, 0, 0)',
+    'box-sizing': 'border-box',
+    display: 'flex',
+    'align-items': 'center',
+    'justify-content': 'center',
+    position: 'relative',
+    transition: '0.2s ease',
+    cursor: 'pointer',
+    'margin-right': '0px',
+    width: '80.2656px',
+    'max-width': 'none',
+    'max-height': 'none',
+    'pointer-events': 'auto',
+  });
+};
+
+Error.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+
+  const button = await canvas.findByRole('button');
+  await expect(button).toHaveTextContent('Button');
+
+  testButton(canvasElement, {
+    color: '#FFF',
+    'background-color': 'rgb(233, 22, 22)',
+    'border-bottom-color': 'rgb(233, 22, 22)',
+    'box-sizing': 'border-box',
+    display: 'flex',
+    'align-items': 'center',
+    'justify-content': 'center',
+    position: 'relative',
+    transition: '0.2s ease',
+    cursor: 'pointer',
+    'margin-right': '0px',
+    width: '80.2656px',
+    'max-width': 'none',
+    'max-height': 'none',
+    'pointer-events': 'auto',
+  });
+};
+
+Disabled.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+
+  const button = await canvas.findByRole('button');
+  await expect(button).toHaveTextContent('Button');
+
+  checkButtonStyles(button, {
+    color: '#A2B7C3',
+    'background-color': 'rgb(239, 243, 245)',
+    'border-bottom-color': 'rgb(162, 183, 195)',
+    'box-sizing': 'border-box',
+    display: 'flex',
+    'align-items': 'center',
+    'justify-content': 'center',
+    position: 'relative',
+    transition: '0.2s ease',
+    cursor: 'not-allowed',
+    'margin-right': '0px',
+    width: '80.2656px',
+    'max-width': 'none',
+    'max-height': 'none',
+    'pointer-events': 'none',
+  });
+
+  await expect(button).toBeDisabled();
 };
