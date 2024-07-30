@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { viteBuildBaseConfig } from '@base/vite.base';
+import { viteBuildBaseConfig } from '../../../vite.base';
 import { name as packageName, main as mainEntry } from './package.json';
 import type { BuildOptions } from 'vite';
 
