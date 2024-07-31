@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { ButtonProps } from './button.types';
+import type { ButtonProps, ButtonStyledProps } from './button.types';
 
 const handleSize = (size: ButtonProps['size']) => {
   switch (size) {
@@ -16,7 +16,11 @@ const handleSize = (size: ButtonProps['size']) => {
   }
 };
 
-export const ButtonStyled = styled.button<ButtonProps>`
+export const ButtonStyled = styled.button<{
+  styled: Required<ButtonStyledProps>;
+  size: ButtonProps['size'];
+  typeBtn: string;
+}>`
   color: ${({ styled }) => styled.color};
   background-color: ${({ styled }) => styled.backgroundColor};
   border: 1px ${({ styled }) => styled.borderColor} solid;

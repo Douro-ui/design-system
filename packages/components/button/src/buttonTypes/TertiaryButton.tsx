@@ -34,9 +34,9 @@ export const TertiaryButton = ({
 
   return (
     <ButtonStyled
-      typeBtn={'tertiary'}
+      typeBtn="tertiary"
       size={size}
-      styled={mergedThemeValues}
+      styled={mergedThemeValues as Required<ButtonStyledProps>}
       onClick={onClick}
       disabled={disabled}
       data-testid={`button-${typeBtn}`}

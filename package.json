@@ -16,21 +16,22 @@
   "license": "MIT",
   "scripts": {
     "build:storybook": "storybook build",
+    "dui": "node scripts/dui/index.js",
     "lerna:build": "lerna run build",
     "lerna:version": "npx lerna version --conventional-commits --yes",
     "lerna:publish": "npx lerna publish from-git --yes --loglevel=silly",
     "lint": "npx eslint **/packages/**/*.{ts,tsx}",
     "lint:fix": "yarn lint --fix",
     "prepare": "husky",
+    "prettier:fix": "prettier --write --ignore-path .gitignore .",
     "stylelint": "npx stylelint '**/*.{ts,tsx}'",
     "stylelint:fix": "npx stylelint --fix '**/*.{ts,tsx}'",
     "storybook": "storybook dev -p 6006",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch --no-coverage",
-    "prettier:fix": "prettier --write --ignore-path .gitignore .",
     "test:storybook": "test-storybook",
-    "dui": "node scripts/dui/index.js"
+    "typecheck": "tsc -b"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
@@ -93,6 +94,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
+      "yarn run typecheck",
       "yarn run lint:fix",
       "yarn run stylelint:fix"
     ],

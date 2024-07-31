@@ -26,7 +26,7 @@ const TabsGroup = ({
             selected={selectedValue === option.value}
             disabled={option.disabled}
             onTabChange={(value: string) => {
-              onChange(value);
+              onChange?.(value);
             }}
           />
         ))}

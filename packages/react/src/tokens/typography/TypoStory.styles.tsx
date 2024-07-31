@@ -87,7 +87,11 @@ const renderTypographyPreview = (
         <div key={category}>
           <h4>{category}</h4>
           {Object.entries(breakpoints).map(([breakpoint, style]) => (
-            <TypographyItem key={breakpoint} theme={theme} {...style}>
+            <TypographyItem
+              key={breakpoint}
+              theme={theme}
+              {...(style as TypographyStyle)}
+            >
               {`${category} - ${breakpoint}`}
             </TypographyItem>
           ))}
