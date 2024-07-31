@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.8](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.7...@douro-ui/react@0.4.8) (2024-07-31)
+
+### Bug Fixes
+
+- linting styled errors ([7edaa3f](https://github.com/Douro-ui/design-system/commit/7edaa3fe0bd8a02399bdcb18c953c35c8dcb2612))
+
 ## [0.4.7](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.6...@douro-ui/react@0.4.7) (2024-07-24)
 
 ### Bug Fixes
