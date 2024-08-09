@@ -15,6 +15,7 @@ module.exports = {
   moduleNameMapper: {
     '^.+\\.svg$': 'jest-transformer-svg',
     '^@douro-ui/react(.*)$': '<rootDir>/packages/react/src$1',
+    '\\.(css|less)$': 'identity-obj-proxy',
   },
   testEnvironment: 'jsdom',
   testRegex: ['.+\\.spec.[jt]s(x?)$', '!dist'],
