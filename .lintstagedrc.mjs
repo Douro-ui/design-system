@@ -1,6 +1,6 @@
 export default {
   '*.{ts,tsx}': () => [
-    'yarn run typecheck',
+    'yarn run typechecks',
     'yarn run prettier:fix',
     'yarn run lint:fix',
   ],
