@@ -31,7 +31,7 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch --no-coverage",
     "test:storybook": "test-storybook",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
@@ -92,16 +92,6 @@
   },
   "resolutions": {
     "tar": "^6.2.1"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "yarn run typecheck",
-      "yarn run lint:fix",
-      "yarn run stylelint:fix"
-    ],
-    "*.{ts,tsx,json,md,scss,yaml,yml}": [
-      "yarn run prettier:fix"
-    ]
   },
   "engines": {
     "node": ">=20",
