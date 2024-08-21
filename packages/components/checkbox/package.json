@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/checkbox",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Douro UI - Metyis Design System Checkbox Component",
   "main": "src/index.ts",
   "type": "module",
@@ -15,7 +15,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@douro-ui/react": "^0.4.8"
+    "@douro-ui/react": "^0.4.9"
   },
   "peerDependencies": {
     "@emotion/react": "^11.11.4",

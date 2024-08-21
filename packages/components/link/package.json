@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/link",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Douro UI - Metyis Design System Link Component",
   "main": "src/index.ts",
   "type": "module",
@@ -25,7 +25,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@douro-ui/react": "^0.4.8"
+    "@douro-ui/react": "^0.4.9"
   },
   "publishConfig": {
     "access": "public"
