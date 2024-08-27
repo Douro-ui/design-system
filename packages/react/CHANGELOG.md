@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.9...@douro-ui/react@0.5.0) (2024-08-27)
+
+### Features
+
+- expandablePanel component ([ac154ba](https://github.com/Douro-ui/design-system/commit/ac154ba81b583264fbfce612e4a98f77cdff0711))
+
 ## [0.4.9](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.8...@douro-ui/react@0.4.9) (2024-08-21)
 
 ### Bug Fixes
