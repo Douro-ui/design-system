@@ -4,6 +4,7 @@ import { TextareaProps } from './textarea.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { fn } from '@storybook/test';
+import { expect, userEvent, within } from '@storybook/test';
 
 const meta: Meta<TextareaProps> = {
   title: 'Example/Textarea',
@@ -53,4 +54,27 @@ export const Primary: Story = {
     placeholder: 'Write a description for the topic',
     disabled: false,
   },
+};
+Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+
+  const label = canvas.getByText('Description');
+  expect(label).toBeVisible();
+
+  const textarea = canvas.getByPlaceholderText(
+    'Write a description for the topic',
+  ) as HTMLTextAreaElement;
+
+  expect(textarea).toBeInTheDocument();
+  expect(textarea).toHaveAttribute('maxLength', '500');
+  expect(textarea).not.toBeDisabled();
+
+  await userEvent.type(textarea, 'This is a test on the textarea.');
+  expect(textarea).toHaveValue('This is a test on the textarea.');
+
+  await userEvent.type(
+    textarea,
+    'Testing max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max lengthTesting max le',
+  );
+  expect(textarea.value.length).toBeLessThanOrEqual(500);
 };
