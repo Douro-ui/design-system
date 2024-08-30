@@ -4,6 +4,7 @@ import { GridProps, GridStyledProps } from './grid.types';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { Grid, GridItem } from './Grid';
 import styled from '@emotion/styled';
+import { expect, within } from '@storybook/test';
 
 const meta: Meta<GridProps> = {
   title: 'Example/Grid',
@@ -200,4 +201,290 @@ export const GridCardType: Story = {
       </GridItem>
     </Grid>
   ),
+};
+const checkGridStyles = (
+  button: HTMLElement,
+  styles: { [key: string]: string },
+): void => {
+  Object.entries(styles).forEach(([property, value]: [string, string]) => {
+    expect(button).toHaveStyle(`${property}: ${value}`);
+  });
+};
+
+const testGrid = async (
+  canvasElement: HTMLElement,
+  styles: { [key: string]: string },
+): Promise<void> => {
+  checkGridStyles(canvasElement, styles);
+};
+
+GridResponsive.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}): Promise<void> => {
+  const canvas = within(canvasElement);
+
+  const menu = canvas.getByText('Menu');
+
+  testGrid(menu, {
+    color: '#ffffff',
+    backgroundColor: '#080708',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '1612px',
+    height: '20px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const hero = canvas.getByText('Hero');
+
+  testGrid(hero, {
+    color: '#000000',
+    backgroundColor: '#C8ADC0',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '1612px',
+    height: '38px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const card = canvas.getByText('Card 1');
+
+  testGrid(card, {
+    color: '#ffffff',
+    backgroundColor: '#6152cc',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '801px',
+    height: '40px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const card2 = canvas.getByText('Card 2');
+
+  testGrid(card2, {
+    color: '#ffffff',
+    backgroundColor: '#6152cc',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '801px',
+    height: '40px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const biggerCard3 = canvas.getByText('Bigger Card 3');
+
+  testGrid(biggerCard3, {
+    color: '#ffffff',
+    backgroundColor: '#3B60E4',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '1071.33px',
+    height: '80px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const smallerCard4 = canvas.getByText('Smaller Card 4');
+
+  testGrid(smallerCard4, {
+    color: '#ffffff',
+    backgroundColor: '#3B60E4',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '530.672px',
+    height: '80px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const banner = canvas.getByText('Banner');
+
+  testGrid(banner, {
+    color: '#000000',
+    backgroundColor: '#C8ADC0',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '1612px',
+    height: '38px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const footer = canvas.getByText('Footer');
+
+  testGrid(footer, {
+    color: '#000000',
+    backgroundColor: '#EDD3C4',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '1612px',
+    height: '38px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const smallFooter = canvas.getByText('Small footer');
+
+  testGrid(smallFooter, {
+    color: '#ffffff',
+    backgroundColor: '#080708',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '1612px',
+    height: '20px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+};
+
+GridCardType.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}): Promise<void> => {
+  const canvas = within(canvasElement);
+  const menu = canvas.getByText('Menu');
+
+  testGrid(menu, {
+    color: 'rgb(255, 255, 255)',
+    backgroundColor: '#080708',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '1612px',
+    height: '20px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const hero = canvas.getByText('Hero');
+
+  testGrid(hero, {
+    color: 'rgb(0, 0, 0)',
+    backgroundColor: '#C8ADC0',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '1612px',
+    height: '38px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const card = canvas.getByText('Card');
+
+  testGrid(card, {
+    color: 'rgb(0, 0, 0)',
+    backgroundColor: '#C8ADC0',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '801px',
+    height: '134px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const card2 = canvas.getByText('Card 2');
+
+  testGrid(card2, {
+    color: 'rgb(0, 0, 0)',
+    backgroundColor: '#C8ADC0',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '801px',
+    height: '38px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const card3 = canvas.getByText('Card 3');
+
+  testGrid(card3, {
+    color: 'rgb(0, 0, 0)',
+    backgroundColor: '#C8ADC0',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '801px',
+    height: '38px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const card4 = canvas.getByText('Card 4');
+
+  testGrid(card4, {
+    color: 'rgb(0, 0, 0)',
+    backgroundColor: '#C8ADC0',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '801px',
+    height: '38px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
+
+  const card5 = canvas.getByText('Card 5');
+
+  testGrid(card5, {
+    color: 'rgb(0, 0, 0)',
+    backgroundColor: '#C8ADC0',
+    display: 'flex',
+    alignItems: 'center',
+    position: 'static',
+    cursor: 'auto',
+    marginRight: '0px',
+    width: '1612px',
+    height: '38px',
+    maxWidth: 'none',
+    maxHeight: 'none',
+  });
 };
