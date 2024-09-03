@@ -1,50 +1,29 @@
-import React from 'react';
-export interface Image {
-  type: 'image';
-  content: {
-    src: string;
-    alt: string;
-  };
-}
+import { HTMLAttributes, ReactNode } from 'react';
 
-export interface Video {
-  type: 'video';
-  content: {
-    src: string;
-    type: string;
-  };
-}
-
-export interface HTMLContent {
-  type: 'html';
-  content: string;
-}
-
-export interface TextContent {
-  type: 'text';
-  content: string;
-}
-
-export interface CustomComponent {
-  type: 'component';
-  content: React.ReactNode;
-}
-
-export type Content =
-  | Image
-  | Video
-  | HTMLContent
-  | TextContent
-  | CustomComponent;
-
-export interface CarouselProps {
-  contents: Content[];
+export interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
+  styled?: CarouselStyledProps;
+  visibleSlides?: number;
+  autoplay?: boolean;
+  autoplayInterval?: number;
   showArrows?: boolean;
-  showStatus?: boolean;
   showIndicators?: boolean;
-  showThumbs?: boolean;
   infiniteLoop?: boolean;
-  autoPlay?: boolean;
-  interval?: number;
-  onClick?: () => void;
+  slides: CarouselSlideProps[];
+}
+export interface CarouselSlideProps extends HTMLAttributes<HTMLDivElement> {
+  styled?: CarouselSlideStyledProps;
+  children: ReactNode;
+}
+
+export interface CarouselStyledProps {
+  gap?: string;
+  backgroundColor?: string;
+}
+
+export interface CarouselSlideStyledProps {
+  borderRadius?: string;
+  borderColor?: string;
+  height?: string;
+  width?: string;
+  backgroundColor?: string;
 }
