@@ -1,89 +1,124 @@
-import React, { MouseEventHandler } from 'react';
-import { Carousel as ResponsiveCarousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import type { CarouselProps, Content } from './carousel.types';
 import {
   CarouselStyled,
-  CarouselHtmlStyled,
-  IndicatorButton,
-  IndicatorItem,
-  Slide,
+  CarouselTrack,
+  ArrowButton,
+  IndicatorWrapper,
+  //IndicatorDot,
 } from './carousel.styles';
+import CarouselSlide from './CarouselSlide';
+import {
+  CarouselProps,
+  CarouselSlideProps,
+  CarouselStyledProps,
+} from './carousel.types';
+import { deepMerge, useTheme } from '@douro-ui/react';
+import { ReactNode, useState, useEffect } from 'react';
+import { ChevronDown, ChevronUp } from '@douro-ui/svg-icons';
 
-const Carousel: React.FC<CarouselProps> = ({
-  contents,
-  showArrows = true,
-  showStatus = true,
-  showIndicators = true,
-  showThumbs = true,
-  infiniteLoop = true,
-  autoPlay = false,
-  interval = 3000,
+const Carousel = ({
+  styled,
+  slides,
+  //direction,
+  showArrows,
+  showIndicators,
+  visibleSlides = 1,
+  autoplay = false,
+  autoplayInterval = 3000,
+  disabled = false,
   ...props
-}: CarouselProps) => {
-  const renderContent = (content: Content): React.ReactNode => {
-    switch (content.type) {
-      case 'image':
-        return <img src={content.content.src} alt={content.content.alt} />;
-      case 'video':
-        return (
-          <video controls>
-            <source src={content.content.src} type={content.content.type} />
-          </video>
-        );
-      case 'html':
-        return (
-          <CarouselHtmlStyled
-            dangerouslySetInnerHTML={{ __html: content.content }}
-          />
-        );
-      case 'text':
-        return <p>{content.content}</p>;
-      case 'component':
-        return content.content;
-      default:
-        return null;
+}: CarouselProps): ReactNode => {
+  const theme = useTheme();
+
+  const defaultThemeValues: CarouselStyledProps = {
+    gap: '0.25rem',
+    backgroundColor: theme.colors.brand.white,
+  };
+
+  const mergedThemeValues = deepMerge<CarouselStyledProps>(
+    defaultThemeValues,
+    styled,
+  );
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const totalSlides = Array.isArray(slides) ? slides.length : 0;
+
+  console.log(totalSlides);
+
+  const nextSlide = () => {
+    if (!disabled) {
+      setCurrentSlide((prevSlide: number) => (prevSlide + 1) % totalSlides);
     }
   };
 
+  const prevSlide = () => {
+    if (!disabled) {
+      setCurrentSlide(
+        (prevSlide: number) => (prevSlide - 1 + totalSlides) % totalSlides,
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (autoplay && !disabled) {
+      const interval = setInterval(nextSlide, autoplayInterval);
+      return () => clearInterval(interval);
+    }
+  }, [autoplay, autoplayInterval, disabled]);
+
   return (
-    <CarouselStyled>
-      <ResponsiveCarousel
-        showArrows={showArrows}
-        showStatus={showStatus}
-        showIndicators={showIndicators}
-        showThumbs={showThumbs}
-        infiniteLoop={infiniteLoop}
-        autoPlay={autoPlay}
-        interval={interval}
-        centerMode={true}
-        centerSlidePercentage={35}
-        {...props}
-        aria-label="Image and video carousel"
-        renderIndicator={(
-          clickHandler: MouseEventHandler<HTMLButtonElement>,
-          isSelected: boolean,
-          index: number,
-        ) => (
-          <IndicatorItem key={index}>
-            <IndicatorButton
-              type="button"
-              aria-pressed={isSelected}
-              aria-label={`Slide ${index + 1}`}
-              onClick={clickHandler}
-              isSelected={isSelected}
-            >
-              {isSelected ? '●' : '○'}
-            </IndicatorButton>
-          </IndicatorItem>
-        )}
+    <CarouselStyled
+      styled={mergedThemeValues as Required<CarouselStyledProps>}
+      {...props}
+    >
+      <CarouselTrack
+        styled={mergedThemeValues as Required<CarouselStyledProps>}
+        totalSlides={totalSlides}
+        currentSlide={currentSlide}
+        visibleSlides={visibleSlides}
       >
-        {contents.map((content: Content, index: number) => (
-          <Slide key={`carousel-container-${index}`}>
-            {renderContent(content)}
-          </Slide>
+        {slides.map((slide: CarouselSlideProps, index: number) => (
+          <CarouselSlide key={index}>{slide.children}</CarouselSlide>
         ))}
-      </ResponsiveCarousel>
+      </CarouselTrack>
+
+      {showArrows && (
+        <>
+          <ArrowButton
+            styled={mergedThemeValues as Required<CarouselStyledProps>}
+            //direction="left"
+            onClick={prevSlide}
+          >
+            <img
+              src={ChevronUp}
+              alt="Previous Slide"
+              style={{ width: '1rem', height: '1rem' }}
+            />
+          </ArrowButton>
+          <ArrowButton
+            styled={mergedThemeValues as Required<CarouselStyledProps>}
+            //direction="right"
+            onClick={nextSlide}
+          >
+            <img
+              src={ChevronDown}
+              alt="Next Slide"
+              style={{ width: '1rem', height: '1rem' }}
+            />
+          </ArrowButton>
+        </>
+      )}
+
+      {showIndicators && (
+        <IndicatorWrapper>
+          {/* {Array.from({ length: totalSlides }).map((_, index) => (
+            <IndicatorDot
+              key={index}
+              active={index === currentSlide}
+              onClick={() => setCurrentSlide(index)}
+            />
+          ))} */}
+        </IndicatorWrapper>
+      )}
     </CarouselStyled>
   );
 };
