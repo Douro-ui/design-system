@@ -1,112 +1,100 @@
 import {
+  fireEvent,
   render,
   screen,
-  fireEvent,
   waitFor,
 } from '../../../../../tests/test-utils';
 import Carousel from '../Carousel';
-import type { Content } from '../carousel.types';
 
-const mockContents: Content[] = [
-  {
-    type: 'image',
-    content: { src: 'image1.jpg', alt: 'Image 1' },
-  },
-  {
-    type: 'image',
-    content: { src: 'image2.jpg', alt: 'Image 2' },
-  },
-  {
-    type: 'video',
-    content: { src: 'video1.mp4', type: 'video/mp4' },
-  },
-  {
-    type: 'html',
-    content: '<div>HTML Content</div>',
-  },
+const mockSlides = [
+  { children: <div>Slide 1</div> },
+  { children: <div>Slide 2</div> },
+  { children: <div>Slide 3</div> },
 ];
 
+jest.useFakeTimers();
+
 describe('Carousel Component', () => {
-  it('renders images correctly', () => {
-    render(<Carousel contents={mockContents} />);
-    const images = screen.getAllByRole('img') as HTMLImageElement[];
-    const image1 = images.find(
-      (img: HTMLImageElement) => img.getAttribute('alt') === 'Image 1',
-    );
-    const image2 = images.find(
-      (img: HTMLImageElement) => img.getAttribute('alt') === 'Image 2',
-    );
-
-    expect(image1).toBeInTheDocument();
-    expect(image2).toBeInTheDocument();
-    expect(images.length).toBeGreaterThanOrEqual(2);
+  it('renders without crashing', () => {
+    render(<Carousel slides={mockSlides} />);
+    expect(screen.getByText('Slide 1')).toBeInTheDocument();
   });
 
-  it('renders video correctly', () => {
-    const { container } = render(<Carousel contents={mockContents} />);
-    const videoElement = container.querySelector('video') as HTMLVideoElement;
-    expect(videoElement).toBeInTheDocument();
-    expect(videoElement).toHaveAttribute('controls');
-    const sourceElement = videoElement.querySelector(
-      'source',
-    ) as HTMLSourceElement;
-    expect(sourceElement).toHaveAttribute('src', 'video1.mp4');
-    expect(sourceElement).toHaveAttribute('type', 'video/mp4');
+  it('shows the correct number of slides', () => {
+    render(<Carousel slides={mockSlides} />);
+    expect(screen.getByText('Slide 1')).toBeInTheDocument();
+    expect(screen.getByText('Slide 2')).toBeInTheDocument();
+    expect(screen.getByText('Slide 3')).toBeInTheDocument();
   });
 
-  it('renders HTML content correctly', () => {
-    const { container } = render(<Carousel contents={mockContents} />);
-    const htmlContent = Array.from(container.querySelectorAll('div')).find(
-      (div: HTMLDivElement) => div.innerHTML === 'HTML Content',
-    ) as HTMLDivElement | undefined;
-    expect(htmlContent).toBeInTheDocument();
-  });
-
-  it('applies default props correctly', () => {
-    const { container } = render(
-      <Carousel contents={mockContents} autoPlay={true} interval={5000} />,
-    );
-    const carouselContainer = container.querySelector(
-      '.carousel-slider',
-    ) as HTMLElement;
-    expect(carouselContainer).toBeInTheDocument();
-  });
-
-  it('clicks on the next arrow and checks the correct position', async () => {
-    const { container } = render(<Carousel contents={mockContents} />);
-    const initialActiveSlide = container.querySelector(
-      '.carousel .slide.selected',
-    ) as HTMLElement;
-    const initialActiveSlideIndex = Array.from(
-      container.querySelectorAll('.carousel .slide'),
-    ).indexOf(initialActiveSlide);
-    const nextButton = container.querySelector('.control-next') as HTMLElement;
-
-    let newActiveSlideIndex = -1;
-    fireEvent.click(nextButton);
+  it('handles next slide navigation', async () => {
+    render(<Carousel slides={mockSlides} showIcons />);
+    fireEvent.click(screen.getByLabelText('next slide'));
     await waitFor(() => {
-      const newActiveSlide = container.querySelector(
-        '.carousel .slide.selected',
-      ) as HTMLElement;
-      newActiveSlideIndex = Array.from(
-        container.querySelectorAll('.carousel .slide'),
-      ).indexOf(newActiveSlide);
-      expect(newActiveSlideIndex).toBe(
-        (initialActiveSlideIndex + 1) % mockContents.length,
-      );
+      expect(screen.getByText('Slide 2')).toBeVisible();
     });
+  });
 
-    fireEvent.click(nextButton);
+  it('handles previous slide navigation', async () => {
+    render(<Carousel slides={mockSlides} showIcons />);
+    fireEvent.click(screen.getByLabelText('next slide'));
+    fireEvent.click(screen.getByLabelText('next slide'));
+    fireEvent.click(screen.getByLabelText('previous slide'));
     await waitFor(() => {
-      const anotherActiveSlide = container.querySelector(
-        '.carousel .slide.selected',
-      ) as HTMLElement;
-      const anotherActiveSlideIndex = Array.from(
-        container.querySelectorAll('.carousel .slide'),
-      ).indexOf(anotherActiveSlide);
-      expect(anotherActiveSlideIndex).toBe(
-        (newActiveSlideIndex + 1) % mockContents.length,
-      );
+      expect(screen.getByText('Slide 2')).toBeVisible();
     });
+  });
+
+  it('loops to the first slide after the last slide', async () => {
+    render(<Carousel slides={mockSlides} infiniteLoop showIcons />);
+    fireEvent.click(screen.getByLabelText('next slide'));
+    fireEvent.click(screen.getByLabelText('next slide'));
+    fireEvent.click(screen.getByLabelText('next slide'));
+    await waitFor(() => {
+      const slideElements = screen.queryAllByText('Slide 1');
+      expect(slideElements[0]).toBeInTheDocument();
+    });
+  });
+
+  it('loops to the last slide from the first slide', async () => {
+    render(<Carousel slides={mockSlides} infiniteLoop showIcons />);
+    fireEvent.click(screen.getByLabelText('previous slide'));
+    await waitFor(() => {
+      const slideElements = screen.queryAllByText('Slide 3');
+      expect(slideElements[0]).toBeInTheDocument();
+    });
+  });
+
+  it('shows indicators and updates active state', async () => {
+    render(<Carousel slides={mockSlides} showIndicators />);
+    const indicators = screen.getAllByRole('button');
+    expect(indicators).toHaveLength(3);
+    fireEvent.click(indicators[1]);
+    await waitFor(() => {
+      expect(screen.getByText('Slide 2')).toBeVisible();
+    });
+  });
+
+  it('autoplay functionality works', async () => {
+    render(<Carousel slides={mockSlides} autoplay autoplayInterval={1000} />);
+    await waitFor(
+      () => {
+        expect(screen.getByText('Slide 2')).toBeVisible();
+      },
+      { timeout: 1000 },
+    );
+    await waitFor(
+      () => {
+        expect(screen.getByText('Slide 3')).toBeVisible();
+      },
+      { timeout: 1000 },
+    );
+    await waitFor(
+      () => {
+        expect(screen.getByText('Slide 1')).toBeVisible();
+      },
+      { timeout: 1000 },
+    );
+    jest.useRealTimers();
   });
 });

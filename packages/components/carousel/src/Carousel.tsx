@@ -1,89 +1,164 @@
-import React, { MouseEventHandler } from 'react';
-import { Carousel as ResponsiveCarousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import type { CarouselProps, Content } from './carousel.types';
 import {
   CarouselStyled,
-  CarouselHtmlStyled,
-  IndicatorButton,
-  IndicatorItem,
-  Slide,
+  CarouselTrack,
+  IconButton,
+  IndicatorWrapper,
+  IndicatorDot,
+  DraggableArea,
 } from './carousel.styles';
+import CarouselSlide from './CarouselSlide';
+import {
+  CarouselProps,
+  CarouselSlideProps,
+  CarouselStyledProps,
+} from './carousel.types';
+import { deepMerge, useTheme } from '@douro-ui/react';
+import React, { ReactNode, useState, useEffect, useRef } from 'react';
+import { Icon } from '@douro-ui/icon';
+import { handleTransitionEnd as utilsHandleTransitionEnd } from './utils/getTransition';
+import {
+  handleDragStart as utilsHandleDragStart,
+  handleDragEnd as utilsHandleDragEnd,
+} from './utils/getDrag';
 
-const Carousel: React.FC<CarouselProps> = ({
-  contents,
-  showArrows = true,
-  showStatus = true,
-  showIndicators = true,
-  showThumbs = true,
-  infiniteLoop = true,
-  autoPlay = false,
-  interval = 3000,
+const Carousel = ({
+  styled,
+  slides,
+  showIcons,
+  showIndicators,
+  visibleSlides = 1,
+  autoplay = false,
+  autoplayInterval = 2000,
+  infiniteLoop = false,
+  leftIcon,
+  rightIcon,
   ...props
-}: CarouselProps) => {
-  const renderContent = (content: Content): React.ReactNode => {
-    switch (content.type) {
-      case 'image':
-        return <img src={content.content.src} alt={content.content.alt} />;
-      case 'video':
-        return (
-          <video controls>
-            <source src={content.content.src} type={content.content.type} />
-          </video>
-        );
-      case 'html':
-        return (
-          <CarouselHtmlStyled
-            dangerouslySetInnerHTML={{ __html: content.content }}
-          />
-        );
-      case 'text':
-        return <p>{content.content}</p>;
-      case 'component':
-        return content.content;
-      default:
-        return null;
+}: CarouselProps): ReactNode => {
+  const theme = useTheme();
+
+  const defaultThemeValues: CarouselStyledProps = {
+    gap: '0.25rem',
+    backgroundColor: theme.colors.brand.white,
+  };
+
+  const mergedThemeValues = deepMerge<CarouselStyledProps>(
+    defaultThemeValues,
+    styled,
+  );
+
+  const [currentSlide, setCurrentSlide] = useState(infiniteLoop ? 1 : 0);
+  const totalSlides = Array.isArray(slides) ? slides.length : 0;
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const dragStartX = useRef<number | null>(null);
+
+  const handleTransitionEnd = () => {
+    utilsHandleTransitionEnd(
+      currentSlide,
+      totalSlides,
+      trackRef,
+      setCurrentSlide,
+      setIsTransitioning,
+      infiniteLoop,
+    );
+  };
+
+  const nextSlide = () => {
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setCurrentSlide((prevSlide: number) => prevSlide + 1);
     }
   };
 
+  const prevSlide = () => {
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setCurrentSlide((prevSlide: number) => prevSlide - 1);
+    }
+  };
+
+  useEffect(() => {
+    if (autoplay) {
+      const interval = setInterval(nextSlide, autoplayInterval);
+      return () => clearInterval(interval);
+    }
+  }, [autoplay, autoplayInterval]);
+
   return (
-    <CarouselStyled>
-      <ResponsiveCarousel
-        showArrows={showArrows}
-        showStatus={showStatus}
-        showIndicators={showIndicators}
-        showThumbs={showThumbs}
-        infiniteLoop={infiniteLoop}
-        autoPlay={autoPlay}
-        interval={interval}
-        centerMode={true}
-        centerSlidePercentage={35}
-        {...props}
-        aria-label="Image and video carousel"
-        renderIndicator={(
-          clickHandler: MouseEventHandler<HTMLButtonElement>,
-          isSelected: boolean,
-          index: number,
-        ) => (
-          <IndicatorItem key={index}>
-            <IndicatorButton
-              type="button"
-              aria-pressed={isSelected}
-              aria-label={`Slide ${index + 1}`}
-              onClick={clickHandler}
-              isSelected={isSelected}
-            >
-              {isSelected ? '●' : '○'}
-            </IndicatorButton>
-          </IndicatorItem>
-        )}
+    <CarouselStyled
+      styled={mergedThemeValues as Required<CarouselStyledProps>}
+      {...props}
+    >
+      <DraggableArea
+        data-testid="draggable-area"
+        onMouseDown={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
+          utilsHandleDragStart(event, dragStartX)
+        }
+        onMouseUp={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
+          utilsHandleDragEnd(event, dragStartX, nextSlide, prevSlide)
+        }
+      />
+      <CarouselTrack
+        styled={mergedThemeValues as Required<CarouselStyledProps>}
+        totalSlides={infiniteLoop ? totalSlides + 2 : totalSlides}
+        currentSlide={currentSlide}
+        visibleSlides={visibleSlides}
+        onTransitionEnd={handleTransitionEnd}
+        ref={trackRef}
       >
-        {contents.map((content: Content, index: number) => (
-          <Slide key={`carousel-container-${index}`}>
-            {renderContent(content)}
-          </Slide>
+        {infiniteLoop && (
+          <CarouselSlide key={`clone-last-${slides[totalSlides - 1].children}`}>
+            {slides[totalSlides - 1].children}
+          </CarouselSlide>
+        )}
+        {slides.map((slide: CarouselSlideProps, index: number) => (
+          <CarouselSlide key={`slide-${index}`}>{slide.children}</CarouselSlide>
         ))}
-      </ResponsiveCarousel>
+        {infiniteLoop && (
+          <CarouselSlide key={`clone-first-${slides[0].children}`}>
+            {slides[0].children}
+          </CarouselSlide>
+        )}
+      </CarouselTrack>
+
+      {showIcons && (
+        <>
+          <IconButton
+            styled={mergedThemeValues as Required<CarouselStyledProps>}
+            direction="left"
+            role="button"
+            aria-label="previous slide"
+            onClick={prevSlide}
+          >
+            {leftIcon || <Icon name="chevron-up" />}
+          </IconButton>
+          <IconButton
+            styled={mergedThemeValues as Required<CarouselStyledProps>}
+            direction="right"
+            role="button"
+            aria-label="next slide"
+            onClick={nextSlide}
+          >
+            {rightIcon || <Icon name="chevron-down" />}
+          </IconButton>
+        </>
+      )}
+
+      {showIndicators && (
+        <IndicatorWrapper>
+          {Array.from({ length: totalSlides }).map(
+            (_: unknown, index: number) => (
+              <IndicatorDot
+                key={`indicator-${index}`}
+                active={index + 1 === currentSlide}
+                onClick={() => setCurrentSlide(index + 1)}
+                role="button"
+                aria-label="indicator"
+              />
+            ),
+          )}
+        </IndicatorWrapper>
+      )}
     </CarouselStyled>
   );
 };
