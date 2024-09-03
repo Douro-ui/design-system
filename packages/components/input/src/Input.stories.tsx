@@ -4,6 +4,7 @@ import { InputProps } from './input.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { fn } from '@storybook/test';
+import { expect, userEvent, within } from '@storybook/test';
 
 const meta: Meta<InputProps> = {
   title: 'Example/Input',
@@ -48,4 +49,34 @@ export const Primary: Story = {
     placeholder: 'Enter your name',
     disabled: false,
   },
+};
+Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  const label = canvas.getByText('Name');
+  expect(label).toBeVisible();
+
+  const input = canvas.getByPlaceholderText(
+    'Enter your name',
+  ) as HTMLTextAreaElement;
+
+  expect(input).toBeInTheDocument();
+  expect(input).toBeEnabled();
+  expect(input).not.toBeDisabled();
+
+  await userEvent.type(input, 'This is a test on the input.');
+  expect(input).toHaveValue('This is a test on the input.');
+
+  await userEvent.clear(input);
+  await userEvent.type(input, 'New value');
+  expect(input).toHaveValue('New value');
+
+  expect(input).toHaveStyle('align-items: normal');
+  expect(input).toHaveStyle('position: static');
+  expect(input).toHaveStyle('opacity: 1');
+  expect(input).toHaveStyle('pointer-events: auto');
+
+  expect(input).toHaveStyle('padding-left: 0');
+  expect(input).toHaveStyle('line-height: normal');
+  expect(input).toHaveStyle('display: block');
+  expect(input).toHaveStyle('margin-bottom: 0px');
 };
