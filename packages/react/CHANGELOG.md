@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.5.0...@douro-ui/react@0.6.0) (2024-09-04)
+
+### Features
+
+- typography component ([34b8b8a](https://github.com/Douro-ui/design-system/commit/34b8b8a4b439e6f510affca75f60b7c6052228ca))
+
 # [0.5.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.4.9...@douro-ui/react@0.5.0) (2024-08-27)
 
 ### Features
