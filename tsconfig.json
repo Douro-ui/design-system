@@ -23,5 +23,10 @@
     "noFallthroughCasesInSwitch": true,
     "typeRoots": ["./node_modules/@types/", "./node_modules"]
   },
-  "include": [".storybook/main.ts", "packages/**/*.tsx", "packages/**/*.ts"]
+  "include": [
+    ".storybook/main.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.ts",
+    "tests/**/*.ts"
+  ]
 }
