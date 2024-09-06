@@ -1,4 +1,4 @@
-import { Breakpoints } from '../../packages/react';
+import { Breakpoints } from '@douro-ui/react';
 
 export const mockTheme = {
   breakpoints: {

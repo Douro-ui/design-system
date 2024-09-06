@@ -3,7 +3,7 @@ import type {
   TypographyStyledProps,
 } from '../../typography.types';
 import getDisplay from './typography.styles';
-import { useResponsiveDisplayTypography } from '../../../../../react';
+import { useResponsiveDisplayTypography } from '../../hooks/useTypography';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import React from 'react';
 

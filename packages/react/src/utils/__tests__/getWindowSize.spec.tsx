@@ -1,10 +1,10 @@
-import { renderHook } from '../../../../tests/test-utils';
-import { Breakpoints } from '../../../react/src/theme/theme.constants';
+import { renderHook } from '../../../../../tests/test-utils';
+import { Breakpoints } from '../../theme/theme.constants';
 import { getWindowSize } from '../getWindowSize';
-import theme from '../../../react/src/theme/theme';
-import { useWindowDimensions } from '../../../react';
+import theme from '../../theme/theme';
+import { useWindowDimensions } from '../../hooks';
 
-jest.mock('../../../react');
+jest.mock('../../hooks');
 describe('getWindowSize with useWindowDimensions', () => {
   beforeEach(() => {
     jest.clearAllMocks();
