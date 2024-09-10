@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.6.0...@douro-ui/react@0.6.1) (2024-09-10)
+
+### Bug Fixes
+
+- utils path and change the typography hook and util ([7229115](https://github.com/Douro-ui/design-system/commit/7229115a01517815fcf1e3d628a88bb5d1991dd5))
+
 # [0.6.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.5.0...@douro-ui/react@0.6.0) (2024-09-04)
 
 ### Features
