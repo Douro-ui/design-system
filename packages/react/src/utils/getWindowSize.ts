@@ -1,5 +1,5 @@
-import { BreakpointsType } from '../../react';
-import { Breakpoints } from '../../react/src/theme/theme.constants';
+import { BreakpointsType } from '../theme/theme.types';
+import { Breakpoints } from '../theme/theme.constants';
 
 export const getWindowSize = (
   breakpoints: BreakpointsType,

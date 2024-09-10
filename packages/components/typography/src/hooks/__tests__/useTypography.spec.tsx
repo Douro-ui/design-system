@@ -1,22 +1,30 @@
-import { renderHook } from '../../../../../tests/test-utils';
+import { renderHook } from '../../../../../../tests/test-utils';
 import {
   useResponsiveDisplayTypography,
   useResponsiveHeadingTypography,
   useResponsiveBodyTypography,
 } from '../useTypography';
-import { Breakpoints } from '../../theme';
 import {
+  Breakpoints,
   getWindowSize,
-  getResponsiveTypography,
-} from '../../../../components/utils';
-import { useTheme } from '../useTheme';
-import { useWindowDimensions } from '../useWindowDimensions';
-import { mockTheme } from '../../../../../tests/__mocks__/theme';
+  useTheme,
+  useWindowDimensions,
+} from '@douro-ui/react';
+import { getResponsiveTypography } from '../../utils';
+import { mockTheme } from '../../../../../../tests/__mocks__/theme';
 
-jest.mock('../useTheme');
-jest.mock('../useWindowDimensions');
-jest.mock('../../../../components/utils', () => ({
+jest.mock('@douro-ui/react', () => ({
+  Breakpoints: {
+    MOBILE: 'MOBILE',
+    TABLET: 'TABLET',
+    DESKTOP: 'DESKTOP',
+    DESKTOP_LARGE: 'DESKTOP_LARGE',
+  },
   getWindowSize: jest.fn(),
+  useTheme: jest.fn(() => mockTheme),
+  useWindowDimensions: jest.fn(),
+}));
+jest.mock('../../utils', () => ({
   getResponsiveTypography: jest.fn(),
 }));
 

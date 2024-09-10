@@ -1,9 +1,6 @@
-import { Breakpoints } from '../../../react/src/theme/theme.constants';
+import { Breakpoints } from '@douro-ui/react';
 import { getResponsiveTypography } from '../getResposiveTypography';
-import {
-  TypographyStyledProps,
-  TypographyType,
-} from '../../typography/src/typography.types';
+import { TypographyStyledProps, TypographyType } from '../../typography.types';
 
 describe('getResponsiveTypography', () => {
   const mockDisplayTypography: TypographyType = {

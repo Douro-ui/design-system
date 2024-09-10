@@ -1,4 +1,4 @@
-import { useTheme, useWindowDimensions } from './index';
+import { useTheme, useWindowDimensions } from '@douro-ui/react';
 import { useMemo } from 'react';
 import {
   BodyType,
@@ -6,10 +6,10 @@ import {
   HeadingType,
   TypographyStyledProps,
   TypographyType,
-} from '../../../components/typography';
-import { getWindowSize } from '../../../components/utils';
-import { getResponsiveTypography } from '../../../components/utils';
-import { Breakpoints } from '../theme/theme.constants';
+} from '../typography.types';
+import { getWindowSize } from '@douro-ui/react';
+import { getResponsiveTypography } from '../utils';
+import { Breakpoints } from '@douro-ui/react';
 
 export const useResponsiveDisplayTypography = (
   displayType: DisplayType,

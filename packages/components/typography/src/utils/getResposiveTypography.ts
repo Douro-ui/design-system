@@ -1,8 +1,5 @@
-import { Breakpoints } from '../../react/src/theme/theme.constants';
-import {
-  TypographyStyledProps,
-  TypographyType,
-} from '../typography/src/typography.types';
+import { Breakpoints } from '@douro-ui/react';
+import { TypographyStyledProps, TypographyType } from '../typography.types';
 
 interface TypographyParams {
   displayListParam?: TypographyType;
