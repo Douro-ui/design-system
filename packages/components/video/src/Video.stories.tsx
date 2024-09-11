@@ -60,7 +60,7 @@ export const VideoEnabled: Story = {
   args: {
     src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     poster: 'poster.jpg',
-    controls: false,
+    controls: true,
     autoPlay: false,
     loop: false,
     muted: false,
