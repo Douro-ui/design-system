@@ -1,6 +1,7 @@
-import { HTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
 
-export interface TextareaProps extends HTMLAttributes<HTMLTextAreaElement> {
+export interface TextareaProps
+  extends InputHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   maxLength?: number;
   placeholder?: string;
