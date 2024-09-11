@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/Douro-ui/design-system/compare/@douro-ui/video@0.1.1...@douro-ui/video@0.1.2) (2024-09-11)
+
+### Bug Fixes
+
+- video component ([6e7ec2f](https://github.com/Douro-ui/design-system/commit/6e7ec2f145ac2a46857f0be8a4a3a6c2a7fb0b75))
+
 ## [0.1.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/video@0.1.0...@douro-ui/video@0.1.1) (2024-09-10)
 
 **Note:** Version bump only for package @douro-ui/video
