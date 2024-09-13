@@ -1,4 +1,4 @@
-import Button from '../../../button';
+import Button from '@douro-ui/button';
 import { fireEvent, render, screen } from '../../../../../tests/test-utils';
 import ExpandablePanel from '../ExpandablePanel';
 
