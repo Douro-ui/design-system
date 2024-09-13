@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/Douro-ui/design-system/compare/@douro-ui/input@0.1.3...@douro-ui/input@0.1.4) (2024-09-13)
+
+### Bug Fixes
+
+- html props ([5bc14c5](https://github.com/Douro-ui/design-system/commit/5bc14c50d04f754b2922775cbcbdd2cc11d2feda))
+
 ## [0.1.3](https://github.com/Douro-ui/design-system/compare/@douro-ui/input@0.1.2...@douro-ui/input@0.1.3) (2024-09-10)
 
 **Note:** Version bump only for package @douro-ui/input
