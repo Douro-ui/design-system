@@ -1,7 +1,7 @@
 {
-  "name": "@douro-ui/expandablePanel",
+  "name": "@douro-ui/expandable-panel",
   "version": "0.1.3",
-  "description": "Douro UI - Metyis Design System ExpandablePanel Component",
+  "description": "Douro UI - Metyis Design System Expandable-panel Component",
   "main": "src/index.ts",
   "type": "module",
   "repository": {
