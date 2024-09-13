@@ -33,6 +33,7 @@ const Video = ({
         autoPlay={autoPlay}
         loop={loop}
         muted={muted}
+        data-testid="video-container-style"
         styled={mergedThemeValues as Required<VideoStyledProps>}
       />
     </VideoContainerStyled>
