@@ -1,72 +1,42 @@
+import { ReactNode } from 'react';
+import { ExpandablePanelItem } from './expandablePanelTypes';
+import { ExpandablePanelStyled } from './expandablePanel.styles';
 import {
+  ExpandablePanelItemProps,
   ExpandablePanelProps,
   ExpandablePanelStyledProps,
 } from './expandablePanel.types';
-import { ExpandablePanelStyled } from './expandablePanel.styles';
-import { deepMerge, useTheme } from '@douro-ui/react';
-import { ReactNode, useEffect, useState } from 'react';
-import {
-  ExpandablePanelBody,
-  ExpandablePanelHeader,
-} from './expandablePanelTypes';
+import { deepMerge } from '@douro-ui/react';
+import { useHandleToggle } from './hooks';
 
 const ExpandablePanel = ({
+  items: initialItems,
   styled,
-  disabled,
-  header,
-  children,
-  expanded,
-  startExpanded,
-  hasIcon = true,
-  ...props
+  preventAllClosed = false,
+  multipleOpens = false,
 }: ExpandablePanelProps): ReactNode => {
-  const theme = useTheme();
-  const [isExpanded, setIsExpanded] = useState(startExpanded || false);
-
-  useEffect(() => {
-    if (expanded !== undefined) {
-      setIsExpanded(expanded);
-    }
-  }, [expanded]);
-
-  const toggleExpansion = () => {
-    if (expanded === undefined) {
-      setIsExpanded(!isExpanded);
-    }
-  };
-
-  const defaultThemeValues: ExpandablePanelStyledProps = {
-    color: theme.colors.extended.blue.shade50,
-    width: '40rem',
-    height: '100%',
+  const { items, handleToggle } = useHandleToggle(initialItems);
+  const defaultEPHeaderThemeValues: ExpandablePanelStyledProps = {
+    width: '100%',
   };
 
   const mergedThemeValues = deepMerge<ExpandablePanelStyledProps>(
-    defaultThemeValues,
+    defaultEPHeaderThemeValues,
     styled,
   );
-
   return (
     <ExpandablePanelStyled
       styled={mergedThemeValues as Required<ExpandablePanelStyledProps>}
-      {...props}
     >
-      {header && (
-        <ExpandablePanelHeader
-          styled={styled}
-          onClick={toggleExpansion}
-          disabled={disabled}
-          isExpanded={isExpanded}
-          icon={hasIcon}
-        >
-          {header}
-        </ExpandablePanelHeader>
-      )}
-      {isExpanded && (
-        <ExpandablePanelBody styled={styled} isExpanded={isExpanded}>
-          {children}
-        </ExpandablePanelBody>
-      )}
+      {items.map((itemProps: ExpandablePanelItemProps, index: number) => (
+        <ExpandablePanelItem
+          key={index}
+          {...itemProps}
+          onClick={() =>
+            handleToggle({ index, preventAllClosed, multipleOpens })
+          }
+        />
+      ))}
     </ExpandablePanelStyled>
   );
 };

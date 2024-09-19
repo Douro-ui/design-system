@@ -16,12 +16,10 @@ export const ExpandablePanelBody = ({
   const theme = useTheme();
 
   const defaultEPBodyThemeValues: ExpandablePanelStyledProps = {
-    color: theme.colors.extended.blue.shade50,
-    borderColor: theme.colors.brand.black,
     fontSize: '1rem',
     fontWeight: theme.fontWeight.REGULAR,
-    paddingX: theme.spaceUnit['spacing-16'],
-    paddingY: theme.spaceUnit['spacing-24'],
+    paddingY: theme.spaceUnit['spacing-16'],
+    paddingX: theme.spaceUnit['spacing-24'],
     width: '100%',
   };
 
