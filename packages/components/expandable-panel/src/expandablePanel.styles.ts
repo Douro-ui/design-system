@@ -5,6 +5,21 @@ import { ReactNode } from 'react';
 export const ExpandablePanelStyled = styled.div<{
   styled: Required<ExpandablePanelStyledProps>;
 }>`
+  display: flex;
+  flex-direction: column;
+  width: ${({ styled }) => styled?.width || '100%'};
+  max-width: 100%;
+  box-sizing: border-box;
+  border: ${({ styled }) => styled?.borderColor || 'transparent'};
+  padding: ${({ styled }) => styled.paddingX} ${({ styled }) => styled.paddingY}
+    ${({ styled }) => styled.paddingX} ${({ styled }) => styled.paddingY};
+  gap: ${({ styled }) => styled?.gap};
+  background-color: ${({ styled }) => styled?.backgroundColor || 'transparent'};
+`;
+
+export const ExpandablePanelItemStyled = styled.div<{
+  styled: Required<ExpandablePanelStyledProps>;
+}>`
   max-width: 100%;
   width: ${({ styled }) => styled.width};
   display: flex;
@@ -12,7 +27,6 @@ export const ExpandablePanelStyled = styled.div<{
   align-items: center;
   justify-content: center;
   position: relative;
-  cursor: pointer;
   box-sizing: border-box;
 `;
 
@@ -21,7 +35,8 @@ export const ExpandablePanelHeaderStyled = styled.button<{
   icon?: ReactNode;
 }>`
   color: ${({ styled }) => styled.color};
-  border: 1px ${({ styled }) => styled.borderColor} solid;
+  background-color: ${({ styled }) => styled.backgroundColor || 'transparent'};
+  border: ${({ styled }) => styled.borderColor || 'transparent'};
   font-size: ${({ styled }) => styled.fontSize};
   font-weight: ${({ styled }) => styled.fontWeight};
   display: flex;
@@ -44,7 +59,7 @@ export const ExpandablePanelHeaderStyled = styled.button<{
 
   &:disabled {
     color: ${({ styled }) => styled.colorDisabled};
-    background: ${({ styled }) => styled.backgroundColorDisabled};
+    background-color: ${({ styled }) => styled.backgroundColorDisabled};
     border-color: ${({ styled }) => styled.borderColorDisabled};
     pointer-events: none;
     cursor: not-allowed;
@@ -57,7 +72,8 @@ export const ExpandablePanelBodyStyled = styled.div<{
   height: string;
 }>`
   color: ${({ styled }) => styled.color};
-  border: 1px ${({ styled }) => styled.borderColor} solid;
+  background-color: ${({ styled }) => styled.backgroundColor || 'transparent'};
+  border: ${({ styled }) => styled.borderColor};
   font-size: ${({ styled }) => styled.fontSize};
   font-weight: ${({ styled }) => styled.fontWeight};
   padding: ${({ isExpanded, styled }) =>
@@ -65,7 +81,6 @@ export const ExpandablePanelBodyStyled = styled.div<{
   width: ${({ styled }) => styled.width};
   display: flex;
   align-items: center;
-  cursor: pointer;
   box-sizing: border-box;
   height: ${({ height }) => height};
   overflow: hidden;

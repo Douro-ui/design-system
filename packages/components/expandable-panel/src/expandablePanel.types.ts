@@ -1,8 +1,10 @@
 import { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
+import React from 'react';
 
 export interface ExpandablePanelStyledProps {
   color?: string;
   borderColor?: string;
+  backgroundColor?: string;
   colorDisabled?: string;
   backgroundColorDisabled?: string;
   borderColorDisabled?: string;
@@ -17,7 +19,16 @@ export interface ExpandablePanelStyledProps {
   isExpanded?: boolean;
 }
 
-export interface ExpandablePanelProps extends HTMLAttributes<HTMLDivElement> {
+export interface ExpandablePanelProps {
+  items: ExpandablePanelItemProps[];
+  styled?: ExpandablePanelStyledProps;
+  preventAllClosed?: boolean;
+  multipleOpens?: boolean;
+  onToggle?: (index: number) => void;
+}
+
+export interface ExpandablePanelItemProps
+  extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
   styled?: ExpandablePanelStyledProps;
   header?: ReactNode;
@@ -25,6 +36,7 @@ export interface ExpandablePanelProps extends HTMLAttributes<HTMLDivElement> {
   startExpanded?: boolean;
   hasIcon?: ReactNode;
   children?: ReactNode;
+  onClick?: () => void;
 }
 
 export interface ExpandablePanelHeaderProps
@@ -44,3 +56,10 @@ export interface ExpandablePanelBodyProps
   height?: string;
   children?: ReactNode;
 }
+
+export type HandleToggleArgs = {
+  index: number;
+  setItems: React.Dispatch<React.SetStateAction<ExpandablePanelItemProps[]>>;
+  preventAllClosed?: boolean;
+  multipleOpens?: boolean;
+};

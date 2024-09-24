@@ -19,8 +19,6 @@ export const ExpandablePanelHeader = ({
   const theme = useTheme();
 
   const defaultEPHeaderThemeValues: ExpandablePanelStyledProps = {
-    color: theme.colors.extended.blue.shade50,
-    borderColor: theme.colors.brand.black,
     colorDisabled: theme.colors.neutral.cold.shade70,
     backgroundColorDisabled: theme.colors.neutral.cold.shade95,
     borderColorDisabled: theme.colors.neutral.cold.shade70,

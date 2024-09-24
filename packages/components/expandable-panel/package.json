@@ -25,7 +25,8 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@douro-ui/react": "^0.6.1"
+    "@douro-ui/react": "^0.6.1",
+    "@douro-ui/svg-icons": ">=0.1.0"
   },
   "publishConfig": {
     "access": "public"

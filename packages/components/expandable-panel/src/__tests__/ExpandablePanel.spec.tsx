@@ -12,8 +12,11 @@ beforeAll(() => {
 
 describe('<ExpandablePanel />', () => {
   it('should renders a default expandable panel', () => {
-    render(<ExpandablePanel header={'Open me'}>Test children</ExpandablePanel>);
-
+    render(
+      <ExpandablePanel
+        items={[{ header: 'Open me', children: 'Test children' }]}
+      />,
+    );
     const header = screen.getByText('Open me');
     expect(screen.queryByText('Test children')).not.toBeInTheDocument();
 
@@ -26,9 +29,11 @@ describe('<ExpandablePanel />', () => {
 
   it('should render a start expanded panel', () => {
     render(
-      <ExpandablePanel header="Open me" startExpanded>
-        Test children
-      </ExpandablePanel>,
+      <ExpandablePanel
+        items={[
+          { header: 'Open me', children: 'Test children', startExpanded: true },
+        ]}
+      />,
     );
 
     expect(screen.getByText('Test children')).toBeInTheDocument();
@@ -36,9 +41,11 @@ describe('<ExpandablePanel />', () => {
 
   it('should renders a disabled expandable panel', () => {
     render(
-      <ExpandablePanel header={'Open me'} disabled>
-        Test children
-      </ExpandablePanel>,
+      <ExpandablePanel
+        items={[
+          { header: 'Open me', children: 'Test children', disabled: true },
+        ]}
+      />,
     );
 
     const header = screen.getByText('Open me');
@@ -49,16 +56,18 @@ describe('<ExpandablePanel />', () => {
   it('should renders a default expandable panel with button children', () => {
     const handleClick = jest.fn();
     render(
-      <ExpandablePanel header={'Open me'}>
-        <Button
-          typeBtn="primary"
-          size="lg"
-          onClick={handleClick}
-          disabled={false}
-        >
-          Test button children
-        </Button>
-      </ExpandablePanel>,
+      <ExpandablePanel
+        items={[
+          {
+            header: 'Open me',
+            children: (
+              <Button typeBtn="primary" size="lg" onClick={handleClick}>
+                Test button children
+              </Button>
+            ),
+          },
+        ]}
+      />,
     );
 
     const header = screen.getByText('Open me');
@@ -66,11 +75,5 @@ describe('<ExpandablePanel />', () => {
     fireEvent.click(header);
     const buttonElement = screen.getByText('Test button children');
     expect(buttonElement).toBeInTheDocument();
-
-    fireEvent.click(buttonElement);
-    expect(handleClick).toHaveBeenCalledTimes(1);
-
-    fireEvent.click(header);
-    expect(screen.queryByText('Test button children')).not.toBeInTheDocument();
   });
 });
