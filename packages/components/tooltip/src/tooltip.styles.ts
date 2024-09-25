@@ -9,7 +9,7 @@ const handlePosition = (
   if (isFixedBottom) return '';
 
   switch (position) {
-    case 'top':
+    default:
       return `
         &::after {
           bottom: -5px;
@@ -49,8 +49,6 @@ const handlePosition = (
           border-right-color: ${styled.backgroundColor};
         }
       `;
-    default:
-      return '';
   }
 };
 

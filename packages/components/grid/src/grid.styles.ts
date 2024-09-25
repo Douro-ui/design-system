@@ -1,10 +1,5 @@
 import styled, { StyledComponent } from '@emotion/styled';
-import {
-  GridElements,
-  GridItemProps,
-  GridProps,
-  GridStyledProps,
-} from './grid.types';
+import { GridElements, GridItemProps, GridProps } from './grid.types';
 
 export const GridItemComponent = ({
   as,
@@ -49,17 +44,4 @@ export const GridComponent = styled.div<GridProps>`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}px) {
     grid-template-columns: 1fr;
   }
-`;
-
-export const ContentDemo = styled.div<{
-  styled: Required<GridStyledProps>;
-}>`
-  background-color: ${({ styled }) => styled.backgroundColor};
-  color: ${({ styled }) => styled.color};
-  height: ${({ styled }) => styled.height};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
 `;
