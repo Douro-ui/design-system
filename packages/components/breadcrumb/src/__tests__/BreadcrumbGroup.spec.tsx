@@ -7,8 +7,22 @@ describe('<BreadcrumbGroup>', () => {
     separator: '>',
   };
 
-  it('should render children correctly', () => {
-    render(<BreadcrumbGroup {...defaultProps} />);
+  it('should update and render breadcrumbs when prop changes from empty to populated', () => {
+    const { rerender } = render(<BreadcrumbGroup />);
+
+    expect(screen.queryByText('Home')).not.toBeInTheDocument();
+    expect(screen.queryByText('Category')).not.toBeInTheDocument();
+    expect(screen.queryByText('Product')).not.toBeInTheDocument();
+
+    const separators = screen.queryAllByText('>');
+
+    expect(separators.length).toBe(0);
+
+    const updatedProps = {
+      breadcrumbs: ['Home', 'Category', 'Product'],
+    };
+
+    rerender(<BreadcrumbGroup {...updatedProps} />);
 
     expect(screen.getByText('Home')).toBeInTheDocument();
     expect(screen.getByText('Category')).toBeInTheDocument();
