@@ -15,7 +15,7 @@ export const VideoContainerStyled = styled.div<VideoContainerStyledProps>`
 `;
 
 export const VideoStyled = styled.video<{ styled: Required<VideoStyledProps> }>`
-  width: ${({ width }) => width ?? '100%'};
-  height: ${({ height }) => height ?? 'auto'};
-  display: ${props => (props.src ? 'block' : 'none')};
+  width: ${({ styled }) => styled.width ?? '100%'};
+  height: ${({ styled }) => styled.height ?? 'auto'};
+  display: block;
 `;

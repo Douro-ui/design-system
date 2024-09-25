@@ -85,5 +85,6 @@ export const useToaster = ({
     closeToaster,
     handleMouseEnter,
     handleMouseLeave,
+    isHovered,
   };
 };

@@ -1,6 +1,14 @@
 import Button from '@douro-ui/button';
-import { fireEvent, render, screen } from '../../../../../tests/test-utils';
+import {
+  act,
+  fireEvent,
+  render,
+  renderHook,
+  screen,
+} from '../../../../../tests/test-utils';
 import ExpandablePanel from '../ExpandablePanel';
+import { ExpandablePanelItemProps } from '../expandablePanel.types';
+import { useHandleToggle } from '../hooks';
 
 beforeAll(() => {
   global.ResizeObserver = class {
@@ -11,6 +19,31 @@ beforeAll(() => {
 });
 
 describe('<ExpandablePanel />', () => {
+  const initialItems: ExpandablePanelItemProps[] = [
+    { header: 'Panel 1', expanded: false, disabled: false },
+    { header: 'Panel 2', expanded: false, disabled: false },
+    { header: 'Panel 3', expanded: false, disabled: true },
+  ];
+
+  it('should handle preventAllClosed flag correctly', () => {
+    const { result } = renderHook(() => useHandleToggle(initialItems));
+
+    act(() => {
+      result.current.handleToggle({ index: 0, preventAllClosed: true });
+      result.current.handleToggle({ index: 2 });
+    });
+
+    expect(result.current.items[0].expanded).toBe(true);
+    expect(result.current.items[1].expanded).toBe(false);
+    expect(result.current.items[2].expanded).toBe(false);
+
+    act(() => {
+      result.current.handleToggle({ index: 0, preventAllClosed: true });
+    });
+
+    expect(result.current.items[0].expanded).toBe(true);
+  });
+
   it('should renders a default expandable panel', () => {
     render(
       <ExpandablePanel

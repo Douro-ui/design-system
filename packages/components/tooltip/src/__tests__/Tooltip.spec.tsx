@@ -8,11 +8,7 @@ import Tooltip from '../Tooltip';
 
 describe('<Tooltip />', () => {
   it('should render the tooltip on hover and hide the tooltip when not hovered', async () => {
-    render(
-      <Tooltip childrenLabel="Tooltip content" position="top">
-        Hover over me
-      </Tooltip>,
-    );
+    render(<Tooltip childrenLabel="Tooltip content">Hover over me</Tooltip>);
 
     const triggerElement = screen.getByText('Tooltip content');
     expect(screen.queryByText('Hover over me')).not.toBeInTheDocument();
@@ -79,5 +75,66 @@ describe('<Tooltip />', () => {
       },
       { timeout: 2000 },
     );
+  });
+
+  it('should render the tooltip in the correct position (left)', async () => {
+    render(
+      <Tooltip childrenLabel="Tooltip content" position="left">
+        Hover over me
+      </Tooltip>,
+    );
+
+    const triggerElement = screen.getByText('Tooltip content');
+    expect(screen.queryByText('Hover over me')).not.toBeInTheDocument();
+
+    fireEvent.mouseOver(triggerElement);
+
+    const tooltipElement = await waitFor(() =>
+      screen.getByText('Hover over me'),
+    );
+
+    expect(tooltipElement).toBeInTheDocument();
+
+    expect(tooltipElement).toHaveStyle('top: 0px');
+  });
+
+  it('should render the tooltip in the correct position (right)', async () => {
+    render(
+      <Tooltip childrenLabel="Tooltip content" position="right">
+        Hover over me
+      </Tooltip>,
+    );
+
+    const triggerElement = screen.getByText('Tooltip content');
+    expect(screen.queryByText('Hover over me')).not.toBeInTheDocument();
+
+    fireEvent.mouseOver(triggerElement);
+
+    const tooltipElement = await waitFor(() =>
+      screen.getByText('Hover over me'),
+    );
+
+    expect(tooltipElement).toBeInTheDocument();
+
+    expect(tooltipElement).toHaveStyle('left: 16px; top: 0');
+  });
+
+  it('should render the tooltip fixed to bottom', async () => {
+    render(
+      <Tooltip childrenLabel="Tooltip content" isFixedBottom>
+        Hover over me
+      </Tooltip>,
+    );
+
+    const triggerElement = screen.getByText('Tooltip content');
+    expect(screen.queryByText('Hover over me')).not.toBeInTheDocument();
+
+    fireEvent.mouseOver(triggerElement);
+
+    const tooltipElement = await waitFor(() =>
+      screen.getByText('Hover over me'),
+    );
+
+    expect(tooltipElement).toBeInTheDocument();
   });
 });

@@ -49,6 +49,7 @@ export interface UseToasterResult {
   closeToaster: () => void;
   handleMouseEnter: () => void;
   handleMouseLeave: () => void;
+  isHovered: boolean;
 }
 
 export interface ToasterStackProps {

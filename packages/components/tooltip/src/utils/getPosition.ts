@@ -20,7 +20,7 @@ export const calculatePosition = ({
   }
 
   switch (position) {
-    case 'top':
+    default:
       top = triggerRect.top - tooltipRect.height - paddingY;
       left = triggerRect.left + (triggerRect.width - tooltipRect.width) / 2;
       break;
@@ -35,10 +35,6 @@ export const calculatePosition = ({
     case 'right':
       top = triggerRect.top + (triggerRect.height - tooltipRect.height) / 2;
       left = triggerRect.right + paddingY;
-      break;
-    default:
-      top = triggerRect.bottom + paddingY;
-      left = triggerRect.left + (triggerRect.width - tooltipRect.width) / 2;
       break;
   }
 

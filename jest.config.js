@@ -5,17 +5,21 @@ module.exports = {
     '^.*\\.stories\\.[jt]sx?$',
     'index.ts',
     'styles.ts',
-    '<rootDir>/packages/react/src/tokens/spacing',
+    '<rootDir>/packages/react/src/tokens',
+    '<rootDir>/packages/react/src/context',
+    '<rootDir>/packages/svg-icons/src',
+    '<rootDir>/packages/components/avatar/src/utils/getFilter.tsx',
+    '<rootDir>/packages/components/toaster/src/utils/getToasterTypesStyles.tsx',
   ],
   coverageReporters: ['json', 'html', 'text'],
-  // coverageThreshold: {
-  //   global: {
-  //     branches: 80,
-  //     functions: 80,
-  //     lines: 80,
-  //     statements: 80,
-  //   },
-  // },
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80,
+    },
+  },
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   moduleNameMapper: {
     // '^.+\\.svg$': 'jest-transformer-svg',

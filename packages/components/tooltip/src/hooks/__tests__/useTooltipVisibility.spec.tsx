@@ -3,9 +3,12 @@ import { useTooltipVisibility } from '../useTooltipVisibility';
 
 jest.useFakeTimers();
 
+const clearTimeoutMock = jest.spyOn(global, 'clearTimeout');
+
 describe('useTooltipVisibility', () => {
   afterEach(() => {
     jest.clearAllTimers();
+    clearTimeoutMock.mockClear();
   });
 
   it('should show tooltip immediately if delay is 0', async () => {
@@ -98,6 +101,29 @@ describe('useTooltipVisibility', () => {
 
     await waitFor(() => {
       expect(result.current.visible).toBe(true);
+    });
+  });
+
+  it('should toggle tooltip visibility when toggleTooltip is called', async () => {
+    const delay = 0;
+    const { result } = renderHook(() => useTooltipVisibility(delay));
+
+    expect(result.current.visible).toBe(false);
+
+    waitFor(() => {
+      result.current.toggleTooltip();
+    });
+
+    await waitFor(() => {
+      expect(result.current.visible).toBe(true);
+    });
+
+    waitFor(() => {
+      result.current.toggleTooltip();
+    });
+
+    await waitFor(() => {
+      expect(result.current.visible).toBe(false);
     });
   });
 });
