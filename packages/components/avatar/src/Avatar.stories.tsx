@@ -21,29 +21,18 @@ const meta: Meta<AvatarProps> = {
   tags: ['autodocs'],
   args: {
     size: 'lg',
-    typeAvt: 'base',
     children: 'DUI',
     fallbackText: 'DUI',
-    src: 'https://via.placeholder.com/150',
-    img: undefined,
   },
   argTypes: {
     typeAvt: {
-      control: {
-        type: 'radio',
-        options: ['base', 'image'],
-      },
+      control: false,
     },
     size: {
       control: { options: ['sm', 'md', 'lg', 'xl'] },
     },
     src: {
       control: 'text',
-      if: { arg: 'typeAvt', eq: 'image' },
-    },
-    img: {
-      control: 'object',
-      if: { arg: 'typeAvt', eq: 'image' },
     },
   },
 } satisfies Meta<AvatarProps>;
@@ -54,7 +43,6 @@ type Story = StoryObj<AvatarProps>;
 
 export const Base: Story = {
   args: {
-    typeAvt: 'base',
     size: 'lg',
     children: 'DUI',
   },
@@ -62,7 +50,6 @@ export const Base: Story = {
 
 export const Image: Story = {
   args: {
-    typeAvt: 'image',
     size: 'lg',
     src: 'https://via.placeholder.com/150',
     fallbackText: 'DUI',
@@ -72,7 +59,6 @@ export const Image: Story = {
 
 export const ImageWithError: Story = {
   args: {
-    typeAvt: 'image',
     size: 'lg',
     src: 'https://invalid-url.com/invalid-image.png',
     fallbackText: 'DUI',
@@ -88,7 +74,7 @@ Base.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 
   await userEvent.click(avatar);
   expect(avatar).toHaveTextContent('DUI');
-  expect(avatar).toHaveClass('css-20i7zv');
+  expect(avatar).toHaveClass('css-wfuucg');
 };
 
 Image.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -100,7 +86,7 @@ Image.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const img = canvas.getByRole('img', { name: /avatar image/i });
   expect(img).toBeVisible();
   expect(img).toHaveAttribute('src', 'https://via.placeholder.com/150');
-  expect(avatar).toHaveClass('css-4xt63c');
+  expect(avatar).toHaveClass('css-10la8wm');
 };
 
 ImageWithError.play = async ({
@@ -120,5 +106,5 @@ ImageWithError.play = async ({
     'src',
     'https://invalid-url.com/invalid-image.png',
   );
-  expect(avatar).toHaveClass('css-4xt63c');
+  expect(avatar).toHaveClass('css-10la8wm');
 };

@@ -8,11 +8,10 @@ const handleSize = (size: AvatarProps['size']) => {
     case 'md':
       return 'font-size: 0.875rem; width: 2.5rem; height: 2.5rem;';
     case 'lg':
+    default:
       return 'font-size: 1rem; width: 3rem; height: 3rem;';
     case 'xl':
       return 'font-size: 1.25rem; width: 4rem; height: 4rem;';
-    default:
-      return 'font-size: 1rem; width: 3rem; height: 3rem;';
   }
 };
 
@@ -32,7 +31,6 @@ export const AvatarStyled = styled.div<{
   transition: 0.2s ease;
   font-family: ${({ styled }) => styled.fontFamily};
   font-weight: ${({ styled }) => styled.fontWeight};
-  cursor: pointer;
 
   svg {
     margin-right: 0.5rem;
