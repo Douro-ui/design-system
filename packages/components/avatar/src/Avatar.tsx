@@ -13,10 +13,10 @@ const Avatar = ({
   img,
   children,
   fallbackText,
-  typeAvt,
   ...props
 }: AvatarProps): ReactNode => {
-  const AvatarComponent = AvatarTypes[typeAvt ?? 'base'];
+  const inferredType = src ? 'image' : 'base';
+  const AvatarComponent = AvatarTypes[inferredType];
 
   return (
     <AvatarComponent
@@ -27,7 +27,7 @@ const Avatar = ({
       fallbackText={fallbackText}
       {...props}
     >
-      {typeAvt === 'image' ? null : children}
+      {inferredType === 'image' ? null : children}
     </AvatarComponent>
   );
 };
