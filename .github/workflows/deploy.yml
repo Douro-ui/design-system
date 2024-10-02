@@ -22,7 +22,7 @@ jobs:
       run: yarn
 
     - name: Build project
-      run: yarn build
+      run: lerna:build
 
     - name: Deploy to Netlify
       run: npx netlify deploy --prod --dir=build
