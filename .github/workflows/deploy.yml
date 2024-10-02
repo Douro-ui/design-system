@@ -25,7 +25,7 @@ jobs:
       run: yarn lerna:build
 
     - name: Deploy to Netlify
-      run: npx netlify deploy --prod --dir=build
+      run: netlify deploy --prod --dir=build
       env:
         TOKEN: ${{ secrets.TOKEN }}
         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
