@@ -32,6 +32,16 @@ describe('<RadioGroup />', () => {
     expect(handleChange).toHaveBeenCalledWith('radio1');
   });
 
+  it('does not call onChange handler when onChange is not provided', () => {
+    const handleChange = jest.fn();
+
+    render(<RadioGroup name="radioGroup" options={options} />);
+
+    fireEvent.click(screen.getByLabelText('Radio 1'));
+
+    expect(handleChange).not.toHaveBeenCalledWith('radio1');
+  });
+
   it('checks the correct radio button', () => {
     render(
       <RadioGroup name="radioGroup" options={options} selectedValue="radio2" />,

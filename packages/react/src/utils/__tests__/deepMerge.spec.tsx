@@ -3,6 +3,7 @@ import { useTheme } from '../../hooks';
 import { ThemeProvider } from '../../context';
 import { Colors, Theme, Typography } from '../../theme/theme.types';
 import { FontWeight } from '../../theme/theme.constants';
+import { deepMerge } from '../deepMerge';
 
 const MergeTest = () => {
   const theme = useTheme();
@@ -103,5 +104,28 @@ describe('Test to check the defaultTheme values', () => {
     const childElement = getByTestId('component');
     expect(childElement).toHaveStyle('font-size: 3.5rem');
     expect(childElement).toHaveStyle('color: gold');
+  });
+
+  it('should correctly merge arrays in a mock theme structure', () => {
+    const targetTheme = {
+      custom: {
+        gradients: ['blue', 'green'],
+      },
+    };
+
+    const sourceTheme = {
+      custom: {
+        gradients: ['red', 'yellow'],
+      },
+    };
+
+    const mergedTheme = deepMerge(targetTheme, sourceTheme);
+
+    expect(mergedTheme.custom.gradients).toEqual([
+      'blue',
+      'green',
+      'red',
+      'yellow',
+    ]);
   });
 });
