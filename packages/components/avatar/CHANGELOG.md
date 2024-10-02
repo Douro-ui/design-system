@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/avatar@0.1.5...@douro-ui/avatar@0.2.0) (2024-10-02)
+
+### Features
+
+- avatar tag enhancement ([8173dd4](https://github.com/Douro-ui/design-system/commit/8173dd489e43d7917007ce1ad1d838e2e58cfc5a))
+
 ## [0.1.5](https://github.com/Douro-ui/design-system/compare/@douro-ui/avatar@0.1.4...@douro-ui/avatar@0.1.5) (2024-09-10)
 
 **Note:** Version bump only for package @douro-ui/avatar
