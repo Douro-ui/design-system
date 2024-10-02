@@ -1,0 +1,31 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: yarn
+
+    - name: Build project
+      run: yarn build
+
+    - name: Deploy to Netlify
+      run: npx netlify deploy --prod --dir=build
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
