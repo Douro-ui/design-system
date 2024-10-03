@@ -16,7 +16,6 @@
   "license": "MIT",
   "scripts": {
     "build:storybook": "storybook build",
-    "deploy": "netlify deploy --prod --dir=storybook-static --site=${NETLIFY_SITE_ID}",
     "dui": "node scripts/dui/index.js",
     "lerna:build": "lerna run build",
     "lerna:version": "npx lerna version --conventional-commits --yes",
