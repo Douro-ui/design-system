@@ -91,8 +91,8 @@ export default ExampleExpandablePanel;
 | Prop             | Type                       | default | Description                                          |
 | ---------------- | -------------------------- | ------- | ---------------------------------------------------- |
 | items            | ExpandablePanelItemProps[] | N/A     | Array of items to display in the expandable panel.   |
-| preventAllClosed | boolean                    | false   | If true, at least one item must remain expanded.                  |
-| styled           | ExpandablePanelStyledProps | N/A     | Custom styles for the expandable panel.     |
+| preventAllClosed | boolean                    | false   | If true, at least one item must remain expanded.     |
+| styled           | ExpandablePanelStyledProps | N/A     | Custom styles for the expandable panel.              |
 | multipleOpens    | boolean                    | false   | Allows multiple items to be expanded simultaneously. |
 
 ##### ExpandablePanelItem Props

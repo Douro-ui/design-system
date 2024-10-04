@@ -62,7 +62,7 @@ const ExampleIcon = () => {
   return (
     <div>
       <Icon name="chevron-up" size="lg" />
-      <Icon name="chevron-down" size="sm"/>
+      <Icon name="chevron-down" size="sm" />
     </div>
   );
 };
@@ -74,12 +74,11 @@ export default ExampleIcon;
 
 ##### Icon Props
 
-| Prop             | Type                       | default | Description                                          |
-| ---------------- | -------------------------- | ------- | ---------------------------------------------------- |
-| name            | string | N/A     | The name of the icon to render.  |
-| size | 'sm', 'md', 'lg'                    | 'md'   | The size of the icon.                  |
-| styled           | IconStyledProps	 | N/A     | Custom styles for the icon.     |
-
+| Prop   | Type             | default | Description                     |
+| ------ | ---------------- | ------- | ------------------------------- |
+| name   | string           | N/A     | The name of the icon to render. |
+| size   | 'sm', 'md', 'lg' | 'md'    | The size of the icon.           |
+| styled | IconStyledProps  | N/A     | Custom styles for the icon.     |
 
 ### Customization
 
