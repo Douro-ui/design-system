@@ -1,0 +1,33 @@
+{
+  "name": "@douro-ui/tags",
+  "version": "0.0.0",
+  "description": "Douro UI - Metyis Design System Tags Component",
+  "main": "src/index.ts",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Douro-ui/design-system"
+  },
+  "author": "Metyis Porto",
+  "bugs": "https://github.com/Douro-ui/design-system/issues",
+  "license": "MIT",
+  "scripts": {
+    "build": "vite build"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@douro-ui/react": ">=0.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
