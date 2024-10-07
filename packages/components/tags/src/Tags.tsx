@@ -5,8 +5,9 @@ import { ReactNode } from 'react';
 
 const Tags = ({
   size,
-  // icon,
-  // iconPosition,
+  hasIcon,
+  icon,
+  iconPosition,
   // iconSize,
   hasIconClose,
   iconClose,
@@ -33,6 +34,7 @@ const Tags = ({
     borderColorHover: theme.colors.neutral.silver.shade30,
     borderColorFocus: theme.colors.neutral.cold.shade10,
     borderColorActive: theme.colors.neutral.cold.shade10,
+    borderRadius: '0.25rem',
   };
 
   const mergedThemeValues = deepMerge<TagsStyledProps>(
@@ -47,12 +49,15 @@ const Tags = ({
       styled={mergedThemeValues as Required<TagsStyledProps>}
       {...props}
     >
-      {hasIconClose && (
+      {hasIcon && (
         <IconStyled
+          src={icon}
+          iconPosition={iconPosition}
+          iconClose={iconClose != undefined}
           size={size}
           styled={mergedThemeValues as Required<TagsStyledProps>}
         >
-          {iconClose}
+          {/* {iconClose} */}
         </IconStyled>
       )}
 
@@ -62,6 +67,18 @@ const Tags = ({
       >
         {label}
       </LabelStyled>
+
+      {hasIconClose && (
+        <IconStyled
+          src={iconClose}
+          iconPosition={undefined}
+          iconClose={iconClose != undefined}
+          size={size}
+          styled={mergedThemeValues as Required<TagsStyledProps>}
+        >
+          {iconClose}
+        </IconStyled>
+      )}
     </TagsContainerStyled>
   );
 };

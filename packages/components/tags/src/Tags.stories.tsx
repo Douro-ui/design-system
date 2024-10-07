@@ -62,14 +62,56 @@ export default meta;
 
 type Story = StoryObj<TagsProps>;
 
-export const Default: Story = {
+export const DefaultTag: Story = {
   args: {
     size: 'md',
+    hasIconClose: false,
+    label: 'Label',
+    disabled: false,
+  },
+};
+
+export const IconTag: Story = {
+  args: {
+    size: 'md',
+    hasIcon: true,
     icon: 'https://icon-icons.com/icons2/933/PNG/512/star_icon-icons.com_72540.png',
     iconPosition: 'left',
     hasIconClose: false,
-    iconClose: '',
     label: 'Label',
     disabled: false,
+  },
+};
+
+export const IconCloseTag: Story = {
+  args: {
+    size: 'md',
+    hasIconClose: true,
+    label: 'Label',
+    disabled: false,
+  },
+};
+
+export const BothIconTag: Story = {
+  args: {
+    size: 'md',
+    hasIcon: true,
+    icon: 'https://icon-icons.com/icons2/37/PNG/512/compass_earth_4177.png',
+    iconPosition: 'left',
+    hasIconClose: true,
+    label: 'Label',
+    disabled: false,
+  },
+};
+
+export const DisabledTag: Story = {
+  args: {
+    size: 'md',
+    hasIcon: true,
+    icon: 'https://icon-icons.com/icons2/933/PNG/512/star_icon-icons.com_72540.png',
+    iconPosition: 'left',
+    hasIconClose: false,
+    label: 'Label',
+    disabled: true,
   },
 };

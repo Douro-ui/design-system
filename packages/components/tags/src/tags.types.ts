@@ -15,10 +15,12 @@ export interface TagsStyledProps {
   borderColorHover?: string;
   borderColorFocus?: string;
   borderColorActive?: string;
+  borderRadius?: string;
 }
 
 export interface TagsProps extends HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  hasIcon?: boolean;
   icon?: string;
   iconPosition?: 'left' | 'right';
   hasIconClose?: boolean;

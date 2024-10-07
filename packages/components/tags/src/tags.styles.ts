@@ -1,6 +1,16 @@
 import styled from '@emotion/styled';
 import { TagsProps, TagsStyledProps } from './tags.types';
 
+const handlePosition = (iconPosition: TagsProps['iconPosition']) => {
+  switch (iconPosition) {
+    case 'left':
+    default:
+      return 'flex-direction: row';
+    case 'right':
+      return 'flex-direction: row-reverse';
+  }
+};
+
 const handleSize = (size: TagsProps['size']) => {
   switch (size) {
     case 'sm':
@@ -34,6 +44,10 @@ export const TagsContainerStyled = styled.div<{
 }>`
   background-color: 0.063rem solid ${({ styled }) => styled.backgroundColor};
   border: 0.063rem solid ${({ styled }) => styled.borderColor};
+  border-radius: ${({ styled }) => styled.borderRadius};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   ${({ size }) => handleSize(size)};
 
   &:hover {
@@ -63,9 +77,17 @@ export const TagsContainerStyled = styled.div<{
 export const IconStyled = styled.img<{
   styled: Required<TagsStyledProps>;
   size: TagsProps['size'];
+  iconPosition: TagsProps['iconPosition'];
+  iconClose: boolean;
 }>`
   fill: ${({ styled }) => styled.iconColor};
   ${({ size }) => handleIconSize(size)};
+
+  ${({ iconClose, iconPosition }) =>
+    !iconClose &&
+    `
+      ${handlePosition(iconPosition)};
+    `}
 
   &:hover {
     fill: ${({ styled }) => styled.iconColorHover};
