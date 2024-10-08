@@ -3,6 +3,7 @@ import Tags from './Tags';
 import { TagsProps } from './tags.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
+import { Icon } from '@douro-ui/icon';
 
 const meta: Meta<TagsProps> = {
   title: 'Example/Tags',
@@ -20,10 +21,6 @@ const meta: Meta<TagsProps> = {
   tags: ['autodocs'],
   args: {
     size: 'md',
-    icon: 'icon.svg',
-    iconPosition: 'left',
-    hasIconClose: false,
-    iconClose: '',
     label: 'Label',
     disabled: false,
   },
@@ -34,20 +31,11 @@ const meta: Meta<TagsProps> = {
         options: ['sm', 'md', 'lg', 'xl'],
       },
     },
-    icon: {
-      control: 'text',
+    iconBefore: {
+      control: 'object',
     },
-    iconPosition: {
-      control: {
-        type: 'select',
-        options: ['left', 'right'],
-      },
-    },
-    hasIconClose: {
-      control: 'boolean',
-    },
-    iconClose: {
-      control: 'text',
+    iconAfter: {
+      control: 'object',
     },
     label: {
       control: 'text',
@@ -65,7 +53,6 @@ type Story = StoryObj<TagsProps>;
 export const DefaultTag: Story = {
   args: {
     size: 'md',
-    hasIconClose: false,
     label: 'Label',
     disabled: false,
   },
@@ -74,10 +61,7 @@ export const DefaultTag: Story = {
 export const IconTag: Story = {
   args: {
     size: 'md',
-    hasIcon: true,
-    icon: 'https://icon-icons.com/icons2/933/PNG/512/star_icon-icons.com_72540.png',
-    iconPosition: 'left',
-    hasIconClose: false,
+    iconBefore: () => <Icon name="star" />,
     label: 'Label',
     disabled: false,
   },
@@ -86,7 +70,7 @@ export const IconTag: Story = {
 export const IconCloseTag: Story = {
   args: {
     size: 'md',
-    hasIconClose: true,
+    iconAfter: () => <Icon name="close" />,
     label: 'Label',
     disabled: false,
   },
@@ -95,10 +79,8 @@ export const IconCloseTag: Story = {
 export const BothIconTag: Story = {
   args: {
     size: 'md',
-    hasIcon: true,
-    icon: 'https://icon-icons.com/icons2/37/PNG/512/compass_earth_4177.png',
-    iconPosition: 'left',
-    hasIconClose: true,
+    iconBefore: () => <Icon name="star" />,
+    iconAfter: () => <Icon name="close" />,
     label: 'Label',
     disabled: false,
   },
@@ -107,10 +89,7 @@ export const BothIconTag: Story = {
 export const DisabledTag: Story = {
   args: {
     size: 'md',
-    hasIcon: true,
-    icon: 'https://icon-icons.com/icons2/933/PNG/512/star_icon-icons.com_72540.png',
-    iconPosition: 'left',
-    hasIconClose: false,
+    iconBefore: () => <Icon name="star" />,
     label: 'Label',
     disabled: true,
   },

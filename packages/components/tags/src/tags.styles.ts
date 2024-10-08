@@ -1,16 +1,6 @@
 import styled from '@emotion/styled';
 import { TagsProps, TagsStyledProps } from './tags.types';
 
-const handlePosition = (iconPosition: TagsProps['iconPosition']) => {
-  switch (iconPosition) {
-    case 'left':
-    default:
-      return 'flex-direction: row';
-    case 'right':
-      return 'flex-direction: row-reverse';
-  }
-};
-
 const handleSize = (size: TagsProps['size']) => {
   switch (size) {
     case 'sm':
@@ -25,18 +15,6 @@ const handleSize = (size: TagsProps['size']) => {
   }
 };
 
-const handleIconSize = (size: TagsProps['size']) => {
-  switch (size) {
-    case 'sm':
-    case 'md':
-    case 'lg':
-    default:
-      return 'width: 1rem; height: 1rem;';
-    case 'xl':
-      return 'width: 1.5rem; height: 1.5rem;';
-  }
-};
-
 export const TagsContainerStyled = styled.div<{
   styled: Required<TagsStyledProps>;
   size: TagsProps['size'];
@@ -48,6 +26,7 @@ export const TagsContainerStyled = styled.div<{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
   ${({ size }) => handleSize(size)};
 
   &:hover {
@@ -74,32 +53,17 @@ export const TagsContainerStyled = styled.div<{
     `}
 `;
 
-export const IconStyled = styled.img<{
-  styled: Required<TagsStyledProps>;
+export const IconStyled = styled.div<{
   size: TagsProps['size'];
-  iconPosition: TagsProps['iconPosition'];
-  iconClose: boolean;
 }>`
-  fill: ${({ styled }) => styled.iconColor};
-  ${({ size }) => handleIconSize(size)};
-
-  ${({ iconClose, iconPosition }) =>
-    !iconClose &&
+  ${({ size }) =>
+    size == 'xl' &&
     `
-      ${handlePosition(iconPosition)};
+      > div {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
     `}
-
-  &:hover {
-    fill: ${({ styled }) => styled.iconColorHover};
-  }
-
-  &:focus {
-    fill: ${({ styled }) => styled.iconColorFocus};
-  }
-
-  &:active {
-    fill: ${({ styled }) => styled.iconColorActive};
-  }
 `;
 
 export const LabelStyled = styled.div<{

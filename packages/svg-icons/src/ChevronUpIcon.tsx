@@ -1,11 +1,11 @@
 import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
 
 export const ChevronUpIcon = (): EmotionJSX.Element => (
-  <path
-    d="M6 15L12 9L18 15"
-    fill="none"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  />
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M16.0245 10.4373L23.0188 17.4315L22.3226 18.1278L16.0245 11.8297L9.7265 18.1278L9.03027 17.4315L16.0245 10.4373Z"
+    />
+  </svg>
 );

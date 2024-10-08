@@ -5,12 +5,8 @@ import { ReactNode } from 'react';
 
 const Tags = ({
   size,
-  hasIcon,
-  icon,
-  iconPosition,
-  // iconSize,
-  hasIconClose,
-  iconClose,
+  iconBefore,
+  iconAfter,
   label,
   disabled,
   styled,
@@ -23,7 +19,6 @@ const Tags = ({
     colorHover: theme.colors.neutral.silver.shade10,
     colorFocus: theme.colors.neutral.silver.shade10,
     colorActive: theme.colors.neutral.silver.shade10,
-    // fontSize: theme.fontSize,
     fontWeight: theme.fontWeight.REGULAR,
     iconColor: theme.colors.neutral.silver.shade40,
     iconColorHover: theme.colors.neutral.silver.shade10,
@@ -49,17 +44,7 @@ const Tags = ({
       styled={mergedThemeValues as Required<TagsStyledProps>}
       {...props}
     >
-      {hasIcon && (
-        <IconStyled
-          src={icon}
-          iconPosition={iconPosition}
-          iconClose={iconClose != undefined}
-          size={size}
-          styled={mergedThemeValues as Required<TagsStyledProps>}
-        >
-          {/* {iconClose} */}
-        </IconStyled>
-      )}
+      <IconStyled size={size}>{iconBefore && iconBefore()}</IconStyled>
 
       <LabelStyled
         size={size}
@@ -68,17 +53,7 @@ const Tags = ({
         {label}
       </LabelStyled>
 
-      {hasIconClose && (
-        <IconStyled
-          src={iconClose}
-          iconPosition={undefined}
-          iconClose={iconClose != undefined}
-          size={size}
-          styled={mergedThemeValues as Required<TagsStyledProps>}
-        >
-          {iconClose}
-        </IconStyled>
-      )}
+      <IconStyled size={size}>{iconAfter && iconAfter()}</IconStyled>
     </TagsContainerStyled>
   );
 };

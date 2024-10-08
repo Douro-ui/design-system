@@ -1,18 +1,20 @@
 import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
 
 export const CloseIcon = (): EmotionJSX.Element => (
-  <g id="Icons">
+  <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
     <mask
-      id="mask0"
+      id="mask0_335_376"
       style={{ maskType: 'alpha' }}
       maskUnits="userSpaceOnUse"
       x="0"
       y="0"
+      width="16"
+      height="16"
     >
-      <rect width="24" height="24" />
+      <rect width="16" height="16" fill="#D9D9D9" />
     </mask>
-    <g mask="url(#mask0)">
-      <path d="M6.39994 18.6538L5.34619 17.6L10.9462 12L5.34619 6.4L6.39994 5.34625L11.9999 10.9463L17.5999 5.34625L18.6537 6.4L13.0537 12L18.6537 17.6L17.5999 18.6538L11.9999 13.0538L6.39994 18.6538Z" />
+    <g mask="url(#mask0_335_376)">
+      <path d="M4.26665 12.4358L3.56415 11.7333L7.29748 8.00001L3.56415 4.26668L4.26665 3.56418L7.99998 7.29751L11.7333 3.56418L12.4358 4.26668L8.70248 8.00001L12.4358 11.7333L11.7333 12.4358L7.99998 8.70251L4.26665 12.4358Z" />
     </g>
-  </g>
+  </svg>
 );

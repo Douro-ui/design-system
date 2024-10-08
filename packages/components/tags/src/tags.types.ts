@@ -1,3 +1,4 @@
+import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
 import { HTMLAttributes } from 'react';
 
 export interface TagsStyledProps {
@@ -20,11 +21,8 @@ export interface TagsStyledProps {
 
 export interface TagsProps extends HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'md' | 'lg' | 'xl';
-  hasIcon?: boolean;
-  icon?: string;
-  iconPosition?: 'left' | 'right';
-  hasIconClose?: boolean;
-  iconClose?: string;
+  iconBefore?: () => EmotionJSX.Element;
+  iconAfter?: () => EmotionJSX.Element;
   label: string;
   disabled?: boolean;
   styled?: TagsStyledProps;
