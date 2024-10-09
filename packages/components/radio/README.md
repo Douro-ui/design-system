@@ -25,7 +25,7 @@ npm i @douro-ui/radio react@18.2.0 react-dom@18.2.0
 
 ```js
 import { Radio, RadioGroup } from '@douro-ui/radio';
-import type { RadioProps, CheckboxGroupProps, RadioOption } from '@douro-ui/radio';
+import type { RadioProps, RadioGroupProps, RadioOption } from '@douro-ui/radio';
 ```
 
 or
