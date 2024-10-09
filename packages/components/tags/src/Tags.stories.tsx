@@ -25,6 +25,12 @@ const meta: Meta<TagsProps> = {
     disabled: false,
   },
   argTypes: {
+    typeTag: {
+      control: {
+        type: 'select',
+        options: ['readonly', 'selectable', 'dismissible'],
+      },
+    },
     size: {
       control: {
         type: 'select',
@@ -50,46 +56,51 @@ export default meta;
 
 type Story = StoryObj<TagsProps>;
 
-export const DefaultTag: Story = {
+export const DefaultTagReadonly: Story = {
   args: {
+    typeTag: 'readonly',
     size: 'md',
     label: 'Label',
     disabled: false,
   },
 };
 
-export const IconTag: Story = {
+export const IconTagSelectable: Story = {
   args: {
+    typeTag: 'selectable',
     size: 'md',
-    iconBefore: () => <Icon name="star" />,
+    iconBefore: () => <Icon name="star" styled={{ fillColor: '#0B1F2F' }} />,
     label: 'Label',
     disabled: false,
   },
 };
 
-export const IconCloseTag: Story = {
+export const IconCloseTagDismissible: Story = {
   args: {
+    typeTag: 'dismissible',
     size: 'md',
-    iconAfter: () => <Icon name="close" />,
+    iconAfter: () => <Icon name="close" styled={{ fillColor: '#0B1F2F' }} />,
     label: 'Label',
     disabled: false,
   },
 };
 
-export const BothIconTag: Story = {
+export const BothIconTagSelectable: Story = {
   args: {
+    typeTag: 'selectable',
     size: 'md',
-    iconBefore: () => <Icon name="star" />,
-    iconAfter: () => <Icon name="close" />,
+    iconBefore: () => <Icon name="star" styled={{ fillColor: '#0B1F2F' }} />,
+    iconAfter: () => <Icon name="close" styled={{ fillColor: '#0B1F2F' }} />,
     label: 'Label',
     disabled: false,
   },
 };
 
-export const DisabledTag: Story = {
+export const DisabledTagSelectable: Story = {
   args: {
+    typeTag: 'selectable',
     size: 'md',
-    iconBefore: () => <Icon name="star" />,
+    iconBefore: () => <Icon name="star" styled={{ fillColor: '#0B1F2F' }} />,
     label: 'Label',
     disabled: true,
   },

@@ -20,42 +20,78 @@ export const TagsContainerStyled = styled.div<{
   size: TagsProps['size'];
   disabled: TagsProps['disabled'];
 }>`
-  background-color: 0.063rem solid ${({ styled }) => styled.backgroundColor};
+  background-color: ${({ styled }) => styled.backgroundColor};
   border: 0.063rem solid ${({ styled }) => styled.borderColor};
   border-radius: ${({ styled }) => styled.borderRadius};
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 0.25rem;
   ${({ size }) => handleSize(size)};
 
   &:hover {
-    color: ${({ styled }) => styled.colorHover};
+    background-color: ${({ styled }) => styled.backgroundColorHover};
     border-color: ${({ styled }) => styled.borderColorHover};
+
+    .label-styled {
+      color: ${({ styled }) => styled.colorHover};
+    }
+
+    svg {
+      fill: ${({ styled }) => styled.iconColorHover};
+    }
   }
 
   &:focus {
-    color: ${({ styled }) => styled.colorFocus};
-    border-color: ${({ styled }) => styled.borderColorFocus};
+    background-color: ${({ styled }) => styled.backgroundColorFocus};
+    box-shadow: 0 0 0 0.125rem ${({ styled }) => styled.borderColorFocus};
+
+    .label-styled {
+      color: ${({ styled }) => styled.colorFocus};
+    }
+
+    svg {
+      fill: ${({ styled }) => styled.iconColorFocus};
+    }
   }
 
   &:active {
-    color: ${({ styled }) => styled.colorActive};
+    background-color: ${({ styled }) => styled.backgroundColorActive};
     border-color: ${({ styled }) => styled.borderColorActive};
+
+    .label-styled {
+      color: ${({ styled }) => styled.colorActive};
+    }
+
+    svg {
+      fill: ${({ styled }) => styled.iconColorActive};
+    }
   }
 
-  ${({ disabled }) =>
+  ${({ disabled, styled }) =>
     disabled &&
     `
-      opacity: 0.5;
+      background-color: ${styled.backgroundColorDisabled};
+      border-color: ${styled.borderColorDisabled};
       pointer-events: none;
-      cursor: not-allowed;
+
+      .label-styled {
+        color: ${styled.colorDisabled};
+      }
+
+      svg {
+        fill: ${styled.iconColorDisabled};
+      }
     `}
 `;
 
 export const IconStyled = styled.div<{
+  styled: Required<TagsStyledProps>;
   size: TagsProps['size'];
+  typeTag?: TagsProps['typeTag'];
 }>`
+  margin-left: 0.25rem;
+
   ${({ size }) =>
     size == 'xl' &&
     `
@@ -64,24 +100,29 @@ export const IconStyled = styled.div<{
         height: 1.5rem;
       }
     `}
+
+  ${({ typeTag, styled }) =>
+    typeTag == 'dismissible' &&
+    `
+        &:hover {
+          background-color: ${styled.iconBackgroundColorHover};
+          border-radius: 1000rem;
+          cursor: pointr;
+        }
+
+        &:focus {
+          background-color: ${styled.iconBackgroundColorFocus};
+          box-shadow: 0 0 0 0.125rem ${styled.iconborderColorFocus};
+          border-radius: ${styled.borderRadius};
+        }
+      `}
 `;
 
 export const LabelStyled = styled.div<{
   styled: Required<TagsStyledProps>;
   size: TagsProps['size'];
+  disabled: TagsProps['disabled'];
 }>`
   color: ${({ styled }) => styled.color};
   font-weight: ${({ styled }) => styled.fontWeight};
-
-  &:hover {
-    color: ${({ styled }) => styled.colorHover};
-  }
-
-  &:focus {
-    color: ${({ styled }) => styled.colorFocus};
-  }
-
-  &:active {
-    color: ${({ styled }) => styled.colorActive};
-  }
 `;
