@@ -41,7 +41,7 @@ import React, { useState } from 'react';
 import Toaster from './Toaster';
 
 const ToasterExample = () => {
-  const [toasterKey, setToasterKey] = useState<number | null>(null);
+  const [toasterKey, setToasterKey] = (useState < number) | (null > null);
   const handleShowToaster = () => {
     setToasterKey(Date.now());
   };
@@ -73,7 +73,7 @@ import React, { useState } from 'react';
 import Toaster from './Toaster';
 
 const ToasterExample = () => {
-  const [toasterKey, setToasterKey] = useState<number | null>(null);
+  const [toasterKey, setToasterKey] = (useState < number) | (null > null);
   const handleShowToaster = () => {
     setToasterKey(Date.now());
   };
