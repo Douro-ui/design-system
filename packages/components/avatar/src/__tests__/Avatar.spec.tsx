@@ -28,7 +28,7 @@ describe('<Avatar />', () => {
         src="https://via.placeholder.com/150"
         size="lg"
         fallbackText="DUI"
-        img={{ alt: 'Avatar' }}
+        imgProps={{ alt: 'Avatar' }}
       ></Avatar>,
     );
 
