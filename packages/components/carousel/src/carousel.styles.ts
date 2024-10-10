@@ -1,60 +1,69 @@
 import styled from '@emotion/styled';
+import {
+  CarouselStyledProps,
+  CarouselSlideStyledProps,
+} from './carousel.types';
 
-export const CarouselStyled = styled.div`
-  width: calc(100% + 7.5rem);
-  max-width: 80%;
-  margin: 0 auto;
-  position: relative;
-  padding: 0 3.75rem;
-
-  .carousel.carousel-slider {
-    padding: 0;
-    overflow: hidden;
-  }
-`;
-
-export const Slide = styled.div`
-  background: none;
+export const CarouselStyled = styled.div<{
+  styled: Required<CarouselStyledProps>;
+}>`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  position: relative;
   flex-direction: column;
-
-  & video {
-    width: 9.375rem;
-    height: 9.375rem;
-  }
-
-  & img {
-    width: 9.375rem;
-    border: 0.0625rem solid black;
-    background-color: white;
-  }
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: ${({ styled }) => styled.backgroundColor};
 `;
 
-export const IndicatorButton = styled.button<{ isSelected: boolean }>`
-  background: none;
+export const CarouselTrack = styled.div<{
+  styled: Required<CarouselStyledProps>;
+  totalSlides: number;
+  currentSlide: number;
+  visibleSlides: number;
+}>`
+  display: flex;
+  gap: ${({ styled }) => styled.gap};
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  transform: translateX(
+    -${props => (100 / props.visibleSlides) * props.currentSlide}%
+  );
+  flex: 0 0 ${props => 100 / props.visibleSlides}%;
+`;
+
+export const CarouselSlideStyled = styled.div<{
+  styled: Required<CarouselSlideStyledProps>;
+}>`
+  box-sizing: border-box;
+  padding: 1rem;
+  text-align: center;
+  background-color: ${({ styled }) => styled.backgroundColor};
+  border: 0.125rem solid ${({ styled }) => styled.borderColor};
+  border-radius: ${({ styled }) => styled.borderRadius};
+  height: ${({ styled }) => styled.height};
+  width: ${({ styled }) => styled.width};
+`;
+
+export const ArrowButton = styled.button<{
+  styled: Required<CarouselStyledProps>;
+}>`
+  background-color: ${({ styled }) => styled.backgroundColor};
   border: none;
+  font-size: 2rem;
   cursor: pointer;
-  font-size: 1.5rem;
-  padding: 0;
-  margin: 0;
-  color: ${props => (props.isSelected ? 'black' : 'gray')};
 `;
 
-export const IndicatorItem = styled.li`
-  display: inline;
-  margin: 0 0.25rem;
-`;
-
-export const CarouselHtmlStyled = styled.div`
-  width: 9.375rem;
-  height: 9.375rem;
-  border: 0.0625rem solid black;
-  background-color: white;
+export const IndicatorWrapper = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 1rem;
+`;
+
+export const IndicatorDot = styled.div<{ active: boolean }>`
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background-color: ${props => (props.active ? 'black' : 'gray')};
+  margin: 0 0.3125rem;
+  cursor: pointer;
 `;
