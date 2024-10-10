@@ -2,25 +2,29 @@ import React, { useState } from 'react';
 import { AvatarProps, AvatarStyledProps } from '../avatar.types';
 import { AvatarStyled } from '../avatar.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
+import { getRandomColor } from '../utils/getRandomBackgroundColor';
 
 export const ImageAvatar = ({
   size,
   src,
   typeAvt = 'image',
-  img,
+  imgProps,
   styled,
   fallbackText,
   ...props
 }: AvatarProps): React.ReactNode => {
   const theme = useTheme();
   const [imgError, setImgError] = useState(false);
+  const randomColors = getRandomColor(theme);
 
   const getImagetypeAvtDefaultThemeValues: AvatarStyledProps = {
-    backgroundColor: theme.colors.brand.tertiary,
-    color: theme.colors.brand.white,
-    borderRadius: '100px',
+    backgroundColor: styled?.backgroundColor || randomColors.default,
+    color: theme.colors.brand.black,
+    borderRadius: '800px',
     fontFamily: theme.fontFamily.text,
     fontWeight: theme.fontWeight.MEDIUM,
+    backgroundColorHover: styled?.backgroundColorHover || randomColors.hover,
+    backgroundColorActive: styled?.backgroundColorActive || randomColors.active,
   };
 
   const mergedThemeValues = deepMerge<AvatarStyledProps>(
@@ -37,15 +41,15 @@ export const ImageAvatar = ({
       size={size}
       styled={mergedThemeValues as Required<AvatarStyledProps>}
       typeAvt={typeAvt}
-      img={img}
+      imgProps={imgProps}
       data-testid={`avatar-${typeAvt}`}
       {...props}
     >
       {src && !imgError ? (
         <img
-          {...img}
+          {...imgProps}
           src={src}
-          alt={img?.alt || 'Avatar'}
+          alt={imgProps?.alt || 'Avatar'}
           onError={handleImgError}
         />
       ) : (
