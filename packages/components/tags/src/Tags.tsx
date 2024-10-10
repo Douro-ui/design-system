@@ -29,7 +29,6 @@ const Tags = ({
       label={label}
       disabled={disabled}
       styled={styled}
-      data-testid={`tag-${typeTag ?? 'selectable'}`}
       {...props}
     />
   );
