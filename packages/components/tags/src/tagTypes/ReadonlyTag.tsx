@@ -55,6 +55,7 @@ export const ReadonlyTag = ({
       {iconAfter && (
         <IconStyled
           size={size}
+          iconAfter
           styled={mergedThemeValues as Required<TagsStyledProps>}
         >
           {iconAfter()}

@@ -4,14 +4,14 @@ import { TagsProps, TagsStyledProps } from './tags.types';
 const handleSize = (size: TagsProps['size']) => {
   switch (size) {
     case 'sm':
-      return 'font-size: 0.75rem; padding: 0.063rem 0.188rem;';
+      return 'font-size: 0.75rem; padding: 0 0.25rem; gap: 0.25rem; height: 1.25rem';
     case 'md':
     default:
-      return 'font-size: 0.75rem; padding: 0.188rem 0.438rem;';
+      return 'font-size: 0.75rem; padding: 0 0.5rem; gap: 0.375rem; height: 1.5rem';
     case 'lg':
-      return 'font-size: 0.875rem; padding: 0.313rem 0.938rem;';
+      return 'font-size: 0.875rem; padding: 0 0.75rem; gap: 0.5rem; height: 2rem';
     case 'xl':
-      return 'font-size: 1rem; padding: 0.438rem 0.938rem;';
+      return 'font-size: 1rem; padding: 0 0.75rem; gap: 0.5rem; height: 2.5rem';
   }
 };
 
@@ -19,6 +19,7 @@ export const TagsContainerStyled = styled.div<{
   styled: Required<TagsStyledProps>;
   size: TagsProps['size'];
   disabled: TagsProps['disabled'];
+  isSelectableTag?: boolean;
 }>`
   background-color: ${({ styled }) => styled.backgroundColor};
   border: 0.063rem solid ${({ styled }) => styled.borderColor};
@@ -26,8 +27,13 @@ export const TagsContainerStyled = styled.div<{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.25rem;
   ${({ size }) => handleSize(size)};
+
+  ${({ isSelectableTag }) =>
+    isSelectableTag &&
+    `
+      cursor: pointer;
+    `}
 
   &:hover {
     background-color: ${({ styled }) => styled.backgroundColorHover};
@@ -55,7 +61,8 @@ export const TagsContainerStyled = styled.div<{
     }
   }
 
-  &:active {
+  &:active,
+  &.selected {
     background-color: ${({ styled }) => styled.backgroundColorActive};
     border-color: ${({ styled }) => styled.borderColorActive};
 
@@ -89,8 +96,13 @@ export const IconStyled = styled.div<{
   styled: Required<TagsStyledProps>;
   size: TagsProps['size'];
   typeTag?: TagsProps['typeTag'];
+  iconAfter?: boolean;
 }>`
-  margin-left: 0.25rem;
+  ${({ iconAfter }) =>
+    iconAfter &&
+    `
+        margin-left: 0.25rem;
+      `}
 
   ${({ size }) =>
     size == 'xl' &&

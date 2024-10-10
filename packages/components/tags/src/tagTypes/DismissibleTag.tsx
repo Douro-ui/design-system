@@ -68,9 +68,9 @@ export const DismissibleTag = ({
 
       {iconAfter && (
         <IconStyled
-          className="et"
           typeTag={typeTag}
           size={size}
+          iconAfter
           styled={mergedThemeValues as Required<TagsStyledProps>}
         >
           {iconAfter()}

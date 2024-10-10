@@ -35,5 +35,6 @@ export interface TagsProps extends HTMLAttributes<HTMLDivElement> {
   iconAfter?: () => EmotionJSX.Element;
   label: string;
   disabled?: boolean;
+  onClick?: () => void;
   styled?: TagsStyledProps;
 }

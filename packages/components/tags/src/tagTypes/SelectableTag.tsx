@@ -1,7 +1,7 @@
 import { TagsProps, TagsStyledProps } from '../tags.types';
 import { IconStyled, LabelStyled, TagsContainerStyled } from '../tags.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 export const SelectableTag = ({
   size,
@@ -9,10 +9,13 @@ export const SelectableTag = ({
   iconAfter,
   label,
   disabled,
+  onClick,
   styled,
   ...props
 }: TagsProps): ReactNode => {
   const theme = useTheme();
+
+  const [selected, setSelected] = useState(false);
 
   const defaultThemeValues: TagsStyledProps = {
     color: theme.colors.brand.primary,
@@ -43,10 +46,20 @@ export const SelectableTag = ({
     styled,
   );
 
+  const handleSelected = () => {
+    if (!disabled) {
+      setSelected((prevSelected: boolean) => !prevSelected);
+      onClick?.();
+    }
+  };
+
   return (
     <TagsContainerStyled
+      className={selected ? 'selected' : ''}
       size={size}
       disabled={disabled}
+      onClick={handleSelected}
+      isSelectableTag
       styled={mergedThemeValues as Required<TagsStyledProps>}
       {...props}
     >
@@ -71,6 +84,7 @@ export const SelectableTag = ({
       {iconAfter && (
         <IconStyled
           size={size}
+          iconAfter
           styled={mergedThemeValues as Required<TagsStyledProps>}
         >
           {iconAfter()}
