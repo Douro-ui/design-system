@@ -38,7 +38,7 @@ export interface Theme {
   name: string;
   fontSize: string;
   fontFamily: FontFamilyType<'display' | 'text'>;
-  spaceUnit: Record<string, string>;
+  spacing: Record<string, string>;
   fontWeight: { [K in keyof typeof FontWeight]: FontWeight };
   colors: Colors;
   typography: Typography;
