@@ -89,7 +89,7 @@ export default ExampleTooltip;
 | openDelay     | number                        | 300     | Delay in milliseconds before showing the tooltip. If set to 0, the tooltip will appear immediately |
 | closeDelay    | number                        | 0       | Delay in milliseconds before closing the tooltip. If set to 0, the tooltip will not be closed      |
 | isFixedBottom | boolean                       | false   | If set true it will be set fixed on the bottom of viewport.                                        |
-| styled        | TooltipStyledProps            | N/A     | Custom styles for the tooltip (e.g., background color)                                 |
+| styled        | TooltipStyledProps            | N/A     | Custom styles for the tooltip (e.g., background color)                                             |
 
 ### Customization
 

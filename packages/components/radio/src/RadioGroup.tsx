@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useCallback } from 'react';
-import { RadioGroupProps, RadioOption } from './radio.types';
+import { RadioGroupProps, RadioProps } from './radio.types';
 import { RadioGroupStyled } from './radio.styles';
 import Radio from './Radio';
 
@@ -19,17 +19,17 @@ const RadioGroup = ({
 
   return (
     <RadioGroupStyled>
-      {options.map((option: RadioOption) => (
+      {options.map((option: RadioProps) => (
         <Radio
           {...option}
           key={option.value}
-          backgroundColor={option.backgroundColor}
           label={option.label}
           name={name}
           value={option.value}
           checked={selectedValue === option.value}
           onChange={handleChange}
           disabled={option.disabled}
+          size={option.size}
         />
       ))}
     </RadioGroupStyled>
