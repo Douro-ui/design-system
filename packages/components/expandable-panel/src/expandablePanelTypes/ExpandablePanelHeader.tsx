@@ -24,9 +24,9 @@ export const ExpandablePanelHeader = ({
     borderColorDisabled: theme.colors.neutral.cold.shade70,
     fontSize: '1.25rem',
     fontWeight: theme.fontWeight.BOLD,
-    paddingX: theme.spaceUnit['spacing-16'],
-    paddingY: theme.spaceUnit['spacing-24'],
-    gap: theme.spaceUnit['spacing-16'],
+    paddingX: theme.spacing.spacing16,
+    paddingY: theme.spacing.spacing24,
+    gap: theme.spacing.spacing16,
     width: '100%',
   };
 

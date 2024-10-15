@@ -5,6 +5,7 @@ module.exports = {
     '^.*\\.stories\\.[jt]sx?$',
     'index.ts',
     'styles.ts',
+    '<rootDir>/packages/react/src/tokens/spacing',
   ],
   coverageReporters: ['json', 'html', 'text'],
   // coverageThreshold: {

@@ -18,8 +18,8 @@ export const ExpandablePanelBody = ({
   const defaultEPBodyThemeValues: ExpandablePanelStyledProps = {
     fontSize: '1rem',
     fontWeight: theme.fontWeight.REGULAR,
-    paddingY: theme.spaceUnit['spacing-16'],
-    paddingX: theme.spaceUnit['spacing-24'],
+    paddingY: theme.spacing.spacing16,
+    paddingX: theme.spacing.spacing24,
     width: '100%',
   };
 

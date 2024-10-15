@@ -16,12 +16,11 @@ const getTypographyStyle = (
 
 const Container = styled.div`
   font-family: ${(props: { theme: Theme }) => props.theme.fontFamily.display};
-  padding: ${(props: { theme: Theme }) => props.theme.spaceUnit['spacing-16']};
+  padding: ${(props: { theme: Theme }) => props.theme.spacing.spacing16};
 `;
 
 const TypographyPreview = styled.div`
-  margin-bottom: ${(props: { theme: Theme }) =>
-    props.theme.spaceUnit['spacing-24']};
+  margin-bottom: ${(props: { theme: Theme }) => props.theme.spacing.spacing24};
 `;
 
 const Title = styled.h1`
@@ -31,8 +30,7 @@ const Title = styled.h1`
       'title1',
       Breakpoints.DESKTOP_LARGE,
     )?.fontSize};
-  margin-bottom: ${(props: { theme: Theme }) =>
-    props.theme.spaceUnit['spacing-16']};
+  margin-bottom: ${(props: { theme: Theme }) => props.theme.spacing.spacing16};
 `;
 
 const SectionTitle = styled.h2`
@@ -42,10 +40,8 @@ const SectionTitle = styled.h2`
       'title2',
       Breakpoints.DESKTOP_LARGE,
     )?.fontSize};
-  margin-top: ${(props: { theme: Theme }) =>
-    props.theme.spaceUnit['spacing-16']};
-  margin-bottom: ${(props: { theme: Theme }) =>
-    props.theme.spaceUnit['spacing-16']};
+  margin-top: ${(props: { theme: Theme }) => props.theme.spacing.spacing16};
+  margin-bottom: ${(props: { theme: Theme }) => props.theme.spacing.spacing16};
 `;
 
 const BodyText = styled.p`
@@ -61,15 +57,14 @@ const BodyText = styled.p`
       'body1',
       Breakpoints.DESKTOP_LARGE,
     )?.lineHeight};
-  margin-bottom: ${(props: { theme: Theme }) =>
-    props.theme.spaceUnit['spacing-16']};
+  margin-bottom: ${(props: { theme: Theme }) => props.theme.spacing.spacing16};
 `;
 
 const TypographyItem = styled.div<TypographyStyle>`
   font-size: ${props => props.fontSize || 'inherit'};
   font-weight: ${props => props.fontWeight || 'inherit'};
   line-height: ${props => props.lineHeight || 'inherit'};
-  margin-bottom: ${props => (props.theme as Theme).spaceUnit['spacing-08']};
+  margin-bottom: ${props => (props.theme as Theme).spacing.spacing8};
 `;
 
 const renderTypographyPreview = (
