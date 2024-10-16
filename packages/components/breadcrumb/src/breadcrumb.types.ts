@@ -15,5 +15,10 @@ export interface BreadcrumbGroupProps extends HTMLAttributes<HTMLElement> {
 export interface BreadcrumbStyledProps {
   color?: string;
   colorHover?: string;
+  colorFocus?: string;
   colorActive?: string;
+  borderColorFocus?: string;
+  fontSize?: string;
+  fontWeight?: number;
+  fontWeightActive?: number;
 }
