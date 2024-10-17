@@ -1,63 +1,77 @@
 import styled from '@emotion/styled';
 import { TagsProps, TagsStyledProps } from './tags.types';
 
+const getPadding = (
+  size: 'sm' | 'lg' | 'xl' | 'md' | 'default' | undefined,
+  hasIconBefore: boolean,
+  hasIconAfter: boolean,
+) => {
+  const paddingValues = {
+    lg: {
+      py: '0.375rem',
+      pd: '0.75rem',
+      pi: '0.5rem',
+    },
+    xl: {
+      py: '0.5rem',
+      pd: '1rem',
+      pi: '0.75rem',
+    },
+    default: {
+      py: '0.25rem',
+      pd: '0.5rem',
+      pi: '0.375rem',
+    },
+  };
+
+  if (size === 'sm') {
+    const padding = hasIconBefore
+      ? hasIconAfter
+        ? 'padding: 0.125rem;'
+        : 'padding: 0.125rem 0.25rem 0.125rem 0.125rem;'
+      : hasIconAfter
+        ? 'padding: 0.125rem 0.125rem 0.125rem 0.25rem;'
+        : 'padding: 0.25rem;';
+    return padding;
+  }
+
+  const validSize = size === 'md' || size === undefined ? 'default' : size;
+  const { py, pd, pi } = paddingValues[validSize];
+
+  const padding = hasIconBefore
+    ? hasIconAfter
+      ? `${py} ${pi}`
+      : `${py} ${pd} ${py} ${pi}`
+    : hasIconAfter
+      ? `${py} ${pi} ${py} ${pd}`
+      : `${py} ${pd}`;
+
+  return `padding: ${padding};`;
+};
+
+const getSizeStyles = (
+  size: 'sm' | 'lg' | 'xl' | 'md' | 'default' | undefined,
+) => {
+  const sizes = {
+    sm: 'font-size: 0.75rem; line-height: 0.75rem; gap: 0.188rem; height: 1.25rem;',
+    lg: 'font-size: 0.875rem; line-height: 1.25rem; gap: 0.563rem; height: 2rem;',
+    xl: 'font-size: 1rem; line-height: 1.5rem; gap: 0.563rem; height: 2.5rem;',
+    default:
+      'font-size: 0.75rem; line-height: 1rem; gap: 0.313rem; height: 1.5rem;',
+  };
+
+  const validSize = size === 'md' || size === undefined ? 'default' : size;
+  return sizes[validSize];
+};
+
 const handleSize = (
   size: TagsProps['size'],
   hasIconBefore: boolean,
   hasIconAfter: boolean,
 ) => {
-  let padding;
-  switch (size) {
-    case 'sm':
-      padding = hasIconBefore
-        ? hasIconAfter
-          ? 'padding: 0.125rem;'
-          : 'padding: 0.125rem 0.25rem 0.125rem 0.125rem;'
-        : hasIconAfter
-          ? 'padding: 0.125rem 0.125rem 0.125rem 0.25rem;'
-          : 'padding: 0.25rem;';
-
-      return (
-        padding +
-        'font-size: 0.75rem; line-height: 0.75rem; gap: 0.188rem; height: 1.25rem'
-      );
-    case 'lg':
-      padding = hasIconBefore
-        ? hasIconAfter
-          ? 'padding: 0.375rem 0.5rem;'
-          : 'padding: 0.375rem 0.75rem 0.375rem 0.5rem;'
-        : hasIconAfter
-          ? 'padding: 0.375rem 0.5rem 0.375rem 0.75rem;'
-          : 'padding: 0.375rem 0.75rem;';
-      return (
-        padding +
-        'font-size: 0.875rem; line-height: 1.25rem; gap: 0.563rem; height: 2rem'
-      );
-    case 'xl':
-      padding = hasIconBefore
-        ? hasIconAfter
-          ? 'padding: 0.5rem 0.75rem;'
-          : 'padding: 0.5rem 1rem 0.5rem 0.75rem;'
-        : hasIconAfter
-          ? 'padding: 0.5rem 0.75rem 0.5rem 1rem;'
-          : 'padding: 0.5rem 1rem;';
-      return (
-        padding +
-        'font-size: 1rem; line-height: 1.5rem; gap: 0.563rem; height: 2.5rem'
-      );
-    default:
-      padding = hasIconBefore
-        ? hasIconAfter
-          ? 'padding: 0.25rem 0.375rem;'
-          : 'padding: 0.25rem 0.5rem 0.25rem 0.375rem;'
-        : hasIconAfter
-          ? 'padding: 0.25rem 0.375rem 0.25rem 0.5rem;'
-          : 'padding: 0.25rem 0.5rem;';
-      return (
-        padding +
-        'font-size: 0.75rem; line-height: 1rem; gap: 0.313rem; height: 1.5rem'
-      );
-  }
+  const padding = getPadding(size, hasIconBefore, hasIconAfter);
+  const sizeStyles = getSizeStyles(size);
+  return padding + sizeStyles;
 };
 
 export const TagsContainerStyled = styled.div<{

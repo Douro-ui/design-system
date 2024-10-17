@@ -7,6 +7,7 @@ export interface TagsStyledProps {
   colorFocus?: string;
   colorActive?: string;
   colorDisabled?: string;
+  fontFamily?: string;
   fontWeight?: number;
   iconColorHover?: string;
   iconColorFocus?: string;
