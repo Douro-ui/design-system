@@ -22,6 +22,7 @@ export const DismissibleTag = ({
     color: theme.colors.brand.primary,
     colorHover: theme.colors.brand.primary,
     colorFocus: theme.colors.brand.primary,
+    fontFamily: theme.fontFamily.text,
     fontWeight: theme.fontWeight.REGULAR,
     iconColorHover: theme.colors.brand.primary,
     iconColorFocus: theme.colors.brand.primary,

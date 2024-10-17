@@ -23,6 +23,7 @@ export const SelectableTag = ({
     colorFocus: theme.colors.brand.primary,
     colorActive: theme.colors.brand.white,
     colorDisabled: theme.colors.brand.primary,
+    fontFamily: theme.fontFamily.text,
     fontWeight: theme.fontWeight.REGULAR,
     iconColorHover: theme.colors.brand.primary,
     iconColorFocus: theme.colors.brand.primary,

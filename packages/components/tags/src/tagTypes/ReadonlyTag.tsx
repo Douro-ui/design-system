@@ -16,6 +16,7 @@ export const ReadonlyTag = ({
 
   const defaultThemeValues: TagsStyledProps = {
     color: theme.colors.brand.primary,
+    fontFamily: theme.fontFamily.text,
     fontWeight: theme.fontWeight.REGULAR,
     backgroundColor: theme.colors.brand.white,
     borderColor: theme.colors.neutral.cold.shade80,
