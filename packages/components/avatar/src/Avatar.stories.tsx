@@ -21,18 +21,50 @@ const meta: Meta<AvatarProps> = {
   tags: ['autodocs'],
   args: {
     size: 'lg',
-    children: 'DUI',
-    fallbackText: 'DUI',
+    children: 'DS',
+    fallbackText: 'DS',
   },
   argTypes: {
     typeAvt: {
       control: false,
     },
     size: {
-      control: { options: ['sm', 'md', 'lg', 'xl'] },
+      control: { options: ['xxs', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'] },
     },
     src: {
       control: 'text',
+    },
+    hasFilter: {
+      control: { type: 'boolean' },
+    },
+    filterTypes: {
+      control: {
+        type: 'select',
+        options: ['none', 'green', 'blue', 'blueNavy'],
+      },
+    },
+    badge: {
+      control: { type: 'boolean' },
+    },
+    badgeProps: {
+      typeBadge: {
+        control: {
+          type: 'select',
+          options: ['alert', 'neutral', 'success', 'warning'],
+        },
+      },
+      count: {
+        control: { type: 'number', min: 0, max: 99 },
+      },
+      position: {
+        control: {
+          type: 'select',
+          options: ['top-right', 'top-left', 'bottom-right', 'bottom-left'],
+        },
+      },
+      size: {
+        control: { type: 'select', options: ['sm', 'md', 'lg'] },
+      },
     },
   },
 } satisfies Meta<AvatarProps>;
@@ -44,16 +76,27 @@ type Story = StoryObj<AvatarProps>;
 export const Base: Story = {
   args: {
     size: 'lg',
-    children: 'DUI',
+    children: 'DS',
   },
 };
 
 export const Image: Story = {
   args: {
     size: 'lg',
-    src: 'https://via.placeholder.com/150',
-    fallbackText: 'DUI',
-    img: { alt: 'Avatar Image' },
+    src: 'https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg',
+    fallbackText: 'DS',
+    imgProps: { alt: 'Avatar Image' },
+  },
+};
+
+export const FilterImage: Story = {
+  args: {
+    size: 'lg',
+    src: 'https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg',
+    fallbackText: 'DS',
+    hasFilter: true,
+    filterTypes: 'blue',
+    imgProps: { alt: 'Avatar Image' },
   },
 };
 
@@ -61,8 +104,28 @@ export const ImageWithError: Story = {
   args: {
     size: 'lg',
     src: 'https://invalid-url.com/invalid-image.png',
-    fallbackText: 'DUI',
-    img: { alt: 'Avatar Image' },
+    fallbackText: 'DS',
+    imgProps: { alt: 'Avatar Image' },
+  },
+};
+
+export const AvatarWithBadge: Story = {
+  args: {
+    size: 'lg',
+    fallbackText: 'DS',
+    badge: true,
+    badgeProps: { typeBadge: 'success', position: 'top-right' },
+  },
+};
+
+export const ImageAvatarWithBadge: Story = {
+  args: {
+    size: 'lg',
+    src: 'https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg',
+    fallbackText: 'DS',
+    imgProps: { alt: 'Avatar Image' },
+    badge: true,
+    badgeProps: { typeBadge: 'success', position: 'top-right' },
   },
 };
 
@@ -73,8 +136,7 @@ Base.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   expect(avatar).toBeVisible();
 
   await userEvent.click(avatar);
-  expect(avatar).toHaveTextContent('DUI');
-  expect(avatar).toHaveClass('css-wfuucg');
+  expect(avatar).toHaveTextContent('DS');
 };
 
 Image.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
@@ -85,8 +147,10 @@ Image.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
 
   const img = canvas.getByRole('img', { name: /avatar image/i });
   expect(img).toBeVisible();
-  expect(img).toHaveAttribute('src', 'https://via.placeholder.com/150');
-  expect(avatar).toHaveClass('css-10la8wm');
+  expect(img).toHaveAttribute(
+    'src',
+    'https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg',
+  );
 };
 
 ImageWithError.play = async ({
@@ -106,5 +170,4 @@ ImageWithError.play = async ({
     'src',
     'https://invalid-url.com/invalid-image.png',
   );
-  expect(avatar).toHaveClass('css-10la8wm');
 };

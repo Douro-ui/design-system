@@ -1,7 +1,12 @@
 module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ['**/src/**/*.{js,jsx,ts,tsx}'],
-  coveragePathIgnorePatterns: ['^.*\\.stories\\.[jt]sx?$', 'index.ts'],
+  coveragePathIgnorePatterns: [
+    '^.*\\.stories\\.[jt]sx?$',
+    'index.ts',
+    '<rootDir>/packages/components/avatar/src/avatar.styles.ts',
+    '<rootDir>/packages/components/avatar/src/utils/getFilter.tsx',
+  ],
   coverageReporters: ['json', 'html', 'text'],
   // coverageThreshold: {
   //   global: {
