@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   BreadcrumbContainer,
+  BreadcrumbDropdown,
+  BreadcrumbDropdownRow,
   BreadcrumbGroupStyled,
 } from './breadcrumb.styles';
 import Breadcrumb from './Breadcrumb';
@@ -21,7 +23,9 @@ const BreadcrumbGroup = ({
     useState<string[]>(breadcrumbs);
   const [displayedBreadcrumbs, setDisplayedBreadcrumbs] =
     useState<string[]>(breadcrumbs);
+  const [truncatedBreadcrumbs, setTruncatedBreadcrumbs] = useState<string[]>();
   const breadcrumbRef = useRef<HTMLDivElement>(null);
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
   const defaultThemeValues: BreadcrumbStyledProps = {
     fontWeightActive: theme.fontWeight.BOLD,
@@ -37,8 +41,16 @@ const BreadcrumbGroup = ({
   }, [breadcrumbs]);
 
   const handleBreadcrumbClick = (index: number): void => {
-    setCurrentBreadcrumbs(breadcrumbs.slice(0, index + 1));
-    setDisplayedBreadcrumbs(breadcrumbs.slice(0, index + 1));
+    if (displayedBreadcrumbs[index] === '...' && !isDropdownOpen) {
+      setIsDropdownOpen(!isDropdownOpen);
+    } else {
+      setCurrentBreadcrumbs(breadcrumbs.slice(0, index + 1));
+      setDisplayedBreadcrumbs(breadcrumbs.slice(0, index + 1));
+
+      if (isDropdownOpen) {
+        setIsDropdownOpen(false);
+      }
+    }
   };
 
   useEffect(() => {
@@ -58,12 +70,15 @@ const BreadcrumbGroup = ({
             if (displayed.length > 0) {
               displayed.push('...');
             }
-            displayed.push(breadcrumbs[breadcrumbs.length - 1]);
+            displayed.push(currentBreadcrumbs[currentBreadcrumbs.length - 1]);
+            setTruncatedBreadcrumbs(
+              currentBreadcrumbs.slice(i, currentBreadcrumbs.length - 1),
+            );
             break;
           }
 
           totalWidth += itemWidth;
-          displayed.push(breadcrumbs[i]);
+          displayed.push(currentBreadcrumbs[i]);
         }
 
         setDisplayedBreadcrumbs(displayed);
@@ -93,6 +108,25 @@ const BreadcrumbGroup = ({
             {breadcrumb}
           </Breadcrumb>
           {index < displayedBreadcrumbs.length - 1 && separator}
+
+          {isDropdownOpen && index === displayedBreadcrumbs.length - 2 && (
+            <BreadcrumbDropdown>
+              {truncatedBreadcrumbs?.map(
+                (breadcrumb: string, index2: number) => (
+                  <BreadcrumbDropdownRow
+                    key={index2}
+                    onClick={() =>
+                      handleBreadcrumbClick(
+                        currentBreadcrumbs.indexOf(breadcrumb),
+                      )
+                    }
+                  >
+                    {breadcrumb}
+                  </BreadcrumbDropdownRow>
+                ),
+              )}
+            </BreadcrumbDropdown>
+          )}
         </BreadcrumbContainer>
       ))}
     </BreadcrumbGroupStyled>
