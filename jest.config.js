@@ -1,16 +1,24 @@
 module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ['**/src/**/*.{js,jsx,ts,tsx}'],
-  coveragePathIgnorePatterns: ['^.*\\.stories\\.[jt]sx?$', 'index.ts'],
+  coveragePathIgnorePatterns: [
+    '^.*\\.stories\\.[jt]sx?$',
+    'index.ts',
+    '<rootDir>/packages/components/typography/src/typoTypes/body/typography.styles.ts',
+    '<rootDir>/packages/components/typography/src/typoTypes/display/typography.styles.ts',
+    '<rootDir>/packages/components/typography/src/typoTypes/heading/typography.styles.ts',
+    '<rootDir>/packages/react/src/tokens',
+    '<rootDir>/packages/svg-icons/src',
+  ],
   coverageReporters: ['json', 'html', 'text'],
-  // coverageThreshold: {
-  //   global: {
-  //     branches: 80,
-  //     functions: 80,
-  //     lines: 80,
-  //     statements: 80,
-  //   },
-  // },
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80,
+    },
+  },
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   moduleNameMapper: {
     // '^.+\\.svg$': 'jest-transformer-svg',

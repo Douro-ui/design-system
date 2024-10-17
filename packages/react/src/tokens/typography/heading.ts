@@ -53,7 +53,7 @@ export const heading: TypographyHeader = {
       fontWeight: FontWeight.MEDIUM,
     },
     tablet: {
-      fontSize: '1,125rem',
+      fontSize: '1.125rem',
       lineHeight: '120%',
       fontWeight: FontWeight.MEDIUM,
     },

@@ -62,4 +62,21 @@ describe('<CheckboxGroup />', () => {
       'checkbox',
     );
   });
+
+  it('calls onChange handler with updated values when a checkbox is unchecked', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <CheckboxGroup
+        name="checkboxGroup"
+        options={options}
+        selectedValues={['checkbox1', 'checkbox2']}
+        onChange={handleChange}
+      />,
+    );
+
+    fireEvent.click(screen.getByLabelText('Checkbox 1'));
+
+    expect(handleChange).toHaveBeenCalledWith(['checkbox2']);
+  });
 });

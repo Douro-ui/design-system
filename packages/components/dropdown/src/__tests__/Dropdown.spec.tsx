@@ -60,4 +60,24 @@ describe('<Dropdown />', () => {
 
     expect(screen.queryByText('Cavendish Banana')).not.toBeVisible();
   });
+
+  it('calls the onSelect handler with the correct item when an option is selected', () => {
+    const handleSelect = jest.fn();
+
+    render(<DefaultDropdown onSelect={handleSelect} />);
+
+    fireEvent.click(screen.getByText('Select an option'));
+
+    fireEvent.click(screen.getByText('Cavendish Banana'));
+
+    expect(handleSelect).toHaveBeenCalledWith('1');
+  });
+
+  it('renders with the correct item selected when selectedId is provided', () => {
+    render(<DefaultDropdown selectedId="2" />);
+
+    const redBananaElements = screen.queryAllByText('Red Banana');
+
+    expect(redBananaElements[0]).toHaveTextContent('Red Banana');
+  });
 });

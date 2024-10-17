@@ -35,7 +35,7 @@ describe('<Grid />', () => {
             Menu
           </ContentDemo>
         </GridItem>
-        <GridItem column={1} row={3} spanColumn={6}>
+        <GridItem>
           <ContentDemo styled={{ backgroundColor: '#7765E3' }}>
             Card 1
           </ContentDemo>
@@ -57,5 +57,27 @@ describe('<Grid />', () => {
     expect(screen.getByText('Card 1')).toBeInTheDocument();
     expect(screen.getByText('Card 2')).toBeInTheDocument();
     expect(screen.getByText('Footer')).toBeInTheDocument();
+    expect(screen.getByText('Menu').parentElement).toHaveStyle(
+      'grid-column: 1/span 12',
+    );
+    expect(screen.getByText('Menu').parentElement).toHaveStyle(
+      'grid-row: 1/span 1',
+    );
+    expect(screen.getByText('Card 1').parentElement).toHaveStyle(
+      'grid-column: auto/auto',
+    );
+    expect(screen.getByText('Card 1').parentElement).toHaveStyle(
+      'grid-row: auto/auto',
+    );
+  });
+
+  it('renders default grid', () => {
+    render(<Grid data-testid="grid" />);
+
+    const grid = screen.getByTestId('grid');
+
+    expect(grid).toBeInTheDocument();
+    expect(grid).toHaveStyle('grid-template-columns: repeat(1, 1fr)');
+    expect(grid).toHaveStyle('gap: 16px');
   });
 });
