@@ -28,7 +28,10 @@ export const ProgressBar = ({
       progress={progress}
       styled={mergedStyles as Required<ProgressBarStyledProps>}
       role="progressbar"
-      aria-label={ariaLabel}
+      aria-label={ariaLabel || 'Loading progress'}
+      aria-valuenow={progress}
+      aria-valuemin={0}
+      aria-valuemax={100}
     />
   );
 };
