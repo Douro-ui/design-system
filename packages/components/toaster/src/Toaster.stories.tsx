@@ -6,6 +6,7 @@ import { PartialStoryFn } from 'storybook/internal/types';
 import Button from '@douro-ui/button';
 import { useState } from 'react';
 import { ToasterProvider, useToaster } from './ToasterProvider';
+import { expect, userEvent, within } from '@storybook/test';
 
 const meta: Meta<ToasterProps> = {
   title: 'Example/Toaster',
@@ -126,4 +127,44 @@ export const MultipleToasters: Story = {
     showProgressBar: true,
     children: 'First toaster!',
   },
+};
+OnlyAToaster.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+
+  const toasterElement = canvas.getByText('Toaster message');
+  expect(toasterElement).toBeInTheDocument();
+};
+SingleToaster.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+
+  const toastShow = await canvas.findByTestId('button-primary');
+  expect(toastShow).toBeVisible();
+
+  await userEvent.click(toastShow);
+
+  const toasterElement = canvas.getByText('Toaster message');
+  expect(toasterElement).toBeInTheDocument();
+};
+MultipleToasters.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+
+  const toastShow = await canvas.findByTestId('button-primary');
+  expect(toastShow).toBeVisible();
+
+  await userEvent.click(toastShow);
+
+  const toasterElement = canvas.getByText('First toaster!');
+  expect(toasterElement).toBeInTheDocument();
 };
