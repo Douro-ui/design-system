@@ -9,6 +9,7 @@ export interface BreadcrumbProps extends HTMLAttributes<HTMLElement> {
 export interface BreadcrumbGroupProps extends HTMLAttributes<HTMLElement> {
   breadcrumbs?: string[];
   separator?: ReactNode;
+  iconMobile?: ReactNode;
   styled?: BreadcrumbStyledProps;
 }
 

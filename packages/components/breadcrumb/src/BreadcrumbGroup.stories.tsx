@@ -22,6 +22,7 @@ const meta: Meta<typeof BreadcrumbGroup> = {
   args: {
     breadcrumbs: ['Home', 'Product', 'Category'],
     separator: '/',
+    iconMobile: '<',
   },
   argTypes: {
     breadcrumbs: {
@@ -30,7 +31,10 @@ const meta: Meta<typeof BreadcrumbGroup> = {
       },
     },
     separator: {
-      control: 'text',
+      control: 'object',
+    },
+    iconMobile: {
+      control: 'object',
     },
   },
 } satisfies Meta<BreadcrumbGroupProps>;
@@ -102,6 +106,7 @@ export const BiggerBreadcrumb: Story = {
       'Category17',
     ],
     separator: '/',
+    iconMobile: '<',
   },
 };
 

@@ -10,15 +10,19 @@ import type {
   BreadcrumbGroupProps,
   BreadcrumbStyledProps,
 } from './breadcrumb.types';
-import { deepMerge, useTheme } from '@douro-ui/react';
+import { deepMerge, useTheme, useWindowDimensions } from '@douro-ui/react';
 
 const BreadcrumbGroup = ({
   breadcrumbs = [],
   separator,
+  iconMobile,
   styled,
   ...props
 }: BreadcrumbGroupProps): React.ReactNode => {
   const theme = useTheme();
+  const { width } = useWindowDimensions();
+
+  const isMobile = width !== undefined && width <= theme.breakpoints.tablet;
   const [currentBreadcrumbs, setCurrentBreadcrumbs] =
     useState<string[]>(breadcrumbs);
   const [displayedBreadcrumbs, setDisplayedBreadcrumbs] =
@@ -44,8 +48,15 @@ const BreadcrumbGroup = ({
     if (displayedBreadcrumbs[index] === '...' && !isDropdownOpen) {
       setIsDropdownOpen(!isDropdownOpen);
     } else {
-      setCurrentBreadcrumbs(breadcrumbs.slice(0, index + 1));
-      setDisplayedBreadcrumbs(breadcrumbs.slice(0, index + 1));
+      if (isMobile) {
+        if (index > 0) {
+          setCurrentBreadcrumbs(breadcrumbs.slice(0, index + 1));
+          setDisplayedBreadcrumbs(breadcrumbs.slice(index - 1, index));
+        }
+      } else {
+        setCurrentBreadcrumbs(breadcrumbs.slice(0, index + 1));
+        setDisplayedBreadcrumbs(breadcrumbs.slice(0, index + 1));
+      }
 
       if (isDropdownOpen) {
         setIsDropdownOpen(false);
@@ -53,44 +64,49 @@ const BreadcrumbGroup = ({
     }
   };
 
-  useEffect(() => {
-    const truncateBreadcrumbs = () => {
-      if (breadcrumbRef.current) {
-        const containerWidth = window.innerWidth - 32;
-        const breadcrumbElements = breadcrumbRef.current.children;
+  const truncateBreadcrumbs = () => {
+    if (breadcrumbRef.current) {
+      const containerWidth = window.innerWidth - 32;
+      const breadcrumbElements = breadcrumbRef.current.children;
 
-        let totalWidth =
-          (breadcrumbElements[breadcrumbElements.length - 1] as HTMLElement)
-            .offsetWidth +
-          25 +
-          8;
-        const displayed = [];
+      let totalWidth =
+        (breadcrumbElements[breadcrumbElements.length - 1] as HTMLElement)
+          .offsetWidth +
+        25 +
+        8;
+      const displayed = [];
 
-        for (let i = 0; i < breadcrumbElements.length; i++) {
-          const item = breadcrumbElements[i] as HTMLElement;
-          const itemWidth = item.offsetWidth + 8;
+      for (let i = 0; i < breadcrumbElements.length; i++) {
+        const item = breadcrumbElements[i] as HTMLElement;
+        const itemWidth = item.offsetWidth + 8;
 
-          if (totalWidth + itemWidth > containerWidth) {
-            if (displayed.length > 0) {
-              displayed.push('...');
-            }
-            displayed.push(currentBreadcrumbs[currentBreadcrumbs.length - 1]);
-            setTruncatedBreadcrumbs(
-              currentBreadcrumbs.slice(i, currentBreadcrumbs.length - 1),
-            );
-            break;
+        if (totalWidth + itemWidth > containerWidth) {
+          if (displayed.length > 0) {
+            displayed.push('...');
           }
-
-          totalWidth += itemWidth;
-          displayed.push(currentBreadcrumbs[i]);
+          displayed.push(currentBreadcrumbs[currentBreadcrumbs.length - 1]);
+          setTruncatedBreadcrumbs(
+            currentBreadcrumbs.slice(i, currentBreadcrumbs.length - 1),
+          );
+          break;
         }
 
-        setDisplayedBreadcrumbs(displayed);
+        totalWidth += itemWidth;
+        displayed.push(currentBreadcrumbs[i]);
       }
-    };
 
-    truncateBreadcrumbs();
-  }, [currentBreadcrumbs, breadcrumbs]);
+      setDisplayedBreadcrumbs(displayed);
+    }
+  };
+
+  useEffect(() => {
+    if (isMobile) {
+      const lastBreadcrumbs = currentBreadcrumbs.slice(-2, -1);
+      setDisplayedBreadcrumbs(lastBreadcrumbs);
+    } else {
+      truncateBreadcrumbs();
+    }
+  }, [currentBreadcrumbs, breadcrumbs, isMobile]);
 
   return (
     <BreadcrumbGroupStyled
@@ -101,8 +117,14 @@ const BreadcrumbGroup = ({
     >
       {displayedBreadcrumbs.map((breadcrumb: string, index: number) => (
         <BreadcrumbContainer key={index}>
+          {isMobile && (iconMobile ? iconMobile : '<')}
+
           <Breadcrumb
-            onClick={() => handleBreadcrumbClick(index)}
+            onClick={() =>
+              isMobile
+                ? handleBreadcrumbClick(currentBreadcrumbs.indexOf(breadcrumb))
+                : handleBreadcrumbClick(index)
+            }
             className={
               index === displayedBreadcrumbs.length - 1
                 ? 'breadcrumb-active'
@@ -111,7 +133,7 @@ const BreadcrumbGroup = ({
           >
             {breadcrumb}
           </Breadcrumb>
-          {index < displayedBreadcrumbs.length - 1 && separator}
+          {!isMobile && index < displayedBreadcrumbs.length - 1 && separator}
 
           {isDropdownOpen && index === displayedBreadcrumbs.length - 2 && (
             <BreadcrumbDropdown>
