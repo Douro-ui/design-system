@@ -59,7 +59,7 @@ export const BreadcrumbDropdown = styled.div`
   flex-direction: column;
   position: absolute;
   top: 1.813rem;
-  left: 0.938rem;
+  left: -0.938rem;
   box-shadow: 0 0.125rem 0.5rem 0 rgb(38 38 38 / 20%);
   overflow-y: scroll;
 `;

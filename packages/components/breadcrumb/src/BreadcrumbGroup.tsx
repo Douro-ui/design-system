@@ -56,15 +56,19 @@ const BreadcrumbGroup = ({
   useEffect(() => {
     const truncateBreadcrumbs = () => {
       if (breadcrumbRef.current) {
-        const containerWidth = window.innerWidth;
+        const containerWidth = window.innerWidth - 32;
         const breadcrumbElements = breadcrumbRef.current.children;
 
-        let totalWidth = 0;
+        let totalWidth =
+          (breadcrumbElements[breadcrumbElements.length - 1] as HTMLElement)
+            .offsetWidth +
+          25 +
+          8;
         const displayed = [];
 
         for (let i = 0; i < breadcrumbElements.length; i++) {
           const item = breadcrumbElements[i] as HTMLElement;
-          const itemWidth = item.offsetWidth;
+          const itemWidth = item.offsetWidth + 8;
 
           if (totalWidth + itemWidth > containerWidth) {
             if (displayed.length > 0) {
