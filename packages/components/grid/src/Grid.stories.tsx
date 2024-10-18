@@ -61,9 +61,9 @@ const ContentDemo = styled.div<{
 
 export const GridResponsive: Story = {
   args: {
-    columns: 12,
-    rows: 7,
-    gap: '10px',
+    columns: 1,
+    rows: 1,
+    gap: '16px',
   },
   render: (args: GridProps) => (
     <Grid {...args}>

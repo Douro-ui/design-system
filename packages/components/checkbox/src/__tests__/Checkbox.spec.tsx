@@ -25,6 +25,16 @@ describe('<Checkbox />', () => {
     expect(handleChange).toHaveBeenCalled();
   });
 
+  it('does not call onChange handler when onChange is not provided', () => {
+    const handleChange = jest.fn();
+
+    render(<Checkbox label="Test Checkbox" value="test" name="checkboxName" />);
+
+    fireEvent.click(screen.getByLabelText('Test Checkbox'));
+
+    expect(handleChange).not.toHaveBeenCalled();
+  });
+
   it('is checked when checked prop is passed', () => {
     render(
       <Checkbox

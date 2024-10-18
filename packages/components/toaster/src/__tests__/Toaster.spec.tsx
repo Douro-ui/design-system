@@ -9,6 +9,7 @@ import Toaster from '../Toaster';
 import Button from '@douro-ui/button';
 import { ToasterStack } from '../ToasterStack';
 import { ToasterProps } from '../toaster.types';
+import { ToasterProvider, useToaster } from '../ToasterProvider';
 
 jest.useFakeTimers();
 
@@ -26,6 +27,7 @@ describe('<Toaster />', () => {
       'bottom: 1rem; left: 50%; transform: translateX(-50%);',
     );
   });
+
   it('should disappear after the specified duration', async () => {
     waitFor(() => {
       render(
@@ -45,6 +47,7 @@ describe('<Toaster />', () => {
 
     jest.useRealTimers();
   });
+
   it('should disappear when CloseButton is clicked', async () => {
     const ToasterTest = () => {
       return (
@@ -67,6 +70,7 @@ describe('<Toaster />', () => {
       expect(screen.queryByText('Warning Message')).not.toBeInTheDocument();
     });
   });
+
   it('should shows toaster when button is clicked', () => {
     const ToasterTest = () => {
       const [showToaster, setShowToaster] = useState(false);
@@ -88,6 +92,7 @@ describe('<Toaster />', () => {
     expect(screen.getByText('Click triggered')).toBeInTheDocument();
   });
 });
+
 describe('<ToasterStack />', () => {
   it('should stack multiple toasters correctly with one button click', () => {
     const ToasterStackTest = () => {
@@ -135,5 +140,55 @@ describe('<ToasterStack />', () => {
 
     expect(firstToaster).toHaveStyle('top: 1rem; right: 1rem;');
     expect(secondToaster).toHaveStyle('top: 1rem; right: 1rem;');
+  });
+});
+
+const TestComponent = () => {
+  const { addToaster } = useToaster();
+
+  const handleAddToaster = () => {
+    const toaster: ToasterProps = {
+      id: `${Date.now()}`,
+      typeToaster: 'info',
+      position: 'top-right',
+      duration: 5000,
+      children: 'Test Toaster',
+    };
+    addToaster(toaster);
+  };
+
+  return (
+    <div>
+      <button onClick={handleAddToaster}>Add Toaster</button>
+    </div>
+  );
+};
+
+describe('<ToasterProvider />', () => {
+  it('should add a toaster and display it', () => {
+    render(
+      <ToasterProvider>
+        <TestComponent />
+      </ToasterProvider>,
+    );
+
+    fireEvent.click(screen.getByText('Add Toaster'));
+
+    expect(screen.getByText('Test Toaster')).toBeInTheDocument();
+  });
+
+  it('should not exceed maximum of 3 toasters', () => {
+    render(
+      <ToasterProvider>
+        <TestComponent />
+      </ToasterProvider>,
+    );
+
+    for (let i = 0; i < 4; i++) {
+      fireEvent.click(screen.getByText('Add Toaster'));
+    }
+
+    const toasters = screen.getAllByText('Test Toaster');
+    expect(toasters.length).toBe(3);
   });
 });
