@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/avatar@0.2.0...@douro-ui/avatar@0.2.1) (2024-10-21)
+
+**Note:** Version bump only for package @douro-ui/avatar
+
 # [0.2.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/avatar@0.1.5...@douro-ui/avatar@0.2.0) (2024-10-02)
 
 ### Features
