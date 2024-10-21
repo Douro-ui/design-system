@@ -5,48 +5,48 @@ import theme from '../../theme/theme';
 
 const Container = styled.div`
   font-family: Arial, sans-serif;
-  padding: ${theme.spaceUnit['spacing-32']};
+  padding: ${theme.spacing.spacing32};
 `;
 
 const Title = styled.h1`
   font-size: '${theme.typography.heading.h1.desktop.fontSize}rem';
-  margin-bottom: ${theme.spaceUnit['spacing-20']};
+  margin-bottom: ${theme.spacing.spacing20};
 `;
 
 const SectionTitle = styled.h2`
   font-size: ${theme.typography.heading.h2.desktop.fontSize}rem;
-  margin-top: ${theme.spaceUnit['spacing-20']};
-  margin-bottom: ${theme.spaceUnit['spacing-08']};
+  margin-top: ${theme.spacing.spacing20};
+  margin-bottom: ${theme.spacing.spacing8};
 `;
 
 const SubSectionTitle = styled.h3`
   font-size: ${theme.typography.heading.h3.desktop.fontSize}rem;
-  margin-top: ${theme.spaceUnit['spacing-08']};
-  margin-bottom: ${theme.spaceUnit['spacing-08']};
+  margin-top: ${theme.spacing.spacing8};
+  margin-bottom: ${theme.spacing.spacing8};
 `;
 
 const ColorBlock = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: ${theme.spaceUnit['spacing-08']};
+  margin-bottom: ${theme.spacing.spacing8};
 `;
 
 const ColorName = styled.div`
-  width: ${theme.spaceUnit['spacing-40']};
+  width: ${theme.spacing.spacing40};
   font-weight: bold;
 `;
 
 const ColorValue = styled.div`
-  width: ${theme.spaceUnit['spacing-32']};
-  margin-left: ${theme.spaceUnit['spacing-64']};
+  width: ${theme.spacing.spacing32};
+  margin-left: ${theme.spacing.spacing64};
   text-align: center;
 `;
 
 const ColorPreview = styled.div`
-  width: ${theme.spaceUnit['spacing-32']};
-  height: ${theme.spaceUnit['spacing-32']};
-  margin-left: ${theme.spaceUnit['spacing-64']};
-  border-radius: ${theme.spaceUnit['spacing-06']};
+  width: ${theme.spacing.spacing32};
+  height: ${theme.spacing.spacing32};
+  margin-left: ${theme.spacing.spacing64};
+  border-radius: ${theme.spacing.spacing6};
   border: 1px solid #ddd;
 `;
 
