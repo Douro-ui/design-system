@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/tabs",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Douro UI - Metyis Design System Tabs Component",
   "main": "src/index.ts",
   "type": "module",
@@ -15,7 +15,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@douro-ui/react": "^0.6.1"
+    "@douro-ui/react": "^0.7.0"
   },
   "peerDependencies": {
     "@emotion/react": "^11.11.4",

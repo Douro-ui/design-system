@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.6.1...@douro-ui/react@0.7.0) (2024-10-21)
+
+### Features
+
+- spacing token ([869586d](https://github.com/Douro-ui/design-system/commit/869586df82969e3f1b698932d1cbf8524ec1ecad))
+
 ## [0.6.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.6.0...@douro-ui/react@0.6.1) (2024-09-10)
 
 ### Bug Fixes
