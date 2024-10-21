@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/radio@0.1.12...@douro-ui/radio@0.2.0) (2024-10-21)
+
+### Features
+
+- timeline component ([7a359d5](https://github.com/Douro-ui/design-system/commit/7a359d5b8b4eb01c507e0d8b8df1adab2caecc8d))
+
 ## [0.1.12](https://github.com/Douro-ui/design-system/compare/@douro-ui/radio@0.1.11...@douro-ui/radio@0.1.12) (2024-09-10)
 
 **Note:** Version bump only for package @douro-ui/radio
