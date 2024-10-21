@@ -40,7 +40,7 @@ export const ModalHeader = ({
           onClick={onClose}
           src={headerIcon != undefined ? headerIcon : Close}
           alt="Close Icon"
-        ></ModalIconStyled>
+        />
       </ModalHeaderStyled>
     </>
   );

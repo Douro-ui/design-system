@@ -15,7 +15,7 @@ const Video = ({
   ...props
 }: VideoProps): ReactNode => {
   const defaultThemeValues: VideoStyledProps = {
-    width: '50%',
+    width: '100%',
     height: 'auto',
   };
 

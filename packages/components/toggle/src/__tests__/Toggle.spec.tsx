@@ -43,11 +43,14 @@ describe('<Toggle />', () => {
   });
 
   it('calls onToggleChange handler and checks if the toggle is checked', () => {
+    const handleToggleChange = jest.fn();
     const handleChange = jest.fn();
 
     render(
       <ThemeProvider>
-        <Toggle onToggleChange={handleChange}>This is a toggle</Toggle>
+        <Toggle onToggleChange={handleToggleChange} onChange={handleChange}>
+          This is a toggle
+        </Toggle>
       </ThemeProvider>,
     );
 
@@ -55,5 +58,19 @@ describe('<Toggle />', () => {
 
     const toggleElement = screen.getByRole('checkbox', { checked: true });
     expect(toggleElement).toBeInTheDocument();
+  });
+
+  it('does not call onToggleChange handler when onToggleChange is not provided', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <ThemeProvider>
+        <Toggle>This is a toggle</Toggle>
+      </ThemeProvider>,
+    );
+
+    fireEvent.click(screen.getByText('This is a toggle'));
+
+    expect(handleChange).not.toHaveBeenCalledWith('This is a toggle');
   });
 });

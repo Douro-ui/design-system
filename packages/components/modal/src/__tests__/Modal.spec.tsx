@@ -20,6 +20,7 @@ const ModalWithButton = ({ onClose, ...props }: ModalProps) => {
         Open modal
       </Button>
       <Modal
+        data-testid="modal-id"
         isOpen={isOpen}
         childrenBody="Lorem ipsum dolor sit amet."
         onClose={handleClose}
@@ -31,19 +32,27 @@ const ModalWithButton = ({ onClose, ...props }: ModalProps) => {
 
 describe('<Modal />', () => {
   it('renders correctly', () => {
-    render(<ModalWithButton onClose={() => {}} />);
+    render(<ModalWithButton onClose={() => {}} size="lg" />);
 
     fireEvent.click(screen.getByText('Open modal'));
 
     expect(screen.getByText('Lorem ipsum dolor sit amet.')).toBeInTheDocument();
+    expect(screen.getByTestId('modal-id')).toHaveStyle('width: 80vw');
   });
 
   it('renders header when headerTitle is provided', () => {
-    render(<ModalWithButton headerTitle="Modal Header" onClose={() => {}} />);
+    render(
+      <ModalWithButton
+        headerTitle="Modal Header"
+        onClose={() => {}}
+        size="sm"
+      />,
+    );
 
     fireEvent.click(screen.getByText('Open modal'));
 
     expect(screen.getByText('Modal Header')).toBeInTheDocument();
+    expect(screen.getByTestId('modal-id')).toHaveStyle('width: 40vw');
   });
 
   it('renders footer', () => {
@@ -64,16 +73,36 @@ describe('<Modal />', () => {
   });
 
   it('closes the modal when the Escape key is pressed', () => {
-    render(<ModalWithButton onClose={() => {}} />);
+    render(<ModalWithButton onClose={() => {}} size="md" />);
 
     fireEvent.click(screen.getByText('Open modal'));
 
-    expect(screen.getByText('Lorem ipsum dolor sit amet.')).toBeInTheDocument();
+    const bodyElement = screen.getByText('Lorem ipsum dolor sit amet.');
+
+    expect(bodyElement).toBeInTheDocument();
+    expect(screen.getByTestId('modal-id')).toHaveStyle('width: 60vw');
 
     fireEvent.keyDown(window, { key: 'Escape', code: 'Escape', charCode: 27 });
 
-    expect(
-      screen.queryByText('Lorem ipsum dolor sit amet.'),
-    ).not.toBeInTheDocument();
+    expect(bodyElement).not.toBeInTheDocument();
+  });
+
+  it('renders custom icon when headerIcon is provided', () => {
+    render(
+      <ModalWithButton
+        headerTitle="Modal Header"
+        onClose={() => {}}
+        size="sm"
+        headerIcon="icon.svg"
+      />,
+    );
+
+    fireEvent.click(screen.getByText('Open modal'));
+
+    expect(screen.getByText('Modal Header')).toBeInTheDocument();
+
+    const iconElement = screen.getByAltText('Close Icon');
+    expect(iconElement).toBeInTheDocument();
+    expect(iconElement).toHaveAttribute('src', 'icon.svg');
   });
 });

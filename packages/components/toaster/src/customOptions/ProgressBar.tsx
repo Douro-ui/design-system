@@ -24,6 +24,7 @@ export const ProgressBar = ({
 
   return (
     <ProgressBarStyled
+      data-testid="progress-bar"
       duration={duration}
       progress={progress}
       styled={mergedStyles as Required<ProgressBarStyledProps>}

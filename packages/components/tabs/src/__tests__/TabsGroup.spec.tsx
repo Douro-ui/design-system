@@ -35,6 +35,20 @@ describe('<TabsGroup />', () => {
     expect(handleChange).toHaveBeenCalledWith('tab1');
   });
 
+  it('does not call onChange handler when onChange is not provided', () => {
+    const handleChange = jest.fn();
+
+    render(
+      <ThemeProvider>
+        <TabsGroup options={options} />
+      </ThemeProvider>,
+    );
+
+    fireEvent.click(screen.getByText('Tab 1'));
+
+    expect(handleChange).not.toHaveBeenCalledWith('tab1');
+  });
+
   it('does not call onChange handler when disabled tab is clicked', () => {
     const handleChange = jest.fn();
 

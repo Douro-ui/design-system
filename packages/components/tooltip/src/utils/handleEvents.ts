@@ -7,18 +7,14 @@ export const handleEvents = ({
   hideTooltip,
   toggleTooltip,
 }: handleEventsProps): React.DOMAttributes<Element> => {
-  if (trigger === 'hover') {
-    return {
-      onMouseEnter: showTooltip,
-      onMouseLeave: hideTooltip,
-    };
-  }
-
   if (trigger === 'click') {
     return {
       onClick: toggleTooltip,
     };
   }
 
-  return {};
+  return {
+    onMouseEnter: showTooltip,
+    onMouseLeave: hideTooltip,
+  };
 };

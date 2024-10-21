@@ -16,7 +16,7 @@ export const PictureContainerStyled = styled.div<PictureContainerStyledProps>`
 `;
 
 export const ImgStyled = styled.img<{ styled: Required<ImgStyledProps> }>`
-  width: ${({ width }) => width || '100%'};
-  height: ${({ height }) => height || 'auto'};
-  display: ${props => (props.src ? 'block' : 'none')};
+  width: ${({ styled }) => styled.width || '50%'};
+  height: ${({ styled }) => styled.height || 'auto'};
+  display: block;
 `;
