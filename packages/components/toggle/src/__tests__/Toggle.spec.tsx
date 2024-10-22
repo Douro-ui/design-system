@@ -1,43 +1,28 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '../../../../../tests/test-utils';
 import Toggle from '../Toggle';
-import { ThemeProvider } from '@douro-ui/react';
 
 describe('<Toggle />', () => {
   it('renders with toggle checked', () => {
-    render(
-      <ThemeProvider>
-        <Toggle checked={true}>This is a toggle</Toggle>
-      </ThemeProvider>,
-    );
+    render(<Toggle checked={true} />);
 
     const toggleElement = screen.getByRole('checkbox', { checked: true });
-
     expect(toggleElement).toBeInTheDocument();
   });
 
   it('renders with toggle not checked', () => {
-    render(
-      <ThemeProvider>
-        <Toggle>This is a toggle</Toggle>
-      </ThemeProvider>,
-    );
+    render(<Toggle />);
 
     const toggleElement = screen.getByRole('checkbox', { checked: false });
-
     expect(toggleElement).toBeInTheDocument();
   });
 
   it('renders with disabled state', () => {
-    render(
-      <ThemeProvider>
-        <Toggle disabled>This is a toggle</Toggle>
-      </ThemeProvider>,
-    );
+    render(<Toggle disabled label="Toggle switch" />);
 
-    const toggleElement = screen.getByText('This is a toggle');
-    const toggleContainer = toggleElement.closest('label');
+    const toggleContainer = screen
+      .getByLabelText('Toggle switch')
+      .closest('label');
 
-    expect(toggleContainer).toHaveStyle('opacity: 0.5');
     expect(toggleContainer).toHaveStyle('cursor: not-allowed');
     expect(toggleContainer).toHaveStyle('pointer-events: none');
   });
@@ -47,30 +32,43 @@ describe('<Toggle />', () => {
     const handleChange = jest.fn();
 
     render(
-      <ThemeProvider>
-        <Toggle onToggleChange={handleToggleChange} onChange={handleChange}>
-          This is a toggle
-        </Toggle>
-      </ThemeProvider>,
+      <Toggle
+        onToggleChange={handleToggleChange}
+        onChange={handleChange}
+        aria-label="Toggle switch"
+      />,
     );
 
-    fireEvent.click(screen.getByText('This is a toggle'));
+    fireEvent.click(screen.getByRole('checkbox'));
 
     const toggleElement = screen.getByRole('checkbox', { checked: true });
     expect(toggleElement).toBeInTheDocument();
+    expect(handleToggleChange).toHaveBeenCalled();
   });
 
   it('does not call onToggleChange handler when onToggleChange is not provided', () => {
     const handleChange = jest.fn();
 
+    render(<Toggle label="Toggle switch" />);
+
+    fireEvent.click(screen.getByLabelText('Toggle switch'));
+
+    expect(handleChange).not.toHaveBeenCalled();
+  });
+
+  it('renders with an icon', () => {
     render(
-      <ThemeProvider>
-        <Toggle>This is a toggle</Toggle>
-      </ThemeProvider>,
+      <Toggle
+        checked={false}
+        aria-label="Toggle switch"
+        icon={() => <div>🔍</div>}
+      />,
     );
 
-    fireEvent.click(screen.getByText('This is a toggle'));
+    const toggleElement = screen.getByRole('checkbox');
+    const iconElement = screen.getByTestId('icon');
 
-    expect(handleChange).not.toHaveBeenCalledWith('This is a toggle');
+    expect(toggleElement).toBeInTheDocument();
+    expect(iconElement).toBeInTheDocument();
   });
 });

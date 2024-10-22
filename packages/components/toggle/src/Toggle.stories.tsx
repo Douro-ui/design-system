@@ -1,51 +1,109 @@
-import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { useState } from 'react';
 import Toggle from './Toggle';
 import { ThemeProvider } from '@douro-ui/react';
 import { expect, userEvent, within } from '@storybook/test';
+import { PartialStoryFn } from 'storybook/internal/types';
+import { ToggleProps } from './toggle.types';
+import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
+import { Icon } from '@douro-ui/icon';
 
-const meta: Meta<typeof Toggle> = {
+const meta: Meta<ToggleProps> = {
   title: 'Example/Toggle',
   component: Toggle,
+  decorators: [
+    (Story: PartialStoryFn<ReactRenderer, ToggleProps>): EmotionJSX.Element => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  args: {
+    disabled: false,
+    checked: false,
+    size: 'lg',
+    styled: {},
+  },
+  argTypes: {
+    disabled: {
+      control: 'boolean',
+    },
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg'],
+    },
+    styled: {
+      control: 'object',
+    },
+  },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
+export const Default: Story = {
+  render: (args: ToggleProps) => {
+    const [checked, setChecked] = useState(args.checked);
 
-const ToggleWithHooks = () => {
-  const [checked, setChecked] = useState(false);
+    const handleToggleChange = (checkedValue: boolean) => {
+      setChecked(checkedValue);
+    };
 
-  const handleToggleChange = (checked: boolean) => {
-    setChecked(checked);
-  };
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const isChecked = e.target.checked;
+      action('toggle-changed')(isChecked);
+    };
 
-  return (
-    <ThemeProvider>
-      <Toggle checked={checked} onToggleChange={handleToggleChange}>
-        This is a toggle
-      </Toggle>
-    </ThemeProvider>
-  );
+    return (
+      <Toggle
+        {...args}
+        checked={checked}
+        onChange={handleChange}
+        onToggleChange={handleToggleChange}
+        label="Toggle Label"
+        title="Toggle switch"
+      />
+    );
+  },
 };
 
-export const DefaultToggle: Story = {
-  render: () => <ToggleWithHooks />,
+export const WithIcon: Story = {
+  render: (args: ToggleProps) => {
+    const [checked, setChecked] = useState(args.checked);
+
+    const handleToggleChange = (checkedValue: boolean) => {
+      setChecked(checkedValue);
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const isChecked = e.target.checked;
+      action('toggle-changed')(isChecked);
+    };
+
+    return (
+      <Toggle
+        {...args}
+        checked={checked}
+        onChange={handleChange}
+        onToggleChange={handleToggleChange}
+        label="Toggle Label"
+        title="Toggle switch"
+        icon={() => <Icon name="star" />}
+      />
+    );
+  },
 };
 
-DefaultToggle.play = async ({
-  canvasElement,
-}: {
-  canvasElement: HTMLElement;
-}) => {
+Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   const canvas = within(canvasElement);
 
   const toogle = canvas.getByRole('checkbox');
-  expect(toogle).toHaveAccessibleName('This is a toggle');
   expect(toogle).not.toBeChecked();
   await userEvent.click(toogle);
   expect(toogle).toBeChecked();
