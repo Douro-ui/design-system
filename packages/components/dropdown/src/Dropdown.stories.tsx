@@ -4,6 +4,7 @@ import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { DropdownProps } from './dropdown.types';
 import { useState } from 'react';
+import { expect, userEvent, within } from '@storybook/test';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Example/Dropdown',
@@ -103,7 +104,7 @@ export const DisabledDropdown: Story = {
   args: {
     label: 'Select a Banana',
     placeholder: 'Select an option',
-    disabled: false,
+    disabled: true,
     options: [
       { id: '1', name: 'Cavendish Banana', disabled: true },
       { id: '2', name: 'Red Banana' },
@@ -133,6 +134,7 @@ export const SelectedDropdown: Story = {
     label: 'Select a Banana',
     placeholder: 'Select an option',
     disabled: false,
+    selectedId: '5',
     options: [
       { id: '1', name: 'Cavendish Banana' },
       { id: '2', name: 'Red Banana' },
@@ -144,4 +146,44 @@ export const SelectedDropdown: Story = {
       { id: '8', name: 'Gato Banana' },
     ],
   },
+};
+DefaultDropdown.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+  const dropdown = canvas.getByText('Select an option');
+  expect(dropdown).toBeVisible();
+
+  const label = canvas.getByText('Select a Banana');
+  expect(label).toHaveTextContent('Select a Banana');
+
+  userEvent.click(dropdown);
+
+  const dropdownOpen = canvas.getByText('Cavendish Banana');
+  expect(dropdownOpen).toHaveTextContent('Cavendish Banana');
+
+  userEvent.click(dropdown);
+  const newOption = canvas.getByText('Red Banana');
+  userEvent.click(newOption);
+  expect(newOption).toHaveTextContent('Red Banana');
+};
+DisabledDropdown.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+  const dropdown = canvas.getByText('Select an option');
+  expect(dropdown).toHaveStyle('pointer-events: none');
+
+  const dropdownOpen = canvas.getByText('Cavendish Banana');
+  expect(dropdownOpen).not.toBeVisible();
+};
+
+SelectedDropdown.play = async (): Promise<void> => {
+  const element = document.querySelector('#storybook-root > div > div');
+  expect(element).toBeVisible();
+  expect(element).toHaveTextContent('Madeira Banana');
 };
