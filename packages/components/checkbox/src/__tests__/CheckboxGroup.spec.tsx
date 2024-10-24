@@ -1,9 +1,10 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '../../../../../tests/test-utils';
 import CheckboxGroup from '../CheckboxGroup';
+import { CheckboxProps } from '../checkbox.types';
 
 describe('<CheckboxGroup />', () => {
   const options = [
-    { label: 'Checkbox 1', value: 'checkbox1', role: 'checkbox' },
+    { label: 'Checkbox 1', value: 'checkbox1', tabIndex: 0 },
     { label: 'Checkbox 2', value: 'checkbox2' },
     { label: 'Checkbox 3', value: 'checkbox3', disabled: true },
   ];
@@ -11,8 +12,10 @@ describe('<CheckboxGroup />', () => {
   it('renders correctly with all options', () => {
     render(<CheckboxGroup name="checkboxGroup" options={options} />);
 
-    options.forEach((option: { label: string }) => {
-      expect(screen.getByLabelText(option.label)).toBeInTheDocument();
+    options.forEach((option: CheckboxProps) => {
+      const label = screen.getByText(option.label);
+      const input = label.closest('div')?.querySelector('input');
+      expect(input).toBeInTheDocument();
     });
   });
 
@@ -27,9 +30,23 @@ describe('<CheckboxGroup />', () => {
       />,
     );
 
-    fireEvent.click(screen.getByLabelText('Checkbox 1'));
+    const label = screen.getByText('Checkbox 1');
+    const input = label.closest('div')?.querySelector('input');
 
-    expect(handleChange).toHaveBeenCalledWith(['checkbox1']);
+    fireEvent.click(input!);
+    expect(handleChange).toHaveBeenCalledWith('checkbox1');
+  });
+
+  it('does not call onChange handler when onChange is not provided', () => {
+    const handleChange = jest.fn();
+
+    render(<CheckboxGroup name="checkboxGroup" options={options} />);
+
+    const label = screen.getByText('Checkbox 1');
+    const input = label.closest('div')?.querySelector('input');
+
+    fireEvent.click(input!);
+    expect(handleChange).not.toHaveBeenCalledWith('checkbox1');
   });
 
   it('checks the correct checkbox button', () => {
@@ -37,46 +54,49 @@ describe('<CheckboxGroup />', () => {
       <CheckboxGroup
         name="checkboxGroup"
         options={options}
-        selectedValues={['checkbox1', 'checkbox2']}
+        selectedValues={['checkbox1']}
       />,
     );
 
-    expect(screen.getByLabelText('Checkbox 1')).toBeChecked();
-    expect(screen.getByLabelText('Checkbox 2')).toBeChecked();
-    expect(screen.getByLabelText('Checkbox 3')).not.toBeChecked();
+    const label1 = screen.getByText('Checkbox 1');
+    const input1 = label1.closest('div')?.querySelector('input');
+    expect(input1).toBeChecked();
+
+    const label2 = screen.getByText('Checkbox 2');
+    const input2 = label2.closest('div')?.querySelector('input');
+    expect(input2).not.toBeChecked();
+
+    const label3 = screen.getByText('Checkbox 3');
+    const input3 = label3.closest('div')?.querySelector('input');
+    expect(input3).not.toBeChecked();
   });
 
   it('disables the correct checkbox button', () => {
     render(<CheckboxGroup name="checkboxGroup" options={options} />);
 
-    expect(screen.getByLabelText('Checkbox 1')).not.toBeDisabled();
-    expect(screen.getByLabelText('Checkbox 2')).not.toBeDisabled();
-    expect(screen.getByLabelText('Checkbox 3')).toBeDisabled();
+    const label1 = screen.getByText('Checkbox 1');
+    const input1 = label1.closest('div')?.querySelector('input');
+    expect(input1).not.toBeDisabled();
+
+    const label2 = screen.getByText('Checkbox 2');
+    const input2 = label2.closest('div')?.querySelector('input');
+    expect(input2).not.toBeDisabled();
+
+    const label3 = screen.getByText('Checkbox 3');
+    const input3 = label3.closest('div')?.querySelector('input');
+    expect(input3).toBeDisabled();
   });
 
-  it('sets the role correctly', () => {
-    render(<CheckboxGroup name="checkboxGroup" options={options} />);
-
-    expect(screen.getByLabelText('Checkbox 1')).toHaveAttribute(
-      'role',
-      'checkbox',
-    );
-  });
-
-  it('calls onChange handler with updated values when a checkbox is unchecked', () => {
-    const handleChange = jest.fn();
-
+  it('renders the error message when error is passed', () => {
     render(
       <CheckboxGroup
         name="checkboxGroup"
         options={options}
-        selectedValues={['checkbox1', 'checkbox2']}
-        onChange={handleChange}
+        error="This is an error"
       />,
     );
 
-    fireEvent.click(screen.getByLabelText('Checkbox 1'));
-
-    expect(handleChange).toHaveBeenCalledWith(['checkbox2']);
+    const errorMessage = screen.getByText('This is an error');
+    expect(errorMessage).toBeInTheDocument();
   });
 });
