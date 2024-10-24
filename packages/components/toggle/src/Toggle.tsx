@@ -1,38 +1,42 @@
-import type {
-  InputStyledProps,
-  SpanStyledProps,
-  ToggleProps,
-} from './toggle.types';
+import type { ToggleStyledProps, ToggleProps } from './toggle.types';
 import {
   ToggleStyled,
   ToggleContainerStyled,
   SpanStyled,
   InputStyled,
+  CircleStyled,
+  IconStyled,
 } from './toggle.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import React, { ChangeEvent } from 'react';
-
 const Toggle = ({
   disabled,
   checked,
+  label,
   onChange,
   onToggleChange,
   styled,
+  size = 'lg',
+  icon,
   ...props
 }: ToggleProps & {
   onToggleChange?: (checked: boolean) => void;
 }): React.ReactNode => {
   const theme = useTheme();
 
-  const defaultThemeValues: InputStyledProps & SpanStyledProps = {
-    styledColorBackground: theme.colors.neutral.silver.shade50,
-    styledColorBackgroundHover: theme.colors.neutral.silver.shade40,
-    styledColor: theme.colors.extended.blue.shade50,
-    styledColorHover: theme.colors.extended.blue.shade40,
-    styledColorActive: theme.colors.extended.blue.shade30,
+  const defaultThemeValues: ToggleStyledProps = {
+    backgroundColor: theme.colors.neutral.silver.shade80,
+    backgroundColorHover: theme.colors.neutral.silver.shade70,
+    backgroundColorDisabled: theme.colors.neutral.cold.shade90,
+    circleBackgroundColor: theme.colors.brand.white,
+    color: theme.colors.brand.primary,
+    colorHover: theme.colors.brand.tertiary,
+    colorActive: theme.colors.extended.blue.shade30,
+    iconColor: theme.colors.brand.primary,
+    iconColorDisabled: theme.colors.neutral.cold.shade90,
   };
 
-  const mergedThemeValues = deepMerge<InputStyledProps & SpanStyledProps>(
+  const mergedThemeValues = deepMerge<ToggleStyledProps>(
     defaultThemeValues,
     styled,
   );
@@ -48,14 +52,41 @@ const Toggle = ({
     <ToggleContainerStyled disabled={disabled}>
       <ToggleStyled {...props}>
         <InputStyled
-          {...mergedThemeValues}
+          styled={mergedThemeValues as Required<ToggleStyledProps>}
           type="checkbox"
           checked={checked}
           onChange={handleChange}
+          disabled={disabled}
+          reSize={size}
+          aria-checked={checked}
+          aria-disabled={disabled}
+          aria-label={label || 'Toggle switch'}
         />
-        <SpanStyled {...mergedThemeValues} />
+        <SpanStyled
+          size={size}
+          disabled={disabled}
+          styled={mergedThemeValues as Required<ToggleStyledProps>}
+        >
+          <CircleStyled
+            size={size}
+            styled={mergedThemeValues as Required<ToggleStyledProps>}
+            disabled={disabled}
+            checked={checked}
+          >
+            {icon && (
+              <IconStyled
+                data-testid={'icon'}
+                icon
+                checked
+                disabled
+                styled={mergedThemeValues as Required<ToggleStyledProps>}
+              >
+                {icon()}
+              </IconStyled>
+            )}
+          </CircleStyled>{' '}
+        </SpanStyled>
       </ToggleStyled>
-      <span>{props.children}</span>
     </ToggleContainerStyled>
   );
 };

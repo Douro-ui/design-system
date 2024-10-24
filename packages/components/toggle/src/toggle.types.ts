@@ -1,30 +1,26 @@
-import {
-  ChangeEventHandler,
-  HTMLAttributes,
-  InputHTMLAttributes,
-  LabelHTMLAttributes,
-} from 'react';
+import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
+import { ChangeEventHandler, HTMLAttributes, LabelHTMLAttributes } from 'react';
 
 export interface ToggleProps extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
   checked?: boolean;
+  label?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
-  styled?: InputStyledProps & SpanStyledProps;
+  styled?: ToggleStyledProps;
+  size?: 'sm' | 'md' | 'lg';
+  icon?: () => EmotionJSX.Element;
 }
 
-export interface ToggleContainerStyledProps
+export interface ToggleStyledProps
   extends LabelHTMLAttributes<HTMLLabelElement> {
   disabled?: boolean;
-}
-
-export interface SpanStyledProps extends HTMLAttributes<HTMLSpanElement> {
-  styledColorBackground: string;
-  styledColorBackgroundHover: string;
-}
-
-export interface InputStyledProps
-  extends InputHTMLAttributes<HTMLInputElement> {
-  styledColor: string;
-  styledColorHover: string;
-  styledColorActive: string;
+  backgroundColor?: string;
+  backgroundColorHover?: string;
+  backgroundColorDisabled?: string;
+  color?: string;
+  colorHover?: string;
+  colorActive?: string;
+  iconColor?: string;
+  iconColorDisabled?: string;
+  circleBackgroundColor?: string;
 }
