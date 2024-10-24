@@ -4,13 +4,21 @@ import { CheckboxStyledProps } from './checkbox.types';
 export const LabelStyled = styled.span`
   margin-left: 0.5rem;
   cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:checked {
+    text-decoration: none;
+  }
 `;
 
 export const InputStyled = styled.input<CheckboxStyledProps>`
   appearance: none;
   width: 0.75rem;
   height: 0.75rem;
-  border: 0.063rem solid #767676;
+  border: 0.063rem solid #b3b3b3;
   display: grid;
   place-content: center;
   border-radius: ${({ isCircle }) => (isCircle ? '50%' : '0.125rem')};
@@ -48,7 +56,7 @@ export const InputStyled = styled.input<CheckboxStyledProps>`
   }
 
   &:checked {
-    background-color: #298dcc;
+    background-color: #0b1f2f;
     border: none;
 
     &::before {
@@ -56,7 +64,9 @@ export const InputStyled = styled.input<CheckboxStyledProps>`
     }
 
     &:hover {
-      background-color: #005e99;
+      background-color: #fff;
+      border: solid;
+      border-color: #0b1f2f;
     }
 
     &:active {
