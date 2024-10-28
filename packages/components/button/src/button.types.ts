@@ -1,3 +1,4 @@
+import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -6,6 +7,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   children?: ReactNode;
   onClick?: () => void;
+  iconBefore?: () => EmotionJSX.Element;
+  iconAfter?: () => EmotionJSX.Element;
   styled?: ButtonStyledProps;
 }
 
@@ -23,4 +26,7 @@ export interface ButtonStyledProps {
   borderColorActive?: string;
   borderColorDisabled?: string;
   borderRadius?: string;
+  activeFontWeight?: number;
+  gapLg?: string;
+  gapSm?: string;
 }

@@ -20,6 +20,8 @@ const Button = ({
   children,
   styled,
   onClick,
+  iconBefore,
+  iconAfter,
   disabled,
   ...props
 }: ButtonProps): React.ReactNode => {
@@ -31,6 +33,8 @@ const Button = ({
       styled={styled}
       onClick={onClick}
       disabled={disabled}
+      iconBefore={iconBefore}
+      iconAfter={iconAfter}
       data-testid={`button-${typeBtn ?? 'primary'}`}
       {...props}
     >

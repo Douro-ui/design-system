@@ -15,7 +15,8 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@douro-ui/react": "^0.7.1"
+    "@douro-ui/react": "^0.7.1",
+    "@douro-ui/icon": "^0.2.2"
   },
   "peerDependencies": {
     "@emotion/react": "^11.11.4",

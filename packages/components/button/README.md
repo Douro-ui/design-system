@@ -33,3 +33,64 @@ or
 ```js
 import Button, { ButtonProps } from '@douro-ui/button';
 ```
+
+### Example with standart Button
+
+```js
+import React from 'react';
+import Button from '@douro-ui/button';
+
+const ButtonExample = () => (
+  <Button typeBtn="primary" size="md">
+    New Button
+  </Button>
+);
+
+export default ButtonExample;
+```
+
+### Example with Icon
+
+```js
+import React from 'react';
+import Button from '@douro-ui/button';
+import Icon from '@douro-ui/icon';
+
+const ButtonExample = () => (
+  <Button
+    typeBtn="primary"
+    size="md"
+    iconBefore={() => <Icon name="star" />}
+    iconAfter={() => <Icon name="star" />}
+  >
+    New Button
+  </Button>
+);
+
+export default ButtonExample;
+```
+
+## Props
+
+### Button Props
+
+| Prop       | Type                                       | default   | Description                                                           |
+| ---------- | ------------------------------------------ | --------- | --------------------------------------------------------------------- |
+| typeBtn    | 'primary', 'secondary','tertiary', 'error' | 'primary' | Type of button that defines the visual style.                         |
+| size       | 'sm', 'md', 'lg', 'xl'                     | 'lg'      | Size of the button, which adjusts padding and font size.              |
+| disabled   | boolean                                    | false     | Disables the button and applies disabled styles.                      |
+| children   | ReactNode                                  | N/A       | Content to be displayed inside the button.                            |
+| onClick    | () => void                                 | N/A       | Callback executed when the button is clicked.                         |
+| iconBefore | () => EmotionJSX.Element                   | N/A       | Optional icon component to be displayed before the button content.    |
+| iconAfter  | () => EmotionJSX.Element                   | N/A       | Optional icon component to be displayed after the button content.     |
+| styled     | ButtonStyledProps                          | N/A       | Object to customize styles, such as color, border, and border-radius. |
+
+### Customization
+
+To customize the behavior or appearance of the tag, see the main files below:
+
+- Button.tsx: The main Button component. Here you can change the button structure, rendering logic, and behavior.
+
+- buttonTypes/Primary.tsx, Secondary.tsx, Tertiary.tsx, Error.tsx: Define and manage the styles and behavior for each button type.
+
+- button.styles.ts: Modify button styling, size handling, and visual appearance. Adjust colors, paddings, etc.

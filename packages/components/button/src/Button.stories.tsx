@@ -4,6 +4,7 @@ import { ButtonProps } from './button.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { expect, userEvent, within, fn } from '@storybook/test';
+import { Icon } from '@douro-ui/icon';
 
 const meta: Meta<ButtonProps> = {
   title: 'Example/Button',
@@ -35,6 +36,12 @@ const meta: Meta<ButtonProps> = {
     size: {
       control: { options: ['sm', 'md', 'lg', 'xl'] },
     },
+    iconBefore: {
+      control: 'object',
+    },
+    iconAfter: {
+      control: 'object',
+    },
     disabled: {
       control: 'boolean',
     },
@@ -63,6 +70,28 @@ export const Secondary: Story = {
 export const Tertiary: Story = {
   args: {
     typeBtn: 'tertiary',
+    onClick: fn(),
+  },
+};
+export const WithIconBefore: Story = {
+  args: {
+    typeBtn: 'primary',
+    iconBefore: () => <Icon name="star" />,
+    onClick: fn(),
+  },
+};
+export const WithIconAfter: Story = {
+  args: {
+    typeBtn: 'primary',
+    iconAfter: () => <Icon name="star" />,
+    onClick: fn(),
+  },
+};
+export const WithBothIcon: Story = {
+  args: {
+    typeBtn: 'primary',
+    iconBefore: () => <Icon name="star" />,
+    iconAfter: () => <Icon name="star" />,
     onClick: fn(),
   },
 };
