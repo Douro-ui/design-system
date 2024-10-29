@@ -10,6 +10,5 @@ export interface IconStyledProps {
 
 export interface IconProps extends HTMLAttributes<HTMLDivElement> {
   name: keyof typeof icons;
-  size?: 'md' | 'lg';
   styled?: IconStyledProps;
 }

@@ -23,6 +23,7 @@
         }
       }
     ],
-    "media-query-no-invalid": null
+    "media-query-no-invalid": null,
+    "no-descending-specificity": null
   }
 }

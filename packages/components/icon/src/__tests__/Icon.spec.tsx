@@ -11,27 +11,22 @@ jest.mock('../../../../svg-icons', () => ({
 
 describe('<Icon />', () => {
   it('should render the chevron-up icon with default size', () => {
-    render(<Icon name="chevron-up" />);
+    render(
+      <Icon name="chevron-up" styled={{ width: '1rem', height: '1rem' }} />,
+    );
 
     const iconElement = screen.getByTestId('chevron-up-icon');
     expect(iconElement).toBeInTheDocument();
-    expect(iconElement.parentElement).toHaveStyle('width: 1rem; height: 1rem');
+    expect(iconElement).toHaveStyle('width: 1rem; height: 1rem');
   });
 
   it('should render the chevron-down icon', () => {
-    render(<Icon name="chevron-down" />);
+    render(
+      <Icon name="chevron-down" styled={{ width: '1rem', height: '1rem' }} />,
+    );
 
     const iconElement = screen.getByTestId('chevron-down-icon');
     expect(iconElement).toBeInTheDocument();
-    expect(iconElement.parentElement).toHaveStyle('width: 1rem; height: 1rem');
-  });
-
-  it('should render the close icon', () => {
-    render(<Icon name="chevron-down" size="lg" />);
-
-    const iconElement = screen.getByTestId('chevron-down-icon');
-    const iconWrapper = iconElement.parentElement;
-
-    expect(iconWrapper).toHaveStyle('width: 1.5rem; height: 1.5rem');
+    expect(iconElement).toHaveStyle('width: 1rem; height: 1rem');
   });
 });

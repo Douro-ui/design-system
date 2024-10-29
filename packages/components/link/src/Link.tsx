@@ -1,18 +1,30 @@
 import { LinkProps, LinkStyledProps } from './link.types';
-import { LinkStyled, SpanHiddenStyled } from './link.styles';
+import { IconStyled, LinkStyled } from './link.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import { ReactNode } from 'react';
 
-const Link = ({ underline, href, styled, ...props }: LinkProps): ReactNode => {
+const Link = ({
+  href,
+  size,
+  isUnderline,
+  ariaLabel,
+  iconBefore,
+  iconAfter,
+  children,
+  styled,
+  isDisabled = false,
+  ...props
+}: LinkProps): ReactNode => {
   const theme = useTheme();
 
   const defaultThemeValues: LinkStyledProps = {
-    fontSize: theme.fontSize,
-    fontWeight: theme.fontWeight.REGULAR,
     color: theme.colors.extended.blue.shade50,
-    colorHover: theme.colors.extended.blue.shade40,
-    colorActive: theme.colors.extended.blue.shade30,
+    colorHover: theme.colors.extended.blue.shade30,
+    colorActive: theme.colors.extended.blue.shade50,
+    colorVisited: theme.colors.extended.purple.shade50,
+    colorHoverVisited: theme.colors.extended.purple.shade40,
     colorFocus: theme.colors.extended.blue.shade20,
+    colorDisabled: theme.colors.neutral.cold.shade90,
   };
 
   const mergedThemeValues = deepMerge<LinkStyledProps>(
@@ -22,13 +34,33 @@ const Link = ({ underline, href, styled, ...props }: LinkProps): ReactNode => {
 
   return (
     <LinkStyled
-      underline={underline}
       href={href}
+      size={size}
+      underline={isUnderline}
+      aria-label={ariaLabel}
+      hasIconBefore={!!iconBefore}
+      hasIconAfter={!!iconAfter}
+      aria-disabled={isDisabled}
       styled={mergedThemeValues as Required<LinkStyledProps>}
       {...props}
     >
-      <SpanHiddenStyled />
-      {props.children}
+      {iconBefore && (
+        <IconStyled
+          size={size}
+          styled={mergedThemeValues as Required<LinkStyledProps>}
+        >
+          {iconBefore()}
+        </IconStyled>
+      )}
+      {children}
+      {iconAfter && (
+        <IconStyled
+          size={size}
+          styled={mergedThemeValues as Required<LinkStyledProps>}
+        >
+          {iconAfter()}
+        </IconStyled>
+      )}
     </LinkStyled>
   );
 };
