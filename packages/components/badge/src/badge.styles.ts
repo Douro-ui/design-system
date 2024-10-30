@@ -1,47 +1,98 @@
 import styled from '@emotion/styled';
 import { BadgeProps, BadgeStyledProps } from './badge.types';
 
-const handlePositionOffset = (size: BadgeProps['size']) => {
-  switch (size) {
-    case 'xs':
-      return '0.125rem';
-    case 'sm':
-      return '-0.125rem';
-    case 'md':
-    default:
-      return '-0.375rem';
-    case 'lg':
-      return '-0.75rem';
-    case 'xl':
-      return '-1.5rem';
-  }
+const positionOffset = (offset: number) => ({
+  'top-left': `
+    top: ${offset}rem;
+    left: ${offset}rem;
+  `,
+  'bottom-right': `
+    bottom: ${offset}rem;
+    right: ${offset}rem;
+  `,
+  'bottom-left': `
+    bottom: ${offset}rem;
+    left: ${offset}rem;
+  `,
+  'top-right': `
+    top: ${offset}rem;
+    right: ${offset}rem;
+  `,
+});
+const fontStyle = (FontSize: number) => `
+  font-size: ${FontSize}rem;
+`;
+const ratioSize = (Width: number, Height: number) => `
+  width: ${Width}rem;
+  height: ${Height}rem;
+`;
+const boxShadowSize = (insetValue: string, shadowSize: number) => `
+  ${insetValue}${shadowSize}rem
+`;
+
+const positionOffsetMap = {
+  xs: positionOffset(0.125),
+  sm: positionOffset(-0.125),
+  md: positionOffset(-0.375),
+  lg: positionOffset(-0.75),
+  xl: positionOffset(-1.5),
+};
+const fontStyleMap = {
+  xs: fontStyle(0.75),
+  sm: fontStyle(0.75),
+  md: fontStyle(0.75),
+  lg: fontStyle(1),
+  xl: fontStyle(1.125),
+};
+const sizeMap = {
+  xs: ratioSize(0.5, 0.5),
+  sm: ratioSize(1, 1),
+  md: ratioSize(1.5, 1.5),
+  lg: ratioSize(2, 2),
+  xl: ratioSize(3, 3),
+};
+const iconSizeMap = {
+  xs: ratioSize(0, 0),
+  sm: ratioSize(1, 1),
+  md: ratioSize(1, 1),
+  lg: ratioSize(1.5, 1.5),
+  xl: ratioSize(2, 2),
+  xxl: ratioSize(0, 0),
+};
+const boxShadowMap = {
+  xs: boxShadowSize('inset 0 0 0 ', 0),
+  sm: boxShadowSize('inset 0 0 0 ', 0.063),
+  md: boxShadowSize('inset 0 0 0 ', 0.125),
+  lg: boxShadowSize('inset 0 0 0 ', 0.125),
+  xl: boxShadowSize('inset 0 0 0 ', 0.188),
 };
 
-const handleFontSize = (size: BadgeProps['size']) => {
-  switch (size) {
-    case 'sm':
-      return '0.75rem';
-    case 'md':
-    default:
-      return '0.75rem';
-    case 'lg':
-      return '1rem';
-    case 'xl':
-      return '1.125rem';
-  }
+const handlePositionOffset = (
+  size: BadgeProps['size'] = 'lg',
+  position: BadgeProps['position'] = 'top-right',
+) => {
+  const sizeOffsets = positionOffsetMap[size];
+  return sizeOffsets
+    ? sizeOffsets[position]
+    : positionOffsetMap.lg['top-right'];
 };
+const handleFontStyle = (size: BadgeProps['size'] = 'lg') => fontStyleMap[size];
+const handleSize = (size: BadgeProps['size'] = 'lg') => sizeMap[size];
+const handleIconSize = (size: BadgeProps['size'] = 'lg') => iconSizeMap[size];
+const handleBoxShadow = (size: BadgeProps['size'] = 'lg') =>
+  boxShadowMap[size] ?? boxShadowSize('inset 0 0 0 ', 0.125);
 
 export const BadgeWrapperStyled = styled.div`
   position: relative;
 `;
 
-export const BadgeStyled = styled.div<
-  {
-    styled: Required<BadgeStyledProps>;
-  } & BadgeProps
->`
+export const BadgeStyled = styled.div<{
+  styled: Required<BadgeStyledProps>;
+  size: BadgeProps['size'];
+  position: BadgeProps['position'];
+  hasCounter: boolean;
+}>`
   background-color: ${({ styled }) => styled.backgroundColor};
-  border: 1px solid ${({ styled }) => styled.borderColor};
   color: ${({ styled }) => styled.color};
   font-weight: ${({ styled }) => styled.fontWeight};
   border-radius: 1000rem;
@@ -49,63 +100,39 @@ export const BadgeStyled = styled.div<
   align-items: center;
   justify-content: center;
   position: absolute;
-  font-size: ${({ size }) => handleFontSize(size)};
+  box-shadow: ${({ size, styled, hasCounter }) =>
+    hasCounter ? 'none' : `${handleBoxShadow(size)} ${styled.boxShadowColor}`};
+  ${({ size }) => handleFontStyle(size)};
+  ${({ size, position }) => handlePositionOffset(size, position)};
+  ${({ size }) => handleSize(size)};
+`;
 
-  ${({ position, size }) => {
-    const offset = handlePositionOffset(size);
-    switch (position) {
-      case 'top-left':
-        return `
-          top: ${offset};
-          left: ${offset};
-        `;
-      case 'bottom-right':
-        return `
-          bottom: ${offset};
-          right: ${offset};
-        `;
-      case 'bottom-left':
-        return `
-          bottom: ${offset};
-          left: ${offset};
-        `;
-      case 'top-right':
-      default:
-        return `
-          top: ${offset};
-          right: ${offset};
-        `;
-    }
-  }}
+export const BadgeIconStyled = styled.div<{
+  styled: Required<BadgeStyledProps>;
+  size: BadgeProps['size'];
+  position: BadgeProps['position'];
+}>`
+  background-color: ${({ styled, size }) =>
+    size === 'xs' ? 'transparent' : styled.backgroundColor};
+  color: ${({ styled }) => styled.color};
+  font-weight: ${({ styled }) => styled.fontWeight};
+  border-radius: 1000rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  ${({ size }) => handleFontStyle(size)};
+  ${({ size, position }) => handlePositionOffset(size, position)};
+  ${({ size }) => handleSize(size)};
+`;
 
-  ${({ size }) => {
-    switch (size) {
-      case 'xs':
-        return `
-          width: 0.5rem;
-          height: 0.5rem;
-        `;
-      case 'sm':
-        return `
-          width: 1rem;
-          height: 1rem;
-        `;
-      case 'md':
-      default:
-        return `
-          width: 1.5rem;
-          height: 1.5rem;
-        `;
-      case 'lg':
-        return `
-          width: 2rem;
-          height: 2rem;
-        `;
-      case 'xl':
-        return `
-          width: 3rem;
-          height: 3rem;
-        `;
-    }
-  }}
+export const IconStyled = styled.div<{
+  styled: Required<BadgeStyledProps>;
+  icon?: boolean;
+  size: BadgeProps['size'];
+  onClick?: BadgeProps['onClick'];
+}>`
+  cursor: ${({ onClick }) => (onClick ? 'pointer' : 'default')};
+
+  ${({ size }) => handleIconSize(size)};
 `;

@@ -4,6 +4,7 @@ import { AvatarProps } from './avatar.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { expect, userEvent, within } from '@storybook/test';
+import { Icon } from '@douro-ui/icon';
 
 const meta: Meta<AvatarProps> = {
   title: 'Example/Avatar',
@@ -115,6 +116,19 @@ export const AvatarWithBadge: Story = {
     fallbackText: 'DS',
     badge: true,
     badgeProps: { typeBadge: 'success', position: 'top-right' },
+  },
+};
+
+export const AvatarWithIconBadge: Story = {
+  args: {
+    size: 'lg',
+    children: 'DS',
+    badge: true,
+    badgeProps: {
+      typeBadge: 'icon',
+      position: 'top-right',
+      icon: () => <Icon name="close" />,
+    },
   },
 };
 

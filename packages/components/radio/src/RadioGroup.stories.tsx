@@ -1,20 +1,17 @@
 import { Meta, ReactRenderer, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import RadioGroup from './RadioGroup';
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import { expect, userEvent, within } from '@storybook/test';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { RadioGroupProps } from './radio.types';
 import { ThemeProvider } from '@douro-ui/react';
-import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
 
 const meta: Meta<RadioGroupProps> = {
   title: 'Example/RadioGroup',
   component: RadioGroup,
   decorators: [
-    (
-      Story: PartialStoryFn<ReactRenderer, RadioGroupProps>,
-    ): EmotionJSX.Element => (
+    (Story: PartialStoryFn<ReactRenderer, RadioGroupProps>): ReactElement => (
       <ThemeProvider>
         <Story />
       </ThemeProvider>

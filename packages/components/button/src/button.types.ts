@@ -1,5 +1,4 @@
-import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   typeBtn?: 'primary' | 'secondary' | 'tertiary' | 'error';
@@ -7,8 +6,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   children?: ReactNode;
   onClick?: () => void;
-  iconBefore?: () => EmotionJSX.Element;
-  iconAfter?: () => EmotionJSX.Element;
+  iconBefore?: () => ReactElement;
+  iconAfter?: () => ReactElement;
   styled?: ButtonStyledProps;
 }
 

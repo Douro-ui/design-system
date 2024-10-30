@@ -14,13 +14,14 @@ export const WarningBadge = ({
   const theme = useTheme();
 
   const defaultThemeValues: BadgeStyledProps = {
-    color: theme.colors.brand.white,
+    color: theme.colors.brand.black,
     backgroundColor: theme.colors.extended.yellow.shade70,
     backgroundColorHover: theme.colors.extended.yellow.shade60,
     backgroundColorActive: theme.colors.extended.yellow.shade50,
-    borderColor: theme.colors.extended.yellow.shade70,
+    borderColor: theme.colors.brand.white,
     borderColorHover: theme.colors.extended.yellow.shade60,
     borderColorActive: theme.colors.extended.yellow.shade50,
+    boxShadowColor: theme.colors.brand.white,
     fontWeight: theme.fontWeight.REGULAR,
   };
 
@@ -36,10 +37,11 @@ export const WarningBadge = ({
       <BadgeStyled
         styled={mergedThemeValues as Required<BadgeStyledProps>}
         position={position}
+        hasCounter={!!count}
         size={size}
         {...props}
       >
-        {count != undefined && count > 0 && size != 'xs' && count}
+        {count && count > 0 && size !== 'xs' && count}
       </BadgeStyled>
     </BadgeWrapperStyled>
   );

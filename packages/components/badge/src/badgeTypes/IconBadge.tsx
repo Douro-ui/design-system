@@ -1,26 +1,30 @@
 import { BadgeProps, BadgeStyledProps } from '../badge.types';
-import { BadgeStyled, BadgeWrapperStyled } from '../badge.styles';
+import {
+  BadgeIconStyled,
+  BadgeWrapperStyled,
+  IconStyled,
+} from '../badge.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import { ReactNode } from 'react';
 
-export const NeutralBadge = ({
-  count,
+export const IconBadge = ({
   position,
   size,
   children,
+  icon,
   styled,
+  onClick,
   ...props
 }: BadgeProps): ReactNode => {
   const theme = useTheme();
 
   const defaultThemeValues: BadgeStyledProps = {
-    color: theme.colors.brand.black,
     backgroundColor: theme.colors.neutral.silver.shade80,
-    backgroundColorHover: theme.colors.neutral.silver.shade70,
-    backgroundColorActive: theme.colors.neutral.silver.shade60,
+    backgroundColorHover: theme.colors.extended.red.shade40,
+    backgroundColorActive: theme.colors.extended.red.shade30,
     borderColor: theme.colors.brand.white,
-    borderColorHover: theme.colors.neutral.silver.shade70,
-    borderColorActive: theme.colors.neutral.silver.shade60,
+    borderColorHover: theme.colors.extended.red.shade40,
+    borderColorActive: theme.colors.extended.red.shade30,
     boxShadowColor: theme.colors.brand.white,
     fontWeight: theme.fontWeight.REGULAR,
   };
@@ -34,15 +38,25 @@ export const NeutralBadge = ({
     <BadgeWrapperStyled>
       {children}
 
-      <BadgeStyled
+      <BadgeIconStyled
         styled={mergedThemeValues as Required<BadgeStyledProps>}
+        data-testid="badgeIcon"
         position={position}
-        hasCounter={!!count}
         size={size}
         {...props}
       >
-        {count && count > 0 && size !== 'xs' && count}
-      </BadgeStyled>
+        {icon && size !== 'xs' && (
+          <IconStyled
+            data-testid={'icon'}
+            size={size}
+            icon
+            styled={mergedThemeValues as Required<BadgeStyledProps>}
+            onClick={onClick}
+          >
+            {icon()}
+          </IconStyled>
+        )}
+      </BadgeIconStyled>
     </BadgeWrapperStyled>
   );
 };

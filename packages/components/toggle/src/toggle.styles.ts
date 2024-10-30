@@ -135,6 +135,9 @@ export const IconStyled = styled.div<{
   icon?: boolean;
   checked?: boolean;
 }>`
+  width: 1rem;
+  height: 1rem;
+
   svg {
     width: 1rem;
     height: 1rem;

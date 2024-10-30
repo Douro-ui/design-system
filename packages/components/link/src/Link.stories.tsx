@@ -5,13 +5,13 @@ import { expect, userEvent, within } from '@storybook/test';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { LinkProps } from './link.types';
 import { Icon } from '@douro-ui/icon';
-import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
+import { ReactElement } from 'react';
 
 const meta: Meta<LinkProps> = {
   title: 'Example/Link',
   component: Link,
   decorators: [
-    (Story: PartialStoryFn<ReactRenderer, LinkProps>): EmotionJSX.Element => (
+    (Story: PartialStoryFn<ReactRenderer, LinkProps>): ReactElement => (
       <ThemeProvider>
         <Story />
       </ThemeProvider>

@@ -81,8 +81,8 @@ export default ButtonExample;
 | disabled   | boolean                                    | false     | Disables the button and applies disabled styles.                      |
 | children   | ReactNode                                  | N/A       | Content to be displayed inside the button.                            |
 | onClick    | () => void                                 | N/A       | Callback executed when the button is clicked.                         |
-| iconBefore | () => EmotionJSX.Element                   | N/A       | Optional icon component to be displayed before the button content.    |
-| iconAfter  | () => EmotionJSX.Element                   | N/A       | Optional icon component to be displayed after the button content.     |
+| iconBefore | () =>ReactElement                          | N/A       | Optional icon component to be displayed before the button content.    |
+| iconAfter  | () =>ReactElement                          | N/A       | Optional icon component to be displayed after the button content.     |
 | styled     | ButtonStyledProps                          | N/A       | Object to customize styles, such as color, border, and border-radius. |
 
 ### Customization
