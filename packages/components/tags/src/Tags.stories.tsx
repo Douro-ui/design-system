@@ -4,6 +4,7 @@ import { TagsProps } from './tags.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { Icon } from '@douro-ui/icon';
+import { expect, userEvent, within } from '@storybook/test';
 
 const meta: Meta<TagsProps> = {
   title: 'Example/Tags',
@@ -104,4 +105,82 @@ export const DisabledTagSelectable: Story = {
     label: 'Label',
     disabled: true,
   },
+};
+DefaultTagReadonly.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+  const tag = await canvas.findByTestId('tag');
+  expect(tag).toBeVisible();
+  expect(tag).toHaveTextContent('Label');
+};
+
+IconTagSelectable.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+  const tag = await canvas.findByTestId('tag');
+  expect(tag).toBeVisible();
+  expect(tag.querySelector('svg')).toBeInTheDocument();
+  await userEvent.click(tag);
+  expect(tag).toHaveClass('selected css-12tgjcj');
+  await userEvent.click(tag);
+  expect(tag).toHaveClass('css-12tgjcj');
+  expect(tag).toHaveTextContent('Label');
+};
+
+IconCloseTagDismissible.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+  const tag = await canvas.findByTestId('tag');
+  expect(tag).toBeVisible();
+  expect(tag).not.toBeNull();
+  expect(tag).toBeVisible();
+  expect(tag.querySelector('svg')).not.toBeNull();
+  expect(tag).toHaveTextContent('Label');
+
+  const svgElement = document.querySelector(
+    'svg[viewBox="0 0 16 16"]',
+  ) as SVGElement | null;
+  if (svgElement) {
+    await userEvent.click(svgElement);
+  } else {
+    throw new Error('SVG element not found');
+  }
+  expect(tag).not.toBeInTheDocument();
+};
+
+BothIconTagSelectable.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+  const tag = await canvas.findByTestId('tag');
+  expect(tag).toBeVisible();
+  expect(tag.querySelector('svg')).toBeInTheDocument();
+  await userEvent.click(tag);
+  expect(tag).toHaveClass('selected css-5xkgum');
+  await userEvent.click(tag);
+  expect(tag).toHaveClass('css-5xkgum');
+  expect(tag).toHaveTextContent('Label');
+};
+
+DisabledTagSelectable.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+  const tag = await canvas.findByTestId('tag');
+  expect(tag).toBeVisible();
+  expect(tag).toHaveAttribute('disabled');
+  expect(tag).toHaveTextContent('Label');
 };

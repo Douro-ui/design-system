@@ -24,6 +24,7 @@ const Tags = ({
     <TagComponent
       typeTag={typeTag}
       size={size}
+      data-testid="tag"
       iconBefore={iconBefore}
       iconAfter={iconAfter}
       label={label}
