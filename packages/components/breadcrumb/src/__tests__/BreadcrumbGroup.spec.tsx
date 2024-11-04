@@ -7,8 +7,8 @@ describe('<BreadcrumbGroup>', () => {
     separator: '>',
   };
 
-  it('should update and render breadcrumbs when prop changes from empty to populated', () => {
-    const { rerender } = render(<BreadcrumbGroup />);
+  it('should render empty breadcrumbs', () => {
+    render(<BreadcrumbGroup breadcrumbs={[]} />);
 
     expect(screen.queryByText('Home')).not.toBeInTheDocument();
     expect(screen.queryByText('Category')).not.toBeInTheDocument();
@@ -17,16 +17,14 @@ describe('<BreadcrumbGroup>', () => {
     const separators = screen.queryAllByText('>');
 
     expect(separators.length).toBe(0);
+  });
 
-    const updatedProps = {
-      breadcrumbs: ['Home', 'Category', 'Product'],
-    };
+  it('should render the  breadcrumbs', () => {
+    render(<BreadcrumbGroup {...defaultProps} />);
 
-    rerender(<BreadcrumbGroup {...updatedProps} />);
-
-    expect(screen.getByText('Home')).toBeInTheDocument();
-    expect(screen.getByText('Category')).toBeInTheDocument();
-    expect(screen.getByText('Product')).toBeInTheDocument();
+    expect(screen.queryByText('Home')).toBeInTheDocument();
+    expect(screen.queryByText('Category')).toBeInTheDocument();
+    expect(screen.queryByText('Product')).toBeInTheDocument();
   });
 
   it('should render the separator between breadcrumbs', () => {
@@ -47,5 +45,39 @@ describe('<BreadcrumbGroup>', () => {
     expect(screen.getByText('Home')).toBeInTheDocument();
     expect(screen.queryByText('Category')).not.toBeInTheDocument();
     expect(screen.queryByText('Product')).not.toBeInTheDocument();
+  });
+
+  it('should display mobile version', () => {
+    const originalInnerWidth = window.innerWidth;
+    window.innerWidth = 500;
+    window.dispatchEvent(new Event('resize'));
+
+    render(<BreadcrumbGroup {...defaultProps} />);
+
+    expect(screen.queryByText('Home')).not.toBeInTheDocument();
+    expect(screen.getByText('Category')).toBeInTheDocument();
+    expect(screen.queryByText('Product')).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('Category'));
+
+    expect(screen.getByText('Home')).toBeInTheDocument();
+    expect(screen.queryByText('Category')).not.toBeInTheDocument();
+    expect(screen.queryByText('Product')).not.toBeInTheDocument();
+
+    window.innerWidth = originalInnerWidth;
+    window.dispatchEvent(new Event('resize'));
+  });
+
+  it('should trigger ellipsis', () => {
+    const breadcrumbs = ['Home', '...', 'Product', 'Detail'];
+
+    render(
+      <BreadcrumbGroup breadcrumbs={breadcrumbs} lastVisibleBreadcrumbs={2} />,
+    );
+
+    const ellipsis = screen.getByText('...');
+    expect(ellipsis).toBeInTheDocument();
+
+    fireEvent.click(ellipsis);
   });
 });

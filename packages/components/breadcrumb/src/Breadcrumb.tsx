@@ -15,9 +15,14 @@ const Breadcrumb = ({
   const theme = useTheme();
 
   const defaultThemeValues: BreadcrumbStyledProps = {
-    color: theme.colors.neutral.silver.shade30,
-    colorHover: theme.colors.neutral.silver.shade20,
-    colorActive: theme.colors.neutral.silver.shade10,
+    color: theme.colors.brand.primary,
+    colorHover: theme.colors.brand.primary,
+    colorFocus: theme.colors.brand.primary,
+    colorActive: theme.colors.brand.secondary,
+    borderColorFocus: theme.colors.extended.blue.shade50,
+    fontSize: theme.fontSize,
+    fontWeight: theme.fontWeight.REGULAR,
+    fontFamily: theme.fontFamily.text,
   };
 
   const mergedThemeValues = deepMerge<BreadcrumbStyledProps>(
