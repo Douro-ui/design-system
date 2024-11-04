@@ -5,6 +5,7 @@ import { PartialStoryFn } from 'storybook/internal/types';
 import { ModalProps } from './modal.types';
 import Button from '@douro-ui/button';
 import { useState } from 'react';
+import { expect, userEvent, within } from '@storybook/test';
 
 const meta: Meta<typeof Modal> = {
   title: 'Example/Modal',
@@ -136,4 +137,69 @@ export const LargeModalWithHeaderWithoutFooter: Story = {
     childrenBody:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. grtfgbhtgrfvfbgrtefd',
   },
+};
+SmallModalWithHeader.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+  const openButton = await canvas.findByText('Open modal');
+  expect(openButton).toBeInTheDocument();
+  userEvent.click(openButton);
+  const headerTitle = await canvas.findByText(
+    'Are you sure you want to add it?',
+  );
+  expect(headerTitle).toBeInTheDocument();
+  const cancelButton = await canvas.findByText('Cancel');
+
+  userEvent.click(cancelButton);
+  expect(openButton).toBeVisible();
+};
+
+MediumModalWithoutHeader.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+
+  const openButton = await canvas.findByText('Open modal');
+  expect(openButton).toBeInTheDocument();
+
+  userEvent.click(openButton);
+
+  const bodyContent = await canvas.findByText('Click Me');
+  expect(bodyContent).toBeInTheDocument();
+
+  const deleteButton = await canvas.findByText('Delete');
+  userEvent.click(deleteButton);
+
+  expect(deleteButton).toBeVisible();
+};
+
+LargeModalWithHeaderWithoutFooter.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+
+  const openButton = await canvas.findByText('Open modal');
+  expect(openButton).toBeInTheDocument();
+
+  userEvent.click(openButton);
+
+  const headerTitle = await canvas.findByText('test');
+  expect(headerTitle).toBeInTheDocument();
+
+  const bodyContent = await canvas.findByText(
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. grtfgbhtgrfvfbgrtefd',
+  );
+  expect(bodyContent).toBeInTheDocument();
+
+  const closeButton = await canvas.findByAltText('Close Icon');
+  userEvent.click(closeButton);
+
+  expect(openButton).toBeVisible();
 };
