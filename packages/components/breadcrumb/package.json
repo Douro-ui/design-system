@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/breadcrumb",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Douro UI - Metyis Design System Components",
   "main": "src/index.ts",
   "type": "module",
