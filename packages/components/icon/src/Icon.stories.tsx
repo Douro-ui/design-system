@@ -3,6 +3,7 @@ import Icon from './Icon';
 import { IconProps } from './icon.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
+import { expect, within } from '@storybook/test';
 
 const meta: Meta<IconProps> = {
   title: 'Example/Icon',
@@ -58,4 +59,24 @@ export const CloseIcon: Story = {
     name: 'close',
     size: 'md',
   },
+};
+
+ChevronDown.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
+  const element = canvas.findByTestId('icon');
+  expect(element).toBeDefined();
+};
+ChevronUp.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  const element = canvas.findByTestId('icon');
+  expect(element).toBeDefined();
+};
+CloseIcon.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  const element = canvas.findByTestId('icon');
+  expect(element).toBeDefined();
 };

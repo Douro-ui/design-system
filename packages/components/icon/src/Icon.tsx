@@ -25,6 +25,7 @@ const Icon = ({
 
   return (
     <IconStyled
+      data-testid="icon"
       size={size}
       styled={mergedThemeValues as Required<IconStyledProps>}
       {...props}
