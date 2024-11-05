@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/icon",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Douro UI - Metyis Design System Icon Component",
   "main": "src/index.ts",
   "type": "module",

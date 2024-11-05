@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/toggle",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Douro UI - Metyis Design System Toggle Component",
   "main": "src/index.ts",
   "type": "module",
@@ -25,7 +25,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@douro-ui/icon": "^0.2.3",
+    "@douro-ui/icon": "^0.2.4",
     "@douro-ui/react": "^0.7.1"
   },
   "publishConfig": {
