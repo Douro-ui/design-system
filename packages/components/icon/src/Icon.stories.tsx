@@ -21,7 +21,6 @@ const meta: Meta<IconProps> = {
   tags: ['autodocs'],
   args: {
     name: 'chevron-down',
-    size: 'md',
   },
   argTypes: {
     name: {
@@ -29,9 +28,6 @@ const meta: Meta<IconProps> = {
         type: 'select',
         options: ['chevron-down', 'chevron-up', 'close'],
       },
-    },
-    size: {
-      control: { options: ['sm', 'md', 'lg'] },
     },
   },
 } satisfies Meta<IconProps>;
@@ -43,21 +39,44 @@ type Story = StoryObj<IconProps>;
 export const ChevronDown: Story = {
   args: {
     name: 'chevron-down',
-    size: 'md',
+    styled: {
+      width: '1rem',
+      height: '1rem',
+      fillColor: '#000',
+    },
   },
 };
 
 export const ChevronUp: Story = {
   args: {
     name: 'chevron-up',
-    size: 'md',
+    styled: {
+      width: '1rem',
+      height: '1rem',
+      fillColor: '#000',
+    },
   },
 };
 
 export const CloseIcon: Story = {
   args: {
     name: 'close',
-    size: 'md',
+    styled: {
+      width: '1rem',
+      height: '1rem',
+      fillColor: '#000',
+    },
+  },
+};
+
+export const StarIcon: Story = {
+  args: {
+    name: 'star',
+    styled: {
+      width: '1rem',
+      height: '1rem',
+      fillColor: '#000',
+    },
   },
 };
 

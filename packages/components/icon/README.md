@@ -43,7 +43,7 @@ import Icon from '@douro-ui/icon';
 const ExampleIcon = () => {
   return (
     <div>
-      <Icon name="chevron-up" />
+      <Icon name="star" />
       <Icon name="chevron-down" />
     </div>
   );
@@ -52,22 +52,8 @@ const ExampleIcon = () => {
 export default ExampleIcon;
 ```
 
-### Example with Icon using custom properties
-
-```js
-import React from 'react';
-import Icon from '@douro-ui/icon';
-
-const ExampleIcon = () => {
-  return (
-    <div>
-      <Icon name="chevron-up" size="lg" />
-      <Icon name="chevron-down" size="sm" />
-    </div>
-  );
-};
-
 export default ExampleIcon;
+
 ```
 
 #### Props
@@ -77,7 +63,6 @@ export default ExampleIcon;
 | Prop   | Type             | default | Description                     |
 | ------ | ---------------- | ------- | ------------------------------- |
 | name   | string           | N/A     | The name of the icon to render. |
-| size   | 'sm', 'md', 'lg' | 'md'    | The size of the icon.           |
 | styled | IconStyledProps  | N/A     | Custom styles for the icon.     |
 
 ### Customization
@@ -91,3 +76,4 @@ To customize the behavior or appearance of the toasters, see the main files belo
 - icon.styles.ts: Contains styled components for the Icon. You can modify styles or add new styles here.
 
 - icons.ts: Defines the available icons and their rendering. You can add or modify icons in this file. This file is included in the packages/svg-icons/src.
+```
