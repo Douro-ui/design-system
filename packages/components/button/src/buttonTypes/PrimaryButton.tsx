@@ -1,5 +1,5 @@
 import type { ButtonProps, ButtonStyledProps } from '../button.types';
-import { ButtonStyled } from '../button.styles';
+import { ButtonStyled, IconStyled } from '../button.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import React from 'react';
 
@@ -9,6 +9,8 @@ export const PrimaryButton = ({
   styled,
   children,
   onClick,
+  iconBefore,
+  iconAfter,
   disabled,
   ...props
 }: ButtonProps): React.ReactNode => {
@@ -27,6 +29,7 @@ export const PrimaryButton = ({
     backgroundColorDisabled: theme.colors.neutral.cold.shade95,
     borderColorDisabled: theme.colors.neutral.cold.shade70,
     borderRadius: '100px',
+    activeFontWeight: theme.fontWeight.MEDIUM,
   };
 
   const mergedThemeValues = deepMerge<ButtonStyledProps>(
@@ -41,10 +44,28 @@ export const PrimaryButton = ({
       styled={mergedThemeValues as Required<ButtonStyledProps>}
       onClick={onClick}
       disabled={disabled}
+      hasIconBefore={iconBefore ? true : false}
+      hasIconAfter={iconAfter ? true : false}
       data-testid={`button-${typeBtn}`}
       {...props}
     >
+      {iconBefore && (
+        <IconStyled
+          size={size}
+          styled={mergedThemeValues as Required<ButtonStyledProps>}
+        >
+          {iconBefore()}
+        </IconStyled>
+      )}
       {children}
+      {iconAfter && (
+        <IconStyled
+          size={size}
+          styled={mergedThemeValues as Required<ButtonStyledProps>}
+        >
+          {iconAfter()}
+        </IconStyled>
+      )}
     </ButtonStyled>
   );
 };
