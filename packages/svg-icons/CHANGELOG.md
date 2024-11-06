@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/svg-icons@0.4.0...@douro-ui/svg-icons@0.4.1) (2024-11-06)
+
+**Note:** Version bump only for package @douro-ui/svg-icons
+
 # [0.4.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/svg-icons@0.3.0...@douro-ui/svg-icons@0.4.0) (2024-10-17)
 
 ### Features

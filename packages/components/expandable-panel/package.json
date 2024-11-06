@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/expandable-panel",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Douro UI - Metyis Design System Expandable-panel Component",
   "main": "src/index.ts",
   "type": "module",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@douro-ui/react": "^0.7.1",
-    "@douro-ui/svg-icons": "^0.4.0"
+    "@douro-ui/svg-icons": "^0.4.1"
   },
   "publishConfig": {
     "access": "public"
