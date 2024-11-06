@@ -21,12 +21,22 @@ const meta: Meta<TextareaProps> = {
   },
   tags: ['autodocs'],
   args: {
+    size: 'lg',
     label: 'Description',
     maxLength: 500,
     placeholder: 'Write a description for the topic',
-    disabled: false,
+    isDisabled: false,
+    isRequired: true,
+    hasCharacterCount: true,
+    canResize: false,
   },
   argTypes: {
+    size: {
+      control: {
+        type: 'select',
+        options: ['sm', 'md', 'lg', 'xl'],
+      },
+    },
     label: {
       control: 'text',
     },
@@ -36,7 +46,16 @@ const meta: Meta<TextareaProps> = {
     placeholder: {
       control: 'text',
     },
-    disabled: {
+    isDisabled: {
+      control: 'boolean',
+    },
+    isRequired: {
+      control: 'boolean',
+    },
+    hasCharacterCount: {
+      control: 'boolean',
+    },
+    canResize: {
       control: 'boolean',
     },
     onClick: fn(),
@@ -47,15 +66,59 @@ export default meta;
 
 type Story = StoryObj<TextareaProps>;
 
-export const Primary: Story = {
+export const SmallTextareaRequiredResize: Story = {
   args: {
+    size: 'sm',
     label: 'Description',
     maxLength: 500,
     placeholder: 'Write a description for the topic',
-    disabled: false,
+    isDisabled: false,
+    isRequired: true,
+    hasCharacterCount: false,
+    canResize: true,
   },
 };
-Primary.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+
+export const MediumTextareaCounter: Story = {
+  args: {
+    size: 'md',
+    label: 'Description',
+    maxLength: 100,
+    placeholder: 'Write a description for the topic',
+    isDisabled: false,
+    isRequired: false,
+    hasCharacterCount: true,
+  },
+};
+
+export const LargeTextareaDisabled: Story = {
+  args: {
+    size: 'lg',
+    label: 'Description',
+    maxLength: 500,
+    placeholder: 'Write a description for the topic',
+    isDisabled: true,
+    isRequired: true,
+    hasCharacterCount: true,
+  },
+};
+
+export const XLargeTextareaRequiredCounter: Story = {
+  args: {
+    size: 'xl',
+    label: 'Description',
+    maxLength: 500,
+    placeholder: 'Write a description for the topic',
+    isDisabled: false,
+    isRequired: true,
+    hasCharacterCount: true,
+  },
+};
+XLargeTextareaRequiredCounter.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
   const canvas = within(canvasElement);
 
   const label = canvas.getByText('Description');
