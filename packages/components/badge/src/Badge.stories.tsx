@@ -4,6 +4,7 @@ import { BadgeProps } from './badge.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import Avatar from '@douro-ui/avatar';
+import { Icon } from '@douro-ui/icon';
 
 const meta: Meta<BadgeProps> = {
   title: 'Example/Badge',
@@ -21,7 +22,6 @@ const meta: Meta<BadgeProps> = {
   tags: ['autodocs'],
   args: {
     typeBadge: 'alert',
-    count: 5,
     position: 'top-right',
     size: 'md',
   },
@@ -29,7 +29,7 @@ const meta: Meta<BadgeProps> = {
     typeBadge: {
       control: {
         type: 'select',
-        options: ['alert', 'neutral', 'success', 'warning'],
+        options: ['alert', 'neutral', 'success', 'warning', 'icon'],
       },
     },
     count: {
@@ -47,6 +47,20 @@ const meta: Meta<BadgeProps> = {
 export default meta;
 
 type Story = StoryObj<BadgeProps>;
+
+export const IconBadge: Story = {
+  args: {
+    typeBadge: 'icon',
+    position: 'top-right',
+    size: 'lg',
+    icon: () => <Icon name="close" />,
+    children: (
+      <Avatar typeAvt="base" size="lg">
+        DUI
+      </Avatar>
+    ),
+  },
+};
 
 export const Alert: Story = {
   args: {

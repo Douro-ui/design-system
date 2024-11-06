@@ -1,6 +1,6 @@
-import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
+import { ReactElement } from 'react';
 
-export const StarIcon = (): EmotionJSX.Element => (
+export const StarIcon = (): ReactElement => (
   <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
     <mask
       id="mask0_335_453"

@@ -3,15 +3,13 @@ import AvatarGroup from './AvatarGroup';
 import { AvatarGroupProps } from './avatar.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
-import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
+import { ReactElement } from 'react';
 
 const meta: Meta<AvatarGroupProps> = {
   title: 'Example/AvatarGroup',
   component: AvatarGroup,
   decorators: [
-    (
-      Story: PartialStoryFn<ReactRenderer, AvatarGroupProps>,
-    ): EmotionJSX.Element => (
+    (Story: PartialStoryFn<ReactRenderer, AvatarGroupProps>): ReactElement => (
       <ThemeProvider>
         <Story />
       </ThemeProvider>

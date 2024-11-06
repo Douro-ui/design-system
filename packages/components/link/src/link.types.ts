@@ -1,5 +1,4 @@
-import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
-import { AnchorHTMLAttributes, ReactNode } from 'react';
+import { AnchorHTMLAttributes, ReactElement, ReactNode } from 'react';
 
 export interface LinkStyledProps {
   color?: string;
@@ -19,7 +18,7 @@ export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   ariaLabel?: string;
   children?: ReactNode;
-  iconBefore?: () => EmotionJSX.Element;
-  iconAfter?: () => EmotionJSX.Element;
+  iconBefore?: () => ReactElement;
+  iconAfter?: () => ReactElement;
   styled?: LinkStyledProps;
 }

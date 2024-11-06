@@ -2,6 +2,7 @@ import { BadgeProps } from './badge.types';
 import { ReactNode } from 'react';
 import {
   AlertBadge,
+  IconBadge,
   NeutralBadge,
   SuccessBadge,
   WarningBadge,
@@ -12,11 +13,13 @@ const badgeTypes = {
   neutral: NeutralBadge,
   success: SuccessBadge,
   warning: WarningBadge,
+  icon: IconBadge,
 };
 
 const Badge = ({
   typeBadge,
   count,
+  icon,
   position,
   size,
   children,
@@ -29,6 +32,7 @@ const Badge = ({
     <BadgeComponent
       count={count}
       position={position}
+      icon={icon}
       size={size}
       styled={styled}
       {...props}

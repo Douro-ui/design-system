@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Meta, ReactRenderer, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { useState } from 'react';
@@ -7,14 +7,13 @@ import { ThemeProvider } from '@douro-ui/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { ToggleProps } from './toggle.types';
-import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
 import { Icon } from '@douro-ui/icon';
 
 const meta: Meta<ToggleProps> = {
   title: 'Example/Toggle',
   component: Toggle,
   decorators: [
-    (Story: PartialStoryFn<ReactRenderer, ToggleProps>): EmotionJSX.Element => (
+    (Story: PartialStoryFn<ReactRenderer, ToggleProps>): ReactElement => (
       <ThemeProvider>
         <Story />
       </ThemeProvider>

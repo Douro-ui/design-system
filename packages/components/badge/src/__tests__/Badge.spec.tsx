@@ -1,7 +1,11 @@
-import { render, screen } from '../../../../../tests/test-utils';
+import { fireEvent, render, screen } from '../../../../../tests/test-utils';
 import Badge from '../Badge';
 
 describe('<Badge />', () => {
+  const clickTest = () => {
+    console.log('clicked');
+  };
+
   it('should render the children within the Badge component', () => {
     render(
       <Badge typeBadge="alert" size="md">
@@ -20,6 +24,31 @@ describe('<Badge />', () => {
     );
 
     expect(screen.getByText('5')).toBeInTheDocument();
+  });
+
+  it('should render an IconBadge', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+
+    render(
+      <Badge
+        typeBadge="icon"
+        data-testid="badgeIcon"
+        icon={() => <div data-testid="iconBadge">❌</div>}
+        onClick={clickTest}
+        size="lg"
+      />,
+    );
+
+    const badge = screen.getByTestId('badgeIcon');
+    const icon = screen.getByTestId('iconBadge');
+
+    expect(badge).toHaveStyle('font-size: 1rem');
+    expect(icon).toBeInTheDocument();
+
+    fireEvent.click(icon);
+    expect(consoleSpy).toHaveBeenCalledWith('clicked');
+
+    consoleSpy.mockRestore();
   });
 
   it('should render an AlertBadge', () => {

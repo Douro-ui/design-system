@@ -1,5 +1,9 @@
-import { EmotionJSX } from '@emotion/react/types/jsx-namespace';
-import { ChangeEventHandler, HTMLAttributes, LabelHTMLAttributes } from 'react';
+import {
+  ChangeEventHandler,
+  HTMLAttributes,
+  LabelHTMLAttributes,
+  ReactElement,
+} from 'react';
 
 export interface ToggleProps extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean;
@@ -8,7 +12,7 @@ export interface ToggleProps extends HTMLAttributes<HTMLDivElement> {
   onChange?: ChangeEventHandler<HTMLInputElement>;
   styled?: ToggleStyledProps;
   size?: 'sm' | 'md' | 'lg';
-  icon?: () => EmotionJSX.Element;
+  icon?: () => ReactElement;
 }
 
 export interface ToggleStyledProps

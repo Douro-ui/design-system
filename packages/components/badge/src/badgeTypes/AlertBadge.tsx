@@ -18,9 +18,10 @@ export const AlertBadge = ({
     backgroundColor: theme.colors.extended.red.shade50,
     backgroundColorHover: theme.colors.extended.red.shade40,
     backgroundColorActive: theme.colors.extended.red.shade30,
-    borderColor: theme.colors.extended.red.shade50,
+    borderColor: theme.colors.brand.white,
     borderColorHover: theme.colors.extended.red.shade40,
     borderColorActive: theme.colors.extended.red.shade30,
+    boxShadowColor: theme.colors.brand.white,
     fontWeight: theme.fontWeight.REGULAR,
   };
 
@@ -35,11 +36,12 @@ export const AlertBadge = ({
 
       <BadgeStyled
         styled={mergedThemeValues as Required<BadgeStyledProps>}
+        hasCounter={!!count}
         position={position}
         size={size}
         {...props}
       >
-        {count != undefined && count > 0 && size != 'xs' && count}
+        {count && count > 0 && size !== 'xs' && count}
       </BadgeStyled>
     </BadgeWrapperStyled>
   );
