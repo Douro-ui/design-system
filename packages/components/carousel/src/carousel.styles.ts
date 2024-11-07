@@ -1,60 +1,98 @@
 import styled from '@emotion/styled';
+import {
+  CarouselStyledProps,
+  CarouselSlideStyledProps,
+} from './carousel.types';
 
-export const CarouselStyled = styled.div`
-  width: calc(100% + 7.5rem);
-  max-width: 80%;
-  margin: 0 auto;
-  position: relative;
-  padding: 0 3.75rem;
-
-  .carousel.carousel-slider {
-    padding: 0;
-    overflow: hidden;
-  }
-`;
-
-export const Slide = styled.div`
-  background: none;
+export const CarouselStyled = styled.div<{
+  styled: Required<CarouselStyledProps>;
+}>`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  position: relative;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: ${({ styled }) => styled.backgroundColor};
+  overflow: hidden;
+  position: relative;
+`;
 
-  & video {
-    width: 9.375rem;
-    height: 9.375rem;
-  }
+export const CarouselTrack = styled.div<{
+  styled: Required<CarouselStyledProps>;
+  totalSlides: number;
+  currentSlide: number;
+  visibleSlides: number;
+}>`
+  display: flex;
+  gap: ${({ styled }) => styled.gap};
+  width: 98%;
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+  transform: translateX(
+    -${({ currentSlide, visibleSlides }) => (100 / visibleSlides) * currentSlide}%
+  );
 
-  & img {
-    width: 9.375rem;
-    border: 0.0625rem solid black;
-    background-color: white;
+  & > * {
+    flex: 0 0 calc(100% / ${({ visibleSlides }) => visibleSlides});
+    max-width: calc(100% / ${({ visibleSlides }) => visibleSlides});
   }
 `;
 
-export const IndicatorButton = styled.button<{ isSelected: boolean }>`
-  background: none;
-  border: none;
+export const CarouselSlideStyled = styled.div<{
+  styled: Required<CarouselSlideStyledProps>;
+}>`
+  box-sizing: border-box;
+  text-align: center;
+  background-color: ${({ styled }) => styled.backgroundColor};
+  border-radius: ${({ styled }) => styled.borderRadius};
+  height: ${({ styled }) => styled.height};
+  width: ${({ styled }) => styled.width};
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > * {
+    max-height: 100%;
+    height: auto;
+    width: auto;
+    object-fit: contain;
+  }
+`;
+
+export const IconButton = styled.div<{
+  styled: Required<CarouselStyledProps>;
+  direction: 'left' | 'right';
+}>`
   cursor: pointer;
-  font-size: 1.5rem;
-  padding: 0;
-  margin: 0;
-  color: ${props => (props.isSelected ? 'black' : 'gray')};
+  position: absolute;
+
+  ${({ direction }) =>
+    direction === 'left'
+      ? `right: 95%;
+      transform: rotate(-90deg);`
+      : `left: 95%;
+      transform: rotate(-90deg);`}
 `;
 
-export const IndicatorItem = styled.li`
-  display: inline;
-  margin: 0 0.25rem;
-`;
-
-export const CarouselHtmlStyled = styled.div`
-  width: 9.375rem;
-  height: 9.375rem;
-  border: 0.0625rem solid black;
-  background-color: white;
+export const IndicatorWrapper = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 1rem;
+`;
+
+export const IndicatorDot = styled.div<{ active: boolean }>`
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background-color: ${props => (props.active ? 'black' : 'gray')};
+  margin: 0 0.3125rem;
+  cursor: pointer;
+`;
+
+export const DraggableArea = styled.div`
+  position: absolute;
+  inset: 0 5% 5% 8%;
+  z-index: 1;
+  pointer-events: auto;
 `;
