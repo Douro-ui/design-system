@@ -4,6 +4,7 @@ import { TooltipProps } from './tooltip.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import Button from '@douro-ui/button';
+import { expect, userEvent, within } from '@storybook/test';
 
 const meta: Meta<TooltipProps> = {
   title: 'Example/Tooltip',
@@ -60,3 +61,38 @@ export const Click: Story = {
     ),
   },
 };
+if (process.env.REACT_APP_RUN_INTERACTIONS === 'false') {
+  Click.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    const canvas = within(canvasElement);
+
+    const openButton = await canvas.findByText('Click me!');
+    expect(openButton).toBeInTheDocument();
+    userEvent.click(openButton);
+
+    const toastShow = await canvas.findByTestId('button-primary');
+    expect(toastShow).toBeVisible();
+
+    const tooltipOpen = await canvas.findByText('Lorem ipsum dolor sit amet');
+    expect(tooltipOpen).toBeInTheDocument();
+
+    userEvent.click(toastShow);
+    expect(openButton).toBeVisible();
+  };
+
+  DefaultVersion.play = async ({
+    canvasElement,
+  }: {
+    canvasElement: HTMLElement;
+  }) => {
+    const canvas = within(canvasElement);
+
+    const openButton = await canvas.findByText('Hover me!');
+    expect(openButton).toBeInTheDocument();
+    userEvent.hover(openButton);
+
+    const tooltipOpen = await canvas.findByText('Tooltip works');
+    expect(tooltipOpen).toBeInTheDocument();
+
+    expect(openButton).toBeVisible();
+  };
+}
