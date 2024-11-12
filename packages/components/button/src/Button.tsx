@@ -20,6 +20,7 @@ const Button = ({
   children,
   styled,
   onClick,
+  onKeyDown,
   iconBefore,
   iconAfter,
   disabled,
@@ -32,6 +33,7 @@ const Button = ({
       size={size}
       styled={styled}
       onClick={onClick}
+      onKeyDown={onKeyDown}
       disabled={disabled}
       iconBefore={iconBefore}
       iconAfter={iconAfter}

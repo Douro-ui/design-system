@@ -41,7 +41,7 @@ import React from 'react';
 import Button from '@douro-ui/button';
 
 const ButtonExample = () => (
-  <Button typeBtn="primary" size="md">
+  <Button aria-label="Primary Button" typeBtn="primary" size="md">
     New Button
   </Button>
 );
@@ -58,6 +58,7 @@ import Icon from '@douro-ui/icon';
 
 const ButtonExample = () => (
   <Button
+    aria-label="Primary Button"
     typeBtn="primary"
     size="md"
     iconBefore={() => <Icon name="star" />}
@@ -74,16 +75,19 @@ export default ButtonExample;
 
 ### Button Props
 
-| Prop       | Type                                       | default   | Description                                                           |
-| ---------- | ------------------------------------------ | --------- | --------------------------------------------------------------------- |
-| typeBtn    | 'primary', 'secondary','tertiary', 'error' | 'primary' | Type of button that defines the visual style.                         |
-| size       | 'sm', 'md', 'lg', 'xl'                     | 'lg'      | Size of the button, which adjusts padding and font size.              |
-| disabled   | boolean                                    | false     | Disables the button and applies disabled styles.                      |
-| children   | ReactNode                                  | N/A       | Content to be displayed inside the button.                            |
-| onClick    | () => void                                 | N/A       | Callback executed when the button is clicked.                         |
-| iconBefore | () =>ReactElement                          | N/A       | Optional icon component to be displayed before the button content.    |
-| iconAfter  | () =>ReactElement                          | N/A       | Optional icon component to be displayed after the button content.     |
-| styled     | ButtonStyledProps                          | N/A       | Object to customize styles, such as color, border, and border-radius. |
+| Prop         | Type                                       | default   | Description                                                           |
+| ------------ | ------------------------------------------ | --------- | --------------------------------------------------------------------- |
+| typeBtn      | 'primary', 'secondary','tertiary', 'error' | 'primary' | Type of button that defines the visual style.                         |
+| size         | 'sm', 'md', 'lg', 'xl'                     | 'lg'      | Size of the button, which adjusts padding and font size.              |
+| disabled     | boolean                                    | false     | Disables the button and applies disabled styles.                      |
+| aria-label   | string                                     | N/A       | Provides an accessible name to elements without visible labels.       |
+| aria-disable | bolean                                     | false     | Communicates if an element is disabled, preventing user interaction   |
+| children     | ReactNode                                  | N/A       | Content to be displayed inside the button.                            |
+| onClick      | () => void                                 | N/A       | Callback executed when the button is clicked.                         |
+| onKeyDown    | () => void                                 | N/A       | Callback executed when the Enter or Space key is clicked.             |
+| iconBefore   | () =>ReactElement                          | N/A       | Optional icon component to be displayed before the button content.    |
+| iconAfter    | () =>ReactElement                          | N/A       | Optional icon component to be displayed after the button content.     |
+| styled       | ButtonStyledProps                          | N/A       | Object to customize styles, such as color, border, and border-radius. |
 
 ### Customization
 

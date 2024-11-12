@@ -68,6 +68,7 @@ export const ButtonStyled = styled.button<{
     }
   }
 
+  &.is-active,
   &:active {
     color: ${({ styled }) => styled.colorActive};
     border-color: ${({ styled }) => styled.borderColorActive};
@@ -89,6 +90,10 @@ export const ButtonStyled = styled.button<{
     svg {
       fill: ${({ styled }) => styled.colorDisabled};
     }
+  }
+
+  &:focus-visible {
+    outline: 0.125rem solid ${({ styled }) => styled.focusColor};
   }
   ${({ size }) => handleSize(size)};
 `;

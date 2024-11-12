@@ -6,8 +6,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   children?: ReactNode;
   onClick?: () => void;
+  onKeyDown?: () => void;
   iconBefore?: () => ReactElement;
   iconAfter?: () => ReactElement;
+  'aria-label'?: string;
   styled?: ButtonStyledProps;
 }
 
@@ -16,6 +18,7 @@ export interface ButtonStyledProps {
   colorHover?: string;
   colorActive?: string;
   colorDisabled?: string;
+  focusColor?: string;
   backgroundColor?: string;
   backgroundColorHover?: string;
   backgroundColorActive?: string;
