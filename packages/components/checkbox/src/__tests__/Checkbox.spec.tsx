@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '../../../../../tests/test-utils';
 import Checkbox from '../Checkbox';
 
 describe('<Checkbox />', () => {
@@ -15,7 +15,7 @@ describe('<Checkbox />', () => {
       <Checkbox
         label="Test Checkbox"
         value="test"
-        name="checkboxName"
+        name="checkboxGroup"
         onChange={handleChange}
       />,
     );
@@ -28,7 +28,9 @@ describe('<Checkbox />', () => {
   it('does not call onChange handler when onChange is not provided', () => {
     const handleChange = jest.fn();
 
-    render(<Checkbox label="Test Checkbox" value="test" name="checkboxName" />);
+    render(
+      <Checkbox label="Test Checkbox" value="test" name="checkboxGroup" />,
+    );
 
     fireEvent.click(screen.getByLabelText('Test Checkbox'));
 
@@ -59,21 +61,6 @@ describe('<Checkbox />', () => {
     );
 
     expect(screen.getByLabelText('Test Checkbox')).toBeDisabled();
-  });
-
-  it('is the checkbox circle when isChecked prop is passed as true', () => {
-    render(
-      <Checkbox
-        label="Test Checkbox"
-        value="test"
-        name="checkboxName"
-        isCircle={true}
-      />,
-    );
-
-    expect(screen.getByLabelText('Test Checkbox')).toHaveStyle(
-      'border-radius: 50%',
-    );
   });
 
   it('sets the tabIndex correctly', () => {

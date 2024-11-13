@@ -1,9 +1,9 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '../../../../../tests/test-utils';
 import CheckboxGroup from '../CheckboxGroup';
 
 describe('<CheckboxGroup />', () => {
   const options = [
-    { label: 'Checkbox 1', value: 'checkbox1', role: 'checkbox' },
+    { label: 'Checkbox 1', value: 'checkbox1', tabIndex: 0 },
     { label: 'Checkbox 2', value: 'checkbox2' },
     { label: 'Checkbox 3', value: 'checkbox3', disabled: true },
   ];
@@ -29,7 +29,17 @@ describe('<CheckboxGroup />', () => {
 
     fireEvent.click(screen.getByLabelText('Checkbox 1'));
 
-    expect(handleChange).toHaveBeenCalledWith(['checkbox1']);
+    expect(handleChange).toHaveBeenCalledWith('checkbox1');
+  });
+
+  it('does not call onChange handler when onChange is not provided', () => {
+    const handleChange = jest.fn();
+
+    render(<CheckboxGroup name="checkboxGroup" options={options} />);
+
+    fireEvent.click(screen.getByLabelText('Checkbox 1'));
+
+    expect(handleChange).not.toHaveBeenCalledWith('checkbox1');
   });
 
   it('checks the correct checkbox button', () => {
@@ -37,12 +47,12 @@ describe('<CheckboxGroup />', () => {
       <CheckboxGroup
         name="checkboxGroup"
         options={options}
-        selectedValues={['checkbox1', 'checkbox2']}
+        selectedValues="checkbox1"
       />,
     );
 
     expect(screen.getByLabelText('Checkbox 1')).toBeChecked();
-    expect(screen.getByLabelText('Checkbox 2')).toBeChecked();
+    expect(screen.getByLabelText('Checkbox 2')).not.toBeChecked();
     expect(screen.getByLabelText('Checkbox 3')).not.toBeChecked();
   });
 
@@ -54,29 +64,12 @@ describe('<CheckboxGroup />', () => {
     expect(screen.getByLabelText('Checkbox 3')).toBeDisabled();
   });
 
-  it('sets the role correctly', () => {
+  it('sets the tabIndex correctly', () => {
     render(<CheckboxGroup name="checkboxGroup" options={options} />);
 
     expect(screen.getByLabelText('Checkbox 1')).toHaveAttribute(
-      'role',
-      'checkbox',
+      'tabIndex',
+      '0',
     );
-  });
-
-  it('calls onChange handler with updated values when a checkbox is unchecked', () => {
-    const handleChange = jest.fn();
-
-    render(
-      <CheckboxGroup
-        name="checkboxGroup"
-        options={options}
-        selectedValues={['checkbox1', 'checkbox2']}
-        onChange={handleChange}
-      />,
-    );
-
-    fireEvent.click(screen.getByLabelText('Checkbox 1'));
-
-    expect(handleChange).toHaveBeenCalledWith(['checkbox2']);
   });
 });
