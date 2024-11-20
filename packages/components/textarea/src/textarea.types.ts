@@ -1,21 +1,30 @@
 import { InputHTMLAttributes } from 'react';
 
 export interface TextareaProps
-  extends InputHTMLAttributes<HTMLTextAreaElement> {
+  extends Omit<InputHTMLAttributes<HTMLTextAreaElement>, 'size'> {
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   label?: string;
   maxLength?: number;
   placeholder?: string;
-  disabled?: boolean;
+  isDisabled?: boolean;
+  isRequired?: boolean;
+  hasCharacterCount?: boolean;
+  canResize?: boolean;
   styled?: TextareaStyledProps;
 }
 
 export interface TextareaStyledProps {
   labelColor?: string;
   color?: string;
-  colorActive?: string;
-  backgroundColor?: string;
+  colorHover?: string;
+  colorFocus?: string;
+  colorFilled?: string;
+  colorError?: string;
+  placeholderColor?: string;
+  placeholderColorHover?: string;
   borderColor?: string;
   borderColorHover?: string;
-  borderColorActive?: string;
-  fontSize?: string;
+  borderColorFocus?: string;
+  borderColorFilled?: string;
+  fontFamily?: string;
 }
