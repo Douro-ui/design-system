@@ -9,8 +9,10 @@ export const SecondaryButton = ({
   children,
   styled,
   onClick,
+  onKeyDown,
   iconBefore,
   iconAfter,
+  'aria-label': ariaLabel,
   disabled,
   ...props
 }: ButtonProps): React.ReactNode => {
@@ -38,15 +40,36 @@ export const SecondaryButton = ({
     styled,
   );
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    const button = event.currentTarget;
+
+    if (event.key === 'Enter' && !disabled) {
+      button.classList.add('is-active');
+      setTimeout(() => button.classList.remove('is-active'), 300);
+      onClick?.();
+    }
+
+    if (event.key === ' ' && !disabled) {
+      onClick?.();
+    }
+
+    onKeyDown?.();
+  };
+
   return (
     <ButtonStyled
       typeBtn="secondary"
       size={size}
       styled={mergedThemeValues as Required<ButtonStyledProps>}
       onClick={onClick}
+      onKeyDown={handleKeyDown}
       disabled={disabled}
-      hasIconBefore={iconBefore ? true : false}
-      hasIconAfter={iconAfter ? true : false}
+      hasIconBefore={!!iconBefore}
+      hasIconAfter={!!iconAfter}
+      aria-label={ariaLabel}
+      aria-disabled={disabled}
+      role="button"
+      tabIndex={disabled ? -1 : 0}
       data-testid={`button-${typeBtn}`}
       {...props}
     >
