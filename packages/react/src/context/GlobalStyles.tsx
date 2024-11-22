@@ -1,4 +1,4 @@
-import { Global, css } from '@emotion/react';
+import { Global, SerializedStyles, css } from '@emotion/react';
 import { fontFamilyDisplay, fontFamilyText } from '../theme/theme.constants';
 import { ReactElement } from 'react';
 
@@ -319,6 +319,10 @@ const defaultGlobalStyles = css`
   }
 `;
 
-export const GlobalStyles = (): ReactElement => {
-  return <Global styles={defaultGlobalStyles} />;
+export const GlobalStyles = ({
+  styles,
+}: {
+  styles?: SerializedStyles;
+}): ReactElement => {
+  return <Global styles={[defaultGlobalStyles, styles]} />;
 };
