@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/button@0.3.0...@douro-ui/button@0.3.1) (2024-11-22)
+
+**Note:** Version bump only for package @douro-ui/button
+
 # [0.3.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/button@0.2.13...@douro-ui/button@0.3.0) (2024-11-20)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.2](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.7.1...@douro-ui/react@0.7.2) (2024-11-22)
+
+### Bug Fixes
+
+- global styles ([60aaf96](https://github.com/Douro-ui/design-system/commit/60aaf966e754895e249fcd371f7c7372c0cf7f9e))
+
 ## [0.7.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.7.0...@douro-ui/react@0.7.1) (2024-10-21)
 
 ### Bug Fixes

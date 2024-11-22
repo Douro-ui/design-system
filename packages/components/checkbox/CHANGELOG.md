@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.15](https://github.com/Douro-ui/design-system/compare/@douro-ui/checkbox@0.1.14...@douro-ui/checkbox@0.1.15) (2024-11-22)
+
+**Note:** Version bump only for package @douro-ui/checkbox
+
 ## [0.1.14](https://github.com/Douro-ui/design-system/compare/@douro-ui/checkbox@0.1.13...@douro-ui/checkbox@0.1.14) (2024-10-21)
 
 ### Bug Fixes

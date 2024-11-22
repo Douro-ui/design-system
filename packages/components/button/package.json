@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/button",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Douro UI - Metyis Design System Components",
   "main": "src/index.ts",
   "type": "module",
@@ -15,8 +15,8 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@douro-ui/icon": "^0.2.5",
-    "@douro-ui/react": "^0.7.1"
+    "@douro-ui/icon": "^0.2.6",
+    "@douro-ui/react": "^0.7.2"
   },
   "peerDependencies": {
     "@emotion/react": "^11.11.4",
