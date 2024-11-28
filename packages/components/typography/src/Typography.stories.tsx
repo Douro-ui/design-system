@@ -41,7 +41,16 @@ const meta: Meta<TypographyProps> = {
       bodyType: {
         control: {
           type: 'select',
-          options: ['body1', 'body2', 'body3', 'body4', 'body5', 'body6'],
+          options: [
+            'body1',
+            'body2',
+            'body3',
+            'body4',
+            'body5',
+            'body6',
+            'body7',
+            'body8',
+          ],
         },
       },
     },
@@ -101,7 +110,16 @@ export const BodyComponent: Story = {
     bodyType: {
       control: {
         type: 'select',
-        options: ['body1', 'body2', 'body3', 'body4', 'body5', 'body6'],
+        options: [
+          'body1',
+          'body2',
+          'body3',
+          'body4',
+          'body5',
+          'body6',
+          'body7',
+          'body8',
+        ],
       },
     },
   },

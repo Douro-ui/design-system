@@ -1,6 +1,15 @@
 import { fireEvent, render, screen } from '../../../../../tests/test-utils';
 import { Body } from '../Body';
-import { Body1, Body2, Body3, Body4, Body5, Body6 } from '../typoTypes';
+import {
+  Body1,
+  Body2,
+  Body3,
+  Body4,
+  Body5,
+  Body6,
+  Body7,
+  Body8,
+} from '../typoTypes';
 
 describe('<Body />', () => {
   it('should renders a body 1', () => {
@@ -173,6 +182,58 @@ describe('<Body />', () => {
 
     expect(bodyElement).toBeInTheDocument();
     expect(bodyElement).toHaveStyle('font-size: 0.875rem');
+    expect(bodyElement).toHaveStyle('line-height: 150%');
+    expect(bodyElement.tagName).toBe('P');
+  });
+
+  it('should renders a body 7', () => {
+    window.innerWidth = 1400;
+    fireEvent.resize(window);
+    render(<Body bodyType="body7">Test Body7</Body>);
+
+    const bodyElement = screen.getByText('Test Body7');
+
+    expect(bodyElement).toBeInTheDocument();
+    expect(bodyElement).toHaveStyle('font-size: 0.75rem');
+    expect(bodyElement).toHaveStyle('line-height: 150%');
+    expect(bodyElement.tagName).toBe('P');
+  });
+
+  it('should renders a body 7 when bodyType is not provided on Body7', () => {
+    window.innerWidth = 1400;
+    fireEvent.resize(window);
+    render(<Body7>Test Body7</Body7>);
+
+    const bodyElement = screen.getByText('Test Body7');
+
+    expect(bodyElement).toBeInTheDocument();
+    expect(bodyElement).toHaveStyle('font-size: 0.75rem');
+    expect(bodyElement).toHaveStyle('line-height: 150%');
+    expect(bodyElement.tagName).toBe('P');
+  });
+
+  it('should renders a body 8', () => {
+    window.innerWidth = 1400;
+    fireEvent.resize(window);
+    render(<Body bodyType="body8">Test Body8</Body>);
+
+    const bodyElement = screen.getByText('Test Body8');
+
+    expect(bodyElement).toBeInTheDocument();
+    expect(bodyElement).toHaveStyle('font-size: 0.75rem');
+    expect(bodyElement).toHaveStyle('line-height: 150%');
+    expect(bodyElement.tagName).toBe('P');
+  });
+
+  it('should renders a body 8 when bodyType is not provided on Body8', () => {
+    window.innerWidth = 1400;
+    fireEvent.resize(window);
+    render(<Body8>Test Body8</Body8>);
+
+    const bodyElement = screen.getByText('Test Body8');
+
+    expect(bodyElement).toBeInTheDocument();
+    expect(bodyElement).toHaveStyle('font-size: 0.75rem');
     expect(bodyElement).toHaveStyle('line-height: 150%');
     expect(bodyElement.tagName).toBe('P');
   });

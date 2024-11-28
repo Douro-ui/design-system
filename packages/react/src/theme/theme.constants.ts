@@ -61,6 +61,8 @@ export enum Heading {
   H4 = 'h4',
   H5 = 'h5',
   H6 = 'h6',
+  H7 = 'heading7',
+  H8 = 'heading8',
 }
 
 export enum Body {
@@ -70,6 +72,8 @@ export enum Body {
   Body4 = 'body4',
   Body5 = 'body5',
   Body6 = 'body6',
+  Body7 = 'body7',
+  Body8 = 'body8',
 }
 
 export enum Display {
@@ -79,4 +83,6 @@ export enum Display {
   Display4 = 'display4',
   Display5 = 'display5',
   Display6 = 'display6',
+  Display7 = 'display7',
+  Display8 = 'display8',
 }

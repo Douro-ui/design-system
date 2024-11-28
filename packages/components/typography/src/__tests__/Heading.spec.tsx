@@ -7,6 +7,8 @@ import {
   Heading4,
   Heading5,
   Heading6,
+  Heading7,
+  Heading8,
 } from '../typoTypes';
 
 describe('< Heading />', () => {
@@ -175,6 +177,58 @@ describe('< Heading />', () => {
 
     expect(headingElement).toBeInTheDocument();
     expect(headingElement).toHaveStyle('font-size: 1rem');
+    expect(headingElement).toHaveStyle('line-height: 120%');
+    expect(headingElement.tagName).toBe('H6');
+  });
+
+  it('should renders a heading 7', () => {
+    window.innerWidth = 576;
+    fireEvent.resize(window);
+    render(<Heading headingType="heading7">Test Heading7</Heading>);
+
+    const headingElement = screen.getByText('Test Heading7');
+
+    expect(headingElement).toBeInTheDocument();
+    expect(headingElement).toHaveStyle('font-size: 0.875rem');
+    expect(headingElement).toHaveStyle('line-height: 120%');
+    expect(headingElement.tagName).toBe('H6');
+  });
+
+  it('should renders a heading 7 when headingType is not provided on Heading7', () => {
+    window.innerWidth = 900;
+    fireEvent.resize(window);
+    render(<Heading7>Test Heading7</Heading7>);
+
+    const headingElement = screen.getByText('Test Heading7');
+
+    expect(headingElement).toBeInTheDocument();
+    expect(headingElement).toHaveStyle('font-size: 1rem');
+    expect(headingElement).toHaveStyle('line-height: 120%');
+    expect(headingElement.tagName).toBe('H6');
+  });
+
+  it('should renders a heading 8', () => {
+    window.innerWidth = 576;
+    fireEvent.resize(window);
+    render(<Heading headingType="heading8">Test Heading8</Heading>);
+
+    const headingElement = screen.getByText('Test Heading8');
+
+    expect(headingElement).toBeInTheDocument();
+    expect(headingElement).toHaveStyle('font-size: 0.75rem');
+    expect(headingElement).toHaveStyle('line-height: 120%');
+    expect(headingElement.tagName).toBe('H6');
+  });
+
+  it('should renders a heading 7 when headingType is not provided on Heading7', () => {
+    window.innerWidth = 900;
+    fireEvent.resize(window);
+    render(<Heading8>Test Heading7</Heading8>);
+
+    const headingElement = screen.getByText('Test Heading7');
+
+    expect(headingElement).toBeInTheDocument();
+    expect(headingElement).toHaveStyle('font-size: 0.875rem');
     expect(headingElement).toHaveStyle('line-height: 120%');
     expect(headingElement.tagName).toBe('H6');
   });

@@ -7,10 +7,19 @@ import {
   Display4,
   Display5,
   Display6,
+  Display7,
+  Display8,
 } from './typoTypes/display';
 
 const DisplayTypes: Record<
-  'display1' | 'display2' | 'display3' | 'display4' | 'display5' | 'display6',
+  | 'display1'
+  | 'display2'
+  | 'display3'
+  | 'display4'
+  | 'display5'
+  | 'display6'
+  | 'display7'
+  | 'display8',
   React.ComponentType<TypographyProps>
 > = {
   display1: Display1,
@@ -19,6 +28,8 @@ const DisplayTypes: Record<
   display4: Display4,
   display5: Display5,
   display6: Display6,
+  display7: Display7,
+  display8: Display8,
 };
 export const Display = ({
   children,

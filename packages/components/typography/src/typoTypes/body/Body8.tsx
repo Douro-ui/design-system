@@ -7,15 +7,15 @@ import { useResponsiveBodyTypography } from '../../hooks/useTypography';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import React from 'react';
 
-export const Body6 = ({
+export const Body8 = ({
   styled,
   children,
-  bodyType = 'body6',
+  bodyType = 'body8',
   ...props
 }: TypographyProps): React.ReactNode => {
   const theme = useTheme();
 
-  const getBody6DefaultThemeValues: TypographyStyledProps = {
+  const getBody8DefaultThemeValues: TypographyStyledProps = {
     fontSize: theme.typography.body[bodyType].mobile.fontSize,
     lineHeight: theme.typography.body[bodyType].mobile.lineHeight,
     fontWeight: theme.typography.body[bodyType].mobile.fontWeight,
@@ -26,7 +26,7 @@ export const Body6 = ({
   const reponsiveStyle = useResponsiveBodyTypography(bodyType);
 
   const combinedStyles = {
-    ...getBody6DefaultThemeValues,
+    ...getBody8DefaultThemeValues,
     ...reponsiveStyle,
   };
 

@@ -134,4 +134,48 @@ export const heading: TypographyHeader = {
       fontWeight: FontWeight.MEDIUM,
     },
   },
+  heading7: {
+    mobile: {
+      fontSize: '0.875rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.ROMAN,
+    },
+    tablet: {
+      fontSize: '0.875rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.ROMAN,
+    },
+    desktop: {
+      fontSize: '1rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.ROMAN,
+    },
+    desktopLarge: {
+      fontSize: '1rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.ROMAN,
+    },
+  },
+  heading8: {
+    mobile: {
+      fontSize: '0.75rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.MEDIUM,
+    },
+    tablet: {
+      fontSize: '0.75rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.MEDIUM,
+    },
+    desktop: {
+      fontSize: '0.875rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.MEDIUM,
+    },
+    desktopLarge: {
+      fontSize: '0.875rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.MEDIUM,
+    },
+  },
 };

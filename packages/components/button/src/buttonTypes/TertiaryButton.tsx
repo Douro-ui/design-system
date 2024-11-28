@@ -23,7 +23,7 @@ export const TertiaryButton = ({
     backgroundColor: 'transparent',
     borderColor: 'transparent',
     backgroundColorActive: 'transparent',
-    colorHover: theme.colors.brand.black,
+    colorHover: theme.colors.brand.primary,
     backgroundColorHover: theme.colors.neutral.cold.shade95,
     backgroundColorDisabled: 'transparent',
     borderColorActive: 'transparent',

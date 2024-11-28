@@ -19,7 +19,7 @@ export const Heading5 = ({
     fontSize: theme.typography.heading[headingType].mobile.fontSize,
     lineHeight: theme.typography.heading[headingType].mobile.lineHeight,
     fontWeight: theme.typography.heading[headingType].mobile.fontWeight,
-    color: theme.colors.brand.black,
+    color: theme.colors.brand.primary,
     fontFamily: theme.fontFamily.text,
   };
 

@@ -7,6 +7,8 @@ import {
   Display4,
   Display5,
   Display6,
+  Display7,
+  Display8,
 } from '../typoTypes';
 
 describe('< Display />', () => {
@@ -175,6 +177,58 @@ describe('< Display />', () => {
 
     expect(displayElement).toBeInTheDocument();
     expect(displayElement).toHaveStyle('font-size: 1.75rem');
+    expect(displayElement).toHaveStyle('line-height: 120%');
+    expect(displayElement.tagName).toBe('H6');
+  });
+
+  it('should renders a display 7', () => {
+    window.innerWidth = 700;
+    fireEvent.resize(window);
+    render(<Display displayType="display7">Test Display7</Display>);
+
+    const displayElement = screen.getByText('Test Display7');
+
+    expect(displayElement).toBeInTheDocument();
+    expect(displayElement).toHaveStyle('font-size: 1.5rem');
+    expect(displayElement).toHaveStyle('line-height: 120%');
+    expect(displayElement.tagName).toBe('H6');
+  });
+
+  it('should renders a display 7 when displayType is not provided on Display7', () => {
+    window.innerWidth = 700;
+    fireEvent.resize(window);
+    render(<Display7>Test Display7</Display7>);
+
+    const displayElement = screen.getByText('Test Display7');
+
+    expect(displayElement).toBeInTheDocument();
+    expect(displayElement).toHaveStyle('font-size: 1.5rem');
+    expect(displayElement).toHaveStyle('line-height: 120%');
+    expect(displayElement.tagName).toBe('H6');
+  });
+
+  it('should renders a display 8', () => {
+    window.innerWidth = 700;
+    fireEvent.resize(window);
+    render(<Display displayType="display8">Test Display8</Display>);
+
+    const displayElement = screen.getByText('Test Display8');
+
+    expect(displayElement).toBeInTheDocument();
+    expect(displayElement).toHaveStyle('font-size: 1.5rem');
+    expect(displayElement).toHaveStyle('line-height: 120%');
+    expect(displayElement.tagName).toBe('H6');
+  });
+
+  it('should renders a display 8 when displayType is not provided on Display8', () => {
+    window.innerWidth = 700;
+    fireEvent.resize(window);
+    render(<Display8>Test Display8</Display8>);
+
+    const displayElement = screen.getByText('Test Display8');
+
+    expect(displayElement).toBeInTheDocument();
+    expect(displayElement).toHaveStyle('font-size: 1.5rem');
     expect(displayElement).toHaveStyle('line-height: 120%');
     expect(displayElement.tagName).toBe('H6');
   });

@@ -14,7 +14,7 @@ export const SuccessBadge = ({
   const theme = useTheme();
 
   const defaultThemeValues: BadgeStyledProps = {
-    color: theme.colors.brand.black,
+    color: theme.colors.brand.primary,
     backgroundColor: theme.colors.extended.green.shade40,
     backgroundColorHover: theme.colors.extended.green.shade30,
     backgroundColorActive: theme.colors.extended.green.shade20,

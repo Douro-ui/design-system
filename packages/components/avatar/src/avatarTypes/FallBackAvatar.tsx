@@ -12,7 +12,7 @@ export const FallbackAvatar = ({
 
   const defaultStyled: AvatarStyledProps = {
     backgroundColor: theme.colors.brand.white,
-    color: theme.colors.brand.black,
+    color: theme.colors.brand.primary,
     borderRadius: '800px',
     fontFamily: theme.fontFamily.text,
     fontWeight: theme.fontWeight.ROMAN,

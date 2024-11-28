@@ -134,4 +134,48 @@ export const display: TypographyDisplay = {
       fontWeight: FontWeight.MEDIUM,
     },
   },
+  display7: {
+    mobile: {
+      fontSize: '1.5rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.MEDIUM,
+    },
+    tablet: {
+      fontSize: '1.5rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.MEDIUM,
+    },
+    desktop: {
+      fontSize: '1.75rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.MEDIUM,
+    },
+    desktopLarge: {
+      fontSize: '2rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.MEDIUM,
+    },
+  },
+  display8: {
+    mobile: {
+      fontSize: '1.5rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.ROMAN,
+    },
+    tablet: {
+      fontSize: '1.5rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.ROMAN,
+    },
+    desktop: {
+      fontSize: '1.75rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.ROMAN,
+    },
+    desktopLarge: {
+      fontSize: '2rem',
+      lineHeight: '120%',
+      fontWeight: FontWeight.ROMAN,
+    },
+  },
 };

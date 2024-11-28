@@ -2,20 +2,20 @@ import type {
   TypographyProps,
   TypographyStyledProps,
 } from '../../typography.types';
+import getHeader from './typography.styles';
 import { useResponsiveHeadingTypography } from '../../hooks/useTypography';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import React from 'react';
-import getHeader from './typography.styles';
 
-export const Heading1 = ({
+export const Heading7 = ({
   styled,
   children,
-  headingType = 'h1',
+  headingType = 'heading7',
   ...props
 }: TypographyProps): React.ReactNode => {
   const theme = useTheme();
 
-  const getHeading1DefaultThemeValues: TypographyStyledProps = {
+  const getHeading7DefaultThemeValues: TypographyStyledProps = {
     fontSize: theme.typography.heading[headingType].mobile.fontSize,
     lineHeight: theme.typography.heading[headingType].mobile.lineHeight,
     fontWeight: theme.typography.heading[headingType].mobile.fontWeight,
@@ -26,7 +26,7 @@ export const Heading1 = ({
   const reponsiveStyle = useResponsiveHeadingTypography(headingType);
 
   const combinedStyles = {
-    ...getHeading1DefaultThemeValues,
+    ...getHeading7DefaultThemeValues,
     ...reponsiveStyle,
   };
 
