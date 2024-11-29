@@ -10,6 +10,7 @@ export interface LinkStyledProps {
   colorHoverVisited?: string;
   fontSize?: string;
   fontWeight?: number;
+  fontFamily?: string;
 }
 
 export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {

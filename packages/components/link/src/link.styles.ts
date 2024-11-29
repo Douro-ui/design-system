@@ -1,28 +1,10 @@
 import styled from '@emotion/styled';
 import type { LinkProps, LinkStyledProps } from './link.types';
 
-const fontStyle = (
-  fontSize: number,
-  fontWeight: number,
-  lineHeight: number,
-) => `
-font-size: ${fontSize}rem;
-font-weight: ${fontWeight};
-line-height: ${lineHeight}rem;
-`;
-
 const ratioSize = (Width: number, Height: number) => `
   width: ${Width}rem;
   height: ${Height}rem;
 `;
-
-const fontStyleMap = {
-  sm: fontStyle(0.75, 400, 1),
-  md: fontStyle(0.875, 400, 1.125),
-  lg: fontStyle(1, 400, 1.5),
-  xl: fontStyle(1.5, 450, 1.75),
-  xxl: fontStyle(3, 450, 3.6),
-};
 
 const sizeMap = {
   sm: ratioSize(1, 1),
@@ -32,7 +14,6 @@ const sizeMap = {
   xxl: ratioSize(3, 3),
 };
 
-const handleFontStyle = (size: LinkProps['size'] = 'lg') => fontStyleMap[size];
 const handleIconSize = (size: LinkProps['size'] = 'lg') => sizeMap[size];
 const handleGap = (size: LinkProps['size'], hasIcon: boolean) => {
   if (!hasIcon) return 0;
@@ -58,9 +39,11 @@ export const LinkStyled = styled.a<{
   background: none;
   border: none;
   cursor: pointer;
+  font-size: ${({ styled }) => styled.fontSize};
+  font-weight: ${({ styled }) => styled.fontWeight};
+  font-family: ${({ styled }) => styled.fontFamily};
   gap: ${({ size, hasIconAfter, hasIconBefore }) =>
     handleGap(size, hasIconAfter || hasIconBefore)};
-  ${({ size }) => handleFontStyle(size)};
 
   svg {
     fill: ${({ styled, disabled }) =>

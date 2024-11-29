@@ -25,6 +25,9 @@ const Link = ({
     colorHoverVisited: theme.colors.extended.purple.shade40,
     colorFocus: theme.colors.extended.blue.shade20,
     colorDisabled: theme.colors.neutral.cold.shade90,
+    fontSize: theme.fontSize,
+    fontFamily: theme.fontFamily.text,
+    fontWeight: theme.fontWeight.REGULAR,
   };
 
   const mergedThemeValues = deepMerge<LinkStyledProps>(
