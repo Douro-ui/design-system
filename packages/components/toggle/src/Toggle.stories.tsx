@@ -112,3 +112,19 @@ Default.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   expect(toogle).toHaveStyle('align-items: normal');
   expect(toogle).toHaveStyle('cursor: default');
 };
+
+WithIcon.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+
+  const toogle = canvas.getByRole('checkbox');
+  const toogleIcon = canvas.getByTestId('icon');
+  expect(toogle).not.toBeChecked();
+  await userEvent.click(toogle);
+  expect(toogle).toBeChecked();
+  expect(toogle).toHaveStyle('box-sizing: border-box');
+  expect(toogle).toHaveStyle('display: inline-block');
+  expect(toogle).toHaveStyle('flex-direction: row');
+  expect(toogle).toHaveStyle('align-items: normal');
+  expect(toogle).toHaveStyle('cursor: default');
+  expect(toogleIcon).toBeVisible();
+};
