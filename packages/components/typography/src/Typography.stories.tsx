@@ -5,6 +5,7 @@ import { Heading } from './Heading';
 import { TypographyProps } from './typography.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
+import { expect, within } from '@storybook/test';
 
 const meta: Meta<TypographyProps> = {
   title: 'Example/Typography',
@@ -106,4 +107,44 @@ export const BodyComponent: Story = {
     },
   },
   render: (args: TypographyProps) => <Body {...args} />,
+};
+const testComponentStyles = (
+  componentText: string,
+  expectedFontSize: string,
+  expectedNodeName: string,
+  canvasElement: HTMLElement,
+) => {
+  const canvas = within(canvasElement);
+  const component = canvas.getByText(componentText);
+
+  expect(component).toBeVisible();
+  expect(component).toHaveStyle('box-sizing: content-box');
+  expect(component).toHaveStyle('max-height: none');
+  expect(component).toHaveStyle('pointer-events: auto');
+  expect(component).toHaveStyle(`font-size: ${expectedFontSize}`);
+  expect(component).toHaveProperty('nodeName', expectedNodeName);
+};
+
+DisplayComponent.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  testComponentStyles('Display Content', '64px', 'H1', canvasElement);
+};
+
+HeadingComponent.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  testComponentStyles('Heading Content', '24px', 'H1', canvasElement);
+};
+
+BodyComponent.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  testComponentStyles('Body Content', '16px', 'P', canvasElement);
 };

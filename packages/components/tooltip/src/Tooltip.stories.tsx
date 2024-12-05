@@ -61,38 +61,37 @@ export const Click: Story = {
     ),
   },
 };
-if (process.env.REACT_APP_RUN_INTERACTIONS === 'false') {
-  Click.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-    const canvas = within(canvasElement);
 
-    const openButton = await canvas.findByText('Click me!');
-    expect(openButton).toBeInTheDocument();
-    userEvent.click(openButton);
+Click.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
 
-    const toastShow = await canvas.findByTestId('button-primary');
-    expect(toastShow).toBeVisible();
+  const openButton = await canvas.findByText('Click me!');
+  expect(openButton).toBeInTheDocument();
+  userEvent.click(openButton);
 
-    const tooltipOpen = await canvas.findByText('Lorem ipsum dolor sit amet');
-    expect(tooltipOpen).toBeInTheDocument();
+  const toastShow = await canvas.findByTestId('button-primary');
+  expect(toastShow).toBeVisible();
 
-    userEvent.click(toastShow);
-    expect(openButton).toBeVisible();
-  };
+  const tooltipOpen = await canvas.findByText('Lorem ipsum dolor sit amet');
+  expect(tooltipOpen).toBeInTheDocument();
 
-  DefaultVersion.play = async ({
-    canvasElement,
-  }: {
-    canvasElement: HTMLElement;
-  }) => {
-    const canvas = within(canvasElement);
+  userEvent.click(toastShow);
+  expect(openButton).toBeVisible();
+};
 
-    const openButton = await canvas.findByText('Hover me!');
-    expect(openButton).toBeInTheDocument();
-    userEvent.hover(openButton);
+DefaultVersion.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}) => {
+  const canvas = within(canvasElement);
 
-    const tooltipOpen = await canvas.findByText('Tooltip works');
-    expect(tooltipOpen).toBeInTheDocument();
+  const openButton = await canvas.findByText('Hover me!');
+  expect(openButton).toBeInTheDocument();
+  userEvent.hover(openButton);
 
-    expect(openButton).toBeVisible();
-  };
-}
+  const tooltipOpen = await canvas.findByText('Tooltip works');
+  expect(tooltipOpen).toBeInTheDocument();
+
+  expect(openButton).toBeVisible();
+};
