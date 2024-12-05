@@ -97,3 +97,31 @@ Line.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
   expect(link).toBeEnabled();
   userEvent.click(link);
 };
+
+Inline.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+  const canvas = within(canvasElement);
+  const link = canvas.getByRole('link');
+
+  expect(link).toHaveTextContent('Metyis');
+  expect(link).toHaveAccessibleName('Link to Metyis');
+  expect(link).toHaveStyle('color: #2860D7');
+  expect(link).toHaveStyle('font-size: 16px');
+  expect(link).toHaveStyle('background-color: rgba(0, 0, 0, 0)');
+  expect(link).toHaveStyle('position: static');
+  expect(link).toHaveStyle('padding: 0');
+  expect(link).toHaveStyle('clip: auto');
+  expect(link).toHaveStyle('font-weight: 400');
+  expect(link).toHaveStyle('cursor: pointer');
+  expect(link).toHaveStyle('box-sizing: content-box');
+  expect(link).toHaveStyle('opacity: 1');
+  expect(link).toHaveStyle('pointer-events: auto');
+  expect(link).toHaveAttribute('target', '_blank');
+  expect(link).toHaveAttribute('href', 'https://metyis.com/');
+  const svg = canvasElement.querySelector('svg');
+  expect(svg).toBeInTheDocument();
+  userEvent.hover(link);
+  expect(link).toHaveStyle('text-decoration: underline solid rgb(40, 96, 215)');
+  expect(link).toBeVisible();
+  expect(link).toBeEnabled();
+  userEvent.click(link);
+};
