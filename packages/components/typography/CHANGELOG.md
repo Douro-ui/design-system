@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.5](https://github.com/Douro-ui/design-system/compare/@douro-ui/typography@0.1.4...@douro-ui/typography@0.1.5) (2024-12-05)
+
+**Note:** Version bump only for package @douro-ui/typography
+
 ## [0.1.4](https://github.com/Douro-ui/design-system/compare/@douro-ui/typography@0.1.3...@douro-ui/typography@0.1.4) (2024-11-22)
 
 **Note:** Version bump only for package @douro-ui/typography
