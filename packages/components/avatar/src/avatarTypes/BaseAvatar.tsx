@@ -18,7 +18,7 @@ export const BaseAvatar = ({
 
   const getBasetypeAvtDefaultThemeValues: AvatarStyledProps = {
     backgroundColor: styled?.backgroundColor || colors.default,
-    color: theme.colors.brand.black,
+    color: theme.colors.brand.primary,
     borderRadius: '800px',
     fontFamily: theme.fontFamily.text,
     fontWeight: theme.fontWeight.MEDIUM,

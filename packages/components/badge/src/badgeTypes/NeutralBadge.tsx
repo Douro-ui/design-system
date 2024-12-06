@@ -14,7 +14,7 @@ export const NeutralBadge = ({
   const theme = useTheme();
 
   const defaultThemeValues: BadgeStyledProps = {
-    color: theme.colors.brand.black,
+    color: theme.colors.brand.primary,
     backgroundColor: theme.colors.neutral.silver.shade80,
     backgroundColorHover: theme.colors.neutral.silver.shade70,
     backgroundColorActive: theme.colors.neutral.silver.shade60,

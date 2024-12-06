@@ -1,11 +1,12 @@
 import emotionStyled from '@emotion/styled';
 import {
-  displayToHeadingTag,
   DisplayType,
   TypographyStyledComponent,
   TypographyStyledProps,
+  displayTypeToTag,
 } from '../../typography.types';
 import { useTheme } from '@douro-ui/react';
+import React from 'react';
 
 const getTypographyDisplayStyles =
   (displayType: DisplayType) =>
@@ -41,13 +42,17 @@ const getTypographyDisplayStyles =
   };
 
 const getDisplay = (displayType: DisplayType): TypographyStyledComponent => {
-  const Tag = displayToHeadingTag[displayType];
+  const tag = displayTypeToTag[
+    displayType
+  ] as keyof React.JSX.IntrinsicElements;
 
-  return emotionStyled(Tag)<{
+  const Display = emotionStyled(tag)<{
     styled: Required<TypographyStyledProps>;
   }>`
       ${({ styled }) => getTypographyDisplayStyles(displayType)({ styled })}
     `;
+
+  return Display as TypographyStyledComponent;
 };
 
 export default getDisplay;

@@ -12,7 +12,7 @@ export const CloseButton = ({
 }: CloseButtonProps): React.JSX.Element => {
   const theme = useTheme();
   const defaultStyles: CloseButtonStyledProps = {
-    color: theme.colors.brand.black,
+    color: theme.colors.brand.primary,
   };
 
   const mergedStyles = deepMerge<CloseButtonStyledProps>(defaultStyles, styled);

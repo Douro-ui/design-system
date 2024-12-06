@@ -7,15 +7,15 @@ import { useResponsiveDisplayTypography } from '../../hooks/useTypography';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import React from 'react';
 
-export const Display1 = ({
+export const Display8 = ({
   styled,
   children,
-  displayType = 'display1',
+  displayType = 'display8',
   ...props
 }: TypographyProps): React.ReactNode => {
   const theme = useTheme();
 
-  const getDisplay1DefaultThemeValues: TypographyStyledProps = {
+  const getDisplay8DefaultThemeValues: TypographyStyledProps = {
     fontSize: theme.typography.display[displayType].mobile.fontSize,
     lineHeight: theme.typography.display[displayType].mobile.lineHeight,
     fontWeight: theme.typography.display[displayType].mobile.fontWeight,
@@ -26,7 +26,7 @@ export const Display1 = ({
   const reponsiveStyle = useResponsiveDisplayTypography(displayType);
 
   const combinedStyles = {
-    ...getDisplay1DefaultThemeValues,
+    ...getDisplay8DefaultThemeValues,
     ...reponsiveStyle,
   };
 
@@ -34,7 +34,6 @@ export const Display1 = ({
     combinedStyles,
     styled,
   );
-
   const DisplayStyled = getDisplay(displayType);
 
   return (

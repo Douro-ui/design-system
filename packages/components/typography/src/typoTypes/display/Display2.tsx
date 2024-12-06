@@ -19,7 +19,7 @@ export const Display2 = ({
     fontSize: theme.typography.display[displayType].mobile.fontSize,
     lineHeight: theme.typography.display[displayType].mobile.lineHeight,
     fontWeight: theme.typography.display[displayType].mobile.fontWeight,
-    color: theme.colors.brand.black,
+    color: theme.colors.brand.primary,
     fontFamily: theme.fontFamily.display,
   };
 

@@ -15,8 +15,8 @@ export const ProgressBar = ({
   const theme = useTheme();
 
   const defaultStyles: ProgressBarStyledProps = {
-    backgroundColor: theme.colors.brand.black,
-    borderColor: theme.colors.brand.black,
+    backgroundColor: theme.colors.brand.primary,
+    borderColor: theme.colors.brand.primary,
     borderRadius: '3px',
   };
 
