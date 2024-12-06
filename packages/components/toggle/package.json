@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/toggle",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Douro UI - Metyis Design System Toggle Component",
   "main": "src/index.ts",
   "type": "module",
