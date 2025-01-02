@@ -29,7 +29,9 @@ export type DisplayType =
   | 'display3'
   | 'display4'
   | 'display5'
-  | 'display6';
+  | 'display6'
+  | 'display7'
+  | 'display8';
 
 export type BodyType =
   | 'body1'
@@ -37,9 +39,19 @@ export type BodyType =
   | 'body3'
   | 'body4'
   | 'body5'
-  | 'body6';
+  | 'body6'
+  | 'body7'
+  | 'body8';
 
-export type HeadingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type HeadingType =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'heading7'
+  | 'heading8';
 
 export type TypographyStyledComponent = StyledComponent<
   {
@@ -58,6 +70,22 @@ export const displayToHeadingTag: Record<DisplayType, HeadingType> = {
   display4: 'h4',
   display5: 'h5',
   display6: 'h6',
+  display7: 'heading7',
+  display8: 'heading8',
+};
+
+export const displayTypeToTag: Record<
+  DisplayType,
+  keyof React.JSX.IntrinsicElements
+> = {
+  display1: 'h1',
+  display2: 'h2',
+  display3: 'h3',
+  display4: 'h4',
+  display5: 'h5',
+  display6: 'h6',
+  display7: 'h6',
+  display8: 'h6',
 };
 
 export type TypographyType = Record<Breakpoints, TypographyStyle>;

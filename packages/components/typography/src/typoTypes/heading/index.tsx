@@ -4,3 +4,5 @@ export { Heading3 } from './Heading3';
 export { Heading4 } from './Heading4';
 export { Heading5 } from './Heading5';
 export { Heading6 } from './Heading6';
+export { Heading7 } from './Heading7';
+export { Heading8 } from './Heading8';

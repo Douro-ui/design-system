@@ -4,3 +4,5 @@ export { Body3 } from './Body3';
 export { Body4 } from './Body4';
 export { Body5 } from './Body5';
 export { Body6 } from './Body6';
+export { Body7 } from './Body7';
+export { Body8 } from './Body8';

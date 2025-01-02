@@ -14,7 +14,7 @@ export const WarningBadge = ({
   const theme = useTheme();
 
   const defaultThemeValues: BadgeStyledProps = {
-    color: theme.colors.brand.black,
+    color: theme.colors.brand.primary,
     backgroundColor: theme.colors.extended.yellow.shade70,
     backgroundColorHover: theme.colors.extended.yellow.shade60,
     backgroundColorActive: theme.colors.extended.yellow.shade50,

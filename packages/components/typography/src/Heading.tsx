@@ -1,4 +1,4 @@
-import type { TypographyProps } from './typography.types';
+import type { HeadingType, TypographyProps } from './typography.types';
 import React from 'react';
 import {
   Heading1,
@@ -7,10 +7,12 @@ import {
   Heading4,
   Heading5,
   Heading6,
+  Heading7,
+  Heading8,
 } from './typoTypes/heading';
 
 const HeadingTypes: Record<
-  'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6',
+  HeadingType,
   React.ComponentType<TypographyProps>
 > = {
   h1: Heading1,
@@ -19,6 +21,8 @@ const HeadingTypes: Record<
   h4: Heading4,
   h5: Heading5,
   h6: Heading6,
+  heading7: Heading7,
+  heading8: Heading8,
 };
 export const Heading = ({
   children,
