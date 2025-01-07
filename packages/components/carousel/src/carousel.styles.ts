@@ -66,6 +66,7 @@ export const IconButton = styled.div<{
 }>`
   cursor: pointer;
   position: absolute;
+  width: 1.5rem;
 
   ${({ direction }) =>
     direction === 'left'
