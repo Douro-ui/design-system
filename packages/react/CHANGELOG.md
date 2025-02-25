@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.7.2...@douro-ui/react@0.8.0) (2025-02-25)
+
+### Features
+
+- add viewport hook ([bf4fa60](https://github.com/Douro-ui/design-system/commit/bf4fa607f0413c06ca7319f4a566ed2771d367de))
+
 ## [0.7.2](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.7.1...@douro-ui/react@0.7.2) (2024-11-22)
 
 ### Bug Fixes

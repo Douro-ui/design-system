@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/carousel",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Douro UI - Metyis Design System Carousel Component",
   "main": "src/index.ts",
   "type": "module",
@@ -25,8 +25,8 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@douro-ui/icon": "^0.2.6",
-    "@douro-ui/react": "^0.7.2"
+    "@douro-ui/icon": "^0.2.7",
+    "@douro-ui/react": "^0.8.0"
   },
   "publishConfig": {
     "access": "public"
