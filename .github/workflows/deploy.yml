@@ -1,10 +1,11 @@
 name: Deploy to Netlify
-
+permissions:
+  contents: read
+  pull-requests: write
 on:
   push:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
