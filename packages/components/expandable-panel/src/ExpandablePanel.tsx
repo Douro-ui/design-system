@@ -14,6 +14,7 @@ const ExpandablePanel = ({
   styled,
   preventAllClosed = false,
   multipleOpens = false,
+  className,
 }: ExpandablePanelProps): ReactNode => {
   const { items, handleToggle } = useHandleToggle(initialItems);
   const defaultEPHeaderThemeValues: ExpandablePanelStyledProps = {
@@ -26,6 +27,7 @@ const ExpandablePanel = ({
   );
   return (
     <ExpandablePanelStyled
+      className={className}
       styled={mergedThemeValues as Required<ExpandablePanelStyledProps>}
     >
       {items.map((itemProps: ExpandablePanelItemProps, index: number) => (
