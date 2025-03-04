@@ -154,7 +154,6 @@ Primary.play = async ({
     position: 'relative',
     cursor: 'pointer',
     marginRight: '0px',
-    width: '640px',
     maxWidth: 'none',
     maxHeight: 'none',
   });
@@ -180,7 +179,6 @@ Primary.play = async ({
     position: 'relative',
     cursor: 'pointer',
     marginRight: '0px',
-    width: '640px',
     maxWidth: 'none',
     maxHeight: 'none',
   });
@@ -225,7 +223,6 @@ Primary.play = async ({
     position: 'relative',
     cursor: 'pointer',
     marginRight: '0px',
-    width: '640px',
     maxWidth: 'none',
     maxHeight: 'none',
   });
@@ -243,7 +240,6 @@ Primary.play = async ({
     position: 'relative',
     cursor: 'not-allowed',
     marginRight: '0px',
-    width: '640px',
     maxWidth: 'none',
     maxHeight: 'none',
   });

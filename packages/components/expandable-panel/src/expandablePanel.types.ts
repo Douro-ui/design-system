@@ -25,6 +25,7 @@ export interface ExpandablePanelProps {
   preventAllClosed?: boolean;
   multipleOpens?: boolean;
   onToggle?: (index: number) => void;
+  className?: string;
 }
 
 export interface ExpandablePanelItemProps

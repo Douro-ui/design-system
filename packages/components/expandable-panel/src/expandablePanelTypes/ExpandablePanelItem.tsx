@@ -32,7 +32,7 @@ export const ExpandablePanelItem = ({
   };
 
   const defaultThemeValues: ExpandablePanelStyledProps = {
-    width: '40rem',
+    width: '100%',
     height: '100%',
   };
 
