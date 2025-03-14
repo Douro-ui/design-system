@@ -113,10 +113,6 @@ export const AvatarStyled = styled.div<{
     border-radius: inherit;
     transition: opacity 0.2s ease;
 
-    &:hover {
-      opacity: 0.8;
-    }
-
     &:active {
       opacity: 0.5;
     }
@@ -137,7 +133,7 @@ export const AvatarFilter = styled.div<{ maskColor: string }>`
   border-radius: 800px;
   inset: 0;
   background-color: ${({ maskColor }) => maskColor};
-  mix-blend-mode: multiply;
+  mix-blend-mode: screen;
   pointer-events: none;
   opacity: 0.6;
 `;
