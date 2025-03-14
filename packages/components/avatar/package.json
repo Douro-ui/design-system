@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/avatar",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Douro UI - Metyis Design System Avatar Component",
   "main": "src/index.ts",
   "type": "module",
