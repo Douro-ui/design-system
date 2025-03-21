@@ -58,8 +58,8 @@ export const Inline: Story = {
     isUnderline: true,
     children: 'Metyis',
     target: '_blank',
-    iconBefore: () => <Icon name="star" />,
-    iconAfter: () => <Icon name="star" />,
+    iconBefore: <Icon name="star" />,
+    iconAfter: <Icon name="star" />,
   },
 };
 

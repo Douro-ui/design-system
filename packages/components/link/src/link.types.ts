@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes, ReactElement, ReactNode } from 'react';
+import { AnchorHTMLAttributes, ReactNode } from 'react';
 
 export interface LinkStyledProps {
   color?: string;
@@ -18,7 +18,7 @@ export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   ariaLabel?: string;
   children?: ReactNode;
-  iconBefore?: () => ReactElement;
-  iconAfter?: () => ReactElement;
+  iconBefore?: ReactNode;
+  iconAfter?: ReactNode;
   styled?: LinkStyledProps;
 }

@@ -35,7 +35,7 @@ describe('<Link />', () => {
 
   it('should render the large link with icon after the children', () => {
     render(
-      <Link size="xl" iconAfter={() => <div data-testid="after-icon">❌</div>}>
+      <Link size="xl" iconAfter={<div data-testid="after-icon">❌</div>}>
         This is a link
       </Link>,
     );
@@ -49,10 +49,7 @@ describe('<Link />', () => {
 
   it('should render the extra large link with icon before the children', () => {
     render(
-      <Link
-        size="xl"
-        iconBefore={() => <div data-testid="before-icon">❌</div>}
-      >
+      <Link size="xl" iconBefore={<div data-testid="before-icon">❌</div>}>
         This is a link
       </Link>,
     );

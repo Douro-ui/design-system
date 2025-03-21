@@ -1,11 +1,11 @@
 import {
   TypographyBreakpoints,
   TypographyStyle,
-} from '../../../react/src/theme/theme.types';
+} from '@douro-ui/react/src/theme/theme.types';
 import { HTMLAttributes } from 'react';
 import { StyledComponent } from '@emotion/styled';
 import React from 'react';
-import { Breakpoints } from '../../../react/src/theme/theme.constants';
+import { Breakpoints } from '@douro-ui/react/src/theme/theme.constants';
 
 export interface TypographyStyledProps {
   color?: string;
