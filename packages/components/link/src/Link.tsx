@@ -49,7 +49,7 @@ const Link = ({
           size={size}
           styled={mergedThemeValues as Required<LinkStyledProps>}
         >
-          {iconBefore()}
+          {iconBefore}
         </IconStyled>
       )}
       {children}
@@ -58,7 +58,7 @@ const Link = ({
           size={size}
           styled={mergedThemeValues as Required<LinkStyledProps>}
         >
-          {iconAfter()}
+          {iconAfter}
         </IconStyled>
       )}
     </LinkStyled>
