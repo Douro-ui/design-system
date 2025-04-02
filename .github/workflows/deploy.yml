@@ -28,6 +28,9 @@ jobs:
       - name: Verify build output
         run: ls -la ./storybook-static
 
+      - name: Add node_modules/.bin to PATH
+        run: echo "$PWD/node_modules/.bin" >> $GITHUB_PATH
+
       - name: Deploy to Netlify
         run: cd storybook-static && netlify deploy --prod --dir=. --site=${{ secrets.NETLIFY_SITE_ID }}
         env:
