@@ -61,6 +61,7 @@ const Modal = ({
           >
             {headerTitle != undefined && (
               <ModalHeader
+                className="modal-header"
                 size={size}
                 styled={styledHeader}
                 headerTitle={headerTitle}
@@ -70,6 +71,7 @@ const Modal = ({
             )}
 
             <ModalBodyStyled
+              className="modal-body"
               size={size}
               styled={mergedThemeValues as Required<ModalStyledProps>}
             >
@@ -77,7 +79,7 @@ const Modal = ({
             </ModalBodyStyled>
 
             {childrenFooter && (
-              <ModalFooter size={size} styled={styled}>
+              <ModalFooter className="modal-footer" size={size} styled={styled}>
                 {childrenFooter}
               </ModalFooter>
             )}
