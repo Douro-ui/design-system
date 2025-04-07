@@ -1,5 +1,5 @@
 import { Theme } from '@douro-ui/react';
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 export interface DropdownStyledProps {
   color?: string;
@@ -34,6 +34,7 @@ export interface DropdownProps
   disabled?: boolean;
   selectedId?: string;
   onSelect?: (id: string) => void;
+  icon?: ReactNode;
   styled?: DropdownStyledProps;
   theme?: Theme;
 }
