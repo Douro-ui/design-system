@@ -21,6 +21,7 @@ const Dropdown = ({
   disabled = false,
   selectedId,
   onSelect,
+  icon,
   styled,
 }: DropdownProps): ReactNode => {
   const theme = useTheme();
@@ -111,13 +112,15 @@ const Dropdown = ({
       >
         {selectedItem ? selectedItem.name : placeholder}
 
-        <span>{isOpen ? '>' : '<'}</span>
+        {icon && <span>{icon}</span>}
+        {!icon && <span>{isOpen ? '>' : '<'}</span>}
       </DropdownTriggerStyled>
 
       <DropdownListStyled
         styled={mergedThemeValues as Required<DropdownStyledProps>}
         isOpen={isOpen}
         options={options}
+        className={isOpen ? 'opened' : ''}
       >
         {options.map((item: DropdownItem) => (
           <DropdownItemStyled
