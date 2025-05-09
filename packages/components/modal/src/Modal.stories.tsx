@@ -2,7 +2,7 @@ import { Meta, ReactRenderer, StoryObj } from '@storybook/react';
 import Modal from './Modal';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
-import { ModalProps } from './modal.types';
+import { ModalProps, ShirtSize } from './modal.types';
 import Button from '@douro-ui/button';
 import { useState } from 'react';
 import { expect, userEvent, within } from '@storybook/test';
@@ -22,7 +22,7 @@ const meta: Meta<typeof Modal> = {
   },
   tags: ['autodocs'],
   args: {
-    size: 'md',
+    size: ShirtSize.md,
   },
   argTypes: {
     size: {
@@ -72,7 +72,7 @@ export const SmallModalWithHeader: Story = {
   },
 
   args: {
-    size: 'sm',
+    size: ShirtSize.md,
     headerTitle: 'Are you sure you want to add it?',
   },
 };
@@ -111,7 +111,7 @@ export const MediumModalWithoutHeader: Story = {
   },
 
   args: {
-    size: 'md',
+    size: ShirtSize.md,
     childrenBody: <Button typeBtn="primary">Click Me</Button>,
   },
 };
@@ -132,7 +132,7 @@ export const LargeModalWithHeaderWithoutFooter: Story = {
   },
 
   args: {
-    size: 'lg',
+    size: ShirtSize.lg,
     headerTitle: 'test',
     childrenBody:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. grtfgbhtgrfvfbgrtefd',
@@ -198,8 +198,12 @@ LargeModalWithHeaderWithoutFooter.play = async ({
   );
   expect(bodyContent).toBeInTheDocument();
 
-  const closeButton = await canvas.findByAltText('Close Icon');
-  userEvent.click(closeButton);
+  const closeButton = document.querySelector('svg');
+  if (closeButton) {
+    await userEvent.click(closeButton);
+  } else {
+    throw new Error('SVG element not found');
+  }
 
   expect(openButton).toBeVisible();
 };

@@ -52,7 +52,7 @@ export const ExpandablePanelItem = ({
           onClick={toggleExpansion}
           disabled={disabled}
           isExpanded={isExpanded}
-          icon={hasIcon}
+          hasIcon={hasIcon}
         >
           {header}
         </ExpandablePanelHeader>

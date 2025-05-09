@@ -14,7 +14,7 @@ import {
 } from './carousel.types';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import React, { ReactNode, useState, useEffect, useRef } from 'react';
-import { Icon } from '@douro-ui/icon';
+import { ChevronDownIcon, ChevronUpIcon } from '@douro-ui/svg-icons';
 import { handleTransitionEnd as utilsHandleTransitionEnd } from './utils/getTransition';
 import {
   handleDragStart as utilsHandleDragStart,
@@ -130,7 +130,7 @@ const Carousel = ({
             aria-label="previous slide"
             onClick={prevSlide}
           >
-            {leftIcon || <Icon name="chevron-up" />}
+            {leftIcon ?? <ChevronUpIcon />}
           </IconButton>
           <IconButton
             styled={mergedThemeValues as Required<CarouselStyledProps>}
@@ -139,7 +139,7 @@ const Carousel = ({
             aria-label="next slide"
             onClick={nextSlide}
           >
-            {rightIcon || <Icon name="chevron-down" />}
+            {rightIcon ?? <ChevronDownIcon />}
           </IconButton>
         </>
       )}

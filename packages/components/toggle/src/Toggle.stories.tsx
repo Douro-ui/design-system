@@ -1,13 +1,11 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { Meta, ReactRenderer, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { useState } from 'react';
 import Toggle from './Toggle';
 import { ThemeProvider } from '@douro-ui/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { ToggleProps } from './toggle.types';
-import { Icon } from '@douro-ui/icon';
 
 const meta: Meta<ToggleProps> = {
   title: 'Example/Toggle',
@@ -93,7 +91,7 @@ export const WithIcon: Story = {
         onToggleChange={handleToggleChange}
         label="Toggle Label"
         title="Toggle switch"
-        icon={() => <Icon name="star" />}
+        icon={() => <svg>Icon</svg>}
       />
     );
   },

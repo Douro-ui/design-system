@@ -35,7 +35,7 @@ export interface ExpandablePanelItemProps
   header?: ReactNode;
   expanded?: boolean;
   startExpanded?: boolean;
-  hasIcon?: ReactNode;
+  hasIcon?: boolean;
   children?: ReactNode;
   onClick?: () => void;
 }
@@ -45,7 +45,7 @@ export interface ExpandablePanelHeaderProps
   styled?: ExpandablePanelStyledProps;
   disabled?: boolean;
   children?: ReactNode;
-  icon?: ReactNode;
+  hasIcon?: boolean;
   isExpanded?: boolean;
   onClick?: () => void;
 }

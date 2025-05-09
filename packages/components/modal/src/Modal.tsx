@@ -12,7 +12,6 @@ import { ModalHeader } from './modalTypes/ModalHeader';
 const Modal = ({
   size,
   headerTitle,
-  headerIcon,
   childrenBody,
   childrenFooter,
   styledHeader,
@@ -65,7 +64,6 @@ const Modal = ({
                 size={size}
                 styled={styledHeader}
                 headerTitle={headerTitle}
-                headerIcon={headerIcon}
                 onClose={onClose}
               />
             )}

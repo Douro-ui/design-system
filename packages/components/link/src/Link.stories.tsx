@@ -4,7 +4,6 @@ import { ThemeProvider } from '@douro-ui/react';
 import { expect, userEvent, within } from '@storybook/test';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { LinkProps } from './link.types';
-import { Icon } from '@douro-ui/icon';
 import { ReactElement } from 'react';
 
 const meta: Meta<LinkProps> = {
@@ -58,8 +57,16 @@ export const Inline: Story = {
     isUnderline: true,
     children: 'Metyis',
     target: '_blank',
-    iconBefore: <Icon name="star" />,
-    iconAfter: <Icon name="star" />,
+    iconBefore: (
+      <svg>
+        <path>Icon</path>
+      </svg>
+    ),
+    iconAfter: (
+      <svg>
+        <path>Icon</path>
+      </svg>
+    ),
   },
 };
 

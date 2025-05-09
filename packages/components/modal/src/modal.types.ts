@@ -1,9 +1,14 @@
 import { HTMLAttributes, ReactNode } from 'react';
 
+export enum ShirtSize {
+  sm,
+  md,
+  lg,
+}
+
 export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
-  size?: 'sm' | 'md' | 'lg';
+  size?: ShirtSize;
   headerTitle?: string;
-  headerIcon?: string;
   childrenBody?: ReactNode;
   childrenFooter?: ReactNode;
   styledHeader?: ModalStyledProps;
@@ -22,13 +27,13 @@ export interface ModalStyledProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export interface ModalFooterProps extends HTMLAttributes<HTMLDivElement> {
-  size?: 'sm' | 'md' | 'lg';
+  size?: ShirtSize;
   children?: ReactNode;
   styled?: ModalStyledProps;
 }
 
 export interface ModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
-  size?: 'sm' | 'md' | 'lg';
+  size?: ShirtSize;
   headerTitle?: string;
   headerIcon?: string;
   styled?: ModalStyledProps;

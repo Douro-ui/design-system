@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { fireEvent, render, screen } from '../../../../../tests/test-utils';
 import Modal from '../Modal';
 import Button from '@douro-ui/button';
-import { ModalProps } from '../modal.types';
+import { ModalProps, ShirtSize } from '../modal.types';
 
 const ModalWithButton = ({ onClose, ...props }: ModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +32,7 @@ const ModalWithButton = ({ onClose, ...props }: ModalProps) => {
 
 describe('<Modal />', () => {
   it('renders correctly', () => {
-    render(<ModalWithButton onClose={() => {}} size="lg" />);
+    render(<ModalWithButton onClose={() => {}} size={ShirtSize.lg} />);
 
     fireEvent.click(screen.getByText('Open modal'));
 
@@ -45,7 +45,7 @@ describe('<Modal />', () => {
       <ModalWithButton
         headerTitle="Modal Header"
         onClose={() => {}}
-        size="sm"
+        size={ShirtSize.sm}
       />,
     );
 
@@ -73,7 +73,7 @@ describe('<Modal />', () => {
   });
 
   it('closes the modal when the Escape key is pressed', () => {
-    render(<ModalWithButton onClose={() => {}} size="md" />);
+    render(<ModalWithButton onClose={() => {}} size={ShirtSize.md} />);
 
     fireEvent.click(screen.getByText('Open modal'));
 
@@ -85,24 +85,5 @@ describe('<Modal />', () => {
     fireEvent.keyDown(window, { key: 'Escape', code: 'Escape', charCode: 27 });
 
     expect(bodyElement).not.toBeInTheDocument();
-  });
-
-  it('renders custom icon when headerIcon is provided', () => {
-    render(
-      <ModalWithButton
-        headerTitle="Modal Header"
-        onClose={() => {}}
-        size="sm"
-        headerIcon="icon.svg"
-      />,
-    );
-
-    fireEvent.click(screen.getByText('Open modal'));
-
-    expect(screen.getByText('Modal Header')).toBeInTheDocument();
-
-    const iconElement = screen.getByAltText('Close Icon');
-    expect(iconElement).toBeInTheDocument();
-    expect(iconElement).toHaveAttribute('src', 'icon.svg');
   });
 });

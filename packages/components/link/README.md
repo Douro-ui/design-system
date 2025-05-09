@@ -54,15 +54,14 @@ export default LinkExample;
 ```js
 import React from 'react';
 import Link from '@douro-ui/link';
-import Icon from '@douro-ui/icon';
 
 const LinkExample = () => (
   <Link
     href="https://example.com"
     size="md"
     ariaLabel="Example link with icons"
-    iconBefore={() => <Icon name="arrow-left" />}
-    iconAfter={() => <Icon name="arrow-right" />}
+    iconBefore={() => <svg></svg>}
+    iconAfter={() => <svg></svg>}
   >
     Go to Example
   </Link>

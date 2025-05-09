@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 
-export const ChevronDownIcon = (): ReactElement => (
-  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+export const ChevronDownIcon = ({ fill }: { fill?: string }): ReactElement => (
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill={fill}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
