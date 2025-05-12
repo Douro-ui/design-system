@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { ExpandablePanelStyledProps } from './expandablePanel.types';
-import { ReactNode } from 'react';
 
 export const ExpandablePanelStyled = styled.div<{
   styled: Required<ExpandablePanelStyledProps>;
@@ -32,7 +31,6 @@ export const ExpandablePanelItemStyled = styled.div<{
 
 export const ExpandablePanelHeaderStyled = styled.button<{
   styled: Required<ExpandablePanelStyledProps>;
-  icon?: ReactNode;
 }>`
   color: ${({ styled }) => styled.color};
   background-color: ${({ styled }) => styled.backgroundColor || 'transparent'};
@@ -50,11 +48,9 @@ export const ExpandablePanelHeaderStyled = styled.button<{
   gap: ${({ styled }) => styled.gap};
 
   svg {
-    margin-right: 0.5rem;
-    width: 1rem;
-    max-width: 2rem;
-    max-height: 2rem;
+    width: 2rem;
     fill: ${({ styled }) => styled.color};
+    margin-right: -0.375rem;
   }
 
   &:disabled {

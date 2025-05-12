@@ -5,7 +5,6 @@ import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { fn, userEvent, within } from '@storybook/test';
 import Picture from '@douro-ui/picture';
-import { Icon } from '@douro-ui/icon';
 
 const meta: Meta<CarouselProps> = {
   title: 'Example/Carousel',
@@ -78,8 +77,8 @@ export const Default: Story = {
     showIndicators: true,
     infiniteLoop: true,
     onClick: fn(),
-    leftIcon: <Icon name="chevron-up" />,
-    rightIcon: <Icon name="chevron-down" />,
+    leftIcon: <svg>Icon</svg>,
+    rightIcon: <svg>Icon</svg>,
 
     slides: [
       {

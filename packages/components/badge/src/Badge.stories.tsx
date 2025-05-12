@@ -4,7 +4,6 @@ import { BadgeProps } from './badge.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import Avatar from '@douro-ui/avatar';
-import { Icon } from '@douro-ui/icon';
 
 const meta: Meta<BadgeProps> = {
   title: 'Example/Badge',
@@ -53,7 +52,7 @@ export const IconBadge: Story = {
     typeBadge: 'icon',
     position: 'top-right',
     size: 'lg',
-    icon: () => <Icon name="close" />,
+    icon: () => <svg>Icon</svg>,
     children: (
       <Avatar typeAvt="base" size="lg">
         DUI

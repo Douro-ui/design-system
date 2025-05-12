@@ -10,7 +10,6 @@ import type {
   BreadcrumbGroupProps,
   BreadcrumbStyledProps,
 } from './breadcrumb.types';
-// import { Tooltip } from '@douro-ui/tooltip';
 import { deepMerge, useTheme, useWindowDimensions } from '@douro-ui/react';
 
 const BreadcrumbGroup = ({
@@ -162,8 +161,6 @@ const BreadcrumbGroup = ({
       {...props}
     >
       {displayedBreadcrumbs.map((breadcrumb: string, index: number) => {
-        // const truncatedBreadcrumb =
-        //   breadcrumb.length > 50 ? `${breadcrumb.slice(0, 50)}...` : null;
         const truncatedBreadcrumb =
           breadcrumb?.length > 50
             ? `${breadcrumb.slice(0, 50)}...`
@@ -190,11 +187,6 @@ const BreadcrumbGroup = ({
                   : ''
               }
             >
-              {/* {truncatedBreadcrumb
-                ? <Tooltip childrenLabel={truncatedBreadcrumb} trigger="click" position="top">
-                    {breadcrumb}
-                  </Tooltip>
-                : breadcrumb } */}
               {truncatedBreadcrumb}
             </Breadcrumb>
             {!isMobile && index < displayedBreadcrumbs.length - 1 && separator}

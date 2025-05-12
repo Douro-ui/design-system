@@ -5,13 +5,13 @@ import {
 import { ExpandablePanelHeaderStyled } from '../expandablePanel.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import { ReactNode } from 'react';
-import { ChevronDown, ChevronUp } from '@douro-ui/svg-icons';
+import { ChevronUpIcon, ChevronDownIcon } from '@douro-ui/svg-icons';
 
 export const ExpandablePanelHeader = ({
   styled,
   disabled,
   children,
-  icon,
+  hasIcon,
   isExpanded,
   onClick,
   ...props
@@ -39,20 +39,11 @@ export const ExpandablePanelHeader = ({
     <ExpandablePanelHeaderStyled
       styled={mergedThemeValues as Required<ExpandablePanelStyledProps>}
       disabled={disabled}
-      icon={icon}
       onClick={onClick}
       {...props}
     >
       {children}
-      {icon && (
-        <span>
-          <img
-            src={isExpanded ? ChevronUp : ChevronDown}
-            alt="Chevron Icon"
-            style={{ width: '1rem', height: '1rem' }}
-          />
-        </span>
-      )}
+      {hasIcon && isExpanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
     </ExpandablePanelHeaderStyled>
   );
 };

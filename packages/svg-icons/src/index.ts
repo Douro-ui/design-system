@@ -1,4 +1,4 @@
-export * from './icons';
-export { default as ChevronDown } from './chevron-down.svg';
-export { default as ChevronUp } from './chevron-up.svg';
-export { default as Close } from './close.svg';
+export * from './ChevronDownIcon';
+export * from './ChevronUpIcon';
+export * from './CloseIcon';
+export * from './StarIcon';

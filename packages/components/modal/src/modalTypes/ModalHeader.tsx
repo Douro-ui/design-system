@@ -1,13 +1,11 @@
 import { ModalHeaderProps, ModalStyledProps } from '../modal.types';
 import { ModalHeaderStyled, ModalIconStyled } from '../modal.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
-import { Close } from '@douro-ui/svg-icons';
 import { ReactNode } from 'react';
 
 export const ModalHeader = ({
   size,
   headerTitle,
-  headerIcon,
   styled,
   onClose,
   ...props
@@ -28,20 +26,14 @@ export const ModalHeader = ({
   );
 
   return (
-    <>
-      <ModalHeaderStyled
-        size={size}
-        {...props}
-        styled={mergedThemeValues as Required<ModalStyledProps>}
-      >
-        {headerTitle}
+    <ModalHeaderStyled
+      size={size}
+      {...props}
+      styled={mergedThemeValues as Required<ModalStyledProps>}
+    >
+      {headerTitle}
 
-        <ModalIconStyled
-          onClick={onClose}
-          src={headerIcon != undefined ? headerIcon : Close}
-          alt="Close Icon"
-        />
-      </ModalHeaderStyled>
-    </>
+      <ModalIconStyled data-testid="close-button" onClick={onClose} />
+    </ModalHeaderStyled>
   );
 };

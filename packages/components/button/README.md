@@ -54,15 +54,14 @@ export default ButtonExample;
 ```js
 import React from 'react';
 import Button from '@douro-ui/button';
-import Icon from '@douro-ui/icon';
 
 const ButtonExample = () => (
   <Button
     aria-label="Primary Button"
     typeBtn="primary"
     size="md"
-    iconBefore={() => <Icon name="star" />}
-    iconAfter={() => <Icon name="star" />}
+    iconBefore={() => <svg>Icon</svg>}
+    iconAfter={() => <svg>Icon</svg>}
   >
     New Button
   </Button>
