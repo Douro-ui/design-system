@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/svg-icons",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Douro UI - Metyis Design System Icons",
   "main": "src/index.ts",
   "type": "module",

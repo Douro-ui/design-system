@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/breadcrumb@0.2.0...@douro-ui/breadcrumb@0.2.1) (2025-05-12)
+
+**Note:** Version bump only for package @douro-ui/breadcrumb
+
 # [0.2.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/breadcrumb@0.1.11...@douro-ui/breadcrumb@0.2.0) (2025-03-21)
 
 ### Features

@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/badge",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Douro UI - Metyis Design System Badge Component",
   "main": "src/index.ts",
   "type": "module",
