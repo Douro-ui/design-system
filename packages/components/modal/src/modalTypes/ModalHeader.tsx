@@ -1,5 +1,9 @@
 import { ModalHeaderProps, ModalStyledProps } from '../modal.types';
-import { ModalHeaderStyled, ModalIconStyled } from '../modal.styles';
+import {
+  ModalHeaderButtonContainer,
+  ModalHeaderStyled,
+  ModalIconStyled,
+} from '../modal.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import { ReactNode } from 'react';
 
@@ -32,8 +36,15 @@ export const ModalHeader = ({
       styled={mergedThemeValues as Required<ModalStyledProps>}
     >
       {headerTitle}
-
-      <ModalIconStyled data-testid="close-button" onClick={onClose} />
+      <ModalHeaderButtonContainer
+        type="button"
+        aria-label="Close modal"
+        onClick={() => {
+          onClose();
+        }}
+      >
+        <ModalIconStyled />
+      </ModalHeaderButtonContainer>
     </ModalHeaderStyled>
   );
 };

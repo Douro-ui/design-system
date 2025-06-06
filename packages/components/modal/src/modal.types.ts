@@ -14,6 +14,7 @@ export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   styledHeader?: ModalStyledProps;
   styled?: ModalStyledProps;
   isOpen?: boolean;
+  closeOnOutsideClick?: boolean;
   onClose: () => void;
 }
 
