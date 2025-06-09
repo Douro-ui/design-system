@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.14](https://github.com/Douro-ui/design-system/compare/@douro-ui/modal@0.1.13...@douro-ui/modal@0.1.14) (2025-06-09)
+
+### Bug Fixes
+
+- modal closing ([bf8af02](https://github.com/Douro-ui/design-system/commit/bf8af02fd4d3ae490bd12f1c8c0ca0eeec6076fd))
+
 ## [0.1.13](https://github.com/Douro-ui/design-system/compare/@douro-ui/modal@0.1.12...@douro-ui/modal@0.1.13) (2025-05-12)
 
 **Note:** Version bump only for package @douro-ui/modal
