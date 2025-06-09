@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from '../../../../../tests/test-utils';
 import Modal from '../Modal';
 import Button from '@douro-ui/button';
 import { ModalProps, ShirtSize } from '../modal.types';
+import { ModalHeader } from '../modalTypes/ModalHeader';
 
 const ModalWithButton = ({ onClose, ...props }: ModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,6 +56,16 @@ describe('<Modal />', () => {
     expect(screen.getByTestId('modal-id')).toHaveStyle('width: 40vw');
   });
 
+  it('does not render footer when childrenFooter is not provided', () => {
+    render(
+      <ModalWithButton onClose={() => {}} headerTitle="No Footer Modal" />,
+    );
+
+    fireEvent.click(screen.getByText('Open modal'));
+
+    expect(document.querySelector('.modal-footer')).not.toBeInTheDocument();
+  });
+
   it('renders footer', () => {
     render(
       <ModalWithButton
@@ -70,6 +81,33 @@ describe('<Modal />', () => {
     fireEvent.click(screen.getByText('Open modal'));
 
     expect(screen.getByText('Confirm')).toBeInTheDocument();
+    expect(document.querySelector('.modal-footer')).toBeInTheDocument();
+  });
+
+  it('does not close modal when clicking inside modal content (stopPropagation)', () => {
+    render(<ModalWithButton onClose={jest.fn()} headerTitle="Test Header" />);
+
+    fireEvent.click(screen.getByText('Open modal'));
+
+    const modalContent = screen.getByTestId('modal-content');
+    fireEvent.click(modalContent);
+
+    expect(screen.getByText('Test Header')).toBeInTheDocument();
+  });
+
+  it('closes the modal when clicking outside the modal (overlay click)', () => {
+    const onCloseMock = jest.fn();
+
+    render(<ModalWithButton onClose={onCloseMock} size={ShirtSize.md} />);
+
+    fireEvent.click(screen.getByText('Open modal'));
+
+    const overlay = screen.getByTestId('modal-overlay');
+    fireEvent.mouseDown(overlay);
+    fireEvent.mouseUp(overlay);
+    fireEvent.click(overlay);
+
+    expect(onCloseMock).toHaveBeenCalled();
   });
 
   it('closes the modal when the Escape key is pressed', () => {
@@ -85,5 +123,24 @@ describe('<Modal />', () => {
     fireEvent.keyDown(window, { key: 'Escape', code: 'Escape', charCode: 27 });
 
     expect(bodyElement).not.toBeInTheDocument();
+  });
+});
+
+describe('<ModalHeader />', () => {
+  it('calls onClose when close button is clicked', () => {
+    const onCloseMock = jest.fn();
+
+    render(
+      <ModalHeader
+        headerTitle="Header Text"
+        onClose={onCloseMock}
+        size={ShirtSize.md}
+      />,
+    );
+
+    const button = screen.getByLabelText('Close modal');
+    fireEvent.click(button);
+
+    expect(onCloseMock).toHaveBeenCalled();
   });
 });

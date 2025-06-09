@@ -33,6 +33,21 @@ const handleBodyPadding = (size: ModalProps['size']) => {
   }
 };
 
+export const ModalContetWrapperStyled = styled.div<{
+  size: ModalProps['size'];
+}>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const ModalContainerStyled = styled.div<{
   size: ModalProps['size'];
 }>`
@@ -45,6 +60,7 @@ export const ModalContainerStyled = styled.div<{
   text-align: center;
   background-color: transparent;
   ${({ size }) => handleSize(size)};
+  z-index: 1000;
 `;
 
 export const ModalContentStyled = styled.div<{
@@ -107,4 +123,13 @@ export const ModalFooterStyled = styled.div<{
   gap: 1rem;
   background-color: ${({ styled }) => styled.backgroundColor};
   color: ${({ styled }) => styled.color};
+`;
+
+export const ModalHeaderButtonContainer = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 `;
