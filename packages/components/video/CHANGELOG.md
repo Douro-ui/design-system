@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/Douro-ui/design-system/compare/@douro-ui/video@0.1.7...@douro-ui/video@0.1.8) (2025-07-02)
+
+### Bug Fixes
+
+- add playsinline ([03e88a4](https://github.com/Douro-ui/design-system/commit/03e88a4911ebfe6aa55e40cc74d233797a268160))
+
 ## [0.1.7](https://github.com/Douro-ui/design-system/compare/@douro-ui/video@0.1.6...@douro-ui/video@0.1.7) (2025-02-25)
 
 **Note:** Version bump only for package @douro-ui/video
