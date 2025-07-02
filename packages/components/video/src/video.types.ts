@@ -7,6 +7,7 @@ export interface VideoProps extends HTMLAttributes<HTMLDivElement> {
   autoPlay?: boolean;
   loop?: boolean;
   muted?: boolean;
+  playsInline?: boolean;
   styled?: VideoStyledProps;
   disabled?: boolean;
 }
