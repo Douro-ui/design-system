@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/Douro-ui/design-system/compare/@douro-ui/dropdown@0.1.7...@douro-ui/dropdown@0.1.8) (2025-07-08)
+
+### Bug Fixes
+
+- dropdown span ([34d3806](https://github.com/Douro-ui/design-system/commit/34d38068a0cb6bc46a97f258d86ab13ce2763712))
+
 ## [0.1.7](https://github.com/Douro-ui/design-system/compare/@douro-ui/dropdown@0.1.6...@douro-ui/dropdown@0.1.7) (2025-07-08)
 
 ### Bug Fixes
