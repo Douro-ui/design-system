@@ -48,6 +48,7 @@ const Dropdown = ({
     fontSizeLabel: theme.fontSize,
     fontWeightLabel: theme.fontWeight.BOLD,
     fontWeightHover: theme.fontWeight.BOLDER,
+    fontWeightActive: theme.fontWeight.BOLDER,
     width: '20rem',
   };
 

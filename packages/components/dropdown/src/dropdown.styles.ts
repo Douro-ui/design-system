@@ -106,10 +106,11 @@ export const DropdownItemStyled = styled.li<{
 }>`
   padding: 0.5rem 0.75rem;
   cursor: pointer;
-  background-color: ${({ styled }) => styled.backgroundColorItem};
   background-color: ${({ styled, isSelected }) =>
     isSelected ? styled.backgroundColorItemActive : styled.backgroundColorItem};
   border-radius: ${({ styled }) => styled.borderRadius};
+  font-weight: ${({ styled, isSelected }) =>
+    isSelected ? styled.fontWeightActive : styled.fontWeight};
 
   &:hover {
     background-color: ${({ styled }) => styled.backgroundColorItemHover};
