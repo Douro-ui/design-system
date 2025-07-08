@@ -16,6 +16,7 @@ export interface DropdownStyledProps {
   fontSizeLabel?: string;
   fontWeightLabel?: number;
   fontWeightHover?: number;
+  fontWeightActive?: number;
   width?: string;
 }
 
