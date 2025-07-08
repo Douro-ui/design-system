@@ -7,6 +7,7 @@ import {
   DropdownListStyled,
   DropdownTriggerStyled,
   DropdownWrapperStyled,
+  TextEllipsis,
 } from './dropdown.styles';
 import {
   DropdownItem,
@@ -111,7 +112,9 @@ const Dropdown = ({
         options={options}
         onClick={() => !disabled && setIsOpen(!isOpen)}
       >
-        {selectedItem ? selectedItem.name : placeholder}
+        <TextEllipsis>
+          {selectedItem ? selectedItem.name : placeholder}
+        </TextEllipsis>
 
         {icon && <span>{icon}</span>}
         {!icon && <span>{isOpen ? '>' : '<'}</span>}

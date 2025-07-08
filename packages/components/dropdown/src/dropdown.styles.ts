@@ -120,7 +120,8 @@ export const DropdownItemStyled = styled.li<{
   }
 
   &:hover span {
-    font-weight: ${({ styled }) => styled.fontWeightHover};
+    font-weight: ${({ styled, isSelected }) =>
+      isSelected ? styled.fontWeightActive : styled.fontWeightHover};
   }
 
   ${({ isDisabled }) =>
@@ -129,6 +130,13 @@ export const DropdownItemStyled = styled.li<{
     opacity: 0.5;
     pointer-events: none;
   `}
+`;
+
+export const TextEllipsis = styled.div`
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
 `;
 
 export const DropdownItemTextStyled = styled.span<{
