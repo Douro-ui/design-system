@@ -19,25 +19,27 @@ jobs:
         with:
           submodules: true
           lfs: false
-      - name: Install and activate Yarn 1.22.18
-        run: |
-          corepack enable
-          corepack prepare yarn@1.22.18 --activate
-          yarn --version
-      - name: Build And Deploy
+
+      - name: Install Yarn
+        run: npm install -g yarn@1.22.18
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build Storybook
+        run: yarn build:storybook
+
+      - name: Deploy to Azure Static Web Apps
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_DUNE_01C4CDE03 }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: 'upload'
-          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: '/' # App source code path
-          api_location: '' # Api source code path - optional
-          output_location: 'build' # Built app content directory - optional
-          app_build_command: 'npm run build:storybook' # Custom build script
-          ###### End of Repository/Build Configurations ######
+          app_location: '/' # Root of the repo
+          api_location: '' # No API
+          output_location: 'storybook-static' # Storybook build output
+          app_build_command: '' # Skip Azure's internal build
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
