@@ -37,7 +37,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: 'upload'
           app_location: '/' # Root of the repo
-          api_location: '' # No API
           output_location: 'storybook-static' # Storybook build output
           skip_app_build: true # Skip Oryx build to use pre-built artifacts
 
