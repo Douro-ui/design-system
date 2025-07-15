@@ -21,6 +21,11 @@ jobs:
           lfs: false
       - name: Install Yarn
         run: npm install -g yarn@1.22.18 # Explicitly install compatible Yarn version
+      - name: Use correct Yarn version
+        run: |
+          echo "Using Yarn from: $(npm bin -g)"
+          export PATH="$(npm bin -g):$PATH"
+          yarn --version
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
