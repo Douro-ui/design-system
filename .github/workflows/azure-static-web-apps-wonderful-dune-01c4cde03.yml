@@ -39,7 +39,7 @@ jobs:
           app_location: '/' # Root of the repo
           api_location: '' # No API
           output_location: 'storybook-static' # Storybook build output
-          app_build_command: 'echo Skipping Oryx build' # Skip Azure's internal build
+          skip_app_build: true # Skip Oryx build to use pre-built artifacts
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
