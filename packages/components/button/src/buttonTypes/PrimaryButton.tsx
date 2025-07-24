@@ -79,7 +79,7 @@ export const PrimaryButton = ({
           size={size}
           styled={mergedThemeValues as Required<ButtonStyledProps>}
         >
-          {iconBefore()}
+          {iconBefore}
         </IconStyled>
       )}
       {children}
@@ -88,7 +88,7 @@ export const PrimaryButton = ({
           size={size}
           styled={mergedThemeValues as Required<ButtonStyledProps>}
         >
-          {iconAfter()}
+          {iconAfter}
         </IconStyled>
       )}
     </ButtonStyled>

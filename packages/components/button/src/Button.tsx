@@ -5,7 +5,7 @@ import {
   TertiaryButton,
   ErrorButton,
 } from './buttonTypes';
-import React from 'react';
+import { ReactNode } from 'react';
 
 const buttonTypes = {
   primary: PrimaryButton,
@@ -25,7 +25,7 @@ const Button = ({
   iconAfter,
   disabled,
   ...props
-}: ButtonProps): React.ReactNode => {
+}: ButtonProps): ReactNode => {
   const ButtonComponent = buttonTypes[typeBtn ?? 'primary'];
 
   return (

@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactElement, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   typeBtn?: 'primary' | 'secondary' | 'tertiary' | 'error';
@@ -7,8 +7,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   onClick?: () => void;
   onKeyDown?: () => void;
-  iconBefore?: () => ReactElement;
-  iconAfter?: () => ReactElement;
+  iconBefore?: ReactNode;
+  iconAfter?: ReactNode;
   'aria-label'?: string;
   styled?: ButtonStyledProps;
 }

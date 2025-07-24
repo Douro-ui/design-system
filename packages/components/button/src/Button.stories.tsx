@@ -75,22 +75,22 @@ export const Tertiary: Story = {
 export const WithIconBefore: Story = {
   args: {
     typeBtn: 'primary',
-    iconBefore: () => <svg>Icon</svg>,
+    iconBefore: <svg>Icon</svg>,
     onClick: fn(),
   },
 };
 export const WithIconAfter: Story = {
   args: {
     typeBtn: 'primary',
-    iconAfter: () => <svg>Icon</svg>,
+    iconAfter: <svg>Icon</svg>,
     onClick: fn(),
   },
 };
 export const WithBothIcon: Story = {
   args: {
     typeBtn: 'primary',
-    iconBefore: () => <svg>Icon</svg>,
-    iconAfter: () => <svg>Icon</svg>,
+    iconBefore: <svg>Icon</svg>,
+    iconAfter: <svg>Icon</svg>,
     onClick: fn(),
   },
 };

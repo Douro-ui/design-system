@@ -80,8 +80,8 @@ describe('<Button>', () => {
         typeBtn="error"
         size="xl"
         disabled={false}
-        iconBefore={() => <div data-testid="before-icon">🔍</div>}
-        iconAfter={() => <div data-testid="after-icon">❌</div>}
+        iconBefore={<div data-testid="before-icon">🔍</div>}
+        iconAfter={<div data-testid="after-icon">❌</div>}
       >
         Error Button
       </Button>,
@@ -104,8 +104,8 @@ describe('<Button>', () => {
         aria-label="Primary Button"
         size="sm"
         typeBtn="primary"
-        iconBefore={() => <div data-testid="before-icon">🔍</div>}
-        iconAfter={() => <div data-testid="after-icon">❌</div>}
+        iconBefore={<div data-testid="before-icon">🔍</div>}
+        iconAfter={<div data-testid="after-icon">❌</div>}
       />,
     );
 
@@ -124,8 +124,8 @@ describe('<Button>', () => {
         aria-label="Secondary Button"
         size="md"
         typeBtn="secondary"
-        iconBefore={() => <div data-testid="before-icon">🔍</div>}
-        iconAfter={() => <div data-testid="after-icon">❌</div>}
+        iconBefore={<div data-testid="before-icon">🔍</div>}
+        iconAfter={<div data-testid="after-icon">❌</div>}
       />,
     );
 
@@ -144,8 +144,8 @@ describe('<Button>', () => {
         aria-label="Tertiary Button"
         size="lg"
         typeBtn="tertiary"
-        iconBefore={() => <div data-testid="before-icon">🔍</div>}
-        iconAfter={() => <div data-testid="after-icon">❌</div>}
+        iconBefore={<div data-testid="before-icon">🔍</div>}
+        iconAfter={<div data-testid="after-icon">❌</div>}
       />,
     );
 
