@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/dropdown",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Douro UI - Metyis Design System Dropdown Component",
   "main": "src/index.ts",
   "type": "module",
