@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/tooltip@0.1.6...@douro-ui/tooltip@0.2.0) (2025-08-20)
+
+### Features
+
+- add custom button ([dd82c4b](https://github.com/Douro-ui/design-system/commit/dd82c4b9dde850394123e7ce209d41b60354bbb7))
+
 ## [0.1.6](https://github.com/Douro-ui/design-system/compare/@douro-ui/tooltip@0.1.5...@douro-ui/tooltip@0.1.6) (2025-02-25)
 
 **Note:** Version bump only for package @douro-ui/tooltip

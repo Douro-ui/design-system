@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/expandable-panel@0.4.6...@douro-ui/expandable-panel@0.5.0) (2025-08-20)
+
+### Features
+
+- add custom button ([dd82c4b](https://github.com/Douro-ui/design-system/commit/dd82c4b9dde850394123e7ce209d41b60354bbb7))
+
 ## [0.4.6](https://github.com/Douro-ui/design-system/compare/@douro-ui/expandable-panel@0.4.5...@douro-ui/expandable-panel@0.4.6) (2025-05-12)
 
 **Note:** Version bump only for package @douro-ui/expandable-panel
