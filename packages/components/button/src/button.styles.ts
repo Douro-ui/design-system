@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import type { ButtonProps, ButtonStyledProps } from './button.types';
+import { ButtonSize, ButtonStyledProps } from './button.types';
 
 const childrenStyle = (
   FontSize: number,
@@ -26,16 +26,16 @@ const sizeMap = {
   xl: ratioSize(1.5, 1.5),
 };
 
-const handleSize = (size: ButtonProps['size'] = 'lg') => childrenMap[size];
-const handleIconSize = (size: ButtonProps['size'] = 'xl') => sizeMap[size];
-const handleGap = (size: ButtonProps['size'], hasIcon: boolean) => {
+const handleSize = (size = ButtonSize.Large) => childrenMap[size];
+const handleIconSize = (size = ButtonSize.ExtraLarge) => sizeMap[size];
+const handleGap = (size: ButtonSize, hasIcon: boolean) => {
   if (!hasIcon) return 0;
   return size === 'xl' || size === 'lg' ? '0.5rem;' : '0.25rem;';
 };
 
 export const ButtonStyled = styled.button<{
   styled: Required<ButtonStyledProps>;
-  size: ButtonProps['size'];
+  size: ButtonSize;
   typeBtn: string;
   hasIconBefore: boolean;
   hasIconAfter: boolean;
@@ -100,7 +100,7 @@ export const ButtonStyled = styled.button<{
 
 export const IconStyled = styled.div<{
   styled: Required<ButtonStyledProps>;
-  size: ButtonProps['size'];
+  size: ButtonSize;
 }>`
   ${({ size }) => handleIconSize(size)};
 `;

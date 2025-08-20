@@ -1,6 +1,6 @@
 import type { Meta, ReactRenderer, StoryObj } from '@storybook/react';
 import Button from './Button';
-import { ButtonProps } from './button.types';
+import { ButtonProps, ButtonSize, ButtonType } from './button.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { expect, userEvent, within, fn } from '@storybook/test';
@@ -20,9 +20,8 @@ const meta: Meta<ButtonProps> = {
   },
   tags: ['autodocs'],
   args: {
-    size: 'lg',
+    size: ButtonSize.Large,
     disabled: false,
-    typeBtn: 'primary',
     children: 'Button',
   },
   argTypes: {
@@ -54,41 +53,37 @@ type Story = StoryObj<ButtonProps>;
 
 export const Primary: Story = {
   args: {
-    typeBtn: 'primary',
     onClick: fn(),
   },
 };
 
 export const Secondary: Story = {
   args: {
-    typeBtn: 'secondary',
+    typeBtn: ButtonType.Secondary,
     onClick: fn(),
   },
 };
 
 export const Tertiary: Story = {
   args: {
-    typeBtn: 'tertiary',
+    typeBtn: ButtonType.Tertiary,
     onClick: fn(),
   },
 };
 export const WithIconBefore: Story = {
   args: {
-    typeBtn: 'primary',
     iconBefore: <svg>Icon</svg>,
     onClick: fn(),
   },
 };
 export const WithIconAfter: Story = {
   args: {
-    typeBtn: 'primary',
     iconAfter: <svg>Icon</svg>,
     onClick: fn(),
   },
 };
 export const WithBothIcon: Story = {
   args: {
-    typeBtn: 'primary',
     iconBefore: <svg>Icon</svg>,
     iconAfter: <svg>Icon</svg>,
     onClick: fn(),
@@ -97,14 +92,13 @@ export const WithBothIcon: Story = {
 
 export const Error: Story = {
   args: {
-    typeBtn: 'error',
+    typeBtn: ButtonType.Error,
     onClick: fn(),
   },
 };
 
 export const Disabled: Story = {
   args: {
-    typeBtn: 'primary',
     disabled: true,
     onClick: fn(),
   },

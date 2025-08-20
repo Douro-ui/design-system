@@ -1,8 +1,23 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
+export enum ButtonType {
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Tertiary = 'tertiary',
+  Custom = 'custom',
+  Error = 'error',
+}
+
+export enum ButtonSize {
+  Small = 'sm',
+  Medium = 'md',
+  Large = 'lg',
+  ExtraLarge = 'xl',
+}
+
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  typeBtn?: 'primary' | 'secondary' | 'tertiary' | 'error';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  typeBtn?: ButtonType;
+  size?: ButtonSize;
   disabled?: boolean;
   children?: ReactNode;
   onClick?: () => void;
