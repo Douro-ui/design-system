@@ -7,38 +7,41 @@ import { ButtonStyled, IconStyled } from '../button.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import React from 'react';
 
-export const TertiaryButton = ({
+export const CustomButton = ({
   typeBtn,
   size = ButtonSize.Medium,
-  children,
   styled,
+  children,
   onClick,
   onKeyDown,
   iconBefore,
   iconAfter,
-  'aria-label': ariaLabel,
   disabled,
+  'aria-label': ariaLabel,
   ...props
 }: ButtonProps): React.ReactNode => {
   const theme = useTheme();
 
-  const getTertiaryButtonTypeDefaultThemeValues: ButtonStyledProps = {
-    color: theme.colors.brand.primary,
-    backgroundColor: 'transparent',
+  const getPrimaryButtonTypeDefaultThemeValues: ButtonStyledProps = {
+    color: theme.colors.brand.white,
+    backgroundColor: theme.colors.brand.primary,
     borderColor: 'transparent',
-    backgroundColorActive: 'transparent',
     colorHover: theme.colors.brand.black,
-    backgroundColorHover: theme.colors.neutral.cold.shade95,
-    backgroundColorDisabled: 'transparent',
+    backgroundColorHover: 'transparent',
+    borderColorHover: theme.colors.brand.primary,
+    backgroundColorActive: 'transparent',
     borderColorActive: 'transparent',
+    colorActive: theme.colors.brand.black,
     colorDisabled: theme.colors.neutral.cold.shade70,
     focusColor: theme.colors.brand.senary,
+    backgroundColorDisabled: theme.colors.neutral.cold.shade95,
+    borderColorDisabled: theme.colors.neutral.cold.shade70,
     borderRadius: '100px',
     activeFontWeight: theme.fontWeight.MEDIUM,
   };
 
   const mergedThemeValues = deepMerge<ButtonStyledProps>(
-    getTertiaryButtonTypeDefaultThemeValues,
+    getPrimaryButtonTypeDefaultThemeValues,
     styled,
   );
 
@@ -60,7 +63,7 @@ export const TertiaryButton = ({
 
   return (
     <ButtonStyled
-      typeBtn="tertiary"
+      typeBtn="custom"
       size={size}
       styled={mergedThemeValues as Required<ButtonStyledProps>}
       onClick={onClick}

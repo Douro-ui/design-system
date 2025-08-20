@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { fireEvent, render, screen } from '../../../../../tests/test-utils';
 import Modal from '../Modal';
-import Button from '@douro-ui/button';
+import Button, { ButtonType } from '@douro-ui/button';
 import { ModalProps, ShirtSize } from '../modal.types';
 import { ModalHeader } from '../modalTypes/ModalHeader';
 
@@ -17,7 +17,7 @@ const ModalWithButton = ({ onClose, ...props }: ModalProps) => {
 
   return (
     <>
-      <Button typeBtn="secondary" size="md" onClick={() => setIsOpen(true)}>
+      <Button typeBtn={ButtonType.Secondary} onClick={() => setIsOpen(true)}>
         Open modal
       </Button>
       <Modal
@@ -69,11 +69,7 @@ describe('<Modal />', () => {
   it('renders footer', () => {
     render(
       <ModalWithButton
-        childrenFooter={
-          <Button typeBtn="primary" size="md">
-            Confirm
-          </Button>
-        }
+        childrenFooter={<Button>Confirm</Button>}
         onClose={() => {}}
       />,
     );

@@ -1,7 +1,7 @@
 import type { Meta, ReactRenderer, StoryObj } from '@storybook/react';
 import ExpandablePanel from './ExpandablePanel';
 import { ExpandablePanelProps } from './expandablePanel.types';
-import Button from '@douro-ui/button';
+import Button, { ButtonType } from '@douro-ui/button';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { expect, userEvent, within } from '@storybook/test';
@@ -85,12 +85,10 @@ export const Primary: Story = {
               </p>
             </div>
             <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <Button typeBtn="primary">Click Me</Button>
-              <Button typeBtn="secondary">Click Me</Button>
-              <Button typeBtn="error">Click Me</Button>
-              <Button typeBtn="primary" disabled>
-                Click Me
-              </Button>
+              <Button>Click Me</Button>
+              <Button typeBtn={ButtonType.Secondary}>Click Me</Button>
+              <Button typeBtn={ButtonType.Error}>Click Me</Button>
+              <Button disabled>Click Me</Button>
             </div>
           </div>
         ),

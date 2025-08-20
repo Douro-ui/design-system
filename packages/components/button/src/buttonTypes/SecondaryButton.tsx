@@ -1,11 +1,15 @@
-import type { ButtonProps, ButtonStyledProps } from '../button.types';
+import {
+  ButtonSize,
+  type ButtonProps,
+  type ButtonStyledProps,
+} from '../button.types';
 import { ButtonStyled, IconStyled } from '../button.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import React from 'react';
 
 export const SecondaryButton = ({
   typeBtn,
-  size,
+  size = ButtonSize.Medium,
   children,
   styled,
   onClick,
@@ -68,7 +72,6 @@ export const SecondaryButton = ({
       hasIconAfter={!!iconAfter}
       aria-label={ariaLabel}
       aria-disabled={disabled}
-      role="button"
       tabIndex={disabled ? -1 : 0}
       data-testid={`button-${typeBtn}`}
       {...props}

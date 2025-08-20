@@ -4,6 +4,7 @@ import {
   SecondaryButton,
   TertiaryButton,
   ErrorButton,
+  CustomButton,
 } from './buttonTypes';
 import { ReactNode } from 'react';
 
@@ -12,6 +13,7 @@ const buttonTypes = {
   secondary: SecondaryButton,
   tertiary: TertiaryButton,
   error: ErrorButton,
+  custom: CustomButton,
 };
 
 const Button = ({

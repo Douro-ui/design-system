@@ -55,7 +55,7 @@ export const Click: Story = {
           <p style={{ margin: 0 }}>Lorem ipsum dolor sit amet</p>
         </div>
         <div>
-          <Button typeBtn="primary">Click Me</Button>
+          <Button>Click Me</Button>
         </div>
       </div>
     ),

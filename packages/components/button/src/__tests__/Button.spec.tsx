@@ -1,5 +1,6 @@
 import { screen, fireEvent, render } from '../../../../../tests/test-utils';
 import Button from '../Button';
+import { ButtonSize, ButtonType } from '../button.types';
 
 describe('<Button>', () => {
   it('should render a primary button if no props passed', () => {
@@ -13,8 +14,8 @@ describe('<Button>', () => {
     render(
       <Button
         aria-label="Primary Button"
-        typeBtn="primary"
-        size="lg"
+        typeBtn={ButtonType.Primary}
+        size={ButtonSize.Large}
         onClick={handleClick()}
         disabled={false}
       >
@@ -37,8 +38,7 @@ describe('<Button>', () => {
     render(
       <Button
         aria-label="Secondary Button"
-        typeBtn="secondary"
-        size="md"
+        typeBtn={ButtonType.Secondary}
         disabled={true}
       >
         Secondary Button
@@ -58,8 +58,8 @@ describe('<Button>', () => {
     render(
       <Button
         aria-label="Tertiary Button"
-        typeBtn="tertiary"
-        size="sm"
+        typeBtn={ButtonType.Tertiary}
+        size={ButtonSize.Small}
         disabled={false}
       >
         Tertiary button
@@ -73,12 +73,31 @@ describe('<Button>', () => {
     expect(buttonElement).toHaveStyle('padding: 0.375rem 0.75rem');
   });
 
+  it('should render a custom button', () => {
+    render(
+      <Button
+        aria-label="Custom Button"
+        typeBtn={ButtonType.Custom}
+        size={ButtonSize.Large}
+        disabled={false}
+      >
+        Custom button
+      </Button>,
+    );
+    const buttonElement = screen.getByTestId('button-custom');
+
+    expect(buttonElement).toBeInTheDocument();
+    expect(buttonElement).toHaveTextContent('Custom button');
+    expect(buttonElement).toHaveStyle('font-size: 1rem');
+    expect(buttonElement).toHaveStyle('padding: 0.5rem 1rem');
+  });
+
   it('should render an error button', () => {
     render(
       <Button
         aria-label="Error Button"
-        typeBtn="error"
-        size="xl"
+        typeBtn={ButtonType.Error}
+        size={ButtonSize.ExtraLarge}
         disabled={false}
         iconBefore={<div data-testid="before-icon">🔍</div>}
         iconAfter={<div data-testid="after-icon">❌</div>}
@@ -102,8 +121,7 @@ describe('<Button>', () => {
     render(
       <Button
         aria-label="Primary Button"
-        size="sm"
-        typeBtn="primary"
+        size={ButtonSize.Small}
         iconBefore={<div data-testid="before-icon">🔍</div>}
         iconAfter={<div data-testid="after-icon">❌</div>}
       />,
@@ -122,8 +140,7 @@ describe('<Button>', () => {
     render(
       <Button
         aria-label="Secondary Button"
-        size="md"
-        typeBtn="secondary"
+        typeBtn={ButtonType.Secondary}
         iconBefore={<div data-testid="before-icon">🔍</div>}
         iconAfter={<div data-testid="after-icon">❌</div>}
       />,
@@ -142,14 +159,34 @@ describe('<Button>', () => {
     render(
       <Button
         aria-label="Tertiary Button"
-        size="lg"
-        typeBtn="tertiary"
+        size={ButtonSize.Large}
+        typeBtn={ButtonType.Tertiary}
         iconBefore={<div data-testid="before-icon">🔍</div>}
         iconAfter={<div data-testid="after-icon">❌</div>}
       />,
     );
 
     const buttonElement = screen.getByTestId('button-tertiary');
+    const beforeIcon = screen.getByTestId('before-icon');
+    const afterIcon = screen.getByTestId('after-icon');
+
+    expect(buttonElement).toBeInTheDocument();
+    expect(beforeIcon).toBeInTheDocument();
+    expect(afterIcon).toBeInTheDocument();
+  });
+
+  it('should render the large button with icon before and icon after the children for a custom button', () => {
+    render(
+      <Button
+        aria-label="Custom Button"
+        size={ButtonSize.Large}
+        typeBtn={ButtonType.Custom}
+        iconBefore={<div data-testid="before-icon">🔍</div>}
+        iconAfter={<div data-testid="after-icon">❌</div>}
+      />,
+    );
+
+    const buttonElement = screen.getByTestId('button-custom');
     const beforeIcon = screen.getByTestId('before-icon');
     const afterIcon = screen.getByTestId('after-icon');
 
@@ -164,8 +201,6 @@ describe('Accessible <Button> tests', () => {
     render(
       <Button
         aria-label="Accessible Button"
-        typeBtn="primary"
-        size="md"
         disabled={false}
         aria-pressed="false"
       >
@@ -183,11 +218,7 @@ describe('Accessible <Button> tests', () => {
   });
 
   it('should have focus outline visible when focused', () => {
-    render(
-      <Button aria-label="Focusable Button" typeBtn="primary" size="md">
-        Focusable Button
-      </Button>,
-    );
+    render(<Button aria-label="Focusable Button">Focusable Button</Button>);
 
     const buttonElement = screen.getByRole('button', {
       name: /Focusable Button/i,
@@ -198,11 +229,7 @@ describe('Accessible <Button> tests', () => {
   });
 
   it('should manage focus and maintain keyboard accessibility for interactive elements', () => {
-    render(
-      <Button aria-label="Interactive Button" typeBtn="primary" size="md">
-        Interactive Button
-      </Button>,
-    );
+    render(<Button aria-label="Interactive Button">Interactive Button</Button>);
 
     const buttonElement = screen.getByRole('button', {
       name: /Interactive Button/i,
@@ -217,12 +244,7 @@ describe('Accessible <Button> tests', () => {
   it('should activate on Enter and Space keys when not disabled on Primary button', () => {
     const handleClick = jest.fn();
     render(
-      <Button
-        aria-label="Keyboard Accessible Button"
-        typeBtn="primary"
-        size="md"
-        onClick={handleClick}
-      >
+      <Button aria-label="Keyboard Accessible Button" onClick={handleClick}>
         Keyboard Accessible Button
       </Button>,
     );
@@ -241,12 +263,7 @@ describe('Accessible <Button> tests', () => {
   it('should activate on Enter and Space keys when not disabled on Secondary button', () => {
     const handleClick = jest.fn();
     render(
-      <Button
-        aria-label="Keyboard Accessible Button"
-        typeBtn="secondary"
-        size="md"
-        onClick={handleClick}
-      >
+      <Button aria-label="Keyboard Accessible Button" onClick={handleClick}>
         Keyboard Accessible Button
       </Button>,
     );
@@ -267,8 +284,30 @@ describe('Accessible <Button> tests', () => {
     render(
       <Button
         aria-label="Keyboard Accessible Button"
-        typeBtn="tertiary"
-        size="md"
+        typeBtn={ButtonType.Tertiary}
+        onClick={handleClick}
+      >
+        Keyboard Accessible Button
+      </Button>,
+    );
+
+    const buttonElement = screen.getByRole('button', {
+      name: /Keyboard Accessible Button/i,
+    });
+
+    fireEvent.keyDown(buttonElement, { key: 'Enter' });
+    expect(handleClick).toHaveBeenCalledTimes(1);
+
+    fireEvent.keyDown(buttonElement, { key: ' ' });
+    expect(handleClick).toHaveBeenCalledTimes(2);
+  });
+
+  it('should activate on Enter and Space keys when not disabled on Primary button', () => {
+    const handleClick = jest.fn();
+    render(
+      <Button
+        typeBtn={ButtonType.Custom}
+        aria-label="Keyboard Accessible Button"
         onClick={handleClick}
       >
         Keyboard Accessible Button
@@ -291,8 +330,7 @@ describe('Accessible <Button> tests', () => {
     render(
       <Button
         aria-label="Keyboard Accessible Button"
-        typeBtn="error"
-        size="md"
+        typeBtn={ButtonType.Error}
         onClick={handleClick}
       >
         Keyboard Accessible Button
@@ -312,7 +350,7 @@ describe('Accessible <Button> tests', () => {
 
   it('should set tabIndex to -1 when disabled on Primary button', () => {
     render(
-      <Button typeBtn="primary" size="md" aria-label="Disabled Button" disabled>
+      <Button aria-label="Disabled Button" disabled>
         Disabled Button
       </Button>,
     );
@@ -326,8 +364,7 @@ describe('Accessible <Button> tests', () => {
   it('should set tabIndex to -1 when disabled on Secondary button', () => {
     render(
       <Button
-        typeBtn="secondary"
-        size="md"
+        typeBtn={ButtonType.Secondary}
         aria-label="Disabled Button"
         disabled
       >
@@ -344,8 +381,7 @@ describe('Accessible <Button> tests', () => {
   it('should set tabIndex to -1 when disabled on Tertiary button', () => {
     render(
       <Button
-        typeBtn="tertiary"
-        size="md"
+        typeBtn={ButtonType.Tertiary}
         aria-label="Disabled Button"
         disabled
       >
@@ -361,7 +397,7 @@ describe('Accessible <Button> tests', () => {
 
   it('should set tabIndex to -1 when disabled on Error button', () => {
     render(
-      <Button typeBtn="error" size="md" aria-label="Disabled Button" disabled>
+      <Button typeBtn={ButtonType.Error} aria-label="Disabled Button" disabled>
         Disabled Button
       </Button>,
     );

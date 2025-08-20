@@ -3,7 +3,7 @@ import Modal from './Modal';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { ModalProps, ShirtSize } from './modal.types';
-import Button from '@douro-ui/button';
+import Button, { ButtonType } from '@douro-ui/button';
 import { useState } from 'react';
 import { expect, userEvent, within } from '@storybook/test';
 
@@ -44,7 +44,7 @@ export const SmallModalWithHeader: Story = {
 
     return (
       <>
-        <Button typeBtn="secondary" size="md" onClick={() => setIsOpen(true)}>
+        <Button typeBtn={ButtonType.Secondary} onClick={() => setIsOpen(true)}>
           Open modal
         </Button>
 
@@ -55,15 +55,12 @@ export const SmallModalWithHeader: Story = {
           childrenFooter={
             <>
               <Button
-                typeBtn="secondary"
-                size="md"
+                typeBtn={ButtonType.Secondary}
                 onClick={() => setIsOpen(false)}
               >
                 Cancel
               </Button>
-              <Button typeBtn="primary" size="md">
-                Confirm
-              </Button>
+              <Button>Confirm</Button>
             </>
           }
         />
@@ -83,7 +80,7 @@ export const MediumModalWithoutHeader: Story = {
 
     return (
       <>
-        <Button typeBtn="secondary" size="md" onClick={() => setIsOpen(true)}>
+        <Button typeBtn={ButtonType.Secondary} onClick={() => setIsOpen(true)}>
           Open modal
         </Button>
 
@@ -94,15 +91,12 @@ export const MediumModalWithoutHeader: Story = {
           childrenFooter={
             <>
               <Button
-                typeBtn="secondary"
-                size="md"
+                typeBtn={ButtonType.Secondary}
                 onClick={() => setIsOpen(false)}
               >
                 Cancel
               </Button>
-              <Button typeBtn="error" size="md">
-                Delete
-              </Button>
+              <Button typeBtn={ButtonType.Error}>Delete</Button>
             </>
           }
         />
@@ -112,7 +106,7 @@ export const MediumModalWithoutHeader: Story = {
 
   args: {
     size: ShirtSize.md,
-    childrenBody: <Button typeBtn="primary">Click Me</Button>,
+    childrenBody: <Button>Click Me</Button>,
   },
 };
 
@@ -122,7 +116,7 @@ export const LargeModalWithHeaderWithoutFooter: Story = {
 
     return (
       <>
-        <Button typeBtn="secondary" size="md" onClick={() => setIsOpen(true)}>
+        <Button typeBtn={ButtonType.Secondary} onClick={() => setIsOpen(true)}>
           Open modal
         </Button>
 

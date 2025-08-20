@@ -1,4 +1,4 @@
-import Button from '@douro-ui/button';
+import Button, { ButtonSize } from '@douro-ui/button';
 import {
   act,
   fireEvent,
@@ -94,7 +94,7 @@ describe('<ExpandablePanel />', () => {
           {
             header: 'Open me',
             children: (
-              <Button typeBtn="primary" size="lg" onClick={handleClick}>
+              <Button size={ButtonSize.Large} onClick={handleClick}>
                 Test button children
               </Button>
             ),

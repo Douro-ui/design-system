@@ -79,9 +79,7 @@ export const SingleToaster: Story = {
 
     return (
       <div>
-        <Button typeBtn="primary" onClick={handleShowToaster}>
-          Show Toaster
-        </Button>
+        <Button onClick={handleShowToaster}>Show Toaster</Button>
         {toasterKey !== null && <Toaster key={toasterKey} {...args} />}
       </div>
     );
