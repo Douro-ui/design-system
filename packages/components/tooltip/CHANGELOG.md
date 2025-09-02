@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/tooltip@0.2.0...@douro-ui/tooltip@0.3.0) (2025-09-02)
+
+### Features
+
+- tooltip className ([a8160b7](https://github.com/Douro-ui/design-system/commit/a8160b72b997469a3a4927440bbbee84bb30a962))
+
 # [0.2.0](https://github.com/Douro-ui/design-system/compare/@douro-ui/tooltip@0.1.6...@douro-ui/tooltip@0.2.0) (2025-08-20)
 
 ### Features
