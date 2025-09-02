@@ -52,6 +52,10 @@ const handlePosition = (
   }
 };
 
+export const TooltipContainer = styled.div`
+  position: relative;
+`;
+
 export const TooltipStyled = styled.div<{
   styled: Required<TooltipStyledProps>;
   position: TooltipProps['position'];

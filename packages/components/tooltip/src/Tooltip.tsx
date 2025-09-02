@@ -1,5 +1,5 @@
 import { TooltipProps, TooltipStyledProps } from './tooltip.types';
-import { TooltipStyled } from './tooltip.styles';
+import { TooltipContainer, TooltipStyled } from './tooltip.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useClickOutside, useTooltipVisibility } from './hooks';
@@ -15,6 +15,7 @@ const Tooltip = ({
   openDelay = 300,
   closeDelay = 0,
   isFixedBottom = false,
+  className,
   ...props
 }: TooltipProps): ReactNode => {
   const theme = useTheme();
@@ -58,9 +59,10 @@ const Tooltip = ({
   });
 
   return (
-    <div
+    <TooltipContainer
       ref={triggerRef}
       {...handleEvents({ trigger, showTooltip, hideTooltip, toggleTooltip })}
+      className={className}
     >
       <span>{childrenLabel}</span>
       {visible && (
@@ -76,7 +78,7 @@ const Tooltip = ({
           {children}
         </TooltipStyled>
       )}
-    </div>
+    </TooltipContainer>
   );
 };
 

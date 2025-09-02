@@ -22,6 +22,7 @@ export interface TooltipProps {
   closeDelay?: number;
   isFixedBottom?: boolean;
   trigger?: 'hover' | 'click';
+  className?: string;
 }
 
 export interface calculatePositionProps {
