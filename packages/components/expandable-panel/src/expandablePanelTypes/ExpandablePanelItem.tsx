@@ -45,6 +45,7 @@ export const ExpandablePanelItem = ({
     <ExpandablePanelItemStyled
       styled={mergedThemeValues as Required<ExpandablePanelStyledProps>}
       {...props}
+      data-testid="panel-item"
     >
       {header && (
         <ExpandablePanelHeader
@@ -57,11 +58,10 @@ export const ExpandablePanelItem = ({
           {header}
         </ExpandablePanelHeader>
       )}
-      {isExpanded && (
-        <ExpandablePanelBody styled={mergedThemeValues} isExpanded={isExpanded}>
-          {children}
-        </ExpandablePanelBody>
-      )}
+
+      <ExpandablePanelBody styled={mergedThemeValues} isExpanded={isExpanded}>
+        {children}
+      </ExpandablePanelBody>
     </ExpandablePanelItemStyled>
   );
 };
