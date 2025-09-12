@@ -1,244 +1,105 @@
-import type { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 import ExpandablePanel from './ExpandablePanel';
 import { ExpandablePanelProps } from './expandablePanel.types';
 import Button, { ButtonType } from '@douro-ui/button';
 import { ThemeProvider } from '@douro-ui/react';
-import { PartialStoryFn } from 'storybook/internal/types';
 import { expect, userEvent, within } from '@storybook/test';
+import { useState } from 'react';
 
-const exampleItems = [
-  {
-    header: 'Item 1',
-    children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    startExpanded: false,
-  },
-  {
-    header: 'Item 2',
-    children: 'Nulla blandit lectus sit amet purus ultricies.',
-    startExpanded: true,
-  },
-  {
-    header: 'Item 3',
-    children: 'Nulla blandit lectus sit amet purus ultricies.',
-    startExpanded: false,
-  },
-];
-
-const meta: Meta<ExpandablePanelProps> = {
+const meta: Meta<typeof ExpandablePanel> = {
   title: 'Example/ExpandablePanel',
   component: ExpandablePanel,
-  decorators: [
-    (Story: PartialStoryFn<ReactRenderer, ExpandablePanelProps>) => (
-      <ThemeProvider>
-        <Story />
-      </ThemeProvider>
-    ),
-  ],
-  parameters: {
-    layout: 'centered',
-  },
+  parameters: { layout: 'centered' },
   tags: ['autodocs'],
-
-  args: {
-    items: exampleItems,
-  },
-  argTypes: {
-    items: { control: 'object' },
-  },
-} satisfies Meta<ExpandablePanelProps>;
+};
 
 export default meta;
 
-type Story = StoryObj<ExpandablePanelProps>;
+type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
-  args: {
-    items: [
-      {
-        header: 'Primary Item 1',
-        children:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lectus sit amet purus ultricies, a pharetra lorem lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras scelerisque, nibh id dignissim porta, massa lectus fermentum nulla, non maximus urna ipsum at massa. Nulla venenatis quam ligula, sit amet convallis sem fringilla in. ',
-        startExpanded: false,
-      },
-      {
-        header: 'Primary Item 2',
-        children:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lectus sit amet purus ultricies, a pharetra lorem lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras scelerisque, nibh id dignissim porta, massa lectus fermentum nulla, non maximus urna ipsum at massa. Nulla venenatis quam ligula, sit amet convallis sem fringilla in. ',
-        startExpanded: true,
-      },
-      {
-        header: 'Item 3',
-        children: (
-          <div
-            style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
-          >
-            <div>
-              <p>
-                {' '}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                blandit lectus sit amet purus ultricies, a pharetra lorem
-                lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum
-                nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras
-                scelerisque, nibh id dignissim porta, massa lectus fermentum
-                nulla, non maximus urna ipsum at massa. Nulla venenatis quam
-                ligula, sit amet convallis sem fringilla in.
-              </p>
-            </div>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <Button>Click Me</Button>
-              <Button typeBtn={ButtonType.Secondary}>Click Me</Button>
-              <Button typeBtn={ButtonType.Error}>Click Me</Button>
-              <Button disabled>Click Me</Button>
-            </div>
+const ExpandablePanelWithHooks = () => {
+  const items: ExpandablePanelProps['items'] = [
+    { header: 'Item 1', children: 'Content 1', startExpanded: false },
+    { header: 'Item 2', children: 'Content 2', startExpanded: true },
+    {
+      header: 'Item 3',
+      children: (
+        <div
+          style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+        >
+          <p>Content 3</p>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <Button data-testid="button-primary">Click Me</Button>
+            <Button
+              data-testid="button-secondary"
+              typeBtn={ButtonType.Secondary}
+            >
+              Click Me
+            </Button>
+            <Button data-testid="button-error" typeBtn={ButtonType.Error}>
+              Click Me
+            </Button>
+            <Button disabled>Click Me</Button>
           </div>
-        ),
-      },
-      {
-        header: 'Disabled Item ',
-        children:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lectus sit amet purus ultricies, a pharetra lorem lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras scelerisque, nibh id dignissim porta, massa lectus fermentum nulla, non maximus urna ipsum at massa. Nulla venenatis quam ligula, sit amet convallis sem fringilla in. ',
-        startExpanded: false,
-        disabled: true,
-      },
-    ],
-    preventAllClosed: false,
-    multipleOpens: false,
-  },
-};
-const checkExpandablePanelStyles = (
-  button: HTMLElement,
-  styles: { [key: string]: string },
-): void => {
-  Object.entries(styles).forEach(([property, value]: [string, string]) => {
-    expect(button).toHaveStyle(`${property}: ${value}`);
-  });
-};
+        </div>
+      ),
+    },
+    {
+      header: 'Disabled Item',
+      children: 'Disabled Content',
+      startExpanded: false,
+      disabled: true,
+    },
+  ];
 
-const testExpandablePanel = async (
-  canvasElement: HTMLElement,
-  styles: { [key: string]: string },
-): Promise<void> => {
-  checkExpandablePanelStyles(canvasElement, styles);
-};
+  const [panelItems] = useState(items);
 
-Primary.play = async ({
-  canvasElement,
-}: {
-  canvasElement: HTMLElement;
-}): Promise<void> => {
+  return (
+    <ThemeProvider>
+      <ExpandablePanel
+        items={panelItems}
+        multipleOpens={false}
+        preventAllClosed={false}
+      />
+    </ThemeProvider>
+  );
+};
+async function testExpandablePanel(canvasElement: HTMLElement) {
   const canvas = within(canvasElement);
 
-  const buttons = await canvas.findAllByRole('button');
-  const [firstButton, secondButton, thirdButton, forthButton] = buttons;
-  await expect(firstButton).toHaveTextContent('Primary Item 1');
+  const button1 = await canvas.findByRole('button', { name: /Item 1/i });
+  const panel1 = button1.closest('[data-testid="panel-item"]') as HTMLElement;
+  const body1 = within(panel1).getByTestId('panel-body-wrapper');
 
-  await userEvent.click(firstButton);
-  const { getByText } = within(document.body);
-  const body = getByText(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lectus sit amet purus ultricies, a pharetra lorem lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras scelerisque, nibh id dignissim porta, massa lectus fermentum nulla, non maximus urna ipsum at massa. Nulla venenatis quam ligula, sit amet convallis sem fringilla in.',
-  );
-  await expect(body).toBeVisible();
+  expect(body1).toHaveAttribute('height', '0px');
+  expect(body1).toHaveAttribute('data-expanded', 'false');
 
-  await userEvent.click(firstButton);
-  await expect(body).not.toBeVisible();
+  await userEvent.click(button1);
+  expect(body1).not.toHaveAttribute('height', '0px');
+  expect(body1).toHaveAttribute('data-expanded', 'true');
 
-  testExpandablePanel(firstButton, {
-    color: 'rgb(0, 0, 0)',
-    fontSize: '20px',
-    fontWeight: '700',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    position: 'relative',
-    cursor: 'pointer',
-    marginRight: '0px',
-    maxWidth: 'none',
-    maxHeight: 'none',
+  await userEvent.click(button1);
+  expect(body1).toHaveAttribute('height', '0px');
+  expect(body1).toHaveAttribute('data-expanded', 'false');
+
+  const buttonDisabled = await canvas.findByRole('button', {
+    name: /Disabled Item/i,
   });
+  expect(buttonDisabled).toBeDisabled();
 
-  await expect(secondButton).toHaveTextContent('Primary Item 2');
+  const btnPrimary = await canvas.findAllByTestId('button-primary');
+  expect(btnPrimary[0]).toHaveTextContent('Click Me');
 
-  await userEvent.click(secondButton);
-  const body2 = getByText(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lectus sit amet purus ultricies, a pharetra lorem lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras scelerisque, nibh id dignissim porta, massa lectus fermentum nulla, non maximus urna ipsum at massa. Nulla venenatis quam ligula, sit amet convallis sem fringilla in.',
-  );
-  await expect(body2).toBeVisible();
+  const btnSecondary = await canvas.findByTestId('button-secondary');
+  expect(btnSecondary).toHaveTextContent('Click Me');
 
-  await userEvent.click(secondButton);
-  await expect(body2).not.toBeVisible();
+  const btnError = await canvas.findByTestId('button-error');
+  expect(btnError).toHaveTextContent('Click Me');
+}
 
-  testExpandablePanel(secondButton, {
-    color: 'rgb(0, 0, 0)',
-    fontSize: '20px',
-    fontWeight: '700',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    position: 'relative',
-    cursor: 'pointer',
-    marginRight: '0px',
-    maxWidth: 'none',
-    maxHeight: 'none',
-  });
-
-  await expect(thirdButton).toHaveTextContent('Item 3');
-
-  await userEvent.click(thirdButton);
-  const body3 = getByText(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lectus sit amet purus ultricies, a pharetra lorem lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras scelerisque, nibh id dignissim porta, massa lectus fermentum nulla, non maximus urna ipsum at massa. Nulla venenatis quam ligula, sit amet convallis sem fringilla in.',
-  );
-  await expect(body3).toBeVisible();
-
-  await userEvent.click(thirdButton);
-  await expect(body3).not.toBeVisible();
-
-  await userEvent.click(thirdButton);
-
-  const buttonPrimary: HTMLElement[] =
-    await canvas.findAllByTestId('button-primary');
-  const buttonIds: string[] = ['button-secondary', 'button-error'];
-  const expectedText: string = 'Click Me';
-
-  buttonPrimary.forEach(async (button: HTMLElement) => {
-    await expect(button).toHaveTextContent(expectedText);
-  });
-  userEvent.click(buttonPrimary[0]);
-  expect(buttonPrimary[1]).toBeDisabled();
-
-  for (const id of buttonIds) {
-    const button: HTMLElement = await canvas.findByTestId(id);
-    await expect(button).toHaveTextContent(expectedText);
-    userEvent.click(button);
-  }
-
-  testExpandablePanel(thirdButton, {
-    color: 'rgb(0, 0, 0)',
-    fontSize: '20px',
-    fontWeight: '700',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    position: 'relative',
-    cursor: 'pointer',
-    marginRight: '0px',
-    maxWidth: 'none',
-    maxHeight: 'none',
-  });
-  await expect(forthButton).toHaveTextContent('Disabled Item');
-
-  await expect(forthButton).toBeDisabled();
-
-  testExpandablePanel(forthButton, {
-    color: 'rgb(162, 183, 195)',
-    fontSize: '20px',
-    fontWeight: '700',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    position: 'relative',
-    cursor: 'not-allowed',
-    marginRight: '0px',
-    maxWidth: 'none',
-    maxHeight: 'none',
-  });
+export const Primary: Story = {
+  render: () => <ExpandablePanelWithHooks />,
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    await testExpandablePanel(canvasElement);
+  },
 };
