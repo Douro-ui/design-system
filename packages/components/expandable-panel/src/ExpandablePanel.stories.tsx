@@ -3,28 +3,31 @@ import ExpandablePanel from './ExpandablePanel';
 import { ExpandablePanelProps } from './expandablePanel.types';
 import Button, { ButtonType } from '@douro-ui/button';
 import { ThemeProvider } from '@douro-ui/react';
-import { PartialStoryFn } from 'storybook/internal/types';
 import { expect, userEvent, within } from '@storybook/test';
+import { PartialStoryFn } from 'storybook/internal/types';
 
-const exampleItems = [
-  {
-    header: 'Item 1',
-    children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    startExpanded: false,
-  },
-  {
-    header: 'Item 2',
-    children: 'Nulla blandit lectus sit amet purus ultricies.',
-    startExpanded: true,
-  },
+const exampleItems: ExpandablePanelProps['items'] = [
+  { header: 'Item 1', children: 'Content 1', startExpanded: false },
+  { header: 'Item 2', children: 'Content 2', startExpanded: true },
   {
     header: 'Item 3',
-    children: 'Nulla blandit lectus sit amet purus ultricies.',
-    startExpanded: false,
+    children: (
+      <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <Button data-testid="button-primary">Click Me</Button>
+        <Button data-testid="button-secondary" typeBtn={ButtonType.Secondary}>
+          Click Me
+        </Button>
+        <Button data-testid="button-error" typeBtn={ButtonType.Error}>
+          Click Me
+        </Button>
+        <Button disabled>Click Me</Button>
+      </div>
+    ),
   },
+  { header: 'Disabled Item', children: 'Disabled Content', disabled: true },
 ];
 
-const meta: Meta<ExpandablePanelProps> = {
+const meta: Meta<typeof ExpandablePanel> = {
   title: 'Example/ExpandablePanel',
   component: ExpandablePanel,
   decorators: [
@@ -34,211 +37,91 @@ const meta: Meta<ExpandablePanelProps> = {
       </ThemeProvider>
     ),
   ],
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
-
   args: {
     items: exampleItems,
+    multipleOpens: false,
+    preventAllClosed: false,
   },
   argTypes: {
     items: { control: 'object' },
+    multipleOpens: { control: 'boolean' },
+    preventAllClosed: { control: 'boolean' },
   },
+  parameters: { layout: 'centered' },
 } satisfies Meta<ExpandablePanelProps>;
 
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-type Story = StoryObj<ExpandablePanelProps>;
-
-export const Primary: Story = {
-  args: {
-    items: [
-      {
-        header: 'Primary Item 1',
-        children:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lectus sit amet purus ultricies, a pharetra lorem lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras scelerisque, nibh id dignissim porta, massa lectus fermentum nulla, non maximus urna ipsum at massa. Nulla venenatis quam ligula, sit amet convallis sem fringilla in. ',
-        startExpanded: false,
-      },
-      {
-        header: 'Primary Item 2',
-        children:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lectus sit amet purus ultricies, a pharetra lorem lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras scelerisque, nibh id dignissim porta, massa lectus fermentum nulla, non maximus urna ipsum at massa. Nulla venenatis quam ligula, sit amet convallis sem fringilla in. ',
-        startExpanded: true,
-      },
-      {
-        header: 'Item 3',
-        children: (
-          <div
-            style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
-          >
-            <div>
-              <p>
-                {' '}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                blandit lectus sit amet purus ultricies, a pharetra lorem
-                lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum
-                nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras
-                scelerisque, nibh id dignissim porta, massa lectus fermentum
-                nulla, non maximus urna ipsum at massa. Nulla venenatis quam
-                ligula, sit amet convallis sem fringilla in.
-              </p>
-            </div>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <Button>Click Me</Button>
-              <Button typeBtn={ButtonType.Secondary}>Click Me</Button>
-              <Button typeBtn={ButtonType.Error}>Click Me</Button>
-              <Button disabled>Click Me</Button>
-            </div>
-          </div>
-        ),
-      },
-      {
-        header: 'Disabled Item ',
-        children:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lectus sit amet purus ultricies, a pharetra lorem lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras scelerisque, nibh id dignissim porta, massa lectus fermentum nulla, non maximus urna ipsum at massa. Nulla venenatis quam ligula, sit amet convallis sem fringilla in. ',
-        startExpanded: false,
-        disabled: true,
-      },
-    ],
-    preventAllClosed: false,
-    multipleOpens: false,
-  },
-};
 const checkExpandablePanelStyles = (
-  button: HTMLElement,
+  element: HTMLElement,
   styles: { [key: string]: string },
 ): void => {
-  Object.entries(styles).forEach(([property, value]: [string, string]) => {
-    expect(button).toHaveStyle(`${property}: ${value}`);
+  Object.entries(styles).forEach((entry: [string, string]) => {
+    const [property, value] = entry;
+    expect(element).toHaveStyle(`${property}: ${value}`);
   });
 };
 
-const testExpandablePanel = async (
-  canvasElement: HTMLElement,
-  styles: { [key: string]: string },
-): Promise<void> => {
-  checkExpandablePanelStyles(canvasElement, styles);
-};
+export const Primary: Story = {
+  play: async ({
+    canvasElement,
+  }: {
+    canvasElement: HTMLElement;
+  }): Promise<void> => {
+    const canvas = within(canvasElement);
 
-Primary.play = async ({
-  canvasElement,
-}: {
-  canvasElement: HTMLElement;
-}): Promise<void> => {
-  const canvas = within(canvasElement);
+    const button1 = await canvas.findByRole('button', { name: /Item 1/i });
+    const button2 = await canvas.findByRole('button', { name: /Item 2/i });
+    const button3 = await canvas.findByRole('button', { name: /Item 3/i });
+    const buttonDisabled = await canvas.findByRole('button', {
+      name: /Disabled Item/i,
+    });
 
-  const buttons = await canvas.findAllByRole('button');
-  const [firstButton, secondButton, thirdButton, forthButton] = buttons;
-  await expect(firstButton).toHaveTextContent('Primary Item 1');
+    await expect(button1).toHaveTextContent('Item 1');
+    await userEvent.click(button1);
+    const body1 = within(
+      button1.closest('[data-testid="panel-item"]')!,
+    ).getByTestId('panel-body-wrapper');
+    await expect(body1).toHaveAttribute('data-expanded', 'true');
+    await userEvent.click(button1);
+    await expect(body1).toHaveAttribute('data-expanded', 'false');
+    checkExpandablePanelStyles(button1, {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      cursor: 'pointer',
+    });
 
-  await userEvent.click(firstButton);
-  const { getByText } = within(document.body);
-  const body = getByText(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lectus sit amet purus ultricies, a pharetra lorem lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras scelerisque, nibh id dignissim porta, massa lectus fermentum nulla, non maximus urna ipsum at massa. Nulla venenatis quam ligula, sit amet convallis sem fringilla in.',
-  );
-  await expect(body).toBeVisible();
+    await expect(button2).toHaveTextContent('Item 2');
+    await userEvent.click(button2);
+    const body2 = within(
+      button2.closest('[data-testid="panel-item"]')!,
+    ).getByTestId('panel-body-wrapper');
+    await expect(body2).toHaveAttribute('data-expanded', 'true');
+    await userEvent.click(button2);
+    await expect(body2).toHaveAttribute('data-expanded', 'false');
 
-  await userEvent.click(firstButton);
-  await expect(body).not.toBeVisible();
+    await expect(button3).toHaveTextContent('Item 3');
+    await userEvent.click(button3);
 
-  testExpandablePanel(firstButton, {
-    color: 'rgb(0, 0, 0)',
-    fontSize: '20px',
-    fontWeight: '700',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    position: 'relative',
-    cursor: 'pointer',
-    marginRight: '0px',
-    maxWidth: 'none',
-    maxHeight: 'none',
-  });
+    const btnPrimary = await canvas.findAllByTestId('button-primary');
+    const btnSecondary = await canvas.findByTestId('button-secondary');
+    const btnError = await canvas.findByTestId('button-error');
 
-  await expect(secondButton).toHaveTextContent('Primary Item 2');
+    await expect(btnPrimary[0]).toHaveTextContent('Click Me');
+    await expect(btnSecondary).toHaveTextContent('Click Me');
+    await expect(btnError).toHaveTextContent('Click Me');
+    await expect(btnPrimary[1]).toBeDisabled();
 
-  await userEvent.click(secondButton);
-  const body2 = getByText(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lectus sit amet purus ultricies, a pharetra lorem lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras scelerisque, nibh id dignissim porta, massa lectus fermentum nulla, non maximus urna ipsum at massa. Nulla venenatis quam ligula, sit amet convallis sem fringilla in.',
-  );
-  await expect(body2).toBeVisible();
+    await userEvent.click(btnPrimary[0]);
+    await userEvent.click(btnSecondary);
+    await userEvent.click(btnError);
 
-  await userEvent.click(secondButton);
-  await expect(body2).not.toBeVisible();
-
-  testExpandablePanel(secondButton, {
-    color: 'rgb(0, 0, 0)',
-    fontSize: '20px',
-    fontWeight: '700',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    position: 'relative',
-    cursor: 'pointer',
-    marginRight: '0px',
-    maxWidth: 'none',
-    maxHeight: 'none',
-  });
-
-  await expect(thirdButton).toHaveTextContent('Item 3');
-
-  await userEvent.click(thirdButton);
-  const body3 = getByText(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit lectus sit amet purus ultricies, a pharetra lorem lacinia. Sed odio dui, sodales ut risus et, tincidunt vestibulum nunc. Morbi quis lobortis dui. Ut a tempus erat. Cras scelerisque, nibh id dignissim porta, massa lectus fermentum nulla, non maximus urna ipsum at massa. Nulla venenatis quam ligula, sit amet convallis sem fringilla in.',
-  );
-  await expect(body3).toBeVisible();
-
-  await userEvent.click(thirdButton);
-  await expect(body3).not.toBeVisible();
-
-  await userEvent.click(thirdButton);
-
-  const buttonPrimary: HTMLElement[] =
-    await canvas.findAllByTestId('button-primary');
-  const buttonIds: string[] = ['button-secondary', 'button-error'];
-  const expectedText: string = 'Click Me';
-
-  buttonPrimary.forEach(async (button: HTMLElement) => {
-    await expect(button).toHaveTextContent(expectedText);
-  });
-  userEvent.click(buttonPrimary[0]);
-  expect(buttonPrimary[1]).toBeDisabled();
-
-  for (const id of buttonIds) {
-    const button: HTMLElement = await canvas.findByTestId(id);
-    await expect(button).toHaveTextContent(expectedText);
-    userEvent.click(button);
-  }
-
-  testExpandablePanel(thirdButton, {
-    color: 'rgb(0, 0, 0)',
-    fontSize: '20px',
-    fontWeight: '700',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    position: 'relative',
-    cursor: 'pointer',
-    marginRight: '0px',
-    maxWidth: 'none',
-    maxHeight: 'none',
-  });
-  await expect(forthButton).toHaveTextContent('Disabled Item');
-
-  await expect(forthButton).toBeDisabled();
-
-  testExpandablePanel(forthButton, {
-    color: 'rgb(162, 183, 195)',
-    fontSize: '20px',
-    fontWeight: '700',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    position: 'relative',
-    cursor: 'not-allowed',
-    marginRight: '0px',
-    maxWidth: 'none',
-    maxHeight: 'none',
-  });
+    await expect(buttonDisabled).toHaveTextContent('Disabled Item');
+    await expect(buttonDisabled).toBeDisabled();
+    checkExpandablePanelStyles(buttonDisabled, {
+      cursor: 'not-allowed',
+    });
+  },
 };

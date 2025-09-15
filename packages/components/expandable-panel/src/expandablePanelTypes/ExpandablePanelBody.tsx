@@ -2,17 +2,31 @@ import {
   ExpandablePanelBodyProps,
   ExpandablePanelStyledProps,
 } from '../expandablePanel.types';
-import { ExpandablePanelBodyStyled } from '../expandablePanel.styles';
+import {
+  ExpandablePanelBodyInner,
+  ExpandablePanelBodyWrapper,
+} from '../expandablePanel.styles';
 import { deepMerge, useTheme, useHeightDimension } from '@douro-ui/react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const ExpandablePanelBody = ({
   styled,
   isExpanded = false,
   children,
-  ...props
 }: ExpandablePanelBodyProps): React.ReactNode => {
-  const { height, contentRef } = useHeightDimension(isExpanded);
+  const { contentRef } = useHeightDimension(isExpanded);
+
+  const [maxHeight, setMaxHeight] = useState('0px');
+
+  useEffect(() => {
+    if (contentRef.current) {
+      if (isExpanded) {
+        setMaxHeight(`${contentRef.current.scrollHeight}px`);
+      } else {
+        setMaxHeight('0px');
+      }
+    }
+  }, [isExpanded, children]);
   const theme = useTheme();
 
   const defaultEPBodyThemeValues: ExpandablePanelStyledProps = {
@@ -29,14 +43,15 @@ export const ExpandablePanelBody = ({
   );
 
   return (
-    <ExpandablePanelBodyStyled
-      styled={mergedThemeValues as Required<ExpandablePanelStyledProps>}
-      isExpanded={isExpanded}
-      height={height}
-      {...props}
+    <ExpandablePanelBodyWrapper
+      height={maxHeight}
       ref={contentRef}
+      data-testid="panel-body-wrapper"
+      data-expanded={isExpanded ? 'true' : 'false'}
     >
-      {children}
-    </ExpandablePanelBodyStyled>
+      <ExpandablePanelBodyInner styled={mergedThemeValues}>
+        {children}
+      </ExpandablePanelBodyInner>
+    </ExpandablePanelBodyWrapper>
   );
 };

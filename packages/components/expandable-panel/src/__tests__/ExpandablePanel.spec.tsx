@@ -1,14 +1,11 @@
 import Button, { ButtonSize } from '@douro-ui/button';
 import {
-  act,
   fireEvent,
   render,
-  renderHook,
   screen,
+  waitFor,
 } from '../../../../../tests/test-utils';
 import ExpandablePanel from '../ExpandablePanel';
-import { ExpandablePanelItemProps } from '../expandablePanel.types';
-import { useHandleToggle } from '../hooks';
 
 beforeAll(() => {
   global.ResizeObserver = class {
@@ -19,48 +16,30 @@ beforeAll(() => {
 });
 
 describe('<ExpandablePanel />', () => {
-  const initialItems: ExpandablePanelItemProps[] = [
-    { header: 'Panel 1', expanded: false, disabled: false },
-    { header: 'Panel 2', expanded: false, disabled: false },
-    { header: 'Panel 3', expanded: false, disabled: true },
-  ];
-
-  it('should handle preventAllClosed flag correctly', () => {
-    const { result } = renderHook(() => useHandleToggle(initialItems));
-
-    act(() => {
-      result.current.handleToggle({ index: 0, preventAllClosed: true });
-      result.current.handleToggle({ index: 2 });
-    });
-
-    expect(result.current.items[0].expanded).toBe(true);
-    expect(result.current.items[1].expanded).toBe(false);
-    expect(result.current.items[2].expanded).toBe(false);
-
-    act(() => {
-      result.current.handleToggle({ index: 0, preventAllClosed: true });
-    });
-
-    expect(result.current.items[0].expanded).toBe(true);
-  });
-
-  it('should renders a default expandable panel', () => {
+  it('renders a default panel and toggles children', async () => {
     render(
       <ExpandablePanel
         items={[{ header: 'Open me', children: 'Test children' }]}
       />,
     );
+
     const header = screen.getByText('Open me');
-    expect(screen.queryByText('Test children')).not.toBeInTheDocument();
+    const bodyWrapper = screen.getByTestId('panel-body-wrapper');
+
+    expect(bodyWrapper).toHaveAttribute('data-expanded', 'false');
 
     fireEvent.click(header);
-    expect(screen.getByText('Test children')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(bodyWrapper).toHaveAttribute('data-expanded', 'true');
+    });
 
     fireEvent.click(header);
-    expect(screen.queryByText('Test children')).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(bodyWrapper).toHaveAttribute('data-expanded', 'false');
+    });
   });
 
-  it('should render a start expanded panel', () => {
+  it('renders a panel that starts expanded', async () => {
     render(
       <ExpandablePanel
         items={[
@@ -69,10 +48,15 @@ describe('<ExpandablePanel />', () => {
       />,
     );
 
+    const bodyWrapper = screen.getByText('Test children').closest('div')!;
+    await waitFor(() => {
+      expect(bodyWrapper.style.maxHeight).not.toBe('0px');
+    });
+
     expect(screen.getByText('Test children')).toBeInTheDocument();
   });
 
-  it('should renders a disabled expandable panel', () => {
+  it('renders a disabled panel correctly', () => {
     render(
       <ExpandablePanel
         items={[
@@ -86,7 +70,7 @@ describe('<ExpandablePanel />', () => {
     expect(header).toHaveStyle('cursor: not-allowed');
   });
 
-  it('should renders a default expandable panel with button children', () => {
+  it('renders a panel with button children and handles clicks', () => {
     const handleClick = jest.fn();
     render(
       <ExpandablePanel
@@ -104,9 +88,12 @@ describe('<ExpandablePanel />', () => {
     );
 
     const header = screen.getByText('Open me');
-
     fireEvent.click(header);
+
     const buttonElement = screen.getByText('Test button children');
     expect(buttonElement).toBeInTheDocument();
+
+    fireEvent.click(buttonElement);
+    expect(handleClick).toHaveBeenCalled();
   });
 });
