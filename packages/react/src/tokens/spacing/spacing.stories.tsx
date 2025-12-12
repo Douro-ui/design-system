@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Block, Container, Label } from './SpacingStory.styles';
 import theme from '../../theme/theme';
 

@@ -28,7 +28,7 @@ const Checkbox = ({
 
   return (
     <CheckboxContainerStyled backgroundColor={backgroundColor}>
-      <label>
+      <label htmlFor={value}>
         <InputStyled
           {...props}
           type="checkbox"

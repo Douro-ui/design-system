@@ -1,10 +1,10 @@
-import type { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import type { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
 import ExpandablePanel from './ExpandablePanel';
 import { ExpandablePanelProps } from './expandablePanel.types';
 import Button from '@douro-ui/button';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 const exampleItems = [
   {

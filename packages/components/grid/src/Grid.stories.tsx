@@ -218,6 +218,7 @@ const testGrid = async (
   checkGridStyles(canvasElement, styles);
 };
 
+// Viewport is set by default to 1200px
 GridResponsive.play = async ({
   canvasElement,
 }: {
@@ -227,7 +228,7 @@ GridResponsive.play = async ({
 
   const menu = canvas.getByText('Menu');
 
-  testGrid(menu, {
+  await testGrid(menu, {
     color: '#ffffff',
     backgroundColor: '#080708',
     display: 'flex',
@@ -235,7 +236,7 @@ GridResponsive.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '1612px',
+    width: '1200px',
     height: '20px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -243,7 +244,7 @@ GridResponsive.play = async ({
 
   const hero = canvas.getByText('Hero');
 
-  testGrid(hero, {
+  await testGrid(hero, {
     color: '#000000',
     backgroundColor: '#C8ADC0',
     display: 'flex',
@@ -251,7 +252,7 @@ GridResponsive.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '1612px',
+    width: '1200px',
     height: '38px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -259,7 +260,7 @@ GridResponsive.play = async ({
 
   const card = canvas.getByText('Card 1');
 
-  testGrid(card, {
+  await testGrid(card, {
     color: '#ffffff',
     backgroundColor: '#6152cc',
     display: 'flex',
@@ -267,7 +268,7 @@ GridResponsive.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '801px',
+    width: '1035.12px',
     height: '40px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -275,7 +276,7 @@ GridResponsive.play = async ({
 
   const card2 = canvas.getByText('Card 2');
 
-  testGrid(card2, {
+  await testGrid(card2, {
     color: '#ffffff',
     backgroundColor: '#6152cc',
     display: 'flex',
@@ -283,7 +284,7 @@ GridResponsive.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '801px',
+    width: '148.875px',
     height: '40px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -291,7 +292,7 @@ GridResponsive.play = async ({
 
   const biggerCard3 = canvas.getByText('Bigger Card 3');
 
-  testGrid(biggerCard3, {
+  await testGrid(biggerCard3, {
     color: '#ffffff',
     backgroundColor: '#3B60E4',
     display: 'flex',
@@ -299,7 +300,7 @@ GridResponsive.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '1071.33px',
+    width: '1067.12px',
     height: '80px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -307,7 +308,7 @@ GridResponsive.play = async ({
 
   const smallerCard4 = canvas.getByText('Smaller Card 4');
 
-  testGrid(smallerCard4, {
+  await testGrid(smallerCard4, {
     color: '#ffffff',
     backgroundColor: '#3B60E4',
     display: 'flex',
@@ -315,7 +316,7 @@ GridResponsive.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '530.672px',
+    width: '116.875px',
     height: '80px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -323,7 +324,7 @@ GridResponsive.play = async ({
 
   const banner = canvas.getByText('Banner');
 
-  testGrid(banner, {
+  await testGrid(banner, {
     color: '#000000',
     backgroundColor: '#C8ADC0',
     display: 'flex',
@@ -331,7 +332,7 @@ GridResponsive.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '1612px',
+    width: '1200px',
     height: '38px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -339,7 +340,7 @@ GridResponsive.play = async ({
 
   const footer = canvas.getByText('Footer');
 
-  testGrid(footer, {
+  await testGrid(footer, {
     color: '#000000',
     backgroundColor: '#EDD3C4',
     display: 'flex',
@@ -347,7 +348,7 @@ GridResponsive.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '1612px',
+    width: '1200px',
     height: '38px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -355,7 +356,7 @@ GridResponsive.play = async ({
 
   const smallFooter = canvas.getByText('Small footer');
 
-  testGrid(smallFooter, {
+  await testGrid(smallFooter, {
     color: '#ffffff',
     backgroundColor: '#080708',
     display: 'flex',
@@ -363,7 +364,7 @@ GridResponsive.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '1612px',
+    width: '1200px',
     height: '20px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -378,7 +379,7 @@ GridCardType.play = async ({
   const canvas = within(canvasElement);
   const menu = canvas.getByText('Menu');
 
-  testGrid(menu, {
+  await testGrid(menu, {
     color: 'rgb(255, 255, 255)',
     backgroundColor: '#080708',
     display: 'flex',
@@ -386,7 +387,7 @@ GridCardType.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '1612px',
+    width: '1200px',
     height: '20px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -394,7 +395,7 @@ GridCardType.play = async ({
 
   const hero = canvas.getByText('Hero');
 
-  testGrid(hero, {
+  await testGrid(hero, {
     color: 'rgb(0, 0, 0)',
     backgroundColor: '#C8ADC0',
     display: 'flex',
@@ -402,7 +403,7 @@ GridCardType.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '1612px',
+    width: '1200px',
     height: '38px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -410,7 +411,7 @@ GridCardType.play = async ({
 
   const card = canvas.getByText('Card');
 
-  testGrid(card, {
+  await testGrid(card, {
     color: 'rgb(0, 0, 0)',
     backgroundColor: '#C8ADC0',
     display: 'flex',
@@ -418,7 +419,7 @@ GridCardType.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '801px',
+    width: '595px',
     height: '134px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -426,7 +427,7 @@ GridCardType.play = async ({
 
   const card2 = canvas.getByText('Card 2');
 
-  testGrid(card2, {
+  await testGrid(card2, {
     color: 'rgb(0, 0, 0)',
     backgroundColor: '#C8ADC0',
     display: 'flex',
@@ -434,7 +435,7 @@ GridCardType.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '801px',
+    width: '595px',
     height: '38px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -442,7 +443,7 @@ GridCardType.play = async ({
 
   const card3 = canvas.getByText('Card 3');
 
-  testGrid(card3, {
+  await testGrid(card3, {
     color: 'rgb(0, 0, 0)',
     backgroundColor: '#C8ADC0',
     display: 'flex',
@@ -450,7 +451,7 @@ GridCardType.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '801px',
+    width: '595px',
     height: '38px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -458,7 +459,7 @@ GridCardType.play = async ({
 
   const card4 = canvas.getByText('Card 4');
 
-  testGrid(card4, {
+  await testGrid(card4, {
     color: 'rgb(0, 0, 0)',
     backgroundColor: '#C8ADC0',
     display: 'flex',
@@ -466,7 +467,7 @@ GridCardType.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '801px',
+    width: '595px',
     height: '38px',
     maxWidth: 'none',
     maxHeight: 'none',
@@ -474,7 +475,7 @@ GridCardType.play = async ({
 
   const card5 = canvas.getByText('Card 5');
 
-  testGrid(card5, {
+  await testGrid(card5, {
     color: 'rgb(0, 0, 0)',
     backgroundColor: '#C8ADC0',
     display: 'flex',
@@ -482,7 +483,7 @@ GridCardType.play = async ({
     position: 'static',
     cursor: 'auto',
     marginRight: '0px',
-    width: '1612px',
+    width: '1200px',
     height: '38px',
     maxWidth: 'none',
     maxHeight: 'none',

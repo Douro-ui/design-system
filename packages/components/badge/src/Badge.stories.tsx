@@ -1,4 +1,4 @@
-import type { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import type { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
 import Badge from './Badge';
 import { BadgeProps } from './badge.types';
 import { ThemeProvider } from '@douro-ui/react';

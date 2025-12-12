@@ -1,9 +1,9 @@
 import React, { ReactElement, useState } from 'react';
-import { Meta, ReactRenderer, StoryObj } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import Toggle from './Toggle';
 import { ThemeProvider } from '@douro-ui/react';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { ToggleProps } from './toggle.types';
 

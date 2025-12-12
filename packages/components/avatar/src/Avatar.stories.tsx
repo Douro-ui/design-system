@@ -1,9 +1,9 @@
-import type { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import type { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
 import Avatar from './Avatar';
 import { AvatarProps } from './avatar.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 const meta: Meta<AvatarProps> = {
   title: 'Example/Avatar',
