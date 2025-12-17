@@ -93,10 +93,12 @@
   },
   "resolutions": {
     "esbuild": "^0.25.0",
+    "js-yaml": "^4.1.1",
     "path-to-regexp": "^0.1.12",
     "@octokit/request": "^8.4.1",
     "tar": "^6.2.1",
-    "tar-fs": "^3.0.8"
+    "tar-fs": "^3.0.8",
+    "tmp": "^0.2.4"
   },
   "engines": {
     "node": ">=20",
