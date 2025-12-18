@@ -1,10 +1,9 @@
-import type { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import type { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
 import Input from './Input';
 import { InputProps } from './input.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
-import { fn } from '@storybook/test';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, fn, userEvent, within } from 'storybook/test';
 
 const meta: Meta<InputProps> = {
   title: 'Example/Input',

@@ -1,8 +1,9 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import { Meta, StoryObj } from '@storybook/react-vite';
+import { action } from 'storybook/actions';
 import CheckboxGroup from './CheckboxGroup';
 import { useState } from 'react';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
+import { waitFor } from '@testing-library/react';
 
 const meta: Meta<typeof CheckboxGroup> = {
   title: 'Example/CheckboxGroup',
@@ -104,7 +105,9 @@ async function testCheckboxGroup(canvasElement: HTMLElement) {
   expect(checkbox[2]).not.toBeChecked();
 
   checkbox[0].focus();
-  expect(checkbox[0]).toHaveFocus();
+  await waitFor(() => {
+    expect(checkbox[0]).toHaveFocus();
+  });
 
   await userEvent.keyboard('[Tab]');
   await expect(checkbox[1]).toHaveFocus();

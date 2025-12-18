@@ -1,4 +1,4 @@
-import type { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import type { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
 import Toaster from './Toaster';
 import { ToasterProps } from './toaster.types';
 import { ThemeProvider } from '@douro-ui/react';
@@ -6,7 +6,7 @@ import { PartialStoryFn } from 'storybook/internal/types';
 import Button from '@douro-ui/button';
 import { useState } from 'react';
 import { ToasterProvider, useToaster } from './ToasterProvider';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 const meta: Meta<ToasterProps> = {
   title: 'Example/Toaster',

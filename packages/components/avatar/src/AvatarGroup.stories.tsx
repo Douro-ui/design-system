@@ -1,4 +1,4 @@
-import type { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import type { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
 import AvatarGroup from './AvatarGroup';
 import { AvatarGroupProps } from './avatar.types';
 import { ThemeProvider } from '@douro-ui/react';

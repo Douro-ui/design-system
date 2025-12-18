@@ -1,9 +1,9 @@
-import { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
 import Video from './Video';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { VideoProps } from './video.types';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 const meta: Meta<typeof Video> = {
   title: 'Example/Video',
@@ -65,6 +65,10 @@ export const VideoEnabled: Story = {
     autoPlay: false,
     loop: false,
     muted: false,
+    styled: {
+      width: '300px',
+      height: '150px',
+    },
   },
 };
 
@@ -77,6 +81,10 @@ export const VideoDisabled: Story = {
     loop: false,
     muted: false,
     disabled: true,
+    styled: {
+      width: '300px',
+      height: '150px',
+    },
   },
 };
 const playVideo = async ({

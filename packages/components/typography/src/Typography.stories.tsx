@@ -1,11 +1,11 @@
-import type { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import type { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
 import { Body } from './Body';
 import { Display } from './Display';
 import { Heading } from './Heading';
 import { TypographyProps } from './typography.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
-import { expect, within } from '@storybook/test';
+import { expect, within } from 'storybook/test';
 
 const meta: Meta<TypographyProps> = {
   title: 'Example/Typography',

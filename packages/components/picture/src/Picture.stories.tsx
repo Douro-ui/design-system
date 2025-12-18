@@ -1,9 +1,9 @@
-import { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
 import Picture from './Picture';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { PictureProps } from './picture.types';
-import { expect, within } from '@storybook/test';
+import { expect, within } from 'storybook/test';
 
 const meta: Meta<typeof Picture> = {
   title: 'Example/Picture',
@@ -71,16 +71,28 @@ async function testImage(canvasElement: HTMLElement) {
   expect(picture).toHaveStyle('position: static');
   expect(picture).toHaveStyle('box-sizing: content-box');
   expect(picture).toHaveStyle('max-height: none');
-  expect(picture).toHaveStyle('height: 525px');
-  expect(picture).toHaveStyle('width: 800px');
+
+  // Wait for image to load before checking dimensions
+  const imgElement = picture as HTMLImageElement;
+  await new Promise<void>((resolve: () => void) => {
+    if (imgElement.complete && imgElement.naturalHeight !== 0) {
+      resolve();
+    } else {
+      imgElement.onload = () => resolve();
+      imgElement.onerror = () => resolve(); // Resolve anyway to avoid hanging
+    }
+  });
+
+  expect(imgElement.naturalWidth).toBe(800);
+  expect(imgElement.naturalHeight).toBe(525);
 }
 Image.play = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  testImage(canvasElement);
+  await testImage(canvasElement);
 };
 ImageDisabled.play = async ({
   canvasElement,
 }: {
   canvasElement: HTMLElement;
 }) => {
-  testImage(canvasElement);
+  await testImage(canvasElement);
 };

@@ -1,10 +1,10 @@
-import { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
 import Dropdown from './Dropdown';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { DropdownProps } from './dropdown.types';
 import { useState } from 'react';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 const meta: Meta<typeof Dropdown> = {
   title: 'Example/Dropdown',
@@ -159,14 +159,14 @@ DefaultDropdown.play = async ({
   const label = canvas.getByText('Select a Banana');
   expect(label).toHaveTextContent('Select a Banana');
 
-  userEvent.click(dropdown);
+  await userEvent.click(dropdown);
 
   const dropdownOpen = canvas.getByText('Cavendish Banana');
   expect(dropdownOpen).toHaveTextContent('Cavendish Banana');
 
-  userEvent.click(dropdown);
+  await userEvent.click(dropdown);
   const newOption = canvas.getByText('Red Banana');
-  userEvent.click(newOption);
+  await userEvent.click(newOption);
   expect(newOption).toHaveTextContent('Red Banana');
 };
 DisabledDropdown.play = async ({
@@ -182,8 +182,15 @@ DisabledDropdown.play = async ({
   expect(dropdownOpen).not.toBeVisible();
 };
 
-SelectedDropdown.play = async (): Promise<void> => {
-  const element = document.querySelector('#storybook-root > div > div');
-  expect(element).toBeVisible();
-  expect(element).toHaveTextContent('Madeira Banana');
+SelectedDropdown.play = async ({
+  canvasElement,
+}: {
+  canvasElement: HTMLElement;
+}): Promise<void> => {
+  const canvas = within(canvasElement);
+  const label = canvas.getByText('Select a Banana');
+  expect(label).toBeVisible();
+
+  const trigger = canvasElement.querySelector('div > div:nth-child(2)');
+  expect(trigger).toHaveTextContent('Madeira Banana');
 };

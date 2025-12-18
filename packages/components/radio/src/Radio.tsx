@@ -55,7 +55,7 @@ const Radio = ({
 
   return (
     <RadioStyled styled={mergedThemeValues as Required<RadioStyledProps>}>
-      <label>
+      <label htmlFor={value}>
         <InputStyled
           type="radio"
           id={value}

@@ -1,11 +1,11 @@
-import { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
 import Modal from './Modal';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import { ModalProps, ShirtSize } from './modal.types';
 import Button from '@douro-ui/button';
 import { useState } from 'react';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 const meta: Meta<typeof Modal> = {
   title: 'Example/Modal',

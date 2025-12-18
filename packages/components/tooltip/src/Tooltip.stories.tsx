@@ -1,10 +1,10 @@
-import type { Meta, ReactRenderer, StoryObj } from '@storybook/react';
+import type { Meta, ReactRenderer, StoryObj } from '@storybook/react-vite';
 import Tooltip from './Tooltip';
 import { TooltipProps } from './tooltip.types';
 import { ThemeProvider } from '@douro-ui/react';
 import { PartialStoryFn } from 'storybook/internal/types';
 import Button from '@douro-ui/button';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from 'storybook/test';
 
 const meta: Meta<TooltipProps> = {
   title: 'Example/Tooltip',
