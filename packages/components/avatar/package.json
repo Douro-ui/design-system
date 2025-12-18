@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/avatar",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Douro UI - Metyis Design System Avatar Component",
   "main": "src/index.ts",
   "type": "module",
@@ -25,8 +25,8 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@douro-ui/badge": "^0.1.6",
-    "@douro-ui/react": "^0.8.0"
+    "@douro-ui/badge": "^0.1.7",
+    "@douro-ui/react": "^0.8.1"
   },
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/breadcrumb",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Douro UI - Metyis Design System Components",
   "main": "src/index.ts",
   "type": "module",
@@ -15,7 +15,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@douro-ui/react": "^0.8.0"
+    "@douro-ui/react": "^0.8.1"
   },
   "peerDependencies": {
     "@emotion/react": "^11.11.4",

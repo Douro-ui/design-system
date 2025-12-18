@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.11](https://github.com/Douro-ui/design-system/compare/@douro-ui/dropdown@0.1.10...@douro-ui/dropdown@0.1.11) (2025-12-18)
+
+**Note:** Version bump only for package @douro-ui/dropdown
+
 ## [0.1.10](https://github.com/Douro-ui/design-system/compare/@douro-ui/dropdown@0.1.9...@douro-ui/dropdown@0.1.10) (2025-07-24)
 
 ### Bug Fixes

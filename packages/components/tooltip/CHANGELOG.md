@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/Douro-ui/design-system/compare/@douro-ui/tooltip@0.1.6...@douro-ui/tooltip@0.1.7) (2025-12-18)
+
+**Note:** Version bump only for package @douro-ui/tooltip
+
 ## [0.1.6](https://github.com/Douro-ui/design-system/compare/@douro-ui/tooltip@0.1.5...@douro-ui/tooltip@0.1.6) (2025-02-25)
 
 **Note:** Version bump only for package @douro-ui/tooltip
