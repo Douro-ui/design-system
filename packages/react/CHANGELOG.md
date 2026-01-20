@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.8.1...@douro-ui/react@0.8.2) (2026-01-20)
+
+### Bug Fixes
+
+- add react 19 as peer deps ([371f64f](https://github.com/Douro-ui/design-system/commit/371f64f964cc4aba17176a2a4b1a2a5e97617202))
+
 ## [0.8.1](https://github.com/Douro-ui/design-system/compare/@douro-ui/react@0.8.0...@douro-ui/react@0.8.1) (2025-12-18)
 
 **Note:** Version bump only for package @douro-ui/react

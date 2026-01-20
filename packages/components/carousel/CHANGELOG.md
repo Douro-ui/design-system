@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/Douro-ui/design-system/compare/@douro-ui/carousel@0.0.6...@douro-ui/carousel@0.0.7) (2026-01-20)
+
+**Note:** Version bump only for package @douro-ui/carousel
+
 ## [0.0.6](https://github.com/Douro-ui/design-system/compare/@douro-ui/carousel@0.0.5...@douro-ui/carousel@0.0.6) (2025-12-18)
 
 **Note:** Version bump only for package @douro-ui/carousel

@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/react",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "Douro UI - Metyis Design System Components",
   "main": "src/index.ts",
   "type": "module",

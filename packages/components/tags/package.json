@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/tags",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Douro UI - Metyis Design System Tags Component",
   "main": "src/index.ts",
   "type": "module",
@@ -25,7 +25,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@douro-ui/react": "^0.8.1"
+    "@douro-ui/react": "^0.8.2"
   },
   "publishConfig": {
     "access": "public"

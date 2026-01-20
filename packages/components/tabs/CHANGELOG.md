@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.18](https://github.com/Douro-ui/design-system/compare/@douro-ui/tabs@0.1.17...@douro-ui/tabs@0.1.18) (2026-01-20)
+
+**Note:** Version bump only for package @douro-ui/tabs
+
 ## [0.1.17](https://github.com/Douro-ui/design-system/compare/@douro-ui/tabs@0.1.16...@douro-ui/tabs@0.1.17) (2025-12-18)
 
 **Note:** Version bump only for package @douro-ui/tabs
