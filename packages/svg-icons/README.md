@@ -6,8 +6,8 @@ Douro UI is a Metyis Design System with React components, icons and much more to
 
 This packages has the following peer dependencies, so please don't forget to install them:
 
-- react: 18.2.0
-- react-dom: 18.2.0
+- react: 18.0.0 || 19.0.0
+- react-dom: 18.0.0 || 19.0.0
 
 **yarn**
 

@@ -1,11 +1,18 @@
-import type { Preview } from '@storybook/react-vite';
-import type { StoryFn } from '@storybook/react';
+import type { Preview, ReactRenderer } from '@storybook/react-vite';
 import React from 'react';
 import { ThemeProvider } from '@douro-ui/react';
+import type { PartialStoryFn } from 'storybook/internal/csf';
 
 const preview: Preview = {
   decorators: [
-    (Story: StoryFn): React.JSX.Element => (
+    (
+      Story: PartialStoryFn<
+        ReactRenderer,
+        {
+          [x: string]: unknown;
+        }
+      >,
+    ): React.JSX.Element => (
       <ThemeProvider>
         <Story />
       </ThemeProvider>
