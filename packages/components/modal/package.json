@@ -1,6 +1,6 @@
 {
   "name": "@douro-ui/modal",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Douro UI - Metyis Design System Modal Component",
   "main": "src/index.ts",
   "type": "module",
@@ -25,8 +25,8 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
-    "@douro-ui/button": "^0.3.6",
-    "@douro-ui/react": "^0.8.2",
+    "@douro-ui/button": "^0.3.7",
+    "@douro-ui/react": "^0.8.3",
     "@douro-ui/svg-icons": "^0.4.2"
   },
   "publishConfig": {

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.9](https://github.com/Douro-ui/design-system/compare/@douro-ui/tooltip@0.1.8...@douro-ui/tooltip@0.1.9) (2026-01-22)
+
+### Bug Fixes
+
+- bump peer-deps react ([7a42de8](https://github.com/Douro-ui/design-system/commit/7a42de88b2d36f9afe3d657a85595da5f36bc43a))
+
 ## [0.1.8](https://github.com/Douro-ui/design-system/compare/@douro-ui/tooltip@0.1.7...@douro-ui/tooltip@0.1.8) (2026-01-20)
 
 **Note:** Version bump only for package @douro-ui/tooltip

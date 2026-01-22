@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.7](https://github.com/Douro-ui/design-system/compare/@douro-ui/toaster@0.2.6...@douro-ui/toaster@0.2.7) (2026-01-22)
+
+### Bug Fixes
+
+- bump peer-deps react ([7a42de8](https://github.com/Douro-ui/design-system/commit/7a42de88b2d36f9afe3d657a85595da5f36bc43a))
+
 ## [0.2.6](https://github.com/Douro-ui/design-system/compare/@douro-ui/toaster@0.2.5...@douro-ui/toaster@0.2.6) (2026-01-20)
 
 **Note:** Version bump only for package @douro-ui/toaster
