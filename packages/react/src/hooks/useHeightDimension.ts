@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 
 export const useHeightDimension = (
   isExpanded: boolean,
-): { height: string; contentRef: React.RefObject<HTMLDivElement> } => {
+): { height: string; contentRef: React.RefObject<HTMLDivElement | null> } => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState('0px');
 

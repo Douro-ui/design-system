@@ -1,7 +1,7 @@
 import { TooltipProps, TooltipStyledProps } from './tooltip.types';
 import { TooltipStyled } from './tooltip.styles';
 import { deepMerge, useTheme } from '@douro-ui/react';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useRef, useState, useCallback } from 'react';
 import { useClickOutside, useTooltipVisibility } from './hooks';
 import { handleEvents } from './utils/handleEvents';
 import { calculatePosition } from './utils';
@@ -39,17 +39,21 @@ const Tooltip = ({
     left: 0,
   });
 
-  useEffect(() => {
-    if (visible && triggerRef.current && tooltipRef.current) {
-      const tooltipPosition = calculatePosition({
-        position,
-        triggerRect: triggerRef.current.getBoundingClientRect(),
-        tooltipRect: tooltipRef.current.getBoundingClientRect(),
-        isFixedBottom,
-      });
-      setCoords(tooltipPosition);
-    }
-  }, [visible, position]);
+  const tooltipCallbackRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      tooltipRef.current = node;
+      if (node && triggerRef.current) {
+        const tooltipPosition = calculatePosition({
+          position,
+          triggerRect: triggerRef.current.getBoundingClientRect(),
+          tooltipRect: node.getBoundingClientRect(),
+          isFixedBottom,
+        });
+        setCoords(tooltipPosition);
+      }
+    },
+    [position, isFixedBottom],
+  );
 
   useClickOutside(tooltipRef, () => {
     if (visible) {
@@ -65,7 +69,7 @@ const Tooltip = ({
       <span>{childrenLabel}</span>
       {visible && (
         <TooltipStyled
-          ref={tooltipRef}
+          ref={tooltipCallbackRef}
           styled={mergedThemeValues as Required<TooltipStyledProps>}
           position={position}
           isFixedBottom={isFixedBottom}

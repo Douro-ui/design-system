@@ -10,6 +10,9 @@ const dirname =
     : __dirname;
 
 export default defineConfig({
+  resolve: {
+    dedupe: ['react', 'react-dom'],
+  },
   test: {
     coverage: {
       provider: 'v8',
