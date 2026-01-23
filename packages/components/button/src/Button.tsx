@@ -12,6 +12,7 @@ const buttonTypes = {
   secondary: SecondaryButton,
   tertiary: TertiaryButton,
   error: ErrorButton,
+  custom: PrimaryButton,
 };
 
 const Button = ({
