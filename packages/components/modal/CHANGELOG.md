@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.19](https://github.com/Douro-ui/design-system/compare/@douro-ui/modal@0.1.18...@douro-ui/modal@0.1.19) (2026-01-23)
+
+**Note:** Version bump only for package @douro-ui/modal
+
 ## [0.1.18](https://github.com/Douro-ui/design-system/compare/@douro-ui/modal@0.1.17...@douro-ui/modal@0.1.18) (2026-01-22)
 
 ### Bug Fixes

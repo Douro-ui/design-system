@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.8](https://github.com/Douro-ui/design-system/compare/@douro-ui/button@0.3.7...@douro-ui/button@0.3.8) (2026-01-23)
+
+### Bug Fixes
+
+- add custom type to button ([9fb832b](https://github.com/Douro-ui/design-system/commit/9fb832bd40f3a2f3ba96cf4b0b6da0815e6410c2))
+
 ## [0.3.7](https://github.com/Douro-ui/design-system/compare/@douro-ui/button@0.3.6...@douro-ui/button@0.3.7) (2026-01-22)
 
 ### Bug Fixes
